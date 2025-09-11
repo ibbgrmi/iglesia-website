@@ -24,24 +24,23 @@ background-size: cover;
       scroll-behavior: smooth;
     }
 
-   /* ===== Menú Superior Moderno con Liquid Glass y Responsive ===== */
+   /* ===== Menú Superior Moderno con Logo y Liquid Glass ===== */
 nav {
   display: flex;
-  justify-content: space-between;
+  justify-content: space-between; /* Logo a la izquierda, links a la derecha */
   align-items: center;
   background-color: rgba(0, 0, 0, 0.6); /* negro translúcido */
-  padding: 15px 20px;
+  padding: 10px 20px;
   position: sticky;
   top: 0;
   z-index: 1000;
   backdrop-filter: blur(10px); /* efecto vidrio líquido */
-  border-radius: 0 0 12px 12px; /* esquinas redondeadas abajo */
+  border-radius: 0 0 12px 12px;
 }
 
 /* Logo */
 nav img.logo {
-  height: 45px; /* ajusta el tamaño del logo */
-  margin-right: 20px;
+  height: 45px; /* Ajusta el tamaño del logo */
 }
 
 /* Links estilo cards */
@@ -73,6 +72,15 @@ nav a:hover {
 
   nav img.logo {
     margin-bottom: 10px;
+  }
+
+  nav a {
+    display: block;
+    margin: 8px 0;
+    width: 100%;
+    text-align: center;
+  }
+}
   }
 
   nav a {
