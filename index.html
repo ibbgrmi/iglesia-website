@@ -24,55 +24,75 @@ background-size: cover;
       scroll-behavior: smooth;
     }
 
-    /* ===== NAVBAR con efecto Liquid Glass ===== */
-.navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
+   /* ===== Menú Superior Moderno con Liquid Glass y Responsive ===== */
+nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 12px 30px;
-  background: rgba(255, 255, 255, 0.15); /* Transparente */
-  backdrop-filter: blur(12px) saturate(180%); /* Efecto vidrio */
-  -webkit-backdrop-filter: blur(12px) saturate(180%);
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  background-color: rgba(0, 0, 0, 0.6); /* negro translúcido */
+  padding: 15px 20px;
+  position: sticky;
+  top: 0;
   z-index: 1000;
+  backdrop-filter: blur(10px); /* efecto vidrio líquido */
+  border-radius: 0 0 12px 12px; /* esquinas redondeadas abajo */
 }
 
-.navbar img {
-  height: 60px;
-  width: auto;
+/* Logo */
+nav img.logo {
+  height: 45px;   /* ajusta el tamaño del logo */
+  margin-right: 20px;
 }
 
-.navbar ul {
-  list-style: none;
-  display: flex;
-  gap: 25px;
-  margin: 0;
-  padding: 0;
-}
-
-.navbar ul li {
+/* Links estilo cards */
+nav a {
   display: inline-block;
-}
-
-.navbar ul li a {
+  color: #fff;
+  margin: 0 12px;
+  padding: 10px 18px;
   text-decoration: none;
-  font-size: 18px;
   font-weight: bold;
-  color: white;
-  padding: 6px 12px;
-  border-radius: 8px;
-  transition: background 0.3s, color 0.3s;
+  border-radius: 25px; /* bordes redondeados */
+  background: rgba(70, 130, 180, 0.6); /* azul acero translúcido */
+  transition: all 0.3s ease;
 }
 
-.navbar ul li a:hover {
-  background: rgba(255, 255, 255, 0.3);
-  color: #222;
+nav a:hover {
+  background: rgba(70, 130, 180, 1); /* azul fuerte al pasar mouse */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
 }
 
-/* ===== Menú Hamburguesa (móviles) ===== */
+/* Botón hamburguesa */
+nav .menu-toggle {
+  display: none; /* oculto en escritorio */
+  cursor: pointer;
+  font-size: 28px;
+  color: #fff;
+}
+
+/* ===== Responsive: menú en celular ===== */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+  }
+
+  nav .menu-toggle {
+    display: block;
+  }
+
+  nav a {
+    display: none;
+    width: 100%;
+    margin: 10px 0;
+    text-align: center;
+  }
+
+  nav.active a {
+    display: block;
+  }
+}
 .hamburger {
   display: none;
   flex-direction: column;
