@@ -5,147 +5,129 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Iglesia Bautista Bíblica</title>
   <style>
-  body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    color: #000;
-    background: linear-gradient(-45deg, #f3e7e9, #e3eeff, #d9e4f5, #ffffff);
-    background-size: 400% 400%;
-    animation: gradientBG 15s ease infinite;
-  }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: #000;
+      background: linear-gradient(-45deg, #f3e7e9, #e3eeff, #d9e4f5, #ffffff);
+      background-size: 400% 400%;
+      animation: gradientBG 15s ease infinite;
+    }
 
-  @keyframes gradientBG {
-    0% { background-position: 0% 50%; }
-    50% { background-position: 100% 50%; }
-    100% { background-position: 0% 50%; }
-  }
-</style>
+    @keyframes gradientBG {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Scroll suave */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Menú de navegación */
+    nav {
+      background-color: #222;
+      padding: 15px;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav a {
+      color: white;
+      margin: 0 15px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    nav a:hover {
+      color: #ffd700;
+    }
+
+    /* Secciones */
+    section {
+      padding: 40px;
+      margin-top: 60px;
+      text-align: center;
+      border-radius: 10px;
+    }
+
+    h2 {
+      font-size: 24px;
+      color: #222;
+    }
+
+    p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #333;
+      max-width: 800px;
+      margin: auto;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- Menú de Navegación -->
-  <nav style="background-color:#222; padding: 15px; text-align:center; position:sticky; top:0; z-index:1000;">
-    <a href="#inicio" style="color:white; margin: 0 15px; text-decoration:none; font-weight:bold;">Inicio</a>
-    <a href="#mision" style="color:white; margin: 0 15px; text-decoration:none; font-weight:bold;">Misión</a>
-    <a href="#servicios" style="color:white; margin: 0 15px; text-decoration:none; font-weight:bold;">Servicios</a>
-    <a href="#ubicacion" style="color:white; margin: 0 15px; text-decoration:none; font-weight:bold;">Ubicación</a>
-    <a href="#contacto" style="color:white; margin: 0 15px; text-decoration:none; font-weight:bold;">Contacto</a>
+  <!-- Menú -->
+  <nav>
+    <a href="#inicio">Inicio</a>
+    <a href="#mision">Misión</a>
+    <a href="#servicios">Servicios</a>
+    <a href="#ubicacion">Ubicación</a>
+    <a href="#contacto">Contacto</a>
   </nav>
 
-  <div id="inicio" style="text-align: center; margin-top: 20px;">
+  <!-- Inicio -->
+  <section id="inicio">
     <img src="Logo para la pagina.PNG" alt="Logo Iglesia Bautista Bíblica" width="250">
-  </div>
-  <div style="text-align: center; margin-top: 20px;">
-    <img src="Logo para la pagina.PNG" alt="Logo Iglesia Bautista Bíblica" width="250">
-  </div>
+    <h1>Bienvenidos a la Iglesia Bautista Bíblica</h1>
+    <p>Esta es la página oficial de nuestra iglesia.</p>
+  </section>
 
-  <h1>Bienvenidos a la Iglesia Bautista Bíblica</h1>
-  <p>Esta es la página oficial de nuestra iglesia.</p>
-  
-  <!-- Botón de peticiones de oración -->
-  <div style="text-align: center; margin-top: 30px;">
-    <h2>Peticiones de Oración</h2>
-    <p>Comparta su petición con nosotros. Será recibida y orada con amor.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzH-H5g7q588wsra4Lotvd0hYSRE6HxLl9YWOx-4OivgQgQg/viewform?usp=dialog" 
-       target="_blank" 
-       style="display: inline-block; padding: 12px 25px; background-color: #4CAF50; color: white; text-decoration: none; font-size: 18px; border-radius: 8px;">
-      Enviar 
-      
-             </a>
-    </div>
+  <!-- Misión -->
+  <section id="mision">
+    <h2>Misión</h2>
+    <p>
+      La misión de la Iglesia Bautista Bíblica, como se prescribe por el Gran Mandamiento y la Gran Comisión,
+      es amar a Dios con todo nuestro corazón, guiar a los perdidos a una relación personal con Jesucristo,
+      incorporarlos a la confraternidad de la iglesia local, enseñarles a vivir en obediencia a la Palabra de Dios
+      y prepararles para usar sus dones espirituales en servicio a otros.
+    </p>
+  </section>
 
-    
-      <!-- Redes sociales -->
-<div style="text-align: center; margin-top: 50px; padding: 40px; border-radius: 10px;">
-  <h2>Síguenos en Redes Sociales</h2>
+  <!-- Servicios -->
+  <section id="servicios">
+    <h2>Horarios de Servicios</h2>
+    <p>
+      <strong>Servicio de Oración:</strong> Miércoles 7:00 pm – 8:15 pm <br>
+      <strong>Servicio Dominical:</strong> Domingo 9:30 am – 11:00 am <br>
+      <strong>Servicio vía Zoom:</strong> Domingo 6:00 pm
+    </p>
+    <p style="margin-top: 10px; font-size: 18px; color: #000; font-weight: bold;">
+      👉 Dale clic aquí para entrar al servicio en línea
+    </p>
+    <a href="https://us02web.zoom.us/j/8121830152?pwd=OF1qNDVBY25iNUxGQX1LZ1pzTXpLQT09"
+       target="_blank"
+       style="display:inline-block; margin-top:15px; padding:12px 25px; background-color:#2D8CFF; color:white; text-decoration:none; font-size:16px; border-radius:8px; font-weight:bold;">
+       Unirse al Servicio en Zoom
+    </a>
+  </section>
 
-  <!-- Botón YouTube -->
-  <a href="https://youtube.com/@iglesiabautistabiblicagran187?si=DM5Aefu6CoCCp6mu"
-     target="_blank"
-     style="display: inline-block; padding: 12px 25px; background-color: #FF0000; color: white; text-decoration: none; margin: 10px; border-radius: 8px;">
-     YouTube
-  </a>
+  <!-- Ubicación -->
+  <section id="ubicacion">
+    <h2>Ubicación</h2>
+    <p>Estamos ubicados en Grand Rapids, MI.</p>
+    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.633403894599!2d-85.74554747564237!3d42.98599545468982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8819af0da3241327%3A0x2b3063b12e47180a!2s1273%20Lamont%20Ave%20NW%2C%20Grand%20Rapids%2C%20MI%2049504!5e0!3m2!1ses-419!2sus!4v1757584804679!5m2!1ses-419!2sus"
+      width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+  </section>
 
-  <!-- Botón Facebook -->
-  <a href="https://m.facebook.com/profile.php?id=100064413082714"
-     target="_blank"
-     style="display: inline-block; padding: 12px 25px; background-color: #1877F2; color: white; text-decoration: none; margin: 10px; border-radius: 8px;">
-     Facebook
-  </a>
-</div>
+  <!-- Contacto -->
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Puede contactarnos a través de nuestras redes sociales o visitarnos en persona.</p>
+  </section>
 
-<!-- Sección de Propósito -->
-<div style="padding: 40px; margin-top: 60px; text-align: center; border-radius: 10px;">
-  <h2 style="font-size: 24px; color: #222;">Propósito</h2>
-  <p style="max-width: 800px; margin: auto; font-size: 18px; line-height: 1.6; color: #333;">
-    La Iglesia Bautista Bíblica existe para glorificar a Dios por medio de la implementación del Gran Mandamiento 
-    y la Gran Comisión de nuestro Señor y Salvador Jesucristo. 
-    <br><strong>Mateo 22:37-40; 28:18-20.</strong>
-  </p>
-</div>
-
-<!-- Sección de Misión -->
-<div style="padding: 40px; margin-top: 60px; text-align: center; border-radius: 10px;">
-  <h2 style="font-size: 24px; color: #222;">Misión</h2>
-  <p style="max-width: 800px; margin: auto; font-size: 18px; line-height: 1.6; color: #333;">
-    La misión de la Iglesia Bautista Bíblica, como se prescribe por el Gran Mandamiento y la Gran Comisión, 
-    es amar a Dios con todo nuestro corazón, guiar a los perdidos a una relación personal con Jesucristo, 
-    incorporarlos a la confraternidad de la iglesia local, enseñarles a vivir en obediencia a la Palabra de Dios 
-    y prepararles para usar sus dones espirituales en servicio a otros.
-  </p>
-</div>
-
-<!-- Horarios de Servicios -->
-<div style="padding: 40px; margin-top: 60px; text-align: center; border-radius: 10px;">
-  <h2 style="font-size: 24px; color: #222;">Horarios de Servicios</h2>
-  <p style="font-size: 18px; line-height: 1.6; color: #333;">
-    <strong>Servicio de Oración:</strong> Miércoles 7:00 pm – 8:15 pm <br>
-    <strong>Servicio Dominical:</strong> Domingo 9:30 am – 11:00 am <br>
-    <strong>Servicio vía Zoom:</strong> Domingo 6:00 pm
-  </p>
-
-  <!-- Flecha arriba del botón -->
-  <p style="margin-top: 10px; font-size: 18px; color: #000; text-align: center; font-weight: bold;">
-    👇 Dale clic aquí para entrar al servicio en línea
-  </p>
-
-  <!-- Botón Zoom -->
-  <a href="https://us02web.zoom.us/j/8121830152?pwd=OF1qNDVBY25iNUxGQX1LZ1pzTXpLQT09"
-     target="_blank"
-     style="display: inline-block; margin-top: 15px; padding: 12px 25px; background-color: #2D8CFF; color: white; text-decoration: none; font-size: 16px; border-radius: 8px; font-weight: bold;">
-     Unirse al Servicio en Zoom
-  </a>
-</div>
-</div>   <!-- cierre de horarios/zoom -->
-
-<!-- Ubicación -->
-<div id="ubicacion" style="padding:40px; margin-top:60px; text-align:center; border-radius:10px;">
-  <h2 style="font-size:24px; color:#222;">Ubicación</h2>
-  <p style="font-size:18px; color:#333;">Estamos ubicados en Grand Rapids, MI.</p>
-  
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.633403894599!2d-85.74554747564237!3d42.98599545468982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8819af0da3241327%3A0x2b3063b12e47180a!2s1273%20Lamont%20Ave%20NW%2C%20Grand%20Rapids%2C%20MI%2049504!5e0!3m2!1ses-419!2sus!4v1757584804679!5m2!1ses-419!2sus" 
-        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" 
-        referrerpolicy="no-referrer-when-downgrade"></iframe>
-
-<!-- Botón automático para abrir en Maps -->
-<script>
-  function openMap() {
-    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-    if (/iPhone|iPad|iPod/.test(userAgent)) {
-      // Apple Maps (iPhone/iPad)
-      window.open("http://maps.apple.com/?address=1273+Lamont+Ave+NW,Grand+Rapids,MI,49504", "_blank");
-    } else {
-      // Google Maps (Android/PC)
-      window.open("https://www.google.com/maps?q=1273+Lamont+Ave+NW,+Grand+Rapids,+MI+49504", "_blank");
-    }
-  }
-</script>
-
-<div style="text-align:center; margin-top:20px;">
-  <button onclick="openMap()" 
-          style="padding:12px 25px; font-size:16px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
-    📍 Abrir en Mapas
-  </button>
-</div>
-</div>
+</body>
+</html>
