@@ -123,7 +123,29 @@
   <h2 style="font-size:24px; color:#222;">Ubicación</h2>
   <p style="font-size:18px; color:#333;">Estamos ubicados en Grand Rapids, MI.</p>
   
-  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.633403894599!2d-85.74554747564237!3d42.98599545468982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8819af0da3241327%3A0x2b3063b12e47180a!2s1273%20Lamont%20Ave%20NW%2C%20Grand%20Rapids%2C%20MI%2049504!5e0!3m2!1ses-419!2sus!4v1757584804679!5m2!1ses-419!2sus"
-    width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" 
-    referrerpolicy="no-referrer-when-downgrade"></iframe>
+  <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.633403894599!2d-85.74554747564237!3d42.98599545468982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8819af0da3241327%3A0x2b3063b12e47180a!2s1273%20Lamont%20Ave%20NW%2C%20Grand%20Rapids%2C%20MI%2049504!5e0!3m2!1ses-419!2sus!4v1757584804679!5m2!1ses-419!2sus" 
+        width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy" 
+        referrerpolicy="no-referrer-when-downgrade"></iframe>
+
+<!-- Botón automático para abrir en Maps -->
+<script>
+  function openMap() {
+    var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+    if (/iPhone|iPad|iPod/.test(userAgent)) {
+      // Apple Maps (iPhone/iPad)
+      window.open("http://maps.apple.com/?address=1273+Lamont+Ave+NW,Grand+Rapids,MI,49504", "_blank");
+    } else {
+      // Google Maps (Android/PC)
+      window.open("https://www.google.com/maps?q=1273+Lamont+Ave+NW,+Grand+Rapids,+MI+49504", "_blank");
+    }
+  }
+</script>
+
+<div style="text-align:center; margin-top:20px;">
+  <button onclick="openMap()" 
+          style="padding:12px 25px; font-size:16px; background:#007bff; color:white; border:none; border-radius:6px; cursor:pointer;">
+    📍 Abrir en Mapas
+  </button>
+</div>
 </div>
