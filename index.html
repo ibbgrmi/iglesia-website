@@ -136,12 +136,29 @@
   </section>
 
   <!-- Ubicación -->
-  <section id="ubicacion">
-    <h2>Ubicación</h2>
-    <p>Estamos ubicados en Grand Rapids, MI.</p>
-    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2918.633403894599!2d-85.74554747564237!3d42.98599545468982!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8819af0da3241327%3A0x2b3063b12e47180a!2s1273%20Lamont%20Ave%20NW%2C%20Grand%20Rapids%2C%20MI%2049504!5e0!3m2!1ses-419!2sus!4v1757584804679!5m2!1ses-419!2sus"
-            width="800" height="600" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
-  </section>
+<section id="ubicacion" style="text-align:center; padding:40px;">
+  <h2>📍 Ubicación</h2>
+  <p>1273 Lamont Ave. NW, Grand Rapids, MI 49504</p>
+  <button onclick="abrirMapa()" 
+          style="padding:12px 25px; background:#007BFF; color:white; border:none; border-radius:5px; cursor:pointer; font-size:16px; display:inline-flex; align-items:center; gap:8px;">
+    <span>🗺️</span> Abrir en Mapas
+  </button>
+</section>
+
+<script>
+function abrirMapa() {
+  var direccion = "1273+Lamont+Ave+NW,+Grand+Rapids,+MI+49504";
+  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+  
+  if (/iPhone|iPad|iPod/i.test(userAgent)) {
+    // Apple Maps
+    window.open("http://maps.apple.com/?q=" + direccion, "_blank");
+  } else {
+    // Google Maps
+    window.open("https://www.google.com/maps/search/?api=1&query=" + direccion, "_blank");
+  }
+}
+</script>
 
   <!-- Contacto -->
   <section id="contacto">
