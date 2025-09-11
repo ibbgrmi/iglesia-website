@@ -72,7 +72,53 @@ nav a:hover {
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   transform: translateY(-3px);
 }
+/* ===== Menú Superior Moderno (Glass) ===== */
+nav {
+  background-color: rgba(0, 0, 0, 0.6); /* Negro translúcido */
+  padding: 15px 20px;
+  text-align: center;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(6px); /* efecto vidrio */
+  border-radius: 0 0 12px 12px; /* esquinas redondeadas abajo */
+}
 
+nav a {
+  display: inline-block;
+  color: #fff;
+  margin: 0 12px;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px; /* estilo tipo pill */
+  background: rgba(70, 130, 180, 0.6); /* azul acero translúcido */
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background: rgba(70, 130, 180, 1); /* azul más fuerte al pasar */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  transform: translateY(-3px);
+}
+
+/* ===== Secciones tipo tarjetas ===== */
+section {
+  background: rgba(70, 130, 180, 0.85); /* azul acero translúcido */
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+section:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+}
 /* ===== Secciones tipo tarjetas ===== */
 section {
   background: rgba(70, 130, 180, 0.85); /* Azul acero semitransparente */
