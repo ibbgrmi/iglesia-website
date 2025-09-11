@@ -40,7 +40,7 @@ nav {
 
 /* Logo */
 nav img.logo {
-  height: 45px;   /* ajusta el tamaño del logo */
+  height: 45px; /* ajusta el tamaño del logo */
   margin-right: 20px;
 }
 
@@ -58,21 +58,30 @@ nav a {
 }
 
 nav a:hover {
-  background: rgba(70, 130, 180, 1); /* azul fuerte al pasar mouse */
+  background: rgba(70, 130, 180, 1); /* azul fuerte */
   color: #fff;
   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
   transform: translateY(-3px);
 }
 
-/* Botón hamburguesa */
-nav .menu-toggle {
-  display: none; /* oculto en escritorio */
-  cursor: pointer;
-  font-size: 28px;
-  color: #fff;
-}
+/* Responsive: menú en móviles */
+@media (max-width: 768px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 
-/* ===== Responsive: menú en celular ===== */
+  nav img.logo {
+    margin-bottom: 10px;
+  }
+
+  nav a {
+    display: block;
+    margin: 8px 0;
+    width: 100%;
+    text-align: center;
+  }
+}
 @media (max-width: 768px) {
   nav {
     flex-wrap: wrap;
