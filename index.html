@@ -209,7 +209,8 @@ nav img.logo {
   const address = "1273+Lamont+Ave+NW,+Grand+Rapids,+MI+49504";
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
-  if (/iPad|iPhone|iPod/.test(userAgent) && !window.MSStream) {
+  // Detectar iPhone, iPad o iPod
+  if (/iPad|iPhone|iPod/.test(userAgent)) {
     mapLink.href = "http://maps.apple.com/?q=" + address;
   } else {
     mapLink.href = "https://www.google.com/maps?q=" + address;
