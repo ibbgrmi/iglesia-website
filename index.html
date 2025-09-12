@@ -10,32 +10,6 @@
       font-family: Arial, sans-serif;
       color: #000;
       background: url("IMG_1846.jpeg") no-repeat center center fixed;
-background-size: cover;
-    }
-
-    @keyframes gradientBG {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    /* Scroll suave */
-    html {
-      scroll-behavior: smooth;
-    }
-
-   <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iglesia Bautista Bíblica</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #000;
-      background: url("IMG_1846.jpeg") no-repeat center center fixed;
       background-size: cover;
     }
 
@@ -44,10 +18,10 @@ background-size: cover;
       scroll-behavior: smooth;
     }
 
-    /* ===== Menú Superior Moderno con Logo + Liquid Glass + Responsive ===== */
+    /* ===== Menú Superior con Logo + Liquid Glass ===== */
     nav {
       display: flex;
-      justify-content: space-between; /* Logo a la izquierda, links a la derecha */
+      justify-content: space-between;
       align-items: center;
       background-color: rgba(0, 0, 0, 0.6); /* negro translúcido */
       padding: 10px 20px;
@@ -55,17 +29,17 @@ background-size: cover;
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(10px); /* efecto vidrio líquido */
-      border-radius: 0 0 12px 12px; /* esquinas redondeadas abajo */
+      border-radius: 0 0 12px 12px;
     }
 
     /* Logo */
     nav img.logo {
-      height: 55px; /* ajusta el tamaño del logo */
+      height: 55px;  /* ajusta el tamaño del logo */
       width: auto;
       margin-right: 20px;
     }
 
-    /* Links estilo cards */
+    /* Links estilo pill */
     nav a {
       display: inline-block;
       color: #fff;
@@ -73,7 +47,7 @@ background-size: cover;
       padding: 10px 18px;
       text-decoration: none;
       font-weight: bold;
-      border-radius: 25px; /* bordes redondeados */
+      border-radius: 25px;
       background: rgba(70, 130, 180, 0.6); /* azul acero translúcido */
       transition: all 0.3s ease;
     }
@@ -86,19 +60,15 @@ background-size: cover;
     }
 
     /* Responsive: menú en móviles */
-    .menu-toggle {
-      display: none;
-      cursor: pointer;
-      color: #fff;
-      font-size: 28px;
-    }
-
     @media (max-width: 768px) {
       nav {
         flex-wrap: wrap;
       }
       .menu-toggle {
         display: block;
+        cursor: pointer;
+        color: #fff;
+        font-size: 28px;
       }
       nav a {
         display: none;
@@ -110,10 +80,61 @@ background-size: cover;
         display: block;
       }
     }
+
+    /* ===== Secciones tipo tarjetas ===== */
+    section {
+      background: rgba(70, 130, 180, 0.85); /* Azul acero semitransparente */
+      padding: 40px;
+      margin: 40px auto;
+      max-width: 900px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    section:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    }
+
+    section h2 {
+      font-size: 26px;
+      margin-bottom: 15px;
+      color: #fff;
+      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
+    }
+
+    section p {
+      font-size: 18px;
+      line-height: 1.6;
+      color: #f0f0f0;
+    }
+
+    /* ===== Footer ===== */
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: rgba(0, 0, 0, 0.7);
+      color: white;
+      margin-top: 40px;
+    }
+
+    footer a {
+      color: #1E90FF;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
+    footer a:hover {
+      text-decoration: underline;
+    }
   </style>
 </head>
 <body>
-  <!-- Menú de navegación -->
+
+  <!-- ===== Menú de Navegación ===== -->
   <nav>
     <img src="logo.png" alt="Logo Iglesia" class="logo">
     <div class="menu-toggle">☰</div>
@@ -124,311 +145,13 @@ background-size: cover;
     <a href="#contacto">Contacto</a>
   </nav>
 
-  <!-- Sección Inicio -->
+  <!-- ===== Sección Inicio ===== -->
   <section id="inicio">
-    <h1>Bienvenidos a la Iglesia Bautista Bíblica</h1>
+    <h2>Bienvenidos a la Iglesia Bautista Bíblica</h2>
     <p>Esta es la página oficial de nuestra iglesia.</p>
   </section>
 
-  <!-- Sección Misión -->
-  <section id="mision">
-    <h2>Misión</h2>
-    <p>La misión de nuestra iglesia es...</p>
-  </section>
-
-  <!-- Sección Servicios -->
-  <section id="servicios">
-    <h2>Servicios</h2>
-    <p>Aquí puedes ver nuestros servicios.</p>
-  </section>
-
-  <!-- Sección Ubicación -->
-  <section id="ubicacion">
-    <h2>Ubicación</h2>
-    <p>Estamos en Grand Rapids, MI.</p>
-  </section>
-
-  <!-- Sección Contacto -->
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Puedes contactarnos aquí.</p>
-  </section>
-
-  <script>
-    // Script para menú responsive
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("nav");
-    toggle.addEventListener("click", () => {
-      nav.classList.toggle("active");
-    });
-  </script>
-</body>
-</html>
-    }
-  </style>
-</head>
-<body>
-
-  <!-- ===== Menú con Logo y Hamburguesa ===== -->
-  <nav>
-    <img src="logo.png" alt="Logo Iglesia" class="logo">
-    <div class="menu-toggle">&#9776;</div> <!-- Rayitas ☰ -->
-    <div class="nav-links">
-      <a href="#inicio">Inicio</a>
-      <a href="#mision">Misión</a>
-      <a href="#servicios">Servicios</a>
-      <a href="#ubicacion">Ubicación</a>
-      <a href="#contacto">Contacto</a>
-    </div>
-  </nav>
-
-  <!-- Aquí seguiría tu contenido -->
-
-  <script>
-    const toggle = document.querySelector('.menu-toggle');
-    const links = document.querySelector('.nav-links');
-
-    toggle.addEventListener('click', () => {
-      links.classList.toggle('active');
-    });
-  </script>
-</body>
-</html>
-    display: block;
-    margin: 8px 0;
-    width: 100%;
-    text-align: center;
-  }
-}
-@media (max-width: 768px) {
-  nav {
-    flex-wrap: wrap;
-  }
-
-  nav .menu-toggle {
-    display: block;
-  }
-
-  nav a {
-    display: none;
-    width: 100%;
-    margin: 10px 0;
-    text-align: center;
-  }
-
-  nav.active a {
-    display: block;
-  }
-}
-.hamburger {
-  display: none;
-  flex-direction: column;
-  cursor: pointer;
-}
-
-.hamburger div {
-  width: 25px;
-  height: 3px;
-  background: white;
-  margin: 4px 0;
-  border-radius: 5px;
-}
-
-/* Ocultar menú en móviles por defecto */
-.navbar ul {
-  transition: max-height 0.4s ease-in-out;
-}
-
-@media (max-width: 768px) {
-  .navbar {
-    padding: 10px 20px;
-  }
-
-  .navbar ul {
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    flex-direction: column;
-    background: rgba(0, 0, 0, 0.7);
-    backdrop-filter: blur(12px);
-    max-height: 0;
-    overflow: hidden;
-  }
-
-  .navbar ul.show {
-    max-height: 400px;
-    padding: 15px 0;
-  }
-
-  .navbar ul li {
-    text-align: center;
-    margin: 12px 0;
-  }
-
-  .hamburger {
-    display: flex;
-  }
-}
-nav {
-  background-color: rgba(0, 0, 0, 0.6); /* Negro translúcido */
-  padding: 15px 20px;
-  text-align: center;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-  backdrop-filter: blur(6px); /* efecto vidrio */
-  border-radius: 0 0 12px 12px; /* esquinas redondeadas abajo */
-}
-
-nav a {
-  display: inline-block;
-  color: #fff;
-  margin: 0 12px;
-  padding: 10px 18px;
-  text-decoration: none;
-  font-weight: bold;
-  border-radius: 25px; /* estilo tipo pill */
-  background: rgba(70, 130, 180, 0.6); /* azul acero translúcido */
-  transition: all 0.3s ease;
-}
-
-nav a:hover {
-  background: rgba(70, 130, 180, 1); /* azul más fuerte al pasar */
-  color: #fff;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-  transform: translateY(-3px);
-}
-
-/* ===== Secciones tipo tarjetas ===== */
-section {
-  background: rgba(70, 130, 180, 0.85); /* azul acero translúcido */
-  padding: 40px;
-  margin: 40px auto;
-  max-width: 900px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  color: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-section:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-}
-/* ===== Secciones tipo tarjetas ===== */
-section {
-  background: rgba(70, 130, 180, 0.85); /* Azul acero semitransparente */
-  padding: 40px;
-  margin: 40px auto;
-  max-width: 900px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  color: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-section:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-}
-
-section h2 {
-  font-size: 26px;
-  margin-bottom: 15px;
-  color: #ffffff;
-  text-shadow: 1px 1px 4px rgba(0,0,0,0.6);
-}
-
-section p {
-  font-size: 18px;
-  line-height: 1.6;
-  color: #f0f0f0;
-}
-
-/* ===== Botón estilo moderno (ej: Zoom) ===== */
-a.btn {
-  display: inline-block;
-  margin-top: 20px;
-  padding: 12px 25px;
-  background: linear-gradient(135deg, #4682B4, #1E90FF);
-  color: white;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-}
-
-a.btn:hover {
-  background: linear-gradient(135deg, #1E90FF, #00BFFF);
-  transform: scale(1.05);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.4);
-}
-    section {
-      padding: 40px;
-      margin-top: 60px;
-      text-align: center;
-      border-radius: 10px;
-    }
-
-    h2 {
-      font-size: 24px;
-      color: #222;
-    }
-
-    p {
-      max-width: 800px;
-      margin: auto;
-      font-size: 18px;
-      line-height: 1.6;
-      color: #333;
-    }
-  </style>
-</head>
-<body>
-
-  <!-- Menú de Navegación -->
-  <nav>
-    <a href="#inicio">Inicio</a>
-    <a href="#mision">Misión</a>
-    <a href="#servicios">Servicios</a>
-    <a href="#ubicacion">Ubicación</a>
-    <a href="#contacto">Contacto</a>
-  </nav>
-
-  <!-- Inicio -->
-  <section id="inicio">
-    <img src="Logo para la pagina.PNG" alt="Logo Iglesia Bautista Bíblica" width="250">
-    <h1>Bienvenidos a la Iglesia Bautista Bíblica</h1>
-    <p>Esta es la página oficial de nuestra iglesia.</p>
-  </section>
-
-  <!-- Peticiones -->
-  <section id="peticiones">
-    <h2>Peticiones de Oración</h2>
-    <p>Comparta su petición con nosotros. Será recibida y orada con amor.</p>
-    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzH-H5g7q588wsra4Lotvd0hYSRE6HxL19YW0x-4OiVgxg/viewform" 
-       target="_blank"
-       style="display: inline-block; margin-top: 15px; padding: 12px 25px; background-color: #4CAF50; color: white; text-decoration: none; border-radius: 8px; font-weight: bold;">
-      Enviar Petición
-    </a>
-  </section>
-
-  <!-- Redes Sociales -->
-  <section id="redes">
-    <h2>Síguenos en Redes Sociales</h2>
-    <a href="https://youtube.com/@iglesiabautistabiblicagran1873" target="_blank"
-       style="display:inline-block; margin:10px; padding:12px 25px; background-color:#FF0000; color:white; text-decoration:none; border-radius:8px; font-weight:bold;">
-      YouTube
-    </a>
-    <a href="https://m.facebook.com/profile.php?id=100064413082714" target="_blank"
-       style="display:inline-block; margin:10px; padding:12px 25px; background-color:#1877F2; color:white; text-decoration:none; border-radius:8px; font-weight:bold;">
-      Facebook
-    </a>
-  </section>
-
-  <!-- Misión -->
+  <!-- ===== Sección Misión ===== -->
   <section id="mision">
     <h2>Misión</h2>
     <p>
@@ -439,52 +162,48 @@ a.btn:hover {
     </p>
   </section>
 
-  <!-- Servicios -->
+  <!-- ===== Sección Servicios ===== -->
   <section id="servicios">
-    <h2>Horarios de Servicios</h2>
-    <p>
-      <strong>Servicio de Oración:</strong> Miércoles 7:00 pm – 8:15 pm <br>
-      <strong>Servicio Dominical:</strong> Domingo 9:30 am – 11:00 am <br>
-      <strong>Servicio vía Zoom:</strong> Domingo 6:00 pm
-    </p>
-    <p>👉 Dale clic aquí para entrar al servicio en línea</p>
-    <a href="https://us02web.zoom.us/j/8121830152?pwd=OF1qNDVBY25iNUxGQXlLZ1pzTXpLQT09"
-       target="_blank"
-       style="display:inline-block; margin-top:15px; padding:12px 25px; background-color:#2D8CFF; color:white; text-decoration:none; border-radius:8px; font-weight:bold;">
-      Unirse al Servicio en Zoom
-    </a>
+    <h2>Servicios</h2>
+    <p>Domingo 11:00 AM – Culto de Adoración</p>
+    <p>Miércoles 7:00 PM – Estudio Bíblico y Oración</p>
+    <a href="https://us02web.zoom.us/j/8121830152?pwd=OF1qNDVBY25iNUxGQX1LzpTXpLTQ9" target="_blank">🔗 Conectarse al Zoom</a>
   </section>
 
-  <!-- Ubicación -->
-<section id="ubicacion" style="text-align:center; padding:40px;">
-  <h2>📍 Ubicación</h2>
-  <p>1273 Lamont Ave. NW, Grand Rapids, MI 49504</p>
-  <button onclick="abrirMapa()" 
-          style="padding:12px 25px; background:#007BFF; color:white; border:none; border-radius:5px; cursor:pointer; font-size:16px; display:inline-flex; align-items:center; gap:8px;">
-    <span>🗺️</span> Abrir en Mapas
-  </button>
-</section>
+  <!-- ===== Sección Ubicación ===== -->
+  <section id="ubicacion">
+    <h2>Ubicación</h2>
+    <p>1273 Lamont Ave. NW, Grand Rapids, MI 49504</p>
+    <a href="https://maps.app.goo.gl/zLU8EzS11N9S43GDA" target="_blank">📍 Ver en Google Maps</a>
+  </section>
 
-<script>
-function abrirMapa() {
-  var direccion = "1273+Lamont+Ave+NW,+Grand+Rapids,+MI+49504";
-  var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  
-  if (/iPhone|iPad|iPod/i.test(userAgent)) {
-    // Apple Maps
-    window.open("http://maps.apple.com/?q=" + direccion, "_blank");
-  } else {
-    // Google Maps
-    window.open("https://www.google.com/maps/search/?api=1&query=" + direccion, "_blank");
-  }
-}
-</script>
+  <!-- ===== Sección Peticiones ===== -->
+  <section id="peticiones">
+    <h2>Peticiones de Oración</h2>
+    <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzH-H5g7q588wsra4LotvddhYSRE6HxL19YW0X-4oivg9Qg/viewform" target="_blank">📝 Enviar Petición</a>
+  </section>
 
-  <!-- Contacto -->
+  <!-- ===== Sección Contacto ===== -->
   <section id="contacto">
     <h2>Contacto</h2>
-    <p>Puede contactarnos a través de nuestras redes sociales o visitarnos en persona.</p>
+    <p>✉️ Email: ibb.grmi@gmail.com</p>
   </section>
+
+  <!-- ===== Footer ===== -->
+  <footer>
+    <p>Síguenos en redes sociales:</p>
+    <a href="https://youtube.com/@iglesiabautistabiblicagran187" target="_blank">YouTube</a> |
+    <a href="https://m.facebook.com/profile.php?id=100064413082714" target="_blank">Facebook</a>
+  </footer>
+
+  <!-- Script para el menú en móviles -->
+  <script>
+    const toggle = document.querySelector(".menu-toggle");
+    const nav = document.querySelector("nav");
+    toggle.addEventListener("click", () => {
+      nav.classList.toggle("active");
+    });
+  </script>
 
 </body>
 </html>
