@@ -12,7 +12,18 @@
       background: url("IMG_1846.jpeg") no-repeat center center fixed;
       background-size: cover;
     }
+/* Tamaño del logo */
+nav img.logo {
+  height: 120px; /* tamaño grande en pantallas normales */
+  width: auto;
+  margin-right: 20px;
+}
 
+@media (max-width: 768px) {
+  nav img.logo {
+    height: 80px; /* tamaño reducido en celulares */
+  }
+}
     /* Scroll suave */
     html {
       scroll-behavior: smooth;
