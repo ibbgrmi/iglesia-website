@@ -14,9 +14,15 @@
     }
 /* Tamaño del logo */
 nav img.logo {
-  height: 120px; /* tamaño grande en pantallas normales */
+  height: 120px;   /* tamaño grande en pantallas normales */
   width: auto;
   margin-right: 20px;
+}
+
+@media (max-width: 768px) {
+  nav img.logo {
+    height: 80px;   /* tamaño reducido en celulares */
+  }
 }
 
 @media (max-width: 768px) {
