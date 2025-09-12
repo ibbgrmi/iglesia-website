@@ -24,75 +24,71 @@ background-size: cover;
       scroll-behavior: smooth;
     }
 
-   <!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Iglesia Bautista Bíblica</title>
-  <style>
-    /* ===== Menú Superior Moderno con Logo y Liquid Glass ===== */
-    nav {
-      display: flex;
-      justify-content: space-between; /* Logo a la izquierda, links a la derecha */
-      align-items: center;
-      background-color: rgba(0, 0, 0, 0.6); /* negro translúcido */
-      padding: 10px 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
-      backdrop-filter: blur(10px); /* efecto vidrio líquido */
-      border-radius: 0 0 12px 12px;
-    }
+   /* ===== Menú Superior Moderno con Logo + Liquid Glass + Responsive ===== */
+nav {
+  display: flex;
+  justify-content: space-between; /* Logo a la izquierda, links a la derecha */
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.6); /* negro translúcido */
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px); /* efecto vidrio líquido */
+  border-radius: 0 0 12px 12px; /* esquinas redondeadas abajo */
+}
 
-    /* Logo */
-    nav img.logo {
-      height: 55px;
-      width: auto;
-    }
+/* Logo nuevo */
+nav img.logo {
+  height: 80px;   /* tamaño más grande */
+  width: auto;
+  margin-right: 20px;
+}
 
-    /* Enlaces */
-    .nav-links {
-      display: flex;
-      gap: 15px;
-    }
+/* Links estilo cards */
+nav a {
+  display: inline-block;
+  color: #fff;
+  margin: 0 12px;
+  padding: 10px 18px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px; /* bordes redondeados */
+  background: rgba(70, 130, 180, 0.6); /* azul acero translúcido */
+  transition: all 0.3s ease;
+}
 
-    .nav-links a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 10px 18px;
-      border-radius: 25px;
-      background: rgba(70, 130, 180, 0.6); /* azul acero translúcido */
-      transition: all 0.3s ease;
-    }
+nav a:hover {
+  background: rgba(70, 130, 180, 1); /* azul fuerte */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  transform: translateY(-3px);
+}
 
-    .nav-links a:hover {
-      background: rgba(70, 130, 180, 1); /* azul fuerte */
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
-      transform: translateY(-3px);
-    }
+/* Responsive: menú en móviles */
+@media (max-width: 768px) {
+  nav {
+    flex-wrap: wrap;
+  }
 
-    /* Botón menú hamburguesa */
-    .menu-toggle {
-      display: none;
-      font-size: 28px;
-      cursor: pointer;
-      color: #fff;
-    }
+  .menu-toggle {
+    display: block;
+    cursor: pointer;
+    color: #fff;
+    font-size: 28px;
+  }
 
-    /* ===== Responsive ===== */
-    @media (max-width: 768px) {
-      .nav-links {
-        display: none;
-        flex-direction: column;
-        background: rgba(0, 0, 0, 0.8);
-        position: absolute;
-        top: 70px;
-        right: 10px;
-        padding: 15px;
-        border-radius: 10px;
-      }
+  nav a {
+    display: none;
+    width: 100%;
+    text-align: center;
+    margin: 8px 0;
+  }
+
+  nav.active a {
+    display: block;
+  }
+}
 
       .nav-links.active {
         display: flex;
