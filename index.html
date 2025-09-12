@@ -66,26 +66,33 @@ nav img.logo {
     }
 
     /* Responsive: menú en móviles */
-    @media (max-width: 600px) {
-      nav {
+@media (max-width: 768px) {
+    nav {
         flex-wrap: wrap;
-      }
-      .menu-toggle {
+    }
+    .menu-toggle {
         display: block;
         cursor: pointer;
         color: #fff;
         font-size: 28px;
-      }
-      nav a {
+    }
+    nav a {
         display: none;
         width: 100%;
         text-align: center;
         margin: 8px 0;
-      }
-      nav.active a {
-        display: block;
-      }
     }
+    nav.active a {
+        display: block;
+    }
+}
+
+/* En pantallas grandes, ocultar el ícono hamburguesa */
+@media (min-width: 769px) {
+    .menu-toggle {
+        display: none;
+    }
+}
 
     /* ===== Secciones tipo tarjetas ===== */
     section {
