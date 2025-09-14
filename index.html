@@ -157,7 +157,70 @@ nav img.logo {
     <a href="#ubicacion">Ubicación</a>
     <a href="#contacto">Contacto</a>
   </nav>
+<!-- Contador regresivo al servicio -->
+<section id="countdown-section" style="text-align:center; padding:20px; background:#f4f4f4;">
+    <h2>⏰ Falta para el próximo servicio:</h2>
+    <div id="countdown" style="font-size:24px; font-weight:bold; color:#333;"></div>
+    <p>
+        🔴 Conéctate en vivo: 
+        <a href="https://youtube.com/@iglesiabautistabiblicagran187?si=XKf1CkMcNSlrF_jN" target="_blank">YouTube</a> | 
+        <a href="https://www.facebook.com/profile.php?id=100064413082714" target="_blank">Facebook</a>
+    </p>
+</section>
 
+<script>
+function updateCountdown() {
+    const now = new Date();
+    const day = now.getDay(); // 0 = domingo
+    const serviceHour = 10; // 10 AM
+    const serviceMinute = 0;
+
+    let serviceTime = new Date();
+    serviceTime.setHours(serviceHour, serviceMinute, 0, 0);
+
+    // Si no es domingo o ya pasó la hora, calcular próximo domingo
+    if (day !== 0 || now > serviceTime) {
+        serviceTime.setDate(serviceTime.getDate() + ((7 - day) % 7));
+    }
+
+    const diff = serviceTime - now;
+    if (diff <= 0) {
+        document.getElementById("countdown").innerHTML = "¡El servicio está en vivo!";
+        return;
+    }
+
+    const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+    document.getElementById("countdown").innerHTML =
+        hours + "h " + minutes + "m " + seconds + "s";
+}
+
+// Mostrar solo 24 horas antes del servicio
+function checkVisibility() {
+    const now = new Date();
+    const day = now.getDay();
+    let serviceTime = new Date();
+    serviceTime.setHours(10, 0, 0, 0); // 10 AM
+
+    if (day !== 0) {
+        document.getElementById("countdown-section").style.display = "none";
+        return;
+    }
+
+    const diff = serviceTime - now;
+    if (diff > 0 && diff <= 24 * 60 * 60 * 1000) {
+        document.getElementById("countdown-section").style.display = "block";
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+    } else {
+        document.getElementById("countdown-section").style.display = "none";
+    }
+}
+
+checkVisibility();
+</script>
   <!-- ===== Sección Inicio ===== -->
   <section id="inicio">
     <h2>Bienvenidos a la Iglesia Bautista Bíblica</h2>
