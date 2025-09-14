@@ -244,20 +244,76 @@ nav img.logo {
 
   <!-- ===== Footer ===== -->
   <footer>
-    <p>Síguenos en redes sociales:</p>
-    <a href="https://youtube.com/@iglesiabautistabiblicagran187" target="_blank">YouTube</a> |
-    <a href="https://m.facebook.com/profile.php?id=100064413082714" target="_blank">Facebook</a>
-     | <a href="https://chat.whatsapp.com/DJL5Yx1rJEiJ3fZFclha3h" target="_blank">WhatsApp</a>
-  </footer>
+    <footer>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/tu_pagina" target="_blank" aria-label="Facebook" class="facebook">
+      <i class="fab fa-facebook"></i>
+    </a>
+    <a href="https://www.youtube.com/tu_canal" target="_blank" aria-label="YouTube" class="youtube">
+      <i class="fab fa-youtube"></i>
+    </a>
+    <a href="https://chat.whatsapp.com/DJL5Yx1rJEiJ3fZFclha3h" target="_blank" aria-label="WhatsApp" class="whatsapp">
+      <i class="fab fa-whatsapp"></i>
+    </a>
+  </div>
+  <p>&copy; 2025 Iglesia Bautista Bíblica - Todos los derechos reservados</p>
+</footer>
 
-  <!-- Script para el menú en móviles -->
-  <script>
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("nav");
-    toggle.addEventListener("click", () => {
-      nav.classList.toggle("active");
-    });
-  </script>
+<!-- FontAwesome -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 
-</body>
-</html>
+<style>
+  footer {
+    text-align: center;
+    padding: 20px;
+    background: rgba(0,0,0,0.7);
+    color: white;
+  }
+
+  .social-icons {
+    margin-bottom: 15px;
+  }
+
+  .social-icons a {
+    margin: 0 12px;
+    font-size: 2rem;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    animation: bounceIn 1s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  /* Animación al cargar */
+  @keyframes bounceIn {
+    0% { transform: scale(0.3); opacity: 0; }
+    50% { transform: scale(1.2); opacity: 1; }
+    70% { transform: scale(0.9); }
+    100% { transform: scale(1); }
+  }
+
+  /* Hover */
+  .social-icons a:hover {
+    transform: scale(1.2);
+    box-shadow: 0 0 20px rgba(255,255,255,0.6);
+  }
+
+  /* Colores oficiales */
+  .facebook { color: #1877f2; }
+  .youtube { color: #ff0000; }
+  .whatsapp { color: #25d366; }
+
+  /* Móvil */
+  @media (max-width: 768px) {
+    .social-icons a {
+      font-size: 2.5rem;
+      width: 65px;
+      height: 65px;
+      margin: 0 18px;
+    }
+  }
+</style>
