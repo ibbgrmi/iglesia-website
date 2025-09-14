@@ -352,12 +352,88 @@ checkZoomReminder();
 </script>
 
   <!-- ===== Sección Peticiones ===== -->
-<section id="peticiones">
-  <h2>Peticiones de Oración</h2>
-  <a href="https://docs.google.com/forms/d/e/1FAIpQLSdzH-H5g7q588wsra4Lotvd0hYSRE6HxLl9YWOx-4OivgQgQg/viewform?usp=dialog" 
-     target="_blank" class="btn">📝 Enviar Petición</a>
+<section id="peticiones" style="background: rgba(70, 130, 180, 0.85); padding: 20px; border-radius: 12px; margin: 20px 0;">
+  <h2 style="color: #fff; text-align: center;">Peticiones de Oración</h2>
+  <form id="form-peticion" class="form-peticion">
+
+    <label for="nombre">Nombre:</label>
+    <input type="text" id="nombre" name="nombre" required>
+
+    <label for="peticion">Petición:</label>
+    <textarea id="peticion" name="peticion" rows="4" required></textarea>
+
+    <label for="correo">Correo (opcional):</label>
+    <input type="email" id="correo" name="correo">
+
+    <label for="telefono">Teléfono (opcional):</label>
+    <input type="tel" id="telefono" name="telefono">
+
+    <button type="submit">✉️ Enviar Petición</button>
+  </form>
+
+  <!-- Mensaje oculto de confirmación -->
+  <p id="mensaje-exito" style="display:none; color: #fff; background: #28a745; padding: 10px; margin-top: 15px; border-radius: 6px; text-align:center;">
+    ✅ Tu petición fue enviada correctamente.
+  </p>
 </section>
-</section>
+
+<style>
+  /* Estilos generales */
+  .form-peticion {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    max-width: 500px;
+    margin: auto;
+  }
+
+  .form-peticion label {
+    color: #fff;
+    font-weight: bold;
+  }
+
+  .form-peticion input,
+  .form-peticion textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+
+  .form-peticion button {
+    background-color: #004080;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  /* Hover solo para PC */
+  @media (hover: hover) {
+    .form-peticion button:hover {
+      background-color: #0066cc;
+    }
+  }
+</style>
+
+<script>
+  document.getElementById("form-peticion").addEventListener("submit", function(event){
+    event.preventDefault(); // evita el refresh
+
+    const mensaje = document.getElementById("mensaje-exito");
+    mensaje.style.display = "block"; // muestra el aviso
+    this.reset(); // limpia el formulario
+
+    // Ocultar el aviso después de 5 segundos
+    setTimeout(() => {
+      mensaje.style.display = "none";
+    }, 5000);
+  });
+</script>
 
 <!-- ===== Sección Consejería Pastoral ===== -->
 <section id="consejeria">
