@@ -352,21 +352,17 @@ checkZoomReminder();
 </script>
 
   <!-- ===== Sección Peticiones ===== -->
-<section id="peticiones" style="text-align:center; margin: 40px 0;">
-  <h2 style="color: #fff;">Peticiones de Oración</h2>
-  <button onclick="abrirModal()" 
-          style="background:#004080; color:#fff; padding:12px 20px; border:none; border-radius:8px; cursor:pointer; font-size:16px;">
-    ✉️ Enviar Petición
-  </button>
+<section id="peticiones">
+  <h2>Peticiones de Oración</h2>
+  <button onclick="abrirModal()">✉️ Enviar Petición</button>
 </section>
 
-<!-- Modal oculto -->
+<!-- Modal (ventana emergente) -->
 <div id="modalPeticiones" class="modal">
   <div class="modal-content">
     <span class="cerrar" onclick="cerrarModal()">&times;</span>
     <h2>Peticiones de Oración</h2>
     <form id="form-peticion" action="https://formspree.io/f/mqadoabv" method="POST" class="form-peticion">
-
       <label for="nombre">Nombre:</label>
       <input type="text" id="nombre" name="nombre" required>
 
@@ -390,102 +386,130 @@ checkZoomReminder();
 </div>
 
 <style>
-/* Modal */
-.modal {
-  display: none; 
-  position: fixed; 
-  z-index: 1000; 
-  left: 0; top: 0;
-  width: 100%; height: 100%; 
-  background: rgba(0,0,0,0.6); 
-  justify-content: center; 
-  align-items: center;
-}
-.modal-content {
-  background: rgba(70, 130, 180, 0.95);
-  padding: 20px;
-  border-radius: 12px;
-  max-width: 500px;
-  width: 90%;
-  color: #fff;
-  text-align: left;
-  position: relative;
-}
-.cerrar {
-  position: absolute;
-  top: 10px; right: 15px;
-  font-size: 22px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-/* Formulario */
-.form-peticion {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-}
-.form-peticion input, .form-peticion textarea {
-  padding: 10px;
-  border-radius: 6px;
-  border: none;
-  width: 100%;
-  box-sizing: border-box;
-}
-.form-peticion button {
-  background-color: #004080;
-  color: #fff;
-  padding: 12px;
-  border: none;
-  border-radius: 6px;
-  font-size: 16px;
-  cursor: pointer;
-  transition: background 0.3s;
-}
-@media (hover:hover) {
-  .form-peticion button:hover {
-    background-color: #0066cc;
+  /* Bloque principal */
+  #peticiones {
+    max-width: 800px;
+    width: 90%;
+    margin: 40px auto;
+    background: rgba(70,130,180,0.85);
+    padding: 20px;
+    border-radius: 12px;
+    text-align: center;
+    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
   }
-}
-</style>
-/* Ajuste del bloque de Peticiones */
-#peticiones {
-  max-width: 800px;    /* límite en pantallas grandes */
-  width: 90%;          /* en celulares/tablets ocupa casi todo */
-  margin: 40px auto;   /* centra horizontal y agrega espacio arriba/abajo */
-  border-radius: 12px;
-  padding: 20px;
-  background: rgba(70, 130, 180, 0.85);
-  text-align: center;
-  box-shadow: 0px 4px 12px rgba(0,0,0,0.2); /* sombra elegante */
-}
-<script>
-function abrirModal() {
-  document.getElementById("modalPeticiones").style.display = "flex";
-}
-function cerrarModal() {
-  document.getElementById("modalPeticiones").style.display = "none";
-}
 
-document.getElementById("form-peticion").addEventListener("submit", function(event){
-  event.preventDefault();
+  #peticiones h2 {
+    color: #fff;
+    margin-bottom: 15px;
+  }
 
-  // Enviar datos a Formspree
-  fetch(this.action, {
-    method: this.method,
-    body: new FormData(this),
-    headers: { 'Accept': 'application/json' }
-  }).then(response => {
-    if (response.ok) {
-      document.getElementById("mensaje-exito").style.display = "block";
-      this.reset();
-      setTimeout(() => {
-        document.getElementById("mensaje-exito").style.display = "none";
-        cerrarModal();
-      }, 5000);
+  #peticiones button {
+    background-color: #004080;
+    color: #fff;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background 0.3s;
+  }
+
+  @media (hover: hover) {
+    #peticiones button:hover {
+      background-color: #0066cc;
     }
+  }
+
+  /* Modal */
+  .modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.6);
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal-content {
+    background: rgba(70,130,180,0.95);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    color: #fff;
+    position: relative;
+  }
+
+  .cerrar {
+    position: absolute;
+    top: 10px; right: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    cursor: pointer;
+  }
+
+  .form-peticion {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 15px;
+  }
+
+  .form-peticion input, .form-peticion textarea {
+    padding: 10px;
+    border-radius: 6px;
+    border: none;
+    width: 100%;
+  }
+
+  .form-peticion button {
+    background-color: #004080;
+    color: #fff;
+    padding: 12px;
+    border: none;
+    border-radius: 6px;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
+  @media (hover: hover) {
+    .form-peticion button:hover {
+      background-color: #0066cc;
+    }
+  }
+</style>
+
+<script>
+  function abrirModal() {
+    document.getElementById("modalPeticiones").style.display = "flex";
+  }
+
+  function cerrarModal() {
+    document.getElementById("modalPeticiones").style.display = "none";
+  }
+
+  document.getElementById("form-peticion").addEventListener("submit", function(event){
+    event.preventDefault();
+
+    fetch(this.action, {
+      method: this.method,
+      body: new FormData(this),
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if(response.ok) {
+        document.getElementById("mensaje-exito").style.display = "block";
+        this.reset();
+        setTimeout(() => {
+          document.getElementById("mensaje-exito").style.display = "none";
+          cerrarModal();
+        }, 5000);
+      }
+    }).catch(error => {
+      alert("Hubo un error al enviar la petición. Intenta de nuevo.");
+    });
   });
-});
 </script>
 
 <!-- ===== Sección Consejería Pastoral ===== -->
