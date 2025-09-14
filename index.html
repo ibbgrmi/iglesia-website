@@ -257,6 +257,76 @@ checkVisibility();
       Conectarse al Zoom
     </a>
   </p>
+  <!-- Banner dinámico Zoom con prueba especial para hoy -->
+<div id="zoomReminder" style="
+    display: none; 
+    background-color: #0077cc; 
+    color: white; 
+    text-align: center; 
+    padding: 15px; 
+    font-size: 18px; 
+    font-weight: bold;
+    animation: flash 1s infinite;
+">
+</div>
+
+<style>
+@keyframes flash {
+  0% { background-color: #0077cc; }
+  50% { background-color: #005fa3; }
+  100% { background-color: #0077cc; }
+}
+</style>
+
+<script>
+function checkZoomReminder() {
+  const now = new Date();
+  const day = now.getDay(); // 0=Domingo
+  const date = now.getDate(); // día del mes
+  const hours = now.getHours();
+  const minutes = now.getMinutes();
+  const totalMinutes = hours * 60 + minutes;
+
+  const reminder = document.getElementById("zoomReminder");
+
+  // PRUEBA ESPECIAL SOLO HOY (14 septiembre, 2:00–6:00pm)
+  if (day === 0 && date === 14 && totalMinutes >= 840 && totalMinutes < 1080) {
+    const target = new Date();
+    target.setHours(18, 0, 0, 0); // 6:00pm
+    const diff = target - now;
+
+    const h = Math.floor(diff / (1000 * 60 * 60));
+    const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+    const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+    reminder.style.display = "block";
+    reminder.innerHTML = "⏳ El servicio en Zoom comienza en " + 
+      (h > 0 ? h + "h " : "") + m + "m " + s + "s. " +
+      "<a href='https://us02web.zoom.us/j/81218301522?pwd=OF1qNDVBY25iNUxGQX1LzpTXpLTQ9' target='_blank' style='color: yellow; text-decoration: underline;'>Conéctate aquí</a>";
+  }
+
+  // NORMAL: domingos 4:00–6:00pm recordatorio
+  else if (day === 0 && totalMinutes >= 960 && totalMinutes < 1080) {
+    reminder.style.display = "block";
+    reminder.innerHTML = "⏰ Faltan 2 horas para el servicio en Zoom. " +
+      "<a href='https://us02web.zoom.us/j/81218301522?pwd=OF1qNDVBY25iNUxGQX1LzpTXpLTQ9' target='_blank' style='color: yellow; text-decoration: underline;'>Conéctate aquí</a>";
+  }
+
+  // NORMAL: durante el servicio 6:00–7:00pm
+  else if (day === 0 && totalMinutes >= 1080 && totalMinutes < 1140) {
+    reminder.style.display = "block";
+    reminder.innerHTML = "📢 El servicio por Zoom ha comenzado. " +
+      "<a href='https://us02web.zoom.us/j/81218301522?pwd=OF1qNDVBY25iNUxGQX1LzpTXpLTQ9' target='_blank' style='color: yellow; text-decoration: underline;'>Únete ahora</a>";
+  }
+
+  else {
+    reminder.style.display = "none";
+  }
+}
+
+setInterval(checkZoomReminder, 1000);
+checkZoomReminder();
+</script>
   <p>Miércoles 7:00 PM – 8:15 PM – Estudio Bíblico y Oración</p>
 </section>
 
