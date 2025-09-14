@@ -448,7 +448,17 @@ checkZoomReminder();
   }
 }
 </style>
-
+/* Ajuste del bloque de Peticiones */
+#peticiones {
+  max-width: 800px;    /* límite en pantallas grandes */
+  width: 90%;          /* en celulares/tablets ocupa casi todo */
+  margin: 40px auto;   /* centra horizontal y agrega espacio arriba/abajo */
+  border-radius: 12px;
+  padding: 20px;
+  background: rgba(70, 130, 180, 0.85);
+  text-align: center;
+  box-shadow: 0px 4px 12px rgba(0,0,0,0.2); /* sombra elegante */
+}
 <script>
 function abrirModal() {
   document.getElementById("modalPeticiones").style.display = "flex";
