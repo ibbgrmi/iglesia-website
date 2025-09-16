@@ -26,6 +26,24 @@
   <meta name="theme-color" content="#0077cc">
   <link rel="apple-touch-icon" href="/logo.png">
   <style>
+    /* Fondo animado tipo onda */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
+  animation: onda 10s infinite linear;
+  z-index: -1;
+}
+
+@keyframes onda {
+  0% { transform: scale(1) translate(0, 0); }
+  50% { transform: scale(1.1) translate(10px, 10px); }
+  100% { transform: scale(1) translate(0, 0); }
+}
     body {
       margin: 0;
       font-family: Arial, sans-serif;
