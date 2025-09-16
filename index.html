@@ -196,15 +196,16 @@ nav img.logo {
 </script>
 
 <style>
- nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-around; /* ✅ Espacio parejo en los lados */
-  background-color: rgba(0,0,0,0.6);
-  padding: 10px 20px;
-  border-radius: 10px;
-  gap: 15px;
-}
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgba(0,0,0,0.6);
+    padding: 10px 30px; /* 🔥 más espacio a los lados */
+    border-radius: 10px;
+    gap: 20px; /* 🔥 espacio entre botones */
+    flex-wrap: wrap; /* 🔥 permite que baje de línea si no cabe */
+  }
 </style>
      
 <!-- Contador regresivo al servicio -->
