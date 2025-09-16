@@ -181,7 +181,18 @@ nav img.logo {
   <a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a>
   <a href="calendario.html" target="_blank">Calendario</a>
 </nav>
-     
+    <script>
+  function accesoSteven() {
+    const claveUsuario = "usuario123"; // 🔑 Clave de usuario
+    let clave = prompt("Ingrese la clave para entrar a Preguntas y Respuestas:");
+
+    if (clave === claveUsuario) {
+      window.location.href = "steven.html"; // ✅ Redirige si la clave es correcta
+    } else {
+      alert("Clave incorrecta. Acceso denegado.");
+    }
+  }
+</script> 
      
 <!-- Contador regresivo al servicio -->
 <section id="countdown-section" style="text-align:center; padding:20px; background:#f4f4f4;">
