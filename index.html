@@ -200,42 +200,76 @@ section {
 </head>
 <body>
 
-<!-- ==== MENÚ PRINCIPAL ==== -->
-<nav>
-  <img src="logo.png" alt="Logo Iglesia" class="logo">
+/* ==== Estilo Menú Principal Horizontal ==== */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgba(0, 0, 0, 0.6); /* fondo semi-transparente */
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  backdrop-filter: blur(10px); /* efecto vidrio */
+}
 
-  <ul class="menu">
-    <li><a href="index.html">Inicio</a></li>
+nav .logo {
+  height: 50px; /* tamaño del logo */
+  margin-right: 30px;
+}
 
-    <li class="submenu-parent">
-      <a href="#">Quiénes Somos ▼</a>
-      <ul class="submenu">
-        <li><a href="proposito.html">Propósito</a></li>
-        <li><a href="mision.html">Misión</a></li>
-      </ul>
-    </li>
+nav ul.menu {
+  list-style: none; 
+  display: flex; 
+  margin: 0; 
+  padding: 0;
+}
 
-    <li class="submenu-parent">
-      <a href="#">Ministerio ▼</a>
-      <ul class="submenu">
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="ubicacion.html">Ubicación</a></li>
-        <li><a href="pastor.html">Consejería Pastoral</a></li>
-      </ul>
-    </li>
+nav ul.menu li {
+  position: relative;
+  margin-right: 20px;
+}
 
-    <li class="submenu-parent">
-      <a href="#">Recursos ▼</a>
-      <ul class="submenu">
-        <li><a href="preguntas.html">Preguntas y Respuestas</a></li>
-        <li><a href="calendario.html">Calendario</a></li>
-        <li><a href="sermones.html">Sermones</a></li>
-      </ul>
-    </li>
+nav ul.menu li a {
+  color: #fff;
+  text-decoration: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  transition: background 0.3s;
+}
 
-    <li><a href="contacto.html">Contacto</a></li>
-  </ul>
-</nav>
+nav ul.menu li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Submenús ocultos */
+nav ul.submenu {
+  list-style: none;
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: rgba(0, 0, 0, 0.8);
+  padding: 10px 0;
+  border-radius: 8px;
+  min-width: 180px;
+}
+
+nav ul.submenu li a {
+  display: block;
+  padding: 8px 12px;
+  color: #fff;
+  text-decoration: none;
+}
+
+nav ul.submenu li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* Mostrar submenú al pasar o hacer clic */
+nav ul.menu li:hover > ul.submenu {
+  display: block;
+}
      
 <!-- Contador regresivo al servicio -->
 <section id="countdown-section" style="text-align:center; padding:20px; background:#f4f4f4;">
