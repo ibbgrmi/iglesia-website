@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas y Respuestas - Dr. Steven Anderson</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      margin: 0;
+      padding: 0;
+    }
+    .contenedor {
+      max-width: 700px;
+      margin: 40px auto;
+      background: white;
+      padding: 25px;
+      border-radius: 12px;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+      text-align: center;
+    }
+    h2 {
+      color: #004080;
+    }
+    .botones a {
+      display: inline-block;
+      margin: 10px;
+      padding: 12px 20px;
+      border-radius: 6px;
+      text-decoration: none;
+      color: white;
+      font-weight: bold;
+    }
+    .botones a.blog { background: #28a745; }
+    .botones a.sitio { background: #004080; }
+    form {
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      margin-top: 20px;
+    }
+    input, textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+      width: 100%;
+    }
+    button {
+      background: #004080;
+      color: white;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+  <div class="contenedor">
+    <h2>Preguntas y Respuestas con el Dr. Steven Anderson</h2>
+    <p>Envía tu pregunta y accede a los recursos del Dr. Steven.</p>
+
+    <!-- Botones -->
+    <div class="botones">
+      <a href="https://www.bible.truthonly.com/es" target="_blank" class="sitio">🌐 Conoce más del Dr. Steven</a>
+      <a href="https://truthonlybible.com" target="_blank" class="blog">📖 Lee su Blog</a>
+    </div>
+
+    <!-- Formulario -->
+    <form action="https://formspree.io/f/xrbavjlb" method="POST">
+      <input type="text" name="nombre" placeholder="Tu nombre (opcional)">
+      <textarea name="pregunta" rows="4" placeholder="Escribe tu pregunta aquí..." required></textarea>
+      <button type="submit">✉️ Enviar Pregunta</button>
+    </form>
+  </div>
+</body>
+</html>
