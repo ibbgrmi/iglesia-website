@@ -283,14 +283,18 @@ nav ul.menu li a:hover {
 nav ul.submenu {
   display: none;
   position: absolute;
-  top: 100%;
+  top: 100%;  /* justo debajo del padre */
   left: 0;
-  background: rgba(0,0,0,0.8);
+  background: rgba(0,0,0,0.85);
   list-style: none;
   margin: 0;
-  padding: 10px 0;
-  border-radius: 8px;
+  padding: 5px 0;
+  border-radius: 6px;
   min-width: 180px;
+}
+
+nav ul.submenu li {
+  margin: 0;
 }
 
 nav ul.submenu li a {
@@ -309,6 +313,13 @@ document.querySelectorAll('.submenu-parent > a').forEach(item => {
   item.addEventListener('click', e => {
     e.preventDefault();
     let submenu = item.nextElementSibling;
+
+    // Cierra otros submenús antes de abrir el actual
+    document.querySelectorAll('.submenu').forEach(menu => {
+      if (menu !== submenu) menu.style.display = "none";
+    });
+
+    // Abre/cierra el actual
     submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
   });
 });
