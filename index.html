@@ -200,45 +200,40 @@ section {
 </head>
 <body>
 
- <!-- ===== Menú de Navegación ===== -->
+ <!-- ==== MENÚ PRINCIPAL ORGANIZADO ==== -->
 <nav>
-  <img src="logo.png" alt="Logo Iglesia" class="logo">
-  <div class="menu-toggle">☰</div>
-  <a href="#inicio">Inicio</a>
-  <a href="#proposito">Propósito</a>
-  <a href="#mision">Misión</a>
-  <a href="#servicios">Servicios</a>
-  <a href="#ubicacion">Ubicación</a>
-  <a href="#contacto">Contacto</a>
-  <a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a>
-  <a href="calendario.html" target="_blank">Calendario</a>
+  <ul class="menu">
+    <li><a href="index.html">Inicio</a></li>
+
+    <li>
+      <a href="#">Quiénes Somos ▾</a>
+      <ul class="submenu">
+        <li><a href="proposito.html">Propósito</a></li>
+        <li><a href="mision.html">Misión</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="#">Ministerio ▾</a>
+      <ul class="submenu">
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="ubicacion.html">Ubicación</a></li>
+        <li><a href="pastor.html">Consejería Pastoral</a></li>
+      </ul>
+    </li>
+
+    <li>
+      <a href="#">Recursos ▾</a>
+      <ul class="submenu">
+        <li><a href="preguntas.html">Preguntas y Respuestas</a></li>
+        <li><a href="calendario.html">Calendario</a></li>
+        <li><a href="sermones.html">Sermones</a></li>
+      </ul>
+    </li>
+
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
 </nav>
-
-<script>
-  function accesoSteven() {
-    const claveUsuario = "Usuario123"; // 🔑 Clave de usuario
-    let clave = prompt("Ingrese la clave para entrar a Preguntas y Respuestas:");
-
-    if (clave === claveUsuario) {
-      window.location.href = "steven.html"; // ✅ Redirige si la clave es correcta
-    } else {
-      alert("Clave incorrecta. Acceso denegado.");
-    }
-  }
-</script>
-
-<style>
-  nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    background-color: rgba(0,0,0,0.6);
-    padding: 10px 30px; /* 🔥 más espacio a los lados */
-    border-radius: 10px;
-    gap: 20px; /* 🔥 espacio entre botones */
-    flex-wrap: wrap; /* 🔥 permite que baje de línea si no cabe */
-  }
-</style>
      
 <!-- Contador regresivo al servicio -->
 <section id="countdown-section" style="text-align:center; padding:20px; background:#f4f4f4;">
