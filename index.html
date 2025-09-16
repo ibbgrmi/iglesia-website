@@ -116,16 +116,26 @@ nav img.logo {
 }
 
     /* ===== Secciones tipo tarjetas ===== */
-    section {
-      background: rgba(70, 130, 180, 0.85); /* Azul acero semitransparente */
-      padding: 40px;
-      margin: 40px auto;
-      max-width: 900px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-      color: white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
+section {
+  background: rgba(70, 130, 180, 0.85); /* Azul acero semitransparente */
+  padding: 40px;
+  margin: 40px auto;
+  max-width: 900px;
+  border-radius: 15px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+  color: white;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* 🔹 Ajuste especial para pantallas pequeñas (iPhone y móviles) */
+@media (max-width: 768px) {
+  section {
+    margin: 20px 10px;   /* Más compacto en móvil */
+    padding: 20px;       /* Reduce el padding */
+    max-width: 100%;     /* Ocupa todo el ancho disponible */
+    border-radius: 10px; /* Bordes más suaves */
+  }
+}
 
     section:hover {
       transform: translateY(-8px);
