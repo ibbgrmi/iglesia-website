@@ -26,6 +26,14 @@
   <meta name="theme-color" content="#0077cc">
   <link rel="apple-touch-icon" href="/logo.png">
   <style>
+    body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  color: #000;
+  background: url("IMG_1846.jpeg") no-repeat center center fixed;
+  background-size: contain;   /* 🔹 Que se vea completo */
+  background-color: #000;     /* 🔹 Si sobran franjas, rellena en negro */
+}
     /* Fondo animado tipo onda */
 body::before {
   content: "";
@@ -44,13 +52,7 @@ body::before {
   50% { transform: scale(1.1) translate(10px, 10px); }
   100% { transform: scale(1) translate(0, 0); }
 }
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      color: #000;
-      background: url("IMG_1846.jpeg") no-repeat center center fixed;
-      background-size: cover;
-    }
+    
 /* Tamaño del logo */
 nav img.logo {
   height: 230px;   /* extra grande en pantallas normales */
