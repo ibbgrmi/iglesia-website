@@ -1,85 +1,24 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Preguntas y Respuestas</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      text-align: center;
-      background-color: #f9f9f9;
-      padding: 40px;
-    }
+<section id="steven">
+  <h2>Preguntas y Respuestas</h2>
+  <h3>Con el Dr. Steven D. Anderson</h3>
+  <p><em>Ph.D. en Estudios Bíblicos, Seminario Teológico de Dallas</em></p>
 
-    h2 {
-      color: #0077cc;
-      font-size: 32px;
-    }
+  <p>
+    Este es un tiempo durante la Escuela Dominical para responder preguntas acerca de la Biblia.
+  </p>
 
-    h3 {
-      margin-top: 10px;
-      font-size: 20px;
-      color: #444;
-    }
+  <!-- Formulario directo con POST -->
+  <form action="https://formspree.io/f/xrbavjlb" method="POST">
+    <label for="pregunta">Escribe tu pregunta:</label><br><br>
+    <textarea name="pregunta" id="pregunta" rows="5" style="width:100%;border-radius:8px;padding:10px;" required></textarea><br><br>
+    <button type="submit" style="background:#0077cc;color:white;padding:10px 20px;border:none;border-radius:5px;cursor:pointer;">
+      Enviar Pregunta
+    </button>
+  </form>
 
-    p {
-      font-size: 18px;
-      margin: 15px auto;
-      max-width: 700px;
-      line-height: 1.6;
-    }
-
-    .btn {
-      display: inline-block;
-      padding: 12px 25px;
-      margin-top: 20px;
-      background-color: #0077cc;
-      color: white;
-      font-weight: bold;
-      text-decoration: none;
-      border-radius: 8px;
-      transition: background-color 0.3s ease;
-    }
-
-    .btn:hover {
-      background-color: #005fa3;
-    }
-
-    .links {
-      margin-top: 25px;
-      font-size: 16px;
-    }
-
-    .links a {
-      margin: 0 10px;
-      color: #0077cc;
-      text-decoration: none;
-      font-weight: bold;
-    }
-
-    .links a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <section id="steven">
-    <h2>Preguntas y Respuestas</h2>
-    <h3>Con el Dr. Steven D. Anderson</h3>
-    <p><em>Ph.D. en Estudios Bíblicos, Seminario Teológico de Dallas</em></p>
-
-    <p>
-      Este es un tiempo durante la Escuela Dominical para responder preguntas acerca de la Biblia.
-    </p>
-
-    <a href="https://formspree.io/f/xrbavjlb" target="_blank" class="btn">Escribe tu Pregunta</a>
-
-    <div class="links">
-      También puedes conocer más del ministerio del Dr. Steven Anderson: <br>
-      <a href="https://www.bible.truthonly.com/es" target="_blank">Sitio oficial</a> |
-      <a href="https://truthonlybible.com" target="_blank">Blog</a>
-    </div>
-  </section>
-</body>
-</html>
+  <p style="margin-top:20px;">
+    También puedes conocer más del ministerio del Dr. Steven Anderson en su página oficial:  
+    <a href="https://www.bible.truthonly.com/es" target="_blank">Sitio oficial</a> |  
+    <a href="https://truthonlybible.com" target="_blank">Blog</a>
+  </p>
+</section>
