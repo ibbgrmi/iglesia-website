@@ -3,39 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Propósito - Iglesia Bautista Bíblica</title>
+  <link rel="stylesheet" href="styles.css"> <!-- si tienes un CSS externo -->
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      min-height: 100vh; /* altura completa */
       background: url("fondo.jpg") no-repeat center center fixed;
-      background-size: cover;
+      background-size: cover; /* cubre toda la pantalla */
+      display: flex;
+      justify-content: center;
+      align-items: center;
     }
-
-    .container {
-      background: rgba(0, 51, 102, 0.9); /* Azul con opacidad */
+    .contenido {
+      background: rgba(0, 51, 102, 0.9); /* azul con transparencia */
       border-radius: 12px;
-      padding: 30px;
+      padding: 40px;
       max-width: 900px;
-      margin: 60px auto;
       color: #fff;
       text-align: center;
     }
-
     h1 {
       margin-bottom: 20px;
     }
-
     p {
       line-height: 1.6;
+      margin-bottom: 15px;
     }
-
     strong {
-      color: #ffd700; /* resalta versículos en dorado */
+      color: #FFD700; /* resalta citas en dorado */
     }
   </style>
 </head>
 <body>
-  <div class="container">
+  <div class="contenido">
     <h1>Propósito</h1>
     <p>
       La Iglesia Bautista Bíblica existe para glorificar a Dios por medio de la
@@ -45,14 +47,15 @@
     <p>
       <strong>Mateo 22:37-40</strong> — Jesús le dijo: Amarás al Señor tu Dios con todo tu corazón,
       y con toda tu alma, y con toda tu mente. Este es el primero y grande mandamiento.
-      Y el segundo es semejante: Amarás a tu prójimo como a ti mismo. De estos dos mandamientos
-      depende toda la ley y los profetas.
+      Y el segundo es semejante: Amarás a tu prójimo como a ti mismo. De estos dos
+      mandamientos depende toda la ley y los profetas.
     </p>
     <p>
-      <strong>Mateo 28:18-20</strong> — Y Jesús se acercó y les habló diciendo: Toda potestad me es dada en
-      el cielo y en la tierra. Por tanto, id, y haced discípulos a todas las naciones, bautizándolos
-      en el nombre del Padre, y del Hijo, y del Espíritu Santo; enseñándoles que guarden todas las
-      cosas que os he mandado; y he aquí yo estoy con vosotros todos los días, hasta el fin del mundo. Amén.
+      <strong>Mateo 28:18-20</strong> — Y Jesús se acercó y les habló diciendo: Toda potestad me es dada
+      en el cielo y en la tierra. Por tanto, id, y haced discípulos a todas las naciones,
+      bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo; enseñándoles
+      que guarden todas las cosas que os he mandado; y he aquí yo estoy con vosotros todos
+      los días, hasta el fin del mundo. Amén.
     </p>
   </div>
 </body>
