@@ -3,36 +3,41 @@
 <head>
   <meta charset="UTF-8">
   <title>Propósito - Iglesia Bautista Bíblica</title>
-  <link rel="stylesheet" href="styles.css"> <!-- si tienes un CSS externo -->
   <style>
+    /* Fondo en toda la pantalla */
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
-      min-height: 100vh; /* altura completa */
+      font-family: Arial, sans-serif;
       background: url("fondo.jpg") no-repeat center center fixed;
-      background-size: cover; /* cubre toda la pantalla */
+      background-size: cover;
+      min-height: 100vh; /* asegura ocupar toda la ventana */
       display: flex;
       justify-content: center;
       align-items: center;
     }
+
+    /* Caja azul con el contenido */
     .contenido {
-      background: rgba(0, 51, 102, 0.9); /* azul con transparencia */
+      background: rgba(0, 51, 102, 0.9); /* azul oscuro con transparencia */
       border-radius: 12px;
-      padding: 40px;
-      max-width: 900px;
+      padding: 30px;
+      max-width: 800px;
       color: #fff;
       text-align: center;
     }
-    h1 {
-      margin-bottom: 20px;
+
+    .contenido h1 {
+      margin-top: 0;
+      font-size: 2em;
     }
-    p {
+
+    .contenido p {
+      font-size: 1.1em;
       line-height: 1.6;
-      margin-bottom: 15px;
     }
-    strong {
-      color: #FFD700; /* resalta citas en dorado */
+
+    .contenido strong {
+      color: #ffcc00; /* resalta las citas bíblicas en amarillo */
     }
   </style>
 </head>
@@ -44,19 +49,8 @@
       implementación del Gran Mandamiento y la Gran Comisión de nuestro Señor
       y Salvador Jesucristo.
     </p>
-    <p>
-      <strong>Mateo 22:37-40</strong> — Jesús le dijo: Amarás al Señor tu Dios con todo tu corazón,
-      y con toda tu alma, y con toda tu mente. Este es el primero y grande mandamiento.
-      Y el segundo es semejante: Amarás a tu prójimo como a ti mismo. De estos dos
-      mandamientos depende toda la ley y los profetas.
-    </p>
-    <p>
-      <strong>Mateo 28:18-20</strong> — Y Jesús se acercó y les habló diciendo: Toda potestad me es dada
-      en el cielo y en la tierra. Por tanto, id, y haced discípulos a todas las naciones,
-      bautizándolos en el nombre del Padre, y del Hijo, y del Espíritu Santo; enseñándoles
-      que guarden todas las cosas que os he mandado; y he aquí yo estoy con vosotros todos
-      los días, hasta el fin del mundo. Amén.
-    </p>
+    <p><strong>Mateo 22:37-40</strong> — Jesús le dijo: Amarás al Señor tu Dios con todo tu corazón, con toda tu alma, y con toda tu mente...</p>
+    <p><strong>Mateo 28:18-20</strong> — Id, y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, del Hijo y del Espíritu Santo...</p>
   </div>
 </body>
 </html>
