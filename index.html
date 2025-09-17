@@ -200,20 +200,21 @@ section {
 </head>
 <body>
 
-<!-- ==== MENÚ PRINCIPAL ==== -->
+<!-- ===== Menú Principal ===== -->
 <nav>
-  <img src="logo.png" alt="Logo Iglesia" class="logo">
+  <!-- Botón hamburguesa (solo en celular) -->
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-  <ul class="menu">
-    <li><a href="index.html">Inicio</a></li>
-
-    <li class="submenu-parent">
-      <a href="#">Quiénes Somos ▾</a>
-      <ul class="submenu">
-        <li><a href="proposito.html">Propósito</a></li>
-        <li><a href="mision.html">Misión</a></li>
-      </ul>
-    </li>
+  <!-- Menú principal -->
+  <ul class="menu" id="mainMenu">
+    <li><a href="index.html#inicio">Inicio</a></li>
+    <li><a href="index.html#quienes">Quiénes Somos</a></li>
+    <li><a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a></li>
+    <li><a href="calendario.html">Calendario</a></li>
+    <li><a href="sermones.html">Sermones</a></li>
+    <li><a href="#contacto">Contacto</a></li>
+  </ul>
+</nav>
 
     <li class="submenu-parent">
       <a href="#">Ministerio ▾</a>
