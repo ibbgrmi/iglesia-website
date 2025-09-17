@@ -259,8 +259,6 @@ function toggleMenu() {
 
 <style>
 /* ===== Menú Principal Horizontal ===== */
-<style>
-/* ===== Menú Principal Horizontal ===== */
 nav {
   display: flex;
   align-items: center;
@@ -285,21 +283,46 @@ nav ul.menu {
 }
 
 nav ul.menu li {
+  margin: 0 15px;
   position: relative;
-  margin-right: 25px;
 }
 
 nav ul.menu li a {
-  color: #fff;
+  color: white;
   text-decoration: none;
-  padding: 8px 15px;
-  border-radius: 8px;
-  transition: background 0.3s;
+  font-weight: bold;
 }
 
-nav ul.menu li a:hover {
-  background: rgba(255, 255, 255, 0.2);
+.submenu-parent:hover .submenu {
+  display: block;
 }
+
+.submenu {
+  display: none;
+  position: absolute;
+  background: rgba(0,0,0,0.8);
+  padding: 10px;
+  border-radius: 5px;
+}
+
+.submenu li {
+  margin: 5px 0;
+}
+
+/* ===== Ajuste responsive para iPhone ===== */
+@media (max-width: 768px) {
+  nav ul.menu {
+    flex-direction: column;
+    width: 100%;
+  }
+  nav ul.menu li {
+    margin: 10px 0;
+  }
+  .submenu {
+    position: relative;
+  }
+}
+</style>
 
 /* ==== Submenús ocultos ==== */
 nav ul.submenu {
