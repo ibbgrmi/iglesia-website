@@ -241,14 +241,20 @@ section {
   </ul>
 </nav>
 <script>
-  function accesoSteven() {
-    var clave = prompt("Ingrese la clave para acceder:");
-    if (clave === "Usuario123") {
-      window.location.href = "steven.html";
-    } else {
-      alert("Clave incorrecta. Intente de nuevo.");
-    }
+function accesoSteven() {
+  var clave = prompt("Ingrese la clave para acceder:");
+  if (clave === "Usuario123") {
+    window.location.href = "steven.html";
+  } else {
+    alert("Clave incorrecta. Intente de nuevo.");
   }
+}
+
+// Script para abrir/cerrar menú en celular
+function toggleMenu() {
+  const menu = document.getElementById("mainMenu");
+  menu.classList.toggle("active");
+}
 </script>
 
 <style>
