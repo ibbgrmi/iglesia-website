@@ -275,6 +275,7 @@ nav .logo {
   margin-right: 40px;
 }
 
+/* ===== Lista principal ===== */
 nav ul.menu {
   list-style: none;
   display: flex;
@@ -291,19 +292,26 @@ nav ul.menu li a {
   color: white;
   text-decoration: none;
   font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
 }
 
 nav ul.menu li a:hover {
   background: rgba(255, 255, 255, 0.2);
-  border-radius: 5px;
-  padding: 5px 10px;
+}
+
+/* ===== Flechita en items con submenú ===== */
+nav ul.menu li.has-submenu > a::after {
+  content: " ▼";
+  font-size: 12px;
+  margin-left: 5px;
 }
 
 /* ===== Submenús ocultos ===== */
 nav ul.submenu {
   display: none;
   position: absolute;
-  top: 100%; /* justo debajo del padre */
+  top: 100%; /* debajo del padre */
   left: 0;
   background: rgba(0,0,0,0.85);
   list-style: none;
@@ -327,6 +335,57 @@ nav ul.submenu li a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
+/* ===== Botón hamburguesa ===== */
+.menu-toggle {
+  display: none;
+  cursor: pointer;
+  color: #fff;
+  font-size: 28px;
+}
+
+/* ===== Responsive para móviles ===== */
+@media (max-width: 768px) {
+  .menu-toggle {
+    display: block;
+  }
+
+  nav ul.menu {
+    flex-direction: column;
+    width: 100%;
+    display: none; /* oculto por defecto */
+  }
+
+  nav ul.menu.active {
+    display: flex; /* visible al hacer clic */
+  }
+
+  nav ul.menu li {
+    margin: 10px 0;
+  }
+
+  nav ul.submenu {
+    position: relative; /* en móvil se muestra debajo */
+  }
+}
+</style>
+
+<script>
+  // Abrir/cerrar menú hamburguesa
+  function toggleMenu() {
+    const menu = document.getElementById("mainMenu");
+    menu.classList.toggle("active");
+  }
+
+  // Cerrar submenú al hacer clic en enlace
+  document.addEventListener("DOMContentLoaded", () => {
+    document.querySelectorAll("nav ul.submenu a").forEach(link => {
+      link.addEventListener("click", () => {
+        const menu = document.getElementById("mainMenu");
+        menu.classList.remove("active");
+      });
+    });
+  });
+</script>
 /* ===== Ajuste responsive para iPhone ===== */
 @media (max-width: 768px) {
   nav ul.menu {
