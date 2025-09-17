@@ -200,64 +200,73 @@ section {
 </head>
 <body>
 
-<!-- ==== Menú Principal ==== -->
-<nav>
-  <!-- Logo -->
-  <img src="logo.png" alt="Logo Iglesia" class="logo">
-
-  <!-- Botón hamburguesa (solo en celular) -->
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-
-  <!-- Menú principal con submenús -->
-  <ul class="menu" id="mainMenu">
-    <li><a href="index.html#inicio">Inicio</a></li>
-
-    <li class="submenu-parent">
-      <a href="#">Quiénes Somos</a>
-      <ul class="submenu">
-        <li><a href="proposito.html">Propósito</a></li>
-        <li><a href="mision.html">Misión</a></li>
-      </ul>
-    </li>
-
-    <li class="submenu-parent">
-      <a href="#">Ministerio</a>
-      <ul class="submenu">
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="pastor.html">Consejería Pastoral</a></li>
-      </ul>
-    </li>
-
-    <li class="submenu-parent">
-      <a href="#">Recursos</a>
-      <ul class="submenu">
-        <li><a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a></li>
-        <li><a href="calendario.html">Calendario</a></li>
-        <li><a href="sermones.html">Sermones</a></li>
-      </ul>
-    </li>
-
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
-<script>
-function accesoSteven() {
-  var clave = prompt("Ingrese la clave para acceder:");
-  if (clave === "Usuario123") {
-    window.location.href = "steven.html";
-  } else {
-    alert("Clave incorrecta. Intente de nuevo.");
-  }
+<style>
+/* ===== Menú Principal Horizontal ===== */
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  background-color: rgba(0,0,0,0.6);
+  padding: 10px 20px;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
 }
 
-// Script para abrir/cerrar menú en celular
-function toggleMenu() {
-  const menu = document.getElementById("mainMenu");
-  menu.classList.toggle("active");
+nav .logo {
+  height: 50px;
+  margin-right: 40px;
 }
-</script>
 
+/* ===== Lista principal ===== */
+nav ul.menu {
+  list-style: none;
+  display: flex;
+  margin: 0;
+  padding: 0;
+}
 
+nav ul.menu li {
+  margin: 0 15px;
+  position: relative;
+}
+
+nav ul.menu li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+}
+
+nav ul.menu li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Flechita en items con submenú ===== */
+nav ul.menu li.has-submenu > a::after {
+  content: " ▼";
+  font-size: 12px;
+  margin-left: 5px;
+}
+
+/* ===== Submenús ocultos ===== */
+nav ul.submenu {
+  display: none;
+  position: absolute;
+  top: 100%; /* debajo del padre */
+  left: 0;
+  background: rgba(0,0,0,0.85);
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+  border-radius: 6px;
+  min-width: 180px;
+}
+
+nav ul.submenu li {
+  margin: 0;
+}
 
 nav ul.submenu li a {
   display: block;
@@ -319,83 +328,6 @@ nav ul.submenu li a:hover {
       });
     });
   });
-</script>
-/* ===== Ajuste responsive para iPhone ===== */
-@media (max-width: 768px) {
-  nav ul.menu {
-    flex-direction: column;
-    width: 100%;
-  }
-
-  nav ul.menu li {
-    margin: 10px 0;
-  }
-
-  .submenu {
-    position: relative;
-  }
-}
-</style>
-
-/* ===== Ajuste responsive para iPhone ===== */
-@media (max-width: 768px) {
-  nav ul.menu {
-    flex-direction: column;
-    width: 100%;
-  }
-  nav ul.menu li {
-    margin: 10px 0;
-  }
-  .submenu {
-    position: relative;
-  }
-}
-</style>
-
-/* ==== Submenús ocultos ==== */
-nav ul.submenu {
-  display: none;
-  position: absolute;
-  top: 100%;  /* justo debajo del padre */
-  left: 0;
-  background: rgba(0,0,0,0.85);
-  list-style: none;
-  margin: 0;
-  padding: 5px 0;
-  border-radius: 6px;
-  min-width: 180px;
-}
-
-nav ul.submenu li {
-  margin: 0;
-}
-
-nav ul.submenu li a {
-  display: block;
-  padding: 8px 15px;
-  color: #fff;
-}
-
-nav ul.submenu li a:hover {
-  background: rgba(255, 255, 255, 0.2);
-}
-</style>
-
-<script>
-document.querySelectorAll('.submenu-parent > a').forEach(item => {
-  item.addEventListener('click', e => {
-    e.preventDefault();
-    let submenu = item.nextElementSibling;
-
-    // Cierra otros submenús antes de abrir el actual
-    document.querySelectorAll('.submenu').forEach(menu => {
-      if (menu !== submenu) menu.style.display = "none";
-    });
-
-    // Abre/cierra el actual
-    submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
-  });
-});
 </script>
      
 <!-- Contador regresivo al servicio -->
