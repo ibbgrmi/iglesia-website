@@ -293,21 +293,56 @@ nav ul.menu li a {
   font-weight: bold;
 }
 
-.submenu-parent:hover .submenu {
-  display: block;
+nav ul.menu li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+  padding: 5px 10px;
 }
 
-.submenu {
+/* ===== Submenús ocultos ===== */
+nav ul.submenu {
   display: none;
   position: absolute;
-  background: rgba(0,0,0,0.8);
-  padding: 10px;
-  border-radius: 5px;
+  top: 100%; /* justo debajo del padre */
+  left: 0;
+  background: rgba(0,0,0,0.85);
+  list-style: none;
+  margin: 0;
+  padding: 5px 0;
+  border-radius: 6px;
+  min-width: 180px;
 }
 
-.submenu li {
-  margin: 5px 0;
+nav ul.submenu li {
+  margin: 0;
 }
+
+nav ul.submenu li a {
+  display: block;
+  padding: 8px 15px;
+  color: #fff;
+}
+
+nav ul.submenu li a:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Ajuste responsive para iPhone ===== */
+@media (max-width: 768px) {
+  nav ul.menu {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  nav ul.menu li {
+    margin: 10px 0;
+  }
+
+  .submenu {
+    position: relative;
+  }
+}
+</style>
 
 /* ===== Ajuste responsive para iPhone ===== */
 @media (max-width: 768px) {
