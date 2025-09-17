@@ -218,7 +218,7 @@ nav .logo {
   margin-right: 40px;
 }
 
-/* ===== Lista principal ===== */
+/* Lista principal */
 nav ul.menu {
   list-style: none;
   display: flex;
@@ -243,7 +243,7 @@ nav ul.menu li a:hover {
   background: rgba(255, 255, 255, 0.2);
 }
 
-/* ===== Flechita en items con submenú ===== */
+/* Flechita en items con submenú */
 nav ul.menu li.has-submenu > a::after {
   content: " ▼";
   font-size: 12px;
@@ -254,7 +254,7 @@ nav ul.menu li.has-submenu > a::after {
 nav ul.submenu {
   display: none;
   position: absolute;
-  top: 100%; /* debajo del padre */
+  top: 100%;
   left: 0;
   background: rgba(0,0,0,0.85);
   list-style: none;
@@ -291,43 +291,99 @@ nav ul.submenu li a:hover {
   .menu-toggle {
     display: block;
   }
-
   nav ul.menu {
     flex-direction: column;
     width: 100%;
-    display: none; /* oculto por defecto */
+    display: none;
   }
-
   nav ul.menu.active {
-    display: flex; /* visible al hacer clic */
+    display: flex;
   }
-
   nav ul.menu li {
     margin: 10px 0;
   }
-
   nav ul.submenu {
     position: relative; /* en móvil se muestra debajo */
   }
 }
 </style>
 
-<script>
-  // Abrir/cerrar menú hamburguesa
-  function toggleMenu() {
-    const menu = document.getElementById("mainMenu");
-    menu.classList.toggle("active");
-  }
+<!-- ===== Menú Principal ===== -->
+<nav>
+  <!-- Logo -->
+  <img src="logo.png" alt="Logo Iglesia" class="logo">
 
-  // Cerrar submenú al hacer clic en enlace
-  document.addEventListener("DOMContentLoaded", () => {
-    document.querySelectorAll("nav ul.submenu a").forEach(link => {
-      link.addEventListener("click", () => {
-        const menu = document.getElementById("mainMenu");
-        menu.classList.remove("active");
+  <!-- Botón hamburguesa (solo en móvil) -->
+  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+
+  <!-- Menú principal con submenús -->
+  <ul class="menu" id="mainMenu">
+    <li><a href="index.html#inicio">Inicio</a></li>
+
+    <li class="has-submenu">
+      <a href="#">Quiénes Somos</a>
+      <ul class="submenu">
+        <li><a href="proposito.html">Propósito</a></li>
+        <li><a href="mision.html">Misión</a></li>
+      </ul>
+    </li>
+
+    <li class="has-submenu">
+      <a href="#">Ministerio</a>
+      <ul class="submenu">
+        <li><a href="juvenil.html">Juvenil</a></li>
+        <li><a href="damas.html">Damas</a></li>
+      </ul>
+    </li>
+
+    <li class="has-submenu">
+      <a href="#">Recursos</a>
+      <ul class="submenu">
+        <li><a href="preguntas.html">Preguntas y Respuestas</a></li>
+        <li><a href="calendario.html">Calendario</a></li>
+        <li><a href="sermones.html">Sermones</a></li>
+      </ul>
+    </li>
+
+    <li><a href="contacto.html">Contacto</a></li>
+  </ul>
+</nav>
+
+<script>
+// Abrir/cerrar menú hamburguesa
+function toggleMenu() {
+  const menu = document.getElementById("mainMenu");
+  menu.classList.toggle("active");
+}
+
+// Abrir/cerrar submenús y cerrar si hacen clic afuera
+document.addEventListener("DOMContentLoaded", () => {
+  const submenuParents = document.querySelectorAll(".has-submenu > a");
+
+  submenuParents.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const submenu = link.nextElementSibling;
+
+      // Cierra otros submenús
+      document.querySelectorAll(".submenu").forEach(menu => {
+        if (menu !== submenu) menu.style.display = "none";
       });
+
+      // Abre/cierra el actual
+      submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
     });
   });
+
+  // Cierra submenús al hacer clic fuera
+  document.addEventListener("click", (e) => {
+    if (!e.target.closest("nav")) {
+      document.querySelectorAll(".submenu").forEach(menu => {
+        menu.style.display = "none";
+      });
+    }
+  });
+});
 </script>
      
 <!-- Contador regresivo al servicio -->
