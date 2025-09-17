@@ -200,7 +200,7 @@ section {
 </head>
 <body>
 
-<!-- ===== Menú Principal ===== -->
+<!-- ==== Menú Principal ==== -->
 <nav>
   <!-- Logo -->
   <img src="logo.png" alt="Logo Iglesia" class="logo">
@@ -208,19 +208,20 @@ section {
   <!-- Botón hamburguesa (solo en celular) -->
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
 
-  <!-- Menú principal -->
+  <!-- Menú principal con submenús -->
   <ul class="menu" id="mainMenu">
     <li><a href="index.html#inicio">Inicio</a></li>
-    <li><a href="index.html#quienes">Quiénes Somos</a></li>
-    <li><a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a></li>
-    <li><a href="calendario.html">Calendario</a></li>
-    <li><a href="sermones.html">Sermones</a></li>
-    <li><a href="#contacto">Contacto</a></li>
-  </ul>
-</nav>
 
     <li class="submenu-parent">
-      <a href="#">Ministerio ▾</a>
+      <a href="#">Quiénes Somos</a>
+      <ul class="submenu">
+        <li><a href="proposito.html">Propósito</a></li>
+        <li><a href="mision.html">Misión</a></li>
+      </ul>
+    </li>
+
+    <li class="submenu-parent">
+      <a href="#">Ministerio</a>
       <ul class="submenu">
         <li><a href="servicios.html">Servicios</a></li>
         <li><a href="pastor.html">Consejería Pastoral</a></li>
@@ -228,7 +229,7 @@ section {
     </li>
 
     <li class="submenu-parent">
-      <a href="#">Recursos ▾</a>
+      <a href="#">Recursos</a>
       <ul class="submenu">
         <li><a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a></li>
         <li><a href="calendario.html">Calendario</a></li>
@@ -239,10 +240,6 @@ section {
     <li><a href="#contacto">Contacto</a></li>
   </ul>
 </nav>
-    
-  </ul>
-</nav>
-
 <script>
   function accesoSteven() {
     var clave = prompt("Ingrese la clave para acceder:");
