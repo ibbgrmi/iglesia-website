@@ -17,6 +17,7 @@
       color: white;
       text-align: center;
       padding: 15px;
+      position: relative;
     }
     header h2 {
       margin: 0;
@@ -26,24 +27,43 @@
       margin: 5px 0 0;
       font-size: 14px;
     }
+    .back {
+      position: absolute;
+      left: 15px;
+      top: 15px;
+      color: white;
+      font-size: 20px;
+      text-decoration: none;
+    }
+    .back:hover {
+      text-decoration: underline;
+    }
     .calendar-container {
       display: flex;
       justify-content: center;
-      margin: 0;
-      padding: 0;
-      height: calc(100vh - 100px); /* ajusta para pantallas */
+      align-items: center;
+      position: relative;
+      height: calc(100vh - 100px);
+      background: url('logo.png') center center no-repeat;
+      background-size: 200px; /* marca de agua, ajusta tamaño */
+      opacity: 0.95; /* para que el iframe se vea bien */
     }
     iframe {
       width: 100%;
       height: 100%;
       border: none;
+      background: rgba(255, 255, 255, 0.95); /* asegura contraste */
     }
   </style>
 </head>
 <body>
   <header>
+    <a href="index.html" class="back">⬅ Volver</a>
     <h2>📅 Calendario de la Iglesia Bautista Bíblica</h2>
-    <p>Culto de Adoración 9:30 AM • Escuela Bíblica 11:15 AM (todos los domingos)</p>
+    <p>
+      Culto de Adoración 9:30 AM • Escuela Bíblica 11:15 AM (Domingos)<br>
+      Estudio Bíblico y Oración 7:00 PM (Miércoles)
+    </p>
   </header>
 
   <div class="calendar-container">
