@@ -6,36 +6,85 @@
   <title>Sermones - Iglesia Bautista Bíblica</title>
   <style>
     body {
+      margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #2c3e50, #3498db);
+      background: linear-gradient(-45deg, #6dd5fa, #2980b9, #2c3e50, #6dd5fa);
+      background-size: 400% 400%;
+      animation: fondoAnimado 15s ease infinite;
       color: white;
       text-align: center;
-      padding: 50px;
     }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.7);
+      padding: 15px;
+      border-radius: 0 0 15px 15px;
+      flex-wrap: wrap;
+    }
+
+    nav img {
+      height: 60px;
+      margin-right: 20px;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      font-weight: bold;
+      margin: 0 10px;
+    }
+
     .card {
       background: rgba(0, 0, 0, 0.6);
       border-radius: 12px;
       padding: 40px;
       max-width: 700px;
-      margin: auto;
+      margin: 60px auto;
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
+
     h1 {
       color: #ffcc00;
       margin-bottom: 20px;
     }
+
     p {
       font-size: 1.2em;
       line-height: 1.6;
     }
+
+    @keyframes fondoAnimado {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
   </style>
 </head>
 <body>
+
+  <!-- ===== Menú con Logo ===== -->
+  <nav>
+    <img src="logo.png" alt="Logo Iglesia">
+    <a href="index.html">Inicio</a>
+    <a href="proposito.html">Propósito</a>
+    <a href="mision.html">Misión</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="pastor.html">Consejería</a>
+    <a href="calendario.html">Calendario</a>
+    <a href="steven.html">Preguntas y Respuestas</a>
+    <a href="sermones.html">Sermones</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
+
+  <!-- ===== Contenido Principal ===== -->
   <div class="card">
     <h1>Sermones en Línea</h1>
     <p>
       Muy pronto estaremos transmitiendo nuestros <strong>sermones en vivo</strong> 
-      a través de YouTube directamente en esta página. 
+      a través de YouTube directamente en esta página.
     </p>
     <p>
       Mantente atento para disfrutar de la predicación de la Palabra de Dios 
@@ -43,5 +92,6 @@
     </p>
     <p><em>“La fe es por el oír, y el oír, por la palabra de Dios.” (Romanos 10:17)</em></p>
   </div>
+
 </body>
 </html>
