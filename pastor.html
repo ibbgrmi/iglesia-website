@@ -5,50 +5,86 @@
   <title>Consejería Pastoral - Iglesia Bautista Bíblica</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background: linear-gradient(to bottom, #004080, #00264d);
-      background-attachment: fixed;
-      color: #fff;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
+      color: white;
       text-align: center;
+      background: linear-gradient(270deg, #2980b9, #2c3e50, #2980b9);
+      background-size: 600% 600%;
+      animation: fondoAnimado 15s ease infinite;
     }
+
+    @keyframes fondoAnimado {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(0,0,0,0.7);
+      padding: 10px;
+      border-radius: 0 0 15px 15px;
+      margin-bottom: 30px;
+    }
+    nav img {
+      height: 50px;
+      margin-right: 20px;
+    }
+    nav a {
+      color: white;
+      margin: 0 12px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+
     .contenido {
       background: rgba(0,0,0,0.6);
       border-radius: 12px;
       padding: 30px;
       max-width: 800px;
-      margin: 60px auto;
+      margin: 20px auto;
     }
+
     h1 {
       margin-bottom: 20px;
+      color: #ffcc00;
     }
+
     p {
-      font-size: 1.2em;
+      font-size: 1.1em;
+      line-height: 1.6;
     }
+
     .versiculo {
       margin-top: 25px;
       font-style: italic;
       font-size: 1.1em;
       color: #ffcc66;
     }
-    .back {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      font-size: 22px;
-      color: white;
-      text-decoration: none;
-    }
-    .back:hover {
-      text-decoration: underline;
-    }
   </style>
 </head>
 <body>
-  <!-- Flecha para volver al inicio -->
-  <a href="index.html" class="back">⬅ Volver al inicio</a>
+  <!-- ===== Menú con Logo ===== -->
+  <nav>
+    <img src="logo.png" alt="Logo Iglesia">
+    <a href="index.html">Inicio</a>
+    <a href="proposito.html">Propósito</a>
+    <a href="mision.html">Misión</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="pastor.html">Consejería</a>
+    <a href="calendario.html">Calendario</a>
+    <a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a>
+    <a href="sermones.html">Sermones</a>
+    <a href="index.html#contacto">Contacto</a>
+  </nav>
 
+  <!-- ===== Contenido Principal ===== -->
   <div class="contenido">
     <h1>Consejería Pastoral</h1>
     <p>
@@ -67,5 +103,17 @@
       porque esto no os es provechoso.” (Hebreos 13:17)
     </p>
   </div>
+
+  <!-- ===== Script Clave Preguntas ===== -->
+  <script>
+    function accesoSteven() {
+      var clave = prompt("Ingrese la clave para acceder:");
+      if (clave === "Usuario123") {
+        window.location.href = "steven.html";
+      } else {
+        alert("Clave incorrecta. Acceso denegado.");
+      }
+    }
+  </script>
 </body>
 </html>
