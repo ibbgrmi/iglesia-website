@@ -7,34 +7,17 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      margin: 0;
-      padding: 0;
       background: linear-gradient(135deg, #2c3e50, #3498db);
       color: white;
       text-align: center;
-    }
-    nav {
-      display: flex;
-      align-items: center;
-      background: rgba(0,0,0,0.8);
-      padding: 10px 20px;
-    }
-    nav img {
-      height: 40px;
-      margin-right: 20px;
-    }
-    nav a {
-      color: white;
-      text-decoration: none;
-      font-weight: bold;
-      margin-right: 15px;
+      padding: 50px;
     }
     .card {
       background: rgba(0, 0, 0, 0.6);
       border-radius: 12px;
       padding: 40px;
       max-width: 700px;
-      margin: 60px auto;
+      margin: auto;
       box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
     h1 {
@@ -48,21 +31,6 @@
   </style>
 </head>
 <body>
-  <!-- 🔹 Menú con logo -->
-  <nav>
-    <img src="logo.png" alt="Logo Iglesia">
-    <a href="index.html">Inicio</a>
-    <a href="proposito.html">Propósito</a>
-    <a href="mision.html">Misión</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="pastor.html">Consejería</a>
-    <a href="calendario.html">Calendario</a>
-    <a href="steven.html">Preguntas y Respuestas</a>
-    <a href="sermones.html">Sermones</a>
-    <a href="contacto.html">Contacto</a>
-  </nav>
-
-  <!-- 🔹 Contenido -->
   <div class="card">
     <h1>Sermones en Línea</h1>
     <p>
@@ -75,16 +43,5 @@
     </p>
     <p><em>“La fe es por el oír, y el oír, por la palabra de Dios.” (Romanos 10:17)</em></p>
   </div>
-
-  <!-- 🔹 Script de protección -->
-  <script>
-    window.onload = function() {
-      var clave = prompt("Ingrese la clave para acceder:");
-      if (clave !== "Usuario123") {
-        alert("Clave incorrecta. No puede acceder.");
-        document.body.innerHTML = "<h1 style='color:red; text-align:center; margin-top:100px;'>Acceso denegado</h1>";
-      }
-    }
-  </script>
 </body>
 </html>
