@@ -2,69 +2,52 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Sermones - Iglesia Bautista Bíblica</title>
+  <title>Sermones en Línea - Iglesia Bautista Bíblica</title>
   <style>
     body {
-      margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(-45deg, #6dd5fa, #2980b9, #2c3e50, #6dd5fa);
-      background-size: 400% 400%;
-      animation: fondoAnimado 15s ease infinite;
-      color: white;
+      background: linear-gradient(to bottom, #2980b9, #2c3e50);
+      margin: 0;
+      padding: 0;
+      color: #fff;
       text-align: center;
     }
-
     nav {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.7);
-      padding: 15px;
-      border-radius: 0 0 15px 15px;
-      flex-wrap: wrap;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 10px;
     }
-
     nav img {
-      height: 60px;
+      height: 50px;
       margin-right: 20px;
     }
-
     nav a {
       color: white;
       text-decoration: none;
+      margin: 0 12px;
       font-weight: bold;
-      margin: 0 10px;
     }
-
+    nav a:hover {
+      color: #ffe680;
+    }
     .card {
-      background: rgba(0, 0, 0, 0.6);
+      background: rgba(0, 0, 0, 0.7);
       border-radius: 12px;
-      padding: 40px;
-      max-width: 700px;
+      padding: 30px;
+      max-width: 800px;
       margin: 60px auto;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.5);
     }
-
     h1 {
-      color: #ffcc00;
-      margin-bottom: 20px;
+      color: #ffe680;
     }
-
     p {
       font-size: 1.2em;
-      line-height: 1.6;
-    }
-
-    @keyframes fondoAnimado {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
     }
   </style>
 </head>
 <body>
-
   <!-- ===== Menú con Logo ===== -->
   <nav>
     <img src="logo.png" alt="Logo Iglesia">
@@ -87,11 +70,22 @@
       a través de YouTube directamente en esta página.
     </p>
     <p>
-      Mantente atento para disfrutar de la predicación de la Palabra de Dios 
-      en un ambiente edificante y lleno de bendición.
+      Mantente atento para disfrutar de la predicación de la Palabra de Dios en un 
+      ambiente edificante y lleno de bendición.
     </p>
     <p><em>“La fe es por el oír, y el oír, por la palabra de Dios.” (Romanos 10:17)</em></p>
   </div>
 
+  <!-- ===== Script de protección ===== -->
+  <script>
+    function accesoSteven() {
+      var clave = prompt("Ingrese la clave para acceder:");
+      if (clave === "Usuario123") {
+        window.location.href = "steven.html";
+      } else {
+        alert("Clave incorrecta. Acceso denegado.");
+      }
+    }
+  </script>
 </body>
 </html>
