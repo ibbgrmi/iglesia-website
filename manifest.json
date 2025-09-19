@@ -1,0 +1,13 @@
+{
+  "background_color": "#ffffff",
+  "dir": "ltr",
+  "display": "standalone",
+  "name": "Iglesia Bautista Biblica",
+  "orientation": "any",
+  "scope": "/",
+  "short_name": "IBB",
+  "start_url": "/",
+  "theme_color": "#003366",
+  "id": "com.iglesiabautistabiblica.app",
+  "description": "Aplicación oficial de la Iglesia Bautista Bíblica"
+}
