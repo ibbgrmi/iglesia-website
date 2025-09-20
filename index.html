@@ -352,10 +352,24 @@ nav ul.submenu li a:hover {
 
 <script>
 // Abrir/cerrar menú hamburguesa
-function toggleMenu() {
+<script>
+  const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("mainMenu");
-  menu.classList.toggle("active");
-}
+
+  // Abrir/cerrar menú al tocar el botón
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+  });
+
+  // Cerrar menú automáticamente cuando se toca un enlace
+  document.querySelectorAll("#mainMenu a").forEach(link => {
+    link.addEventListener("click", () => {
+      menu.classList.remove("active");
+      menuToggle.classList.remove("active");
+    });
+  });
+</script>
 
 // Abrir/cerrar submenús y cerrar si hacen clic afuera
 document.addEventListener("DOMContentLoaded", () => {
