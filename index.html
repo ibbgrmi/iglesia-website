@@ -319,13 +319,17 @@ nav ul.submenu li a:hover {
     display: block;
   }
   nav ul.menu {
-    flex-direction: column;
-    width: 100%;
-    display: none;
-  }
-  nav ul.menu.active {
-    display: flex;
-  }
+  flex-direction: column;
+  width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out; /* efecto suave */
+}
+
+nav ul.menu.active {
+  max-height: 500px; /* ajusta este valor si tu menú es más largo */
+  transition: max-height 0.4s ease-in;
+}
   nav ul.menu li {
     margin: 10px 0;
   }
