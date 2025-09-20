@@ -413,16 +413,9 @@ nav ul.submenu.open {
         menu.classList.remove("active");
         menuToggle.classList.remove("active");
       } else {
-        // Enlace con submenú → abrir/cerrar submenú
+        // Enlace con submenú → evitar cierre y abrir/cerrar submenú
         e.preventDefault();
         const submenu = link.nextElementSibling;
-
-        // Cierra otros submenús
-        document.querySelectorAll(".submenu").forEach(menu => {
-          if (menu !== submenu) menu.classList.remove("open");
-        });
-
-        // Abre/cierra el actual
         submenu.classList.toggle("open");
       }
     });
