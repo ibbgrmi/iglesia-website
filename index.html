@@ -383,8 +383,6 @@ nav ul.submenu li a:hover {
 </nav>
 
 <script>
-// Abrir/cerrar menú hamburguesa
-<script>
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("mainMenu");
 
@@ -399,6 +397,26 @@ nav ul.submenu li a:hover {
     link.addEventListener("click", () => {
       menu.classList.remove("active");
       menuToggle.classList.remove("active");
+    });
+  });
+
+  // ================= Submenús (acordeón) =================
+  document.addEventListener("DOMContentLoaded", () => {
+    const submenuParents = document.querySelectorAll(".has-submenu > a");
+
+    submenuParents.forEach(link => {
+      link.addEventListener("click", (e) => {
+        e.preventDefault();
+        const submenu = link.nextElementSibling;
+
+        // Cierra otros submenús
+        document.querySelectorAll(".submenu").forEach(menu => {
+          if (menu !== submenu) menu.style.display = "none";
+        });
+
+        // Abre/cierra el actual
+        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+      });
     });
   });
 </script>
