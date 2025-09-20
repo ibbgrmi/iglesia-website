@@ -337,6 +337,15 @@ nav ul.menu.active {
     position: relative; /* en móvil se muestra debajo */
   }
 }
+  nav ul.submenu {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.3s ease;
+}
+
+nav ul.submenu.open {
+  max-height: 500px; /* suficiente para que entren los items */
+}
 </style>
 
 <!-- ===== Menú Principal ===== -->
