@@ -399,51 +399,27 @@ nav ul.submenu.open {
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("mainMenu");
 
- // Abrir/cerrar menú al tocar el botón
-menuToggle.addEventListener("click", () => {
-  const isActive = menu.classList.toggle("active");
-  menuToggle.classList.toggle("active");
+  // Abrir/cerrar menú hamburguesa
+  menuToggle.addEventListener("click", () => {
+    menu.classList.toggle("active");
+    menuToggle.classList.toggle("active");
+  });
 
-  if (isActive) {
-    // 🔹 Al abrir, mostrar todos los submenús
-    document.querySelectorAll(".submenu").forEach(submenu => {
-      submenu.style.display = "block";
-    });
-  } else {
-    // 🔹 Al cerrar, ocultar los submenús
-    document.querySelectorAll(".submenu").forEach(submenu => {
-      submenu.style.display = "none";
-    });
-  }
-});
-
-  // Cerrar menú automáticamente cuando se toca un enlace
+  // Manejo de enlaces y submenús
   document.querySelectorAll("#mainMenu a").forEach(link => {
-    link.addEventListener("click", () => {
-      menu.classList.remove("active");
-      menuToggle.classList.remove("active");
-    });
-  });
-
-  // ================= Submenús (acordeón con animación) =================
-document.addEventListener("DOMContentLoaded", () => {
-  const submenuParents = document.querySelectorAll(".has-submenu > a");
-
-  submenuParents.forEach(link => {
     link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const submenu = link.nextElementSibling;
-
-      // Cierra otros submenús
-      document.querySelectorAll(".submenu").forEach(menu => {
-        if (menu !== submenu) menu.classList.remove("open");
-      });
-
-      // Abre/cierra el actual
-      submenu.classList.toggle("open");
+      if (!link.parentElement.classList.contains("has-submenu")) {
+        // Enlace normal → cerrar menú hamburguesa
+        menu.classList.remove("active");
+        menuToggle.classList.remove("active");
+      } else {
+        // Enlace con submenú → evitar cierre y abrir/cerrar submenú
+        e.preventDefault();
+        const submenu = link.nextElementSibling;
+        submenu.classList.toggle("open");
+      }
     });
   });
-});
 </script>
 </body>
 </html>
