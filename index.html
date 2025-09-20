@@ -423,47 +423,7 @@ nav ul.submenu li a:hover {
 </body>
 </html>
 
-// Abrir/cerrar submenús y cerrar si hacen clic afuera
-document.addEventListener("DOMContentLoaded", () => {
-  const submenuParents = document.querySelectorAll(".has-submenu > a");
 
-  submenuParents.forEach(link => {
-    link.addEventListener("click", (e) => {
-      e.preventDefault();
-      const submenu = link.nextElementSibling;
-
-      // Cierra otros submenús
-      document.querySelectorAll(".submenu").forEach(menu => {
-        if (menu !== submenu) menu.style.display = "none";
-      });
-
-      // Abre/cierra el actual
-      submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
-    });
-  });
-
-  // Cierra submenús al hacer clic fuera
-  document.addEventListener("click", (e) => {
-    if (!e.target.closest("nav")) {
-      document.querySelectorAll(".submenu").forEach(menu => {
-        menu.style.display = "none";
-      });
-    }
-  });
-});
-</script>
-</script>
-
-<script>
-  function accesoSteven() {
-    var clave = prompt("Ingrese la clave para acceder:");
-    if (clave === "Usuario123") {
-      window.location.href = "steven.html";
-    } else {
-      alert("Clave incorrecta. Intente de nuevo.");
-    }
-  }
-</script>
 
 </body>
 </html>     
