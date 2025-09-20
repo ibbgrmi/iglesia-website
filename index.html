@@ -425,25 +425,25 @@ menuToggle.addEventListener("click", () => {
     });
   });
 
-  // ================= Submenús (acordeón) =================
-  document.addEventListener("DOMContentLoaded", () => {
-    const submenuParents = document.querySelectorAll(".has-submenu > a");
+  // ================= Submenús (acordeón con animación) =================
+document.addEventListener("DOMContentLoaded", () => {
+  const submenuParents = document.querySelectorAll(".has-submenu > a");
 
-    submenuParents.forEach(link => {
-      link.addEventListener("click", (e) => {
-        e.preventDefault();
-        const submenu = link.nextElementSibling;
+  submenuParents.forEach(link => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      const submenu = link.nextElementSibling;
 
-        // Cierra otros submenús
-        document.querySelectorAll(".submenu").forEach(menu => {
-          if (menu !== submenu) menu.style.display = "none";
-        });
-
-        // Abre/cierra el actual
-        submenu.style.display = (submenu.style.display === "block") ? "none" : "block";
+      // Cierra otros submenús
+      document.querySelectorAll(".submenu").forEach(menu => {
+        if (menu !== submenu) menu.classList.remove("open");
       });
+
+      // Abre/cierra el actual
+      submenu.classList.toggle("open");
     });
   });
+});
 </script>
 </body>
 </html>
