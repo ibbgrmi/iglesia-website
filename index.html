@@ -413,9 +413,16 @@ nav ul.submenu.open {
         menu.classList.remove("active");
         menuToggle.classList.remove("active");
       } else {
-        // Enlace con submenú → evitar cierre y abrir/cerrar submenú
+        // Enlace con submenú → abrir/cerrar solo ese
         e.preventDefault();
         const submenu = link.nextElementSibling;
+
+        // Cerrar otros submenús
+        document.querySelectorAll(".submenu").forEach(menu => {
+          if (menu !== submenu) menu.classList.remove("open");
+        });
+
+        // Abrir/cerrar el actual
         submenu.classList.toggle("open");
       }
     });
