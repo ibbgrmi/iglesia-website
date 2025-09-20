@@ -432,7 +432,19 @@ nav ul.submenu.open {
   });
 </script>
 
-
+<!-- 🔑 Aquí agregas la función de acceso -->
+  <script>
+    function accesoSteven() {
+      const clave = prompt("Escribe la clave para entrar:");
+      if (clave === "Usuario123") {   // clave correcta
+        window.location.href = "steven.html"; // página protegida
+      } else if (clave !== null) {
+        alert("Clave incorrecta.");
+      }
+      return false;
+    }
+  </script>
+  
 </body>
 </html>     
 <!-- Contador regresivo al servicio -->
