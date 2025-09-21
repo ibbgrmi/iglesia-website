@@ -1,28 +1,62 @@
-<body style="margin:0; font-family:Arial, sans-serif; background:linear-gradient(-45deg, #6dd5fa, #2980b9, #2c3e50, #6dd5fa); background-size:400% 400%; animation:fondoAnimado 12s ease infinite;">
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Preguntas y Respuestas – Iglesia Bautista Bíblica</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
 
-  <!-- ===== Menú con Logo ===== -->
-  <nav style="display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,0.7); padding:15px; border-radius:0 0 15px 15px; gap:15px;">
-    <img src="logo.png" alt="Logo Iglesia" style="height:60px;">
-    <a href="index.html#inicio" style="color:white; text-decoration:none; font-weight:bold;">Inicio</a>
-    <a href="index.html#proposito" style="color:white; text-decoration:none; font-weight:bold;">Propósito</a>
-    <a href="index.html#mision" style="color:white; text-decoration:none; font-weight:bold;">Misión</a>
-    <a href="index.html#servicios" style="color:white; text-decoration:none; font-weight:bold;">Servicios</a>
-    <a href="index.html#ubicacion" style="color:white; text-decoration:none; font-weight:bold;">Ubicación</a>
-    <a href="index.html#contacto" style="color:white; text-decoration:none; font-weight:bold;">Contacto</a>
-    <a href="#" onclick="accesoSteven()" style="color:white; text-decoration:none; font-weight:bold;">Preguntas y Respuestas</a>
-    <a href="calendario.html" target="_blank" style="color:white; text-decoration:none; font-weight:bold;">Calendario</a>
+  <!-- ===== Barra superior ===== -->
+  <nav class="site-nav">
+    <a href="index.html#inicio" class="brand">
+      <img src="logo.png" alt="Logo Iglesia">
+      <span>Iglesia Bautista Bíblica</span>
+    </a>
+    <ul class="menu">
+      <li><a href="index.html#inicio">Inicio</a></li>
+      <li><a href="index.html#proposito">Propósito</a></li>
+      <li><a href="index.html#mision">Misión</a></li>
+      <li><a href="index.html#servicios">Servicios</a></li>
+      <li><a href="index.html#ubicacion">Ubicación</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+      <li><a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a></li>
+      <li><a href="calendario.html" target="_blank">Calendario</a></li>
+    </ul>
+    <button class="hamburger" aria-label="Abrir menú">
+      <span></span><span></span><span></span>
+    </button>
   </nav>
 
+  <!-- ===== Drawer para móvil ===== -->
+  <aside class="drawer" id="drawer">
+    <button class="close" aria-label="Cerrar menú">&times;</button>
+    <a href="index.html#inicio">Inicio</a>
+    <a href="index.html#proposito">Propósito</a>
+    <a href="index.html#mision">Misión</a>
+    <a href="index.html#servicios">Servicios</a>
+    <a href="index.html#ubicacion">Ubicación</a>
+    <a href="index.html#contacto">Contacto</a>
+    <a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a>
+    <a href="calendario.html" target="_blank">Calendario</a>
+  </aside>
+  <div class="backdrop" id="backdrop"></div>
+
   <!-- ===== Sección Principal ===== -->
-  <section id="steven" style="text-align:center; padding:40px; color:white; animation:fadeIn 2s ease;">
-    <h2 style="font-size:2.5em; margin-bottom:10px; text-shadow:2px 2px 5px rgba(0,0,0,0.5);">Preguntas y Respuestas</h2>
+  <section id="steven" style="text-align:center; padding:40px; color:white; animation:fadeIn 2s ease;
+    background:linear-gradient(-45deg,#6dd5fa,#2980b9,#2c3e50,#6dd5fa); background-size:400% 400%; animation:fondoAnimado 12s ease infinite;">
+    
+    <h2 style="font-size:2.5em; margin-bottom:10px; text-shadow:2px 2px 5px rgba(0,0,0,0.5);">
+      Preguntas y Respuestas
+    </h2>
     <h3 style="color:#ffe680; margin-bottom:10px;">Con el Dr. Steven D. Anderson</h3>
     <p><em>Ph.D. en Estudios Bíblicos, Seminario Teológico de Dallas</em></p>
 
-   <p>
-  Si tienes una pregunta acerca de la Biblia o del tema de la lección de Escuela Dominical 
-  puedes escribirla aquí:
-</p>
+    <p>
+      Si tienes una pregunta acerca de la Biblia o del tema de la lección de Escuela Dominical 
+      puedes escribirla aquí:
+    </p>
 
     <!-- Formulario -->
     <form action="https://formspree.io/f/xrbavjlb" method="POST" 
@@ -45,7 +79,7 @@
     </p>
   </section>
 
-  <!-- ===== Animaciones CSS ===== -->
+  <!-- Animaciones -->
   <style>
     @keyframes fondoAnimado {
       0% {background-position:0% 50%;}
@@ -66,4 +100,27 @@
       box-shadow:0px 6px 15px rgba(0,0,0,0.5);
     }
   </style>
+
+  <!-- Script para menú móvil -->
+  <script>
+    const hamburger = document.querySelector('.hamburger');
+    const drawer = document.getElementById('drawer');
+    const closeBtn = drawer.querySelector('.close');
+    const backdrop = document.getElementById('backdrop');
+
+    hamburger.addEventListener('click', () => {
+      drawer.classList.add('open');
+      backdrop.classList.add('show');
+    });
+    closeBtn.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('show');
+    });
+    backdrop.addEventListener('click', () => {
+      drawer.classList.remove('open');
+      backdrop.classList.remove('show');
+    });
+  </script>
+
 </body>
+</html>
