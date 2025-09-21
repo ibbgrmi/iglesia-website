@@ -199,6 +199,56 @@ section {
   </style>
 </head>
 <body>
+  <header>
+  <nav class="site-nav">
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Logo Iglesia">
+      <span>Iglesia Bautista Bíblica</span>
+    </a>
+
+    <!-- Menú Desktop (sin submenús) -->
+    <ul class="menu" id="menuDesktop">
+      <li><a href="index.html#inicio">Inicio</a></li>
+      <li><a href="proposito.html">Propósito</a></li>
+      <li><a href="mision.html">Misión</a></li>
+      <li><a href="calendario.html">Calendario</a></li>
+      <li><a href="#" onclick="return accesoSteven()">Preguntas y Respuestas</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+
+    <button class="hamburger" id="navToggle" aria-label="Abrir menú" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- Drawer móvil (con submenús) -->
+  <aside id="mobileDrawer" class="drawer" aria-hidden="true">
+    <button class="close" id="drawerClose" aria-label="Cerrar menú">×</button>
+    <a class="brand" href="index.html" onclick="closeDrawer()">
+      <img src="logo.png" alt="Logo Iglesia">
+      <span>Iglesia Bautista Bíblica</span>
+    </a>
+
+    <nav class="drawer-links">
+      <a href="index.html#inicio" onclick="closeDrawer()">Inicio</a>
+
+      <div class="submenu-group">
+        <span>Quiénes Somos</span>
+        <a href="proposito.html" onclick="closeDrawer()">Propósito</a>
+        <a href="mision.html" onclick="closeDrawer()">Misión</a>
+      </div>
+
+      <div class="submenu-group">
+        <span>Recursos</span>
+        <a href="calendario.html" onclick="closeDrawer()">Calendario</a>
+        <a href="#" onclick="const ok=accesoSteven(); if(ok) closeDrawer(); return ok;">Preguntas y Respuestas</a>
+      </div>
+
+      <a href="index.html#contacto" onclick="closeDrawer()">Contacto</a>
+    </nav>
+  </aside>
+  <div id="backdrop" class="backdrop"></div>
+</header>
 
 <style>
 /* ===== Menú Principal Horizontal ===== */
