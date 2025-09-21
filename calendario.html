@@ -4,6 +4,13 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calendario – Iglesia Bautista Bíblica</title>
+
+  <!-- FullCalendar CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
+
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
   <style>
     body {
       font-family: Arial, sans-serif;
@@ -18,68 +25,99 @@
       color: white;
       display: flex;
       align-items: center;
-      justify-content: space-between;
+      flex-wrap: wrap;
       padding: 10px 20px;
-      flex-wrap: wrap; /* importante para celulares */
     }
 
     header img {
-      height: 60px; /* más grande */
-      margin-right: 20px; /* espacio con el texto */
+      height: 50px;
+      margin-right: 15px;
     }
 
-    .titulo {
-      flex: 1;
-      min-width: 200px;
-    }
-
-    .titulo h2 {
+    nav ul {
+      list-style: none;
       margin: 0;
-      font-size: 22px;
+      padding: 0;
+      display: flex;
+      flex-wrap: wrap;
     }
 
-    .titulo p {
-      margin: 5px 0 0;
-      font-size: 14px;
+    nav ul li {
+      margin: 5px 10px;
     }
 
-    .back {
+    nav ul li a {
       color: white;
       text-decoration: none;
-      margin-right: 15px;
       font-weight: bold;
     }
 
-    .calendar-container {
-      display: flex;
-      justify-content: center;
-      margin: 0;
-      padding: 0;
-      height: calc(100vh - 100px);
+    nav ul li a:hover {
+      text-decoration: underline;
     }
 
-    iframe {
-      width: 100%;
-      height: 100%;
-      border: none;
+    #calendar {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 10px;
+      background: white;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
   </style>
 </head>
 <body>
   <header>
-    <a href="index.html" class="back">⬅ Volver</a>
     <img src="logo.png" alt="Logo Iglesia">
-    <div class="titulo">
-      <h2>📅 Calendario de la Iglesia Bautista Bíblica</h2>
-      <p>
-        Culto de Adoración 9:30 AM • Escuela Bíblica 11:15 AM (Domingos)<br>
-        Estudio Bíblico y Oración 7:00 PM (Miércoles)
-      </p>
-    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="proposito.html">Propósito</a></li>
+        <li><a href="mision.html">Misión</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="consejeria.html">Consejería</a></li>
+        <li><a href="calendario.html">Calendario</a></li>
+        <li><a href="#" onclick="return accesoSteven()">Preguntas y Respuestas</a></li>
+        <li><a href="sermones.html">Sermones</a></li>
+        <li><a href="contacto.html">Contacto</a></li>
+      </ul>
+    </nav>
   </header>
 
-  <div class="calendar-container">
-    <iframe src="https://calendar.google.com/calendar/embed?src=ibb.grmi%40gmail.com&ctz=America%2FNew_York"></iframe>
-  </div>
+  <!-- Contenedor del calendario -->
+  <div id="calendar"></div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var calendarEl = document.getElementById('calendar');
+
+      var calendar = new FullCalendar.Calendar(calendarEl, {
+        initialView: 'dayGridMonth',
+        googleCalendarApiKey: 'TU_API_KEY_DE_GOOGLE', // 🔑 pon aquí tu API key
+        events: {
+          googleCalendarId: 'ibb.grmi@gmail.com' // 📅 pon aquí tu calendario
+        },
+        headerToolbar: {
+          left: 'prev,next today',
+          center: 'title',
+          right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        }
+      });
+
+      calendar.render();
+    });
+
+    // Función para clave en Preguntas y Respuestas
+    function accesoSteven() {
+      const clave = prompt("Introduce la clave para acceder:");
+      if (clave === "1234") { // 🔑 cámbiala por tu clave real
+        window.location.href = "steven.html";
+        return true;
+      } else {
+        alert("Clave incorrecta.");
+        return false;
+      }
+    }
+  </script>
 </body>
 </html>
