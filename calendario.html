@@ -1,123 +1,171 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Calendario – Iglesia Bautista Bíblica</title>
 
   <!-- FullCalendar CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
 
-  <!-- FullCalendar JS -->
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
-
+  <!-- Estilos -->
   <style>
     body {
-      font-family: Arial, sans-serif;
       margin: 0;
-      padding: 0;
+      font-family: Arial, sans-serif;
       background: #f4f4f9;
-      color: #333;
     }
 
+    /* HEADER */
     header {
       background: #0056a6;
       color: white;
+      padding: 10px 20px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
       display: flex;
       align-items: center;
-      flex-wrap: wrap;
-      padding: 10px 20px;
     }
 
-    header img {
-      height: 50px;
-      margin-right: 15px;
+    .logo img {
+      height: 40px;
+      margin-right: 10px;
     }
 
-    nav ul {
-      list-style: none;
-      margin: 0;
-      padding: 0;
+    nav {
       display: flex;
-      flex-wrap: wrap;
+      gap: 15px;
     }
 
-    nav ul li {
-      margin: 5px 10px;
-    }
-
-    nav ul li a {
+    nav a {
       color: white;
       text-decoration: none;
       font-weight: bold;
     }
 
-    nav ul li a:hover {
-      text-decoration: underline;
+    /* Botón hamburguesa */
+    .menu-toggle {
+      display: none;
+      flex-direction: column;
+      cursor: pointer;
     }
 
-    #calendar {
-      max-width: 900px;
-      margin: 20px auto;
-      padding: 10px;
+    .menu-toggle div {
+      width: 25px;
+      height: 3px;
       background: white;
+      margin: 4px 0;
+    }
+
+    /* Menú responsive */
+    @media (max-width: 768px) {
+      nav {
+        display: none;
+        flex-direction: column;
+        background: #004080;
+        position: absolute;
+        top: 60px;
+        right: 0;
+        width: 200px;
+        padding: 10px;
+      }
+
+      nav.active {
+        display: flex;
+      }
+
+      .menu-toggle {
+        display: flex;
+      }
+    }
+
+    /* CALENDARIO */
+    #calendar {
+      max-width: 90%;
+      margin: 20px auto;
+      background: white;
+      padding: 15px;
       border-radius: 10px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .info-servicios {
+      text-align: center;
+      margin: 15px 0;
+      font-size: 14px;
+      font-weight: bold;
+      color: #333;
     }
   </style>
 </head>
 <body>
+
+  <!-- HEADER -->
   <header>
-    <img src="logo.png" alt="Logo Iglesia">
-    <nav>
-      <ul>
-        <li><a href="index.html">Inicio</a></li>
-        <li><a href="proposito.html">Propósito</a></li>
-        <li><a href="mision.html">Misión</a></li>
-        <li><a href="servicios.html">Servicios</a></li>
-        <li><a href="consejeria.html">Consejería</a></li>
-        <li><a href="calendario.html">Calendario</a></li>
-        <li><a href="#" onclick="return accesoSteven()">Preguntas y Respuestas</a></li>
-        <li><a href="sermones.html">Sermones</a></li>
-        <li><a href="contacto.html">Contacto</a></li>
-      </ul>
+    <div class="logo">
+      <img src="logo.png" alt="Logo Iglesia">
+      <span>Iglesia Bautista Bíblica</span>
+    </div>
+    <div class="menu-toggle" id="menu-toggle">
+      <div></div>
+      <div></div>
+      <div></div>
+    </div>
+    <nav id="nav">
+      <a href="index.html">Inicio</a>
+      <a href="proposito.html">Propósito</a>
+      <a href="mision.html">Misión</a>
+      <a href="servicios.html">Servicios</a>
+      <a href="consejeria.html">Consejería</a>
+      <a href="calendario.html">Calendario</a>
+      <a href="sermones.html">Sermones</a>
+      <a href="contacto.html">Contacto</a>
     </nav>
   </header>
 
-  <!-- Contenedor del calendario -->
+  <!-- INFO DE SERVICIOS -->
+  <div class="info-servicios">
+    📅 Servicios todos los domingos de <strong>9:30 AM – 12:15 PM</strong> <br>
+    🙏 Oración los miércoles de <strong>7:00 PM – 8:15 PM</strong>
+  </div>
+
+  <!-- CALENDARIO -->
   <div id="calendar"></div>
 
+  <!-- FullCalendar JS -->
+  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
+
   <script>
+    // Menú hamburguesa
+    document.getElementById('menu-toggle').addEventListener('click', function() {
+      document.getElementById('nav').classList.toggle('active');
+    });
+
+    // Calendario
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
 
       var calendar = new FullCalendar.Calendar(calendarEl, {
         initialView: 'dayGridMonth',
-        googleCalendarApiKey: 'TU_API_KEY_DE_GOOGLE', // 🔑 pon aquí tu API key
-        events: {
-          googleCalendarId: 'ibb.grmi@gmail.com' // 📅 pon aquí tu calendario
-        },
+        locale: 'es',
         headerToolbar: {
           left: 'prev,next today',
           center: 'title',
           right: 'dayGridMonth,timeGridWeek,timeGridDay'
+        },
+        googleCalendarApiKey: 'TU_API_KEY_DE_GOOGLE',
+        events: {
+          googleCalendarId: 'TU_CALENDAR_ID'
         }
       });
 
       calendar.render();
     });
-
-    // Función para clave en Preguntas y Respuestas
-    function accesoSteven() {
-      const clave = prompt("Introduce la clave para acceder:");
-      if (clave === "1234") { // 🔑 cámbiala por tu clave real
-        window.location.href = "steven.html";
-        return true;
-      } else {
-        alert("Clave incorrecta.");
-        return false;
-      }
-    }
   </script>
+
 </body>
 </html>
