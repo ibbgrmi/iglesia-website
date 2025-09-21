@@ -352,98 +352,145 @@ nav ul.submenu.open {
 </style>
 
 <!-- ===== Menú Principal ===== -->
-<nav>
+<nav class="navbar">
   <!-- Logo -->
-  <img src="logo.png" alt="Logo Iglesia" class="logo">
+  <a href="index.html" class="logo">
+    <img src="logo.png" alt="Logo Iglesia">
+  </a>
 
   <!-- Botón hamburguesa (solo en móvil) -->
-  <!-- Botón hamburguesa (solo en móvil) -->
-<div class="menu-toggle" id="menuToggle">
-  <span></span>
-  <span></span>
-  <span></span>
-</div>
+  <div class="menu-toggle" id="menuToggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
 
-  <!-- Menú principal con submenús -->
+  <!-- Menú principal -->
   <ul class="menu" id="mainMenu">
-    <li><a href="#inicio">Inicio</a></li>
-
-    <li class="has-submenu">
-      <a href="#">Quiénes Somos</a>
-      <ul class="submenu">
-        <li><a href="proposito.html">Propósito</a></li>
-        <li><a href="mision.html">Misión</a></li>
-      </ul>
-    </li>
-
-    <li class="has-submenu">
-      <a href="#">Ministerio</a>
-      <ul class="submenu">
-        <li><a href="servicios.html">Servicios</a></li>
-    <li><a href="pastor.html">Consejería Pastoral</a></li>
-        <li><a href="sermones.html">Sermones</a></li>
-      </ul>
-    </li>
-
+    <li><a href="index.html">Inicio</a></li>
+    <li><a href="quienes.html">Quiénes Somos</a></li>
     <li class="has-submenu">
       <a href="#">Recursos</a>
       <ul class="submenu">
-       <li><a href="#" onclick="return accesoSteven()">Preguntas y Respuestas</a></li>
+        <li><a href="#" onclick="return accesoSteven()">Preguntas y Respuestas</a></li>
         <li><a href="calendario.html">Calendario</a></li>
-        <li><a href="sermones.html">Sermones</a></li>
       </ul>
     </li>
-
-    <li><a href="#contacto">Contacto</a></li>
+    <li><a href="contacto.html">Contacto</a></li>
   </ul>
 </nav>
 
+<!-- JS para abrir/cerrar menú -->
 <script>
   const menuToggle = document.getElementById("menuToggle");
   const menu = document.getElementById("mainMenu");
 
-  // Abrir/cerrar menú hamburguesa
   menuToggle.addEventListener("click", () => {
     menu.classList.toggle("active");
     menuToggle.classList.toggle("active");
   });
 
-  // Manejo de enlaces y submenús
+  // Cerrar menú en móvil al hacer clic en enlace normal
   document.querySelectorAll("#mainMenu a").forEach(link => {
-    link.addEventListener("click", (e) => {
-      if (!link.parentElement.classList.contains("has-submenu")) {
-        // Enlace normal → cerrar menú hamburguesa
+    link.addEventListener("click", () => {
+      if (!link.closest(".has-submenu")) {
         menu.classList.remove("active");
         menuToggle.classList.remove("active");
-      } else {
-        // Enlace con submenú → abrir/cerrar submenú
-        e.preventDefault();
-        const submenu = link.nextElementSibling;
-
-        // Cierra otros submenús
-        document.querySelectorAll("#mainMenu .submenu").forEach(m => {
-          if (m !== submenu) m.classList.remove("open");
-        });
-
-        // Abre/cierra el clickeado
-        submenu.classList.toggle("open");
       }
     });
   });
+
+  // Función para proteger con clave
+  function accesoSteven() {
+    const clave = prompt("Escribe la clave para entrar:");
+    if (clave === "Usuario123") {   // clave correcta
+      window.location.href = "steven.html"; // página protegida
+    } else if (clave !== null) {
+      alert("Clave incorrecta.");
+    }
+    return false;
+  }
 </script>
 
-<!-- 🔑 Aquí agregas la función de acceso -->
-  <script>
-    function accesoSteven() {
-      const clave = prompt("Escribe la clave para entrar:");
-      if (clave === "Usuario123") {   // clave correcta
-        window.location.href = "steven.html"; // página protegida
-      } else if (clave !== null) {
-        alert("Clave incorrecta.");
-      }
-      return false;
+<!-- CSS básico -->
+<style>
+  .navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #0d47a1;
+    padding: 10px 20px;
+  }
+  .logo img {
+    height: 50px;
+  }
+  .menu {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+  }
+  .menu li {
+    position: relative;
+  }
+  .menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  /* Submenú */
+  .submenu {
+    display: none;
+    position: absolute;
+    background: #1565c0;
+    padding: 10px;
+    list-style: none;
+  }
+  .has-submenu:hover .submenu {
+    display: block;
+  }
+  /* Hamburguesa */
+  .menu-toggle {
+    display: none;
+    flex-direction: column;
+    cursor: pointer;
+    gap: 5px;
+  }
+  .menu-toggle span {
+    width: 25px;
+    height: 3px;
+    background: white;
+  }
+  /* Responsive */
+  @media (max-width: 768px) {
+    .menu {
+      position: fixed;
+      top: 0;
+      left: -100%;
+      width: 250px;
+      height: 100vh;
+      background: #0d47a1;
+      flex-direction: column;
+      gap: 15px;
+      padding: 60px 20px;
+      transition: left 0.3s ease;
     }
-  </script>
+    .menu.active {
+      left: 0;
+    }
+    .menu-toggle {
+      display: flex;
+    }
+    .menu-toggle.active span:nth-child(1) {
+      transform: rotate(45deg) translateY(8px);
+    }
+    .menu-toggle.active span:nth-child(2) {
+      opacity: 0;
+    }
+    .menu-toggle.active span:nth-child(3) {
+      transform: rotate(-45deg) translateY(-8px);
+    }
+  }
+</style>
   
 </body>
 </html>     
