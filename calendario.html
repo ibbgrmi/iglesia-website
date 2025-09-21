@@ -1,14 +1,9 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Calendario – Iglesia Bautista Bíblica</title>
-
-  <!-- FullCalendar CSS -->
-  <link href="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.css" rel="stylesheet">
-
-  <!-- Estilos -->
   <style>
     body {
       margin: 0;
@@ -16,34 +11,42 @@
       background: #f4f4f9;
     }
 
-    /* HEADER */
+    /* Barra superior */
     header {
       background: #0056a6;
       color: white;
-      padding: 10px 20px;
       display: flex;
+      align-items: center;
       justify-content: space-between;
-      align-items: center;
+      padding: 10px 20px;
     }
 
-    .logo {
+    header .logo {
       display: flex;
       align-items: center;
+      text-decoration: none;
+      color: white;
+      font-size: 18px;
+      font-weight: bold;
     }
 
-    .logo img {
+    header .logo img {
       height: 40px;
       margin-right: 10px;
     }
 
-    nav {
+    /* Menú normal (desktop) */
+    nav ul {
+      list-style: none;
       display: flex;
-      gap: 15px;
+      gap: 20px;
+      margin: 0;
+      padding: 0;
     }
 
-    nav a {
-      color: white;
+    nav ul li a {
       text-decoration: none;
+      color: white;
       font-weight: bold;
     }
 
@@ -61,111 +64,93 @@
       margin: 4px 0;
     }
 
-    /* Menú responsive */
-    @media (max-width: 768px) {
-      nav {
-        display: none;
-        flex-direction: column;
-        background: #004080;
-        position: absolute;
-        top: 60px;
-        right: 0;
-        width: 200px;
-        padding: 10px;
-      }
-
-      nav.active {
-        display: flex;
-      }
-
-      .menu-toggle {
-        display: flex;
-      }
+    /* Menú móvil */
+    nav {
+      position: absolute;
+      top: 60px;
+      left: 0;
+      width: 100%;
+      background: rgba(0, 86, 166, 0.95);
+      transform: translateX(-100%);
+      transition: transform 0.3s ease-in-out;
     }
 
-    /* CALENDARIO */
-    #calendar {
-      max-width: 90%;
-      margin: 20px auto;
-      background: white;
-      padding: 15px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    nav.active {
+      transform: translateX(0);
     }
 
-    .info-servicios {
+    nav ul {
+      flex-direction: column;
+      align-items: center;
+      padding: 20px 0;
+    }
+
+    /* Texto de servicios */
+    .info {
+      background: #eee;
       text-align: center;
-      margin: 15px 0;
+      padding: 8px;
       font-size: 14px;
-      font-weight: bold;
-      color: #333;
+    }
+
+    /* Calendario */
+    .calendar-container {
+      padding: 0;
+      margin: 0;
+      height: calc(100vh - 120px);
+    }
+
+    iframe {
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+
+    /* Responsivo */
+    @media(min-width: 768px) {
+      .menu-toggle { display: none; }
+      nav { 
+        position: static; 
+        transform: none; 
+        background: none;
+      }
+      nav ul { flex-direction: row; }
+    }
+
+    @media(max-width: 767px) {
+      .menu-toggle { display: flex; }
     }
   </style>
 </head>
 <body>
-
-  <!-- HEADER -->
   <header>
-    <div class="logo">
-      <img src="logo.png" alt="Logo Iglesia">
-      <span>Iglesia Bautista Bíblica</span>
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="Logo">
+      Iglesia Bautista Bíblica
+    </a>
+    <div class="menu-toggle" onclick="document.querySelector('nav').classList.toggle('active')">
+      <div></div><div></div><div></div>
     </div>
-    <div class="menu-toggle" id="menu-toggle">
-      <div></div>
-      <div></div>
-      <div></div>
-    </div>
-    <nav id="nav">
-      <a href="index.html">Inicio</a>
-      <a href="proposito.html">Propósito</a>
-      <a href="mision.html">Misión</a>
-      <a href="servicios.html">Servicios</a>
-      <a href="consejeria.html">Consejería</a>
-      <a href="calendario.html">Calendario</a>
-      <a href="sermones.html">Sermones</a>
-      <a href="contacto.html">Contacto</a>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="proposito.html">Propósito</a></li>
+        <li><a href="mision.html">Misión</a></li>
+        <li><a href="servicios.html">Servicios</a></li>
+        <li><a href="consejeria.html">Consejería</a></li>
+        <li><a href="calendario.html">Calendario</a></li>
+        <li><a href="sermones.html">Sermones</a></li>
+        <li><a href="index.html#contacto">Contacto</a></li>
+      </ul>
     </nav>
   </header>
 
-  <!-- INFO DE SERVICIOS -->
-  <div class="info-servicios">
-    📅 Servicios todos los domingos de <strong>9:30 AM – 12:15 PM</strong> <br>
-    🙏 Oración los miércoles de <strong>7:00 PM – 8:15 PM</strong>
+  <div class="info">
+    📅 Servicios todos los domingos 9:30 AM – 12:15 PM | 🙏 Oración los miércoles 7:00 PM – 8:15 PM
   </div>
 
-  <!-- CALENDARIO -->
-  <div id="calendar"></div>
-
-  <!-- FullCalendar JS -->
-  <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.11/index.global.min.js"></script>
-
-  <script>
-    // Menú hamburguesa
-    document.getElementById('menu-toggle').addEventListener('click', function() {
-      document.getElementById('nav').classList.toggle('active');
-    });
-
-    // Calendario
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        locale: 'es',
-        headerToolbar: {
-          left: 'prev,next today',
-          center: 'title',
-          right: 'dayGridMonth,timeGridWeek,timeGridDay'
-        },
-        googleCalendarApiKey: 'TU_API_KEY_DE_GOOGLE',
-        events: {
-          googleCalendarId: 'TU_CALENDAR_ID'
-        }
-      });
-
-      calendar.render();
-    });
-  </script>
-
+  <div class="calendar-container">
+    <iframe src="https://calendar.google.com/calendar/embed?src=TU_CALENDAR_ID&ctz=America%2FNew_York&key=TU_API_KEY"></iframe>
+  </div>
 </body>
 </html>
