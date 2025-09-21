@@ -447,13 +447,26 @@ nav ul.submenu.open {
   
 </body>
 </html>     
-<!-- Contador regresivo al servicio -->
-<section id="countdown-section" style="text-align:center; padding:20px; background:#f4f4f4;">
-  <h2>⏰ Falta para el próximo servicio:</h2>
-  <div id="countdown" style="font-size:24px; font-weight:bold; color:#333;"></div>
-  <p id="live-links" style="display:none;">
-    🔴 Conéctate en vivo:
-    <a href="https://www.youtube.com/channel/UC_Q9TmY06fERJJ8WYT-blKQ" target="_blank">YouTube</a>
+<!-- 🔴 Bloque de cuenta regresiva y transmisión -->
+<section id="countdown-section" 
+    style="text-align:center; padding:20px; 
+           background:rgba(0,0,0,0.7); 
+           color:#fff; 
+           border-radius:15px; 
+           max-width:600px; 
+           margin:20px auto; 
+           box-shadow:0 4px 15px rgba(0,0,0,0.5);">
+
+  <h2 style="font-size:22px; margin-bottom:10px;">⏰ Falta para el próximo servicio:</h2>
+  <div id="countdown" style="font-size:28px; font-weight:bold; margin-bottom:15px;"></div>
+  
+  <p id="live-links" style="display:none; margin-top:15px;">
+    <span style="font-size:18px; margin-right:10px;">🔴 ¡El servicio está en vivo!</span>
+    <a href="https://www.youtube.com/channel/UC_Q9TmY06fERJJ8WYT-blKQ/live" target="_blank">
+      <img src="https://upload.wikimedia.org/commons/b/b8/YouTube_Logo_2017.svg" 
+           alt="YouTube Live" 
+           style="height:35px; vertical-align:middle;">
+    </a>
   </p>
 </section>
 
@@ -461,49 +474,46 @@ nav ul.submenu.open {
 function updateCountdown() {
   const now = new Date();
   const day = now.getDay(); // 0 = domingo
-  const serviceHour = 10;
+  const serviceHour = 10;   // inicio del servicio
+  const serviceEndHour = 11; // fin del servicio
   const serviceMinute = 0;
 
-  let serviceTime = new Date();
-  serviceTime.setHours(serviceHour, serviceMinute, 0, 0);
+  let serviceStart = new Date();
+  serviceStart.setHours(serviceHour, serviceMinute, 0, 0);
 
-  // Si no es domingo o ya pasó la hora, calcular próximo domingo
-  if (day !== 0 || now > serviceTime) {
-    serviceTime.setDate(serviceTime.getDate() + ((7 - day) % 7));
-    serviceTime.setHours(serviceHour, serviceMinute, 0, 0);
+  let serviceEnd = new Date();
+  serviceEnd.setHours(serviceEndHour, serviceMinute, 0, 0);
+
+  // Si no es domingo, ocultar
+  if (day !== 0) {
+    document.getElementById("countdown-section").style.display = "none";
+    return;
   }
 
-  const diff = serviceTime - now;
-
-  if (diff > 0) {
+  if (now < serviceStart) {
+    // Mostrar cuenta regresiva antes de las 10:00
+    const diff = serviceStart - now;
     const hours = Math.floor(diff / (1000 * 60 * 60));
     const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((diff % (1000 * 60)) / 1000);
 
     document.getElementById("countdown").innerHTML =
       hours + "h " + minutes + "m " + seconds + "s";
-  } else {
-    // cuando llegue la hora del servicio
+    document.getElementById("live-links").style.display = "none";
+
+  } else if (now >= serviceStart && now < serviceEnd) {
+    // Entre 10:00 y 11:00
     document.getElementById("countdown").innerHTML = "¡El servicio está en vivo!";
     document.getElementById("live-links").style.display = "block";
+
+  } else {
+    // Después de las 11:00, ocultar
+    document.getElementById("countdown-section").style.display = "none";
   }
 }
 
 setInterval(updateCountdown, 1000);
 updateCountdown();
-</script>
-
-
-</script>
-  <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const toggle = document.querySelector(".menu-toggle");
-    const nav = document.querySelector("nav");
-
-    toggle.addEventListener("click", function () {
-      nav.classList.toggle("active");
-    });
-  });
 </script>
   <!-- ===== Sección Inicio ===== -->
   <section id="inicio">
