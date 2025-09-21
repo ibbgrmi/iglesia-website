@@ -491,7 +491,33 @@ nav ul.submenu.open {
     }
   }
 </style>
-  
+  <script>
+  // Toggle hamburguesa y drawer
+  const navToggle = document.getElementById("navToggle");
+  const drawer = document.getElementById("mobileDrawer");
+  const backdrop = document.getElementById("backdrop");
+  const drawerClose = document.getElementById("drawerClose");
+
+  navToggle.addEventListener("click", () => {
+    drawer.classList.add("open");
+    backdrop.classList.add("show");
+  });
+
+  drawerClose.addEventListener("click", closeDrawer);
+  backdrop.addEventListener("click", closeDrawer);
+
+  function closeDrawer() {
+    drawer.classList.remove("open");
+    backdrop.classList.remove("show");
+  }
+
+  // Flechitas en submenús desktop
+  document.querySelectorAll("li.has-submenu > a").forEach(link => {
+    const arrow = document.createElement("span");
+    arrow.textContent = " ▼";
+    link.appendChild(arrow);
+  });
+</script>
 </body>
 </html>     
 <!-- 🔴 Bloque de cuenta regresiva y transmisión -->
