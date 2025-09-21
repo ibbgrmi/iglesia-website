@@ -493,29 +493,7 @@ setInterval(updateCountdown, 1000);
 updateCountdown();
 </script>
 
-// Mostrar solo 24 horas antes del servicio
-function checkVisibility() {
-    const now = new Date();
-    const day = now.getDay();
-    let serviceTime = new Date();
-    serviceTime.setHours(10, 0, 0, 0); // 10 AM
 
-    if (day !== 0) {
-        document.getElementById("countdown-section").style.display = "none";
-        return;
-    }
-
-    const diff = serviceTime - now;
-    if (diff > 0 && diff <= 24 * 60 * 60 * 1000) {
-        document.getElementById("countdown-section").style.display = "block";
-        setInterval(updateCountdown, 1000);
-        updateCountdown();
-    } else {
-        document.getElementById("countdown-section").style.display = "none";
-    }
-}
-
-checkVisibility();
 </script>
   <script>
   document.addEventListener("DOMContentLoaded", function () {
