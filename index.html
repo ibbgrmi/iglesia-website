@@ -282,86 +282,49 @@ function accesoSteven() {
 }
 </script>
 
-<!-- CSS básico -->
 <style>
-  .navbar {
+  header {
+    background: #0056a6;
+    color: white;
+    padding: 10px 20px;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    background: #0d47a1;
-    padding: 10px 20px;
   }
-  .logo img {
-    height: 50px;
-  }
-  .menu {
-    display: flex;
-    list-style: none;
-    gap: 20px;
-  }
-  .menu li {
-    position: relative;
-  }
-  .menu a {
+  header a {
     color: white;
     text-decoration: none;
     font-weight: bold;
+    margin: 0 10px;
   }
-  /* Submenú */
-  .submenu {
-    display: none;
-    position: absolute;
-    background: #1565c0;
-    padding: 10px;
-    list-style: none;
+  #menu {
+    display: flex;
+    gap: 15px;
   }
-  .has-submenu:hover .submenu {
-    display: block;
-  }
-  /* Hamburguesa */
   .menu-toggle {
     display: none;
-    flex-direction: column;
+    font-size: 28px;
     cursor: pointer;
-    gap: 5px;
   }
-  .menu-toggle span {
-    width: 25px;
-    height: 3px;
-    background: white;
-  }
-  /* Responsive */
   @media (max-width: 768px) {
-    .menu {
-      position: fixed;
-      top: 0;
-      left: -100%;
-      width: 250px;
-      height: 100vh;
-      background: #0d47a1;
+    #menu {
+      display: none;
       flex-direction: column;
-      gap: 15px;
-      padding: 60px 20px;
-      transition: left 0.3s ease;
-    }
-    .menu.active {
+      background: #0056a6;
+      position: absolute;
+      top: 60px;
       left: 0;
+      width: 100%;
+      padding: 15px 0;
     }
-    .menu-toggle {
+    #menu.active {
       display: flex;
     }
-    .menu-toggle.active span:nth-child(1) {
-      transform: rotate(45deg) translateY(8px);
-    }
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-    .menu-toggle.active span:nth-child(3) {
-      transform: rotate(-45deg) translateY(-8px);
+    .menu-toggle {
+      display: block;
     }
   }
 </style>
-  <script>
  
 
   navToggle.addEventListener("click", () => {
