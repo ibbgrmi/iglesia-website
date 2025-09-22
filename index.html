@@ -255,20 +255,19 @@ section {
     backdrop.classList.remove("show");
   });
 
-  </ script>
+ <script>
 // Preguntas y Respuestas con clave
-function accesoSteven () {
-var clave = prompt("Ingrese la clave para
-acceder:");
-if (clave === "Usuario123") {
-window.location.href = "steven.html";
-return true;
-} else {
-alert("Clave incorrecta. Acceso denegado. ");
-return false;
+function accesoSteven() {
+  const clave = prompt("Ingrese la clave para acceder:");
+  if (clave === "Usuario123") { // clave correcta
+    window.location.href = "steven.html"; // página protegida
+    return true;
+  } else if (clave !== null) {
+    alert("Clave incorrecta. Acceso denegado.");
+  }
+  return false;
 }
-}
-</ script>
+</script>
   
 
 
