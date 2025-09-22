@@ -202,8 +202,8 @@ section {
 <header>
  <!-- Header con logo, nombre y menú -->
 <header>
-  <!-- Logo + Nombre (clickable) -->
-  <a href="index.html" style="display:flex;align-items:center;text-decoration:none;color:white;">
+  <!-- Logo + Nombre (clickeable) -->
+  <a href="index.html" class="logo-nombre">
     <img src="logo.png" alt="Logo Iglesia" class="logo-iglesia">
     <span class="nombre-iglesia">Iglesia Bautista Bíblica</span>
   </a>
@@ -223,6 +223,83 @@ section {
   </nav>
 </header>
 
+<style>
+  header {
+    background: #0056a6;
+    color: white;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Logo y nombre */
+  .logo-nombre {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    color: white;
+  }
+
+  .logo-iglesia {
+    height: 100px; /* más grande en PC */
+    margin-right: 15px;
+  }
+
+  .nombre-iglesia {
+    font-size: 22px;
+    font-weight: bold;
+  }
+
+  /* Menú */
+  #menu {
+    display: flex;
+    gap: 15px;
+  }
+
+  #menu a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+  }
+
+  .menu-toggle {
+    display: none;
+    font-size: 28px;
+    cursor: pointer;
+  }
+
+  /* Responsive para celular */
+  @media (max-width: 768px) {
+    .logo-iglesia {
+      height: 60px; /* más pequeño en celular */
+    }
+
+    .nombre-iglesia {
+      font-size: 18px; /* más chico en celular */
+    }
+
+    #menu {
+      display: none;
+      flex-direction: column;
+      background: #0056a6;
+      position: absolute;
+      top: 70px;
+      left: 0;
+      width: 100%;
+      padding: 15px 0;
+    }
+
+    #menu.active {
+      display: flex;
+    }
+
+    .menu-toggle {
+      display: block;
+    }
+  }
+</style>
+
 <!-- Script del menú hamburguesa -->
 <script>
   document.getElementById("navToggle").addEventListener("click", function() {
@@ -232,7 +309,7 @@ section {
   // Script para proteger Preguntas y Respuestas
   function accesoSteven() {
     const clave = prompt("Ingrese la clave para acceder:");
-    if (clave === "Usuario123") { // cambia "Usuario123" por tu clave real
+    if (clave === "Usuario123") {
       window.location.href = "steven.html";
       return true;
     } else {
@@ -241,80 +318,6 @@ section {
     }
   }
 </script>
-
-<style>
-/* Header general */
-header {
-  background: #0056a6;
-  color: white;
-  padding: 10px 20px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-}
-
-/* Logo más grande en PC */
-.logo-iglesia {
-  height: 100px; /* más grande en pantallas grandes */
-  margin-right: 15px;
-}
-
-.nombre-iglesia {
-  font-size: 20px;
-  font-weight: bold;
-}
-
-/* Menú enlaces */
-header a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-  margin: 0 10px;
-}
-
-/* Menú horizontal */
-#menu {
-  display: flex;
-  gap: 15px;
-}
-
-.menu-toggle {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-}
-
-/* Responsive: en móviles */
-@media (max-width: 768px) {
-  .logo-iglesia {
-    height: 60px; /* más pequeño en celular */
-  }
-
-  .nombre-iglesia {
-    font-size: 16px;
-  }
-
-  #menu {
-    display: none;
-    flex-direction: column;
-    background: #0056a6;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    padding: 15px 0;
-  }
-
-  #menu.active {
-    display: flex;
-  }
-
-  .menu-toggle {
-    display: block;
-  }
-}
-</style>
-
  
 
   
