@@ -200,9 +200,9 @@ section {
 </head>
 <body>
 <header>
- <!-- Header con logo, nombre y menú -->
+<!-- Header con logo, nombre y menú -->
 <header>
-  <!-- Logo + Nombre (clickeable) -->
+  <!-- Logo + Nombre -->
   <a href="index.html" class="logo-nombre">
     <img src="logo.png" alt="Logo Iglesia" class="logo-iglesia">
     <span class="nombre-iglesia">Iglesia Bautista Bíblica</span>
@@ -231,9 +231,11 @@ section {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    flex-wrap: wrap;        /* 👉 evita que se vaya a lo ancho */
+    overflow-x: hidden;     /* 👉 elimina scroll lateral */
   }
 
-  /* Logo y nombre */
+  /* Logo + Nombre */
   .logo-nombre {
     display: flex;
     align-items: center;
@@ -242,7 +244,8 @@ section {
   }
 
   .logo-iglesia {
-    height: 100px; /* más grande en PC */
+    max-height: 100px;  /* grande en PC */
+    height: auto;
     margin-right: 15px;
   }
 
@@ -269,14 +272,14 @@ section {
     cursor: pointer;
   }
 
-  /* Responsive para celular */
+  /* Responsive móvil */
   @media (max-width: 768px) {
     .logo-iglesia {
-      height: 60px; /* más pequeño en celular */
+      max-height: 60px; /* más chico en celular */
     }
 
     .nombre-iglesia {
-      font-size: 18px; /* más chico en celular */
+      font-size: 18px;
     }
 
     #menu {
@@ -300,13 +303,14 @@ section {
   }
 </style>
 
-<!-- Script del menú hamburguesa -->
+<!-- Script -->
 <script>
+  // Menú hamburguesa
   document.getElementById("navToggle").addEventListener("click", function() {
     document.getElementById("menu").classList.toggle("active");
   });
 
-  // Script para proteger Preguntas y Respuestas
+  // Preguntas y Respuestas con clave
   function accesoSteven() {
     const clave = prompt("Ingrese la clave para acceder:");
     if (clave === "Usuario123") {
