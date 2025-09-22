@@ -43,6 +43,18 @@
     strong {
       color: #ffcc66;
     }
+
+    /* Fondo oscuro detrás del drawer */
+    .backdrop {
+      position: fixed;
+      inset: 0;
+      background: rgba(0,0,0,0.6);
+      z-index: 1500;
+      display: none;
+    }
+    .backdrop.show {
+      display: block;
+    }
   </style>
 </head>
 <body>
@@ -79,6 +91,7 @@
     <a href="sermones.html">Sermones</a>
     <a href="index.html#contacto">Contacto</a>
   </aside>
+  <div id="backdrop" class="backdrop" onclick="toggleDrawer()"></div>
 
   <!-- ===== Contenido Principal ===== -->
   <div class="contenido">
@@ -104,7 +117,10 @@
     }
 
     function toggleDrawer() {
-      document.getElementById("drawer").classList.toggle("open");
+      const drawer = document.getElementById("drawer");
+      const backdrop = document.getElementById("backdrop");
+      drawer.classList.toggle("open");
+      backdrop.classList.toggle("show");
     }
   </script>
 </body>
