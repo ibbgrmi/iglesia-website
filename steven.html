@@ -5,122 +5,107 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Preguntas y Respuestas – Iglesia Bautista Bíblica</title>
   <link rel="stylesheet" href="styles.css">
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: white;
+      text-align: center;
+      background: linear-gradient(270deg, #2980b9, #2c3e50, #2980b9);
+      background-size: 600% 600%;
+      animation: fondoAnimado 15s ease infinite;
+    }
+
+    @keyframes fondoAnimado {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .contenido {
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 12px;
+      padding: 30px;
+      max-width: 800px;
+      margin: 20px auto;
+    }
+
+    h1 {
+      margin-bottom: 20px;
+      color: #ffcc00;
+    }
+
+    p {
+      line-height: 1.6;
+      font-size: 1.1em;
+    }
+
+    strong {
+      color: #ffcc66;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ===== Barra superior ===== -->
+  <!-- ===== Menú principal ===== -->
   <nav class="site-nav">
-    <a href="index.html#inicio" class="brand">
-      <img src="logo.png" alt="Logo Iglesia">
-      <span>Iglesia Bautista Bíblica</span>
-    </a>
+    <a class="brand" href="index.html"><img src="logo.png" alt="Logo Iglesia"></a>
     <ul class="menu">
-      <li><a href="index.html#inicio">Inicio</a></li>
-      <li><a href="index.html#proposito">Propósito</a></li>
-      <li><a href="index.html#mision">Misión</a></li>
-      <li><a href="index.html#servicios">Servicios</a></li>
-      <li><a href="index.html#ubicacion">Ubicación</a></li>
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="proposito.html">Propósito</a></li>
+      <li><a href="mision.html">Misión</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="pastor.html">Consejería</a></li>
+      <li><a href="calendario.html">Calendario</a></li>
+      <li><a href="sermones.html">Sermones</a></li>
       <li><a href="index.html#contacto">Contacto</a></li>
-      <li><a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a></li>
-      <li><a href="calendario.html" target="_blank">Calendario</a></li>
     </ul>
-    <button class="hamburger" aria-label="Abrir menú">
+    <!-- Botón hamburguesa móvil -->
+    <button class="hamburger" onclick="toggleDrawer()">
       <span></span><span></span><span></span>
     </button>
   </nav>
 
-  <!-- ===== Drawer para móvil ===== -->
+  <!-- ===== Drawer móvil ===== -->
   <aside class="drawer" id="drawer">
-    <button class="close" aria-label="Cerrar menú">&times;</button>
-    <a href="index.html#inicio">Inicio</a>
-    <a href="index.html#proposito">Propósito</a>
-    <a href="index.html#mision">Misión</a>
-    <a href="index.html#servicios">Servicios</a>
-    <a href="index.html#ubicacion">Ubicación</a>
+    <div class="close" onclick="toggleDrawer()">×</div>
+    <a href="index.html">Inicio</a>
+    <a href="proposito.html">Propósito</a>
+    <a href="mision.html">Misión</a>
+    <a href="servicios.html">Servicios</a>
+    <a href="pastor.html">Consejería</a>
+    <a href="calendario.html">Calendario</a>
+    <a href="sermones.html">Sermones</a>
     <a href="index.html#contacto">Contacto</a>
-    <a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a>
-    <a href="calendario.html" target="_blank">Calendario</a>
   </aside>
-  <div class="backdrop" id="backdrop"></div>
 
-  <!-- ===== Sección Principal ===== -->
-  <section id="steven" style="text-align:center; padding:40px; color:white; animation:fadeIn 2s ease;
-    background:linear-gradient(-45deg,#6dd5fa,#2980b9,#2c3e50,#6dd5fa); background-size:400% 400%; animation:fondoAnimado 12s ease infinite;">
-    
-    <h2 style="font-size:2.5em; margin-bottom:10px; text-shadow:2px 2px 5px rgba(0,0,0,0.5);">
-      Preguntas y Respuestas
-    </h2>
-    <h3 style="color:#ffe680; margin-bottom:10px;">Con el Dr. Steven D. Anderson</h3>
+  <!-- ===== Contenido Principal ===== -->
+  <div class="contenido">
+    <h1>Preguntas y Respuestas</h1>
+    <h3 style="color:#ffcc00;">Con el Dr. Steven D. Anderson</h3>
     <p><em>Ph.D. en Estudios Bíblicos, Seminario Teológico de Dallas</em></p>
-
     <p>
       Si tienes una pregunta acerca de la Biblia o del tema de la lección de Escuela Dominical 
       puedes escribirla aquí:
     </p>
 
-    <!-- Formulario -->
-    <form action="https://formspree.io/f/xrbavjlb" method="POST" 
-      style="max-width:550px; margin:30px auto; text-align:left; background:#ffffff; padding:25px; border-radius:15px; box-shadow:0px 6px 15px rgba(0,0,0,0.25); animation:slideUp 1.5s ease;">
-      
-      <label for="pregunta" style="font-weight:bold; color:#333;">Escribe tu Pregunta:</label>
-      <textarea id="pregunta" name="pregunta" rows="5" required placeholder="Escribe tu pregunta aquí..." 
-        style="width:100%; padding:12px; margin-top:8px; border-radius:8px; border:1px solid #ccc; resize:none; font-size:1em;"></textarea>
-      
+    <form action="https://formspree.io/f/xrbavjlb" method="POST"
+      style="background:#fff; padding:20px; border-radius:10px; max-width:500px; margin:0 auto; color:#333;">
+      <label for="pregunta"><strong>Escribe tu Pregunta:</strong></label><br>
+      <textarea id="pregunta" name="pregunta" rows="5" required 
+        style="width:100%; padding:10px; border-radius:6px; margin-top:10px;"></textarea>
       <button type="submit" 
-        style="margin-top:15px; padding:12px 25px; background:#0066cc; color:#fff; border:none; border-radius:8px; cursor:pointer; font-size:1em; font-weight:bold; transition:0.3s; box-shadow:0px 4px 10px rgba(0,0,0,0.3);">
+        style="margin-top:15px; padding:10px 20px; background:#0066cc; color:#fff; border:none; border-radius:6px; cursor:pointer;">
         Enviar Pregunta
       </button>
     </form>
+  </div>
 
-    <p style="margin-top:25px; font-size:1.1em;">
-      También puedes conocer más del ministerio del Dr. Steven Anderson en su página oficial:  
-      <a href="https://www.bible.truthonly.com/es" target="_blank" style="color:#ffe680; font-weight:bold;">Sitio oficial</a> |  
-      <a href="https://truthonlybible.com" target="_blank" style="color:#ffe680; font-weight:bold;">Blog</a>
-    </p>
-  </section>
-
-  <!-- Animaciones -->
-  <style>
-    @keyframes fondoAnimado {
-      0% {background-position:0% 50%;}
-      50% {background-position:100% 50%;}
-      100% {background-position:0% 50%;}
-    }
-    @keyframes fadeIn {
-      from {opacity:0;}
-      to {opacity:1;}
-    }
-    @keyframes slideUp {
-      from {opacity:0; transform:translateY(30px);}
-      to {opacity:1; transform:translateY(0);}
-    }
-    button:hover {
-      background:#004080;
-      transform: scale(1.08);
-      box-shadow:0px 6px 15px rgba(0,0,0,0.5);
-    }
-  </style>
-
-  <!-- Script para menú móvil -->
+  <!-- ===== Script Drawer ===== -->
   <script>
-    const hamburger = document.querySelector('.hamburger');
-    const drawer = document.getElementById('drawer');
-    const closeBtn = drawer.querySelector('.close');
-    const backdrop = document.getElementById('backdrop');
-
-    hamburger.addEventListener('click', () => {
-      drawer.classList.add('open');
-      backdrop.classList.add('show');
-    });
-    closeBtn.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      backdrop.classList.remove('show');
-    });
-    backdrop.addEventListener('click', () => {
-      drawer.classList.remove('open');
-      backdrop.classList.remove('show');
-    });
+    function toggleDrawer() {
+      document.getElementById("drawer").classList.toggle("open");
+    }
   </script>
-
 </body>
 </html>
