@@ -21,29 +21,7 @@
       100% { background-position: 0% 50%; }
     }
 
-    nav {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      background: rgba(0,0,0,0.7);
-      padding: 10px;
-      border-radius: 0 0 15px 15px;
-      margin-bottom: 30px;
-    }
-    nav img {
-      height: 50px;
-      margin-right: 20px;
-    }
-    nav a {
-      color: white;
-      margin: 0 12px;
-      text-decoration: none;
-      font-weight: bold;
-    }
-    nav a:hover {
-      text-decoration: underline;
-    }
-
+    /* Contenido */
     .contenido {
       background: rgba(0, 0, 0, 0.6);
       border-radius: 12px;
@@ -68,9 +46,29 @@
   </style>
 </head>
 <body>
-  <!-- ===== Menú con Logo ===== -->
-  <nav>
-    <img src="logo.png" alt="Logo Iglesia">
+  <!-- ===== Menú escritorio ===== -->
+  <nav class="site-nav">
+    <a class="brand" href="index.html"><img src="logo.png" alt="Logo Iglesia"></a>
+    <ul class="menu">
+      <li><a href="index.html">Inicio</a></li>
+      <li><a href="proposito.html">Propósito</a></li>
+      <li><a href="mision.html">Misión</a></li>
+      <li><a href="servicios.html">Servicios</a></li>
+      <li><a href="pastor.html">Consejería</a></li>
+      <li><a href="calendario.html">Calendario</a></li>
+      <li><a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a></li>
+      <li><a href="sermones.html">Sermones</a></li>
+      <li><a href="index.html#contacto">Contacto</a></li>
+    </ul>
+    <!-- Botón hamburguesa (solo móvil) -->
+    <button class="hamburger" onclick="toggleDrawer()">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+  <!-- ===== Drawer móvil ===== -->
+  <aside class="drawer" id="drawer">
+    <div class="close" onclick="toggleDrawer()">×</div>
     <a href="index.html">Inicio</a>
     <a href="proposito.html">Propósito</a>
     <a href="mision.html">Misión</a>
@@ -80,7 +78,7 @@
     <a href="#" onclick="accesoSteven()">Preguntas y Respuestas</a>
     <a href="sermones.html">Sermones</a>
     <a href="index.html#contacto">Contacto</a>
-  </nav>
+  </aside>
 
   <!-- ===== Contenido Principal ===== -->
   <div class="contenido">
@@ -94,7 +92,7 @@
     <p><strong>Mateo 28:18-20</strong> — Id, y haced discípulos a todas las naciones, bautizándolos en el nombre del Padre, del Hijo y del Espíritu Santo...</p>
   </div>
 
-  <!-- ===== Script Clave Preguntas ===== -->
+  <!-- ===== Scripts ===== -->
   <script>
     function accesoSteven() {
       var clave = prompt("Ingrese la clave para acceder:");
@@ -103,6 +101,10 @@
       } else {
         alert("Clave incorrecta. Acceso denegado.");
       }
+    }
+
+    function toggleDrawer() {
+      document.getElementById("drawer").classList.toggle("open");
     }
   </script>
 </body>
