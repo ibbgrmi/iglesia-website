@@ -43,24 +43,14 @@
     strong {
       color: #ffcc66;
     }
-
-    /* Fondo oscuro detrás del drawer */
-    .backdrop {
-      position: fixed;
-      inset: 0;
-      background: rgba(0,0,0,0.6);
-      z-index: 1500;
-      display: none;
-    }
-    .backdrop.show {
-      display: block;
-    }
   </style>
 </head>
 <body>
-  <!-- ===== Menú escritorio ===== -->
+  <!-- ===== Menú principal ===== -->
   <nav class="site-nav">
-    <a class="brand" href="index.html"><img src="logo.png" alt="Logo Iglesia"></a>
+    <a class="brand" href="index.html">
+      <img src="logo.png" alt="Logo Iglesia">
+    </a>
     <ul class="menu">
       <li><a href="index.html">Inicio</a></li>
       <li><a href="proposito.html">Propósito</a></li>
@@ -91,7 +81,6 @@
     <a href="sermones.html">Sermones</a>
     <a href="index.html#contacto">Contacto</a>
   </aside>
-  <div id="backdrop" class="backdrop" onclick="toggleDrawer()"></div>
 
   <!-- ===== Contenido Principal ===== -->
   <div class="contenido">
@@ -117,10 +106,7 @@
     }
 
     function toggleDrawer() {
-      const drawer = document.getElementById("drawer");
-      const backdrop = document.getElementById("backdrop");
-      drawer.classList.toggle("open");
-      backdrop.classList.toggle("show");
+      document.getElementById("drawer").classList.toggle("open");
     }
   </script>
 </body>
