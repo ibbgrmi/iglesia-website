@@ -255,19 +255,21 @@ section {
     backdrop.classList.remove("show");
   });
 
-
-<script>
-// Función para proteger con clave
-function accesoSteven() {
-  const clave = prompt("Escribe la clave para entrar:");
-  if (clave === "Usuario123") {  // clave correcta
-    window.location.href = "steven.html"; // página protegida
-  } else if (clave !== null) {
-    alert("Clave incorrecta.");
-  }
-  return false;
+// Preguntas y Respuestas con clave
+function accesoSteven () {
+var clave = prompt("Ingrese la clave para
+acceder:");
+if (clave === "Usuario123") {
+window.location.href = "steven.html";
+return true;
+} else {
+alert("Clave incorrecta. Acceso denegado. ");
+return false;
 }
-</script>
+}
+</ script>
+  
+
 
 <style>
   header {
@@ -314,26 +316,7 @@ function accesoSteven() {
 </style>
  
 
-  navToggle.addEventListener("click", () => {
-    drawer.classList.add("open");
-    backdrop.classList.add("show");
-  });
-
-  drawerClose.addEventListener("click", closeDrawer);
-  backdrop.addEventListener("click", closeDrawer);
-
-  function closeDrawer() {
-    drawer.classList.remove("open");
-    backdrop.classList.remove("show");
-  }
-
-  // Flechitas en submenús desktop
-  document.querySelectorAll("li.has-submenu > a").forEach(link => {
-    const arrow = document.createElement("span");
-    arrow.textContent = " ▼";
-    link.appendChild(arrow);
-  });
-</script>
+ 
 
   
 <!-- 🔴 Bloque de cuenta regresiva y transmisión -->
