@@ -80,46 +80,49 @@
     color: #0056a6;
   }
 </style>
+     <!-- ===== ESTILOS ===== -->
+  <style>
     body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background-image: url("IMG_1846.jpeg");
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-color: #003366;  /* Azul de respaldo */
-}
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background-image: url("IMG_1846.jpeg");
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      background-color: #003366;  /* Azul de respaldo */
+    }
+
     /* Fondo animado tipo onda */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
-  animation: onda 10s infinite linear;
-  z-index: -1;
-}
+    body::before {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
+      animation: onda 10s infinite linear;
+      z-index: -1;
+    }
 
-@keyframes onda {
-  0% { transform: scale(1) translate(0, 0); }
-  50% { transform: scale(1.1) translate(10px, 10px); }
-  100% { transform: scale(1) translate(0, 0); }
-}
-    
-/* Tamaño del logo */
-nav img.logo {
-  height: 230px;   /* extra grande en pantallas normales */
-  width: auto;
-  margin-right: 20px;
-}
+    @keyframes onda {
+      0% { transform: scale(1) translate(0, 0); }
+      50% { transform: scale(1.1) translate(10px, 10px); }
+      100% { transform: scale(1) translate(0, 0); }
+    }
 
-@media (max-width: 768px) {
-  nav img.logo {
-    height: 190px;  /* extra grande en celulares */
-  }
-}
+    /* Tamaño del logo */
+    nav img.logo {
+      height: 230px;   /* extra grande en pantallas normales */
+      width: auto;
+      margin-right: 20px;
+    }
+    @media (max-width: 768px) {
+      nav img.logo {
+        height: 190px;  /* extra grande en celulares */
+      }
+    }
+
     /* Scroll suave */
     html {
       scroll-behavior: smooth;
@@ -127,20 +130,18 @@ nav img.logo {
 
     /* ===== Menú Superior con Logo + Liquid Glass ===== */
     nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    background-color: rgba(0, 119, 204, 0.4); /* Azul translúcido */
-    padding: 10px 20px;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-    backdrop-filter: blur(15px); /* efecto vidrio líquido */
-    -webkit-backdrop-filter: blur(15px); /* soporte iOS Safari */
-    border-radius: 0 12px 12px 0;
-}
-
-    
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background-color: rgba(0, 119, 204, 0.4); /* Azul translúcido */
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(15px);
+      -webkit-backdrop-filter: blur(15px);
+      border-radius: 0 12px 12px 0;
+    }
 
     /* Links estilo pill */
     nav a {
@@ -151,80 +152,68 @@ nav img.logo {
       text-decoration: none;
       font-weight: bold;
       border-radius: 25px;
-      background: rgba(70, 130, 180, 0.6); /* azul acero translúcido */
+      background: rgba(70, 130, 180, 0.6);
       transition: all 0.3s ease;
     }
-
     nav a:hover {
-      background: rgba(70, 130, 180, 1); /* azul fuerte */
+      background: rgba(70, 130, 180, 1);
       color: #fff;
       box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
       transform: translateY(-3px);
     }
 
-    /* Responsive: menú en móviles */
-@media (max-width: 768px) {
-    nav {
-        flex-wrap: wrap;
-    }
-    .menu-toggle {
+    /* Responsive menú en móviles */
+    @media (max-width: 768px) {
+      nav { flex-wrap: wrap; }
+      .menu-toggle {
         display: block;
         cursor: pointer;
         color: #fff;
         font-size: 28px;
-    }
-    nav a {
+      }
+      nav a {
         display: none;
         width: 100%;
         text-align: center;
         margin: 8px 0;
-    }
-    nav.active a {
+      }
+      nav.active a {
         display: block;
+      }
     }
-}
-
-/* En pantallas grandes, ocultar el ícono hamburguesa */
-@media (min-width: 769px) {
-    .menu-toggle {
-        display: none;
+    @media (min-width: 769px) {
+      .menu-toggle { display: none; }
     }
-}
 
-    /* ===== Secciones tipo tarjetas ===== */
-section {
-  background: rgba(70, 130, 180, 0.85); /* Azul acero semitransparente */
-  padding: 40px;
-  margin: 40px auto;
-  max-width: 900px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-  color: white;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* 🔹 Ajuste especial para pantallas pequeñas (iPhone y móviles) */
-@media (max-width: 768px) {
-  section {
-    margin: 20px 10px;   /* Más compacto en móvil */
-    padding: 20px;       /* Reduce el padding */
-    max-width: 100%;     /* Ocupa todo el ancho disponible */
-    border-radius: 10px; /* Bordes más suaves */
-  }
-}
-
+    /* ===== Secciones ===== */
+    section {
+      background: rgba(70, 130, 180, 0.85);
+      padding: 40px;
+      margin: 40px auto;
+      max-width: 900px;
+      border-radius: 15px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+      color: white;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    @media (max-width: 768px) {
+      section {
+        margin: 20px 10px;
+        padding: 20px;
+        max-width: 100%;
+        border-radius: 10px;
+      }
+    }
     section:hover {
       transform: translateY(-8px);
       box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
     }
-
     section h2 {
       font-size: 26px;
       margin-bottom: 15px;
       color: #fff;
       text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
     }
-
     section p {
       font-size: 18px;
       line-height: 1.6;
@@ -239,14 +228,12 @@ section {
       color: white;
       margin-top: 40px;
     }
-
     footer a {
       color: #1E90FF;
       text-decoration: none;
       font-weight: bold;
       margin: 0 10px;
     }
-
     footer a:hover {
       text-decoration: underline;
     }
