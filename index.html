@@ -243,36 +243,38 @@ section {
     color: white;
   }
 
- .logo-iglesia {
-  max-height: 150px; /* aún más grande en PC */
+ /* Logo y nombre en PC (pantallas grandes) */
+.logo-iglesia {
+  max-height: 150px; /* más grande en PC */
   height: auto;
   margin-right: 15px;
 }
 
-  .nombre-iglesia {
-    font-size: 22px;
-    font-weight: bold;
-  }
+.nombre-iglesia {
+  font-size: 22px;
+  font-weight: bold;
+}
 
-  /* Menú */
-  #menu {
-    display: flex;
-    gap: 15px;
-  }
+/* Menú en pantallas grandes */
+#menu {
+  display: flex;
+  gap: 15px;
+}
 
-  #menu a {
-    color: white;
-    text-decoration: none;
-    font-weight: bold;
-  }
+#menu a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+}
 
-  .menu-toggle {
-    display: none;
-    font-size: 28px;
-    cursor: pointer;
-  }
+.menu-toggle {
+  display: none;
+  font-size: 28px;
+  cursor: pointer;
+}
 
- @media (max-width: 360px) {
+/* Ajuste solo para celulares pequeños */
+@media (max-width: 480px) {
   .logo-iglesia {
     max-height: 60px; /* más chico en celular */
   }
@@ -280,27 +282,26 @@ section {
   .nombre-iglesia {
     font-size: 18px;
   }
-}
 
-    #menu {
-      display: none;
-      flex-direction: column;
-      background: #0056a6;
-      position: absolute;
-      top: 70px;
-      left: 0;
-      width: 100%;
-      padding: 15px 0;
-    }
-
-    #menu.active {
-      display: flex;
-    }
-
-    .menu-toggle {
-      display: block;
-    }
+  #menu {
+    display: none;
+    flex-direction: column;
+    background: #0056a6;
+    position: absolute;
+    top: 70px;
+    left: 0;
+    width: 100%;
+    padding: 15px 0;
   }
+
+  #menu.active {
+    display: flex;
+  }
+
+  .menu-toggle {
+    display: block;
+  }
+}
 </style>
 
 <!-- Script -->
