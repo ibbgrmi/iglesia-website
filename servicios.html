@@ -3,66 +3,94 @@
 <head>
   <meta charset="UTF-8">
   <title>Servicios - Iglesia Bautista Bíblica</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <style>
     body {
       font-family: Arial, sans-serif;
       margin: 0;
       padding: 0;
       color: #fff;
-      text-align: center;
-      background: linear-gradient(270deg, #2980b9, #2c3e50, #2980b9);
-      background-size: 600% 600%;
-      animation: fondoAnimado 15s ease infinite;
+      background: #003366;
+      background-image: url("IMG_1846.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
     }
-
+    body::before {
+      content: "";
+      position: fixed;
+      top:0; left:0; width: 100%; height: 100%;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07), transparent 70%);
+      animation: fondoAnimado 15s ease infinite;
+      z-index: -1;
+    }
     @keyframes fondoAnimado {
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
     }
-
     nav {
       display: flex;
       align-items: center;
       justify-content: center;
-      background: rgba(0,0,0,0.7);
+      background: rgba(0,119,204,0.4);
+      backdrop-filter: blur(14px);
       padding: 10px;
       border-radius: 0 0 15px 15px;
       margin-bottom: 30px;
+      gap: 8px;
+      flex-wrap: wrap;
     }
     nav img {
-      height: 50px;
-      margin-right: 20px;
+      height: 45px;
+      margin-right: 15px;
+      border-radius: 10px;
     }
     nav a {
       color: white;
-      margin: 0 12px;
+      margin: 0 7px;
       text-decoration: none;
       font-weight: bold;
+      padding: 7px 13px;
+      border-radius: 19px;
+      background: rgba(70,130,180,0.6);
+      transition: background 0.3s;
     }
     nav a:hover {
+      background: rgba(70,130,180,1);
       text-decoration: underline;
     }
-
     .contenido {
-      background: rgba(0,0,0,0.7);
-      border-radius: 12px;
-      padding: 30px;
-      max-width: 800px;
-      margin: 20px auto;
+      background: rgba(70,130,180,0.78);
+      border-radius: 14px;
+      padding: 42px 20px;
+      max-width: 880px;
+      margin: 36px auto 50px auto;
+      box-shadow: 0 6px 19px rgba(0,0,0,0.23);
+      text-align: left;
     }
     h1 {
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 28px;
       color: #ffcc00;
+      font-size: 2.3rem;
+      font-weight: bold;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.45);
     }
     ul {
       list-style: none;
       padding: 0;
-      text-align: left;
+      margin-bottom: 24px;
+      font-size: 1.15em;
     }
     li {
-      margin: 10px 0;
-      font-size: 18px;
+      margin: 13px 0;
+      padding-left: 0;
+    }
+    li strong {
+      color: #ffe066;
+      font-weight: bold;
+      font-size: 1.07em;
     }
     a {
       color: #4da6ff;
@@ -71,14 +99,41 @@
     a:hover {
       text-decoration: underline;
     }
-    .versiculo {
-      margin-top: 20px;
-      font-style: italic;
-      color: #ffcc66;
+    .cita-biblia {
+      margin: 20px auto 0 auto;
+      padding: 17px 30px;
+      display: flex;
+      flex-direction: column;
+      background: rgba(0,0,0,0.21);
+      border-radius: 15px;
+      max-width: 570px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.14);
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .versiculo-ref {
+      font-size: 1.06em;
+      color: #ffe066;
+      font-weight: bold;
+      margin-bottom: 6px;
+      letter-spacing: 0.5px;
+      text-align: center;
+    }
+    .versiculo-texto {
+      color: #fffbe8;
+      text-align: center;
+      font-size: 1.07em;
+    }
+    @media (max-width: 800px) {
+      .contenido { padding: 18px 5px; }
+      .cita-biblia { padding: 9px 7px; max-width: 98%; }
+      h1 { font-size: 1.45rem;}
     }
   </style>
 </head>
 <body>
+
   <!-- ===== Menú con Logo ===== -->
   <nav>
     <img src="logo.png" alt="Logo Iglesia">
@@ -107,9 +162,12 @@
       <li><strong>Miércoles 7:00 PM – 8:15 PM</strong> — Estudio Bíblico y Oración</li>
     </ul>
 
-    <div class="versiculo">
-      <p><strong>Hebreos 10:25</strong> — No dejando de congregarnos, como algunos tienen por costumbre, 
-      sino exhortándonos; y tanto más, cuanto veis que aquel día se acerca.</p>
+    <div class="cita-biblia">
+      <span class="versiculo-ref">Hebreos 10:25</span>
+      <span class="versiculo-texto">
+        No dejando de congregarnos, como algunos tienen por costumbre, sino exhortándonos; 
+        y tanto más, cuanto veis que aquel día se acerca.
+      </span>
     </div>
   </div>
 
