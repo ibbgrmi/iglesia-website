@@ -19,7 +19,7 @@
       content: "";
       position: fixed;
       top:0; left:0; width: 100%; height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.07), transparent 70%);
       animation: onda 15s ease infinite;
       z-index: -1;
     }
@@ -101,28 +101,55 @@
     .contenido {
       max-width: 900px;
       margin: 50px auto 70px;
-      background: rgba(70,130,180,0.65);
+      background: rgba(70,130,180,0.80);
       border-radius: 15px;
-      padding: 40px;
-      box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+      padding: 40px 30px;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.25);
       text-align: center;
+      backdrop-filter: blur(2px);
     }
     .contenido h1 {
       color: #ffcc00;
-      margin-bottom: 25px;
+      margin-bottom: 24px;
       font-weight: 900;
-      font-size: 2.5rem;
-      text-shadow: 1px 1px 5px rgba(0,0,0,0.5);
+      font-size: 2.3rem;
+      text-shadow: 1px 1px 6px rgba(0,0,0,0.48);
     }
     .contenido p {
-      font-size: 1.2rem;
+      font-size: 1.19rem;
       line-height: 1.7;
-      margin-bottom: 16px;
+      margin-bottom: 20px;
     }
-    .contenido strong {
-      color: #ffcc66;
+    .cita-biblia {
+      margin: 22px auto 0 auto;
+      padding: 16px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      background: rgba(0,0,0,0.19);
+      border-radius: 14px;
+      max-width: 700px;
+      box-shadow: 0 2px 16px rgba(0,0,0,0.12);
     }
-    /* Navegación flechas a lados */
+    .versiculo-ref {
+      font-size: 1.1em;
+      color: #ffe066;
+      font-weight: bold;
+      margin-bottom: 2px;
+      letter-spacing: 0.5px;
+      text-align: left;
+    }
+    .versiculo-texto {
+      color: #fffbe8;
+      text-align: left;
+      font-size: 1.04em;
+    }
+    @media (max-width: 600px) {
+      .contenido { padding: 18px 5px; }
+      .cita-biblia { padding: 9px 7px; }
+      .contenido h1 { font-size: 1.4rem;}
+    }
+    /* Flechas */
     .nav-arrows {
       position: fixed;
       top: 50%;
@@ -130,7 +157,7 @@
       display: flex;
       justify-content: space-between;
       pointer-events: none;
-      padding: 0 25px;
+      padding: 0 21px;
       transform: translateY(-50%);
       z-index: 2000;
     }
@@ -138,10 +165,10 @@
       background: rgba(0, 119, 204, 0.7);
       color: white;
       text-decoration: none;
-      font-size: 2.5rem;
-      padding: 10px 18px;
+      font-size: 2.4rem;
+      padding: 11px 17px;
       border-radius: 50%;
-      box-shadow: 0 0 12px rgba(0,0,0,0.5);
+      box-shadow: 0 0 12px rgba(0,0,0,0.42);
       pointer-events: auto;
       display: flex;
       align-items: center;
@@ -151,7 +178,7 @@
     }
     a.arrow-link:hover {
       background: rgba(0, 102, 179, 0.85);
-      box-shadow: 0 0 22px rgba(0,0,0,0.7);
+      box-shadow: 0 0 22px rgba(0,0,0,0.67);
     }
     a.arrow-link:focus {
       outline: 3px solid #ffcc00;
@@ -159,7 +186,7 @@
     }
     @media (max-width: 768px) {
       .nav-arrows {
-        pointer-events: none; /* Oculta flechas en móvil para no obstaculizar contenido */
+        pointer-events: none;
       }
       a.arrow-link {
         display: none;
@@ -193,13 +220,16 @@
       hacer discípulos en todas las naciones, enseñar la Palabra de Dios con fidelidad
       y servir en amor a nuestra comunidad.
     </p>
-    <p>
-      <strong>Marcos 16:15</strong> — Id por todo el mundo y predicad el evangelio a toda criatura.
-    </p>
-    <p>
-      <strong>Hechos 1:8</strong> — Recibiréis poder cuando haya venido sobre vosotros el Espíritu Santo,
-      y me seréis testigos en Jerusalén, en toda Judea, en Samaria, y hasta lo último de la tierra.
-    </p>
+    <div class="cita-biblia">
+      <div>
+        <span class="versiculo-ref">Marcos 16:15</span>
+        <span class="versiculo-texto">Id por todo el mundo y predicad el evangelio a toda criatura.</span>
+      </div>
+      <div>
+        <span class="versiculo-ref">Hechos 1:8</span>
+        <span class="versiculo-texto">Recibiréis poder cuando haya venido sobre vosotros el Espíritu Santo, y me seréis testigos en Jerusalén, en toda Judea, en Samaria, y hasta lo último de la tierra.</span>
+      </div>
+    </div>
   </div>
 
   <div class="nav-arrows" aria-label="Navegación entre secciones">
