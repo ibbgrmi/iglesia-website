@@ -7,43 +7,40 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
     /* Reset */
-    body, h1, h2, p, a, ul, li, button {
-      margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;
+    body, h1, h2, h3, p, a, ul, li, button, span {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
     }
     body {
       background: #003366;
       color: #fff;
       overflow-x: hidden;
       background-image: url("IMG_1846.jpeg");
+      background-size: cover;
       background-repeat: no-repeat;
       background-position: center;
-      background-size: cover;
-      animation: fondoChange 10s infinite alternate;
+      animation: fondoChange 10s ease infinite alternate;
+      transition: background-image 1s ease-in-out;
     }
-    /* Animación entre dos fondos */
     @keyframes fondoChange {
-      0% {
-        background-image: url("IMG_1846.jpeg");
-      }
-      100% {
-        background-image: url("IMG_2373.jpeg");
-      }
+      0% { background-image: url("IMG_1846.jpeg"); }
+      100% { background-image: url("IMG_2373.jpeg"); }
     }
     body::before {
       content: "";
       position: fixed;
-      top:0; left:0; width: 100%; height: 100%;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
       background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
-      animation: onda 10s infinite linear;
       z-index: -1;
-    }
-    @keyframes onda {
-      0% {transform: scale(1) translate(0,0);}
-      50% {transform: scale(1.1) translate(10px,10px);}
-      100% {transform: scale(1) translate(0,0);}
+      pointer-events: none;
     }
 
-    /* Nav */
+    /* Nav Bar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -57,83 +54,94 @@
       border-radius: 0 12px 12px 0;
       flex-wrap: wrap;
     }
-    nav div.logo-container {
+    .logo-container {
       display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 8px;
     }
-    nav img {
-      height: 110px;
+    .logo-container img {
+      height: 112px;
       width: auto;
       border-radius: 10px;
     }
-    nav .logo-text-mobile {
+    .logo-text {
+      color: #fdeb72;
+      font-weight: 900;
+      font-size: 1.7rem;
+      user-select: none;
+      white-space: nowrap;
       display: none;
-      color: white;
-      font-weight: bold;
-      font-size: 1.4rem;
-      letter-spacing: 0.5px;
     }
     nav .nav-links {
       display: flex;
       gap: 15px;
       align-items: center;
-      flex-wrap: wrap;
       flex-grow: 1;
       justify-content: flex-end;
+      flex-wrap: wrap;
     }
-    nav a {
+    nav .nav-links a {
       color: #fff;
-      background: rgba(70,130,180,0.6);
+      background: rgba(70, 130, 180, 0.7);
       padding: 10px 18px;
-      border-radius: 25px;
-      font-weight: bold;
+      border-radius: 30px;
+      font-weight: 900;
       text-decoration: none;
       transition: background 0.3s ease;
     }
-    nav a:hover {
+    nav .nav-links a:hover {
       background: rgba(70,130,180,1);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+      box-shadow: 0 0 17px rgba(0, 124, 255, 0.9);
       transform: translateY(-3px);
+      transition: all 0.3s ease;
+    }
+    .nav-arrow-right {
+      font-size: 26px;
+      color: #fdeb72;
+      font-weight: 900;
+      user-select: none;
+      padding: 6px 14px;
+      border-radius: 30px;
+      background: rgba(0, 119, 204, 0.88);
+      margin-left: 12px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .nav-arrow-right:hover {
+      background: rgba(0,102,179,1);
+      box-shadow: 0 0 20px #0a53a0c9;
+      cursor: pointer;
     }
     .menu-toggle {
       font-size: 28px;
-      color: white;
+      color: #fdeb72;
       cursor: pointer;
-      display:none;
-    }
-    .nav-arrow-right {
-      font-size: 28px;
-      color: white;
-      cursor: pointer;
-      background: rgba(0, 119, 204, 0.8);
-      padding: 6px 15px;
-      border-radius: 30px;
-      margin-left: 12px;
-      transition: background 0.3s ease;
+      display: none;
       user-select: none;
-      text-decoration: none;
-      align-self: center;
-    }
-    .nav-arrow-right:hover {
-      background: rgba(0, 102, 179, 1);
-      box-shadow: 0 0 15px rgba(0,0,0,0.5);
     }
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
       }
+      .logo-text {
+        display: inline-block;
+        font-size: 1.5rem;
+        margin-left: 8px;
+      }
+      .logo-container img {
+        height: 85px;
+      }
       nav .nav-links {
         display: none;
         flex-direction: column;
         width: 100%;
-        background: #0056a6;
-        margin-top: 10px;
+        background: rgba(0,119,204,0.95);
         border-radius: 12px;
-        padding: 10px 0;
+        margin-top: 10px;
+        padding: 12px 0;
         justify-content: center;
       }
-      nav.active .nav-links {
+      nav .nav-links.active {
         display: flex;
       }
       nav .nav-links a {
@@ -141,15 +149,218 @@
         margin: 0;
         border-radius: 0;
         text-align: center;
-      }
-      nav img {
-        height: 60px;
-      }
-      nav .logo-text-mobile {
-        display: inline;
+        font-size: 1.3rem;
+        font-weight: 900;
       }
       .nav-arrow-right {
         display: none;
+      }
+    }
+
+    /* Hero Slider */
+    .hero-slider {
+      margin: 20px auto 40px;
+      max-width: 900px;
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+    }
+    .slider {
+      position: relative;
+      width: 100%;
+      height: 340px;
+    }
+    .slider img {
+      position: absolute;
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease;
+      z-index: 1;
+      border-radius: 18px;
+    }
+    .slider img.active {
+      opacity: 1;
+      z-index: 2;
+    }
+    .slider-controls {
+      position: absolute;
+      bottom: 20px;
+      width: 100%;
+      text-align: center;
+      z-index: 3;
+    }
+    .slider-controls .dot {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      margin: 0 5px;
+      background: rgba(255,255,255,0.7);
+      border-radius: 50%;
+      cursor: pointer;
+      transition: background 0.4s ease;
+    }
+    .slider-controls .dot.active {
+      background: #007acc;
+    }
+    .slider-caption {
+      position: absolute;
+      bottom: 50px;
+      left: 40px;
+      color: #fff;
+      background: rgba(0, 0, 0, 0.7);
+      padding: 12px 24px;
+      border-radius: 12px;
+      max-width: 75%;
+      font-size: 1.3rem;
+      font-weight: 700;
+      user-select: none;
+    }
+    @media (max-width: 768px) {
+      .hero-slider {
+        max-width: 100%;
+      }
+      .slider {
+        height: 200px;
+      }
+      .slider img {
+        height: 200px;
+      }
+      .slider-caption {
+        position: static;
+        max-width: unset;
+        font-size: 1rem;
+        padding: 8px 15px;
+        margin-top: 10px;
+        border-radius: 8px;
+      }
+    }
+
+    /* CountDown Section */
+    #countdown-section {
+      max-width: 640px;
+      margin: 0 auto 60px;
+      text-align: center;
+      padding: 25px 15px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 24px;
+      box-shadow: 0 0 16px rgb(0 0 0 / 0.7);
+      color: #fff;
+    }
+    #countdown-section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 16px;
+    }
+    #countdown {
+      font-size: 2.5rem;
+      font-weight: 700;
+      padding: 10px 0;
+    }
+
+    /* Additional sections styling */
+    section {
+      max-width: 900px;
+      margin: 40px auto 60px;
+      padding: 32px 24px;
+      background: rgba(0, 0, 0, 0.6);
+      border-radius: 24px;
+      box-shadow: 0 0 24px rgb(0 0 0 / 0.7);
+      color: #fff;
+    }
+
+    section h2 {
+      font-size: 2.2rem;
+      margin-bottom: 15px;
+      font-weight: 700;
+    }
+
+    section p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+    }
+
+    /* Footer styling */
+    footer {
+      text-align: center;
+      padding: 35px 20px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      margin-top: 40px;
+      user-select: none;
+    }
+
+    .footer-links {
+      margin-bottom: 20px;
+    }
+
+    .footer-links a {
+      color: #ddd;
+      margin: 0 12px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      font-weight: 600;
+    }
+
+    .footer-links a:hover {
+      color: #fdeb72;
+      text-decoration: underline;
+    }
+
+    .social-icons {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      margin-top: 16px;
+    }
+
+    .social-icons a {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: rgba(255,255,255,0.1);
+      color: #ddd;
+      width: 60px;
+      height: 60px;
+      font-size: 2.2rem;
+      border-radius: 50%;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .social-icons a:hover {
+      color: #fdeb72;
+      background: rgba(255,255,255,0.2);
+      box-shadow: 0 0 12px #fdeb72;
+      transform: scale(1.2);
+    }
+
+    @media (max-width: 768px) {
+      .logo-container img {
+        height: 80px !important;
+      }
+      .logo-text {
+        display:inline-block;
+        margin-left: 10px;
+        font-size: 1.2rem !important;
+      }
+      nav .nav-links a {
+        font-size: 1rem !important;
+        padding: 10px;
+      }
+      #countdown-section {
+        max-width: 90vw;
+        margin: 15px auto 40px;
+      }
+      section {
+        margin: 24px 15px 40px;
+        padding: 24px 14px;
+      }
+      .slider {
+        height: 180px !important;
+      }
+      .slider img {
+        height: 180px !important;
       }
     }
   </style>
@@ -157,8 +368,10 @@
 <body>
   <nav>
     <div class="logo-container">
-      <a href="index.html"><img src="logo background removed.png" alt="Logo Iglesia"></a>
-      <span class="logo-text-mobile">Iglesia Bautista Bíblica</span>
+      <a href="index.html">
+        <img src="logo.png" alt="Logo Iglesia" />
+      </a>
+      <span class="logo-text">Iglesia Bautista Bíblica</span>
     </div>
     <span class="menu-toggle" id="navToggle">☰</span>
     <div class="nav-links" id="menu">
@@ -169,313 +382,213 @@
       <a href="calendario.html">Calendario</a>
       <a href="#" onclick="return accesoSteven()">Preguntas y Respuestas</a>
       <a href="index.html#contacto">Contacto</a>
-      <a href="proposito.html" class="nav-arrow-right" aria-label="Ir a página Propósito">&#8594;</a>
+      <a class="nav-arrow-right" href="proposito.html" aria-label="Ir a Propósito">&#8594;</a>
     </div>
   </nav>
 
+  <div class="hero-slider">
+    <div class="slider">
+      <img src="IMG_1846.jpeg" alt="Foto Iglesia" class="slider-img active" />
+      <img src="Logo viejo para header.jpeg" alt="Logo Iglesia" class="slider-img" />
+    </div>
+    <div class="slider-controls">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
+    <div class="slider-caption">
+      <h2>Bienvenidos a la Iglesia Bautista Bíblica</h2>
+      <p>Conéctate. Somos una familia en Grand Rapids.</p>
+    </div>
+  </div>
+
+  <section id="countdown-section">
+    <h2>Falta para el próximo servicio:</h2>
+    <div id="countdown"></div>
+    <div id="live-links" style="display:none;">
+      <span>🔴 El servicio está en vivo</span>
+      <a href="https://www.youtube.com/watch?v=YhapHY2hihY" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </section>
+
+  <section id="proposito">
+    <h2>Propósito</h2>
+    <p>
+      La Iglesia Bautista Bíblica existe para glorificar a Dios por medio de la implementación del Gran Mandamiento y la Gran Comisión. Mateo 22:37-40; 28:18-20.
+    </p>
+  </section>
+
+  <section id="mision">
+    <h2>Misión</h2>
+    <p>
+      La misión de la Iglesia Bautista Bíblica es guiar a nuevos creyentes a una relación segura con Jesucristo, capacitarlos para hacer discípulos y dar fruto para Su gloria.
+    </p>
+  </section>
+
+  <section id="servicios">
+    <h2>Servicios</h2>
+    <ul>
+      <li>Domingo 9:30–11:00 AM : Culto de Adoración</li>
+      <li>Domingo 11:15 AM – 12:00 PM : Escuela Bíblica</li>
+      <li>Domingo 6:00-7:00 PM : Servicio por Zoom <a href="https://us02web.zoom.us/j/8121830152?pwd=OFlqNDZBYTNzL0pZRk9nMTJOWThNUT09" target="_blank">Conectarse</a></li>
+      <li>Miércoles 7:00–8:15 PM : Estudio Bíblico y Oración</li>
+    </ul>
+  </section>
+
+  <section id="ubicacion">
+    <h2>Ubicación</h2>
+    <p>1273 Lamont Ave NW, Grand Rapids, MI</p>
+    <a href="#" id="map-link" target="_blank">Ver mapa</a>
+  </section>
+
+  <section id="peticiones">
+    <h2>Envía tus peticiones de oración</h2>
+    <button onclick="abrirModal()">Enviar petición</button>
+  </section>
+
+  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
+    <div style="background:#265c86; padding:20px; border-radius:12px; max-width:400px; color:#fff; position:relative;">
+      <button onclick="cerrarModal()" style="position:absolute; top:10px; right:10px; font-size:18px; background:none; border:none; cursor:pointer; color:#fff;">×</button>
+      <form id="petition-form" action="https://formspree.io/f/mqxxzqnv" method="POST">
+        <label for="name">Nombre:</label><br />
+        <input type="text" id="name" name="name" required style="width:100%; padding:8px; margin-bottom:10px;" />
+        <label for="prayer">Petición:</label><br />
+        <textarea id="prayer" name="prayer" rows="4" required style="width:100%; padding:8px; margin-bottom:10px;"></textarea>
+        <button type="submit" style="background:#1e87f0; color:#fff; border:none; padding:10px 16px; border-radius:8px; cursor:pointer;">Enviar</button>
+      </form>
+      <div id="success-message" style="display:none; margin-top:10px; color:#4caf50; font-weight:bold;">Gracias por enviar tu petición.</div>
+    </div>
+  </div>
+
+  <section id="consejeria">
+    <h2>Consejería Pastoral</h2>
+    <p>Si necesitas consejería o hablar con el pastor, envía un mensaje de texto a la iglesia.</p>
+    <a href="sms:16166353574">Enviar mensaje</a>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Email: <a href="mailto:ibb@iglesia-bautista.org" style="color:#1e90ff;">ibb@iglesia-bautista.org</a></p>
+  </section>
+
+  <footer>
+    <p>Síguenos en redes sociales</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=100064413082714" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://www.youtube.com/iglesia-bautista" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://wa.me/1234567890" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <p>© 2025 Iglesia Bautista Bíblica - Todos los derechos reservados</p>
+  </footer>
+
   <script>
-    const navToggle = document.getElementById('navToggle');
-    const menu = document.getElementById('menu');
-    navToggle.addEventListener('click', () => {
-      menu.classList.toggle('active');
+    const navToggle = document.getElementById("navToggle");
+    const menu = document.getElementById("menu");
+
+    navToggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
     });
 
     function accesoSteven() {
-      const clave = prompt("Ingrese la clave para acceder:");
+      const clave = prompt("Ingrese el código de acceso:");
       if (clave === "Usuario123") {
         window.location.href = "steven.html";
         return true;
       } else {
-        alert("Clave incorrecta. Acceso denegado.");
+        alert("Código incorrecto");
         return false;
       }
     }
-  </script>
-</body>
-</html>
 
+    // Petición Modal Controls
+    const modal = document.getElementById("modal");
+    const openBtn = document.querySelector("section#peticiones button");
+    const closeBtn = modal.querySelector("button");
 
-<!-- Menú -->
-<nav>
-  <img src="logo background removed.png" alt="Logo Iglesia" />
-  <span class="menu-toggle" id="navToggle">☰</span>
-  <div class="nav-links" id="menu">
-    <a href="index.html">Inicio</a>
-    <a href="proposito.html">Propósito</a>
-    <a href="mision.html">Misión</a>
-    <a href="servicios.html">Servicios</a>
-    <a href="calendario.html">Calendario</a>
-    <a href="#" onclick="return accesoSteven()">Preguntas y Respuestas</a>
-    <a href="index.html#contacto">Contacto</a>
-  </div>
-</nav>
-
-<!-- Slider -->
-<div class="hero-slider">
-  <div class="slider">
-    <img src="IMG_1846.jpeg" alt="Foto Iglesia" class="slider-img active" />
-    <img src="Logo para la pagina.PNG" alt="Logo Iglesia" class="slider-img" />
-  </div>
-  <div class="slider-controls">
-    <span class="dot active"></span>
-    <span class="dot"></span>
-  </div>
-  <div class="slider-caption">
-    <h2>Bienvenidos a la Iglesia Bautista Bíblica</h2>
-    <p>Conéctate. Somos una familia en Grand Rapids.</p>
-  </div>
-</div>
-
-<!-- Cuenta Regresiva -->
-<section id="countdown-section">
-  <h2>⏰ Falta para el próximo servicio:</h2>
-  <div id="countdown"></div>
-  <p id="live-links" style="display:none;">
-    <span>🔴 ¡El servicio está en vivo!</span>
-    <a href="https://www.youtube.com/channel/UC_Q9TmY06fERJJ8WYT-blKQ/live" target="_blank">
-      <img src="https://upload.wikimedia.org/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Live" />
-    </a>
-  </p>
-</section>
-
-<!-- Propósito -->
-<section id="proposito">
-  <h2>Propósito</h2>
-  <p>
-    La Iglesia Bautista Bíblica existe para glorificar a Dios por medio de la
-    implementación del Gran Mandamiento y la Gran Comisión de nuestro Señor y
-    Salvador Jesucristo. Mateo 22:37-40; 28:18-20.
-  </p>
-</section>
-
-<!-- Misión -->
-<section id="mision">
-  <h2>Misión</h2>
-  <p>
-    La misión de la Iglesia Bautista Bíblica, como se prescribe por el Gran Mandamiento y la Gran Comisión,
-    es amar a Dios con todo nuestro corazón, guiar a los perdidos a una relación personal con Jesucristo,
-    incorporarlos a la confraternidad de la iglesia local, enseñarles a vivir en obediencia a la Palabra de Dios
-    y prepararles para usar sus dones espirituales en servicio a otros.
-  </p>
-</section>
-
-<!-- Servicios -->
-<section id="servicios">
-  <h2>Servicios</h2>
-  <p>Domingo 9:30 AM – 11:00 AM – Culto de Adoración</p>
-  <p>Domingo 11:15 AM – 12:00 PM – Escuela Bíblica</p>
-  <p>
-    Domingo 6:00 PM – 7:00 PM – Servicio por Zoom
-    <a href="https://us02web.zoom.us/j/8121830152?pwd=OF1qNDVBY25iNUxGQX1LzpTXpLTQ9" target="_blank"
-      >Conectarse al Zoom</a
-    >
-  </p>
-  <div id="zoomReminder" style="display:none; background-color:#0077cc; color:white; text-align:center; padding:15px; font-size:18px; font-weight:bold; border-radius:8px;">
-    📢 <span id="zoomText">El servicio por Zoom comenzará pronto.</span>
-    <a id="zoomLink" href="https://us02web.zoom.us/j/8121830152?pwd=OFlqNDVBY25iNUxGQXl1ZlpzTXpLQT09" target="_blank" style="color:yellow; font-weight:bold; text-decoration:underline;">Únete ahora</a>
-  </div>
-  <p>Miércoles 7:00 PM – 8:15 PM – Estudio Bíblico y Oración</p>
-</section>
-
-<!-- Ubicación -->
-<section id="ubicacion">
-  <h2>Ubicación</h2>
-  <p>1273 Lamont Ave. NW, Grand Rapids, MI 49504</p>
-  <a id="mapLink" target="_blank">📍 Ver Ubicación</a>
-</section>
-
-<!-- Peticiones -->
-<section id="peticiones">
-  <h2>Peticiones de Oración</h2>
-  <button onclick="abrirModal()">✉️ Enviar Petición</button>
-</section>
-
-<!-- Modal peticiones -->
-<div id="modalPeticiones" class="modal">
-  <div class="modal-content">
-    <span class="cerrar" onclick="cerrarModal()">&times;</span>
-    <h2>Peticiones de Oración</h2>
-    <form id="form-peticion" action="https://formspree.io/f/mqadoabv" method="POST" class="form-peticion">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required />
-      <label for="peticion">Petición:</label>
-      <textarea id="peticion" name="peticion" rows="4" required></textarea>
-      <label for="correo">Correo (opcional):</label>
-      <input type="email" id="correo" name="correo" />
-      <label for="telefono">Teléfono (opcional):</label>
-      <input type="tel" id="telefono" name="telefono" />
-      <button type="submit">✉️ Enviar Petición</button>
-    </form>
-    <p id="mensaje-exito" style="display:none; color:#fff; background:#28a745; padding:10px; margin-top:15px; border-radius:6px; text-align:center;">
-      ✅ Tu petición fue enviada correctamente.
-    </p>
-  </div>
-</div>
-
-<!-- Consejería -->
-<section id="consejeria">
-  <h2>Consejería Pastoral</h2>
-  <p>
-    Si necesitas consejería o deseas hablar directamente con el pastor, puedes enviar un mensaje de texto al número de la iglesia.
-  </p>
-  <a href="sms:16166353574" class="btn">Enviar mensaje al Pastor</a>
-</section>
-
-<!-- Contacto -->
-<section id="contacto">
-  <h2>📧 Contacto</h2>
-  <p>Email:
-    <a href="mailto:ibb@iglesia-bautista-biblica.org?subject=Contacto&body=Escriba%20su%20mensaje%20aquí" style="color:#1E90FF;">
-      ibb@iglesia-bautista-biblica.org
-    </a>
-  </p>
-</section>
-
-<!-- Footer -->
-<footer>
-  <p>Síguenos en redes sociales</p>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/profile.php?id=100064413082714" target="_blank" aria-label="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
-    <a href="https://youtube.com/@iglesiabautistabiblicagran187" target="_blank" aria-label="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
-    <a href="https://chat.whatsapp.com/DJL5Yx1rJEiJ3fZFclha3h" target="_blank" aria-label="WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
-  </div>
-  <p>© 2025 Iglesia Bautista Bíblica - Todos los derechos reservados</p>
-</footer>
-
-<script>
-  // Menú hamburguesa
-  document.getElementById("navToggle").addEventListener("click", function () {
-    document.getElementById("menu").classList.toggle("active");
-    document.querySelector("nav").classList.toggle("active");
-  });
-  // Preguntas y Respuestas con clave
-  function accesoSteven() {
-    const clave = prompt("Ingrese la clave para acceder:");
-    if (clave === "Usuario123") {
-      window.location.href = "steven.html";
-      return true;
-    } else {
-      alert("Clave incorrecta. Acceso denegado.");
-      return false;
-    }
-  }
-  // Modal peticiones
-  function abrirModal() {
-    document.getElementById("modalPeticiones").style.display = "flex";
-  }
-  function cerrarModal() {
-    document.getElementById("modalPeticiones").style.display = "none";
-  }
-  document.getElementById("form-peticion").addEventListener("submit", function (event) {
-    event.preventDefault();
-    fetch(this.action, {
-      method: this.method,
-      body: new FormData(this),
-      headers: { Accept: "application/json" },
-    })
-      .then((response) => {
-        if (response.ok) {
-          document.getElementById("mensaje-exito").style.display = "block";
-          this.reset();
-          setTimeout(() => {
-            document.getElementById("mensaje-exito").style.display = "none";
-            cerrarModal();
-          }, 5000);
-        }
-      })
-      .catch(() => {
-        alert("Hubo un error al enviar la petición. Intenta de nuevo.");
-      });
-  });
-
-  // Slider imagenes
-  const slides = document.querySelectorAll(".slider-img");
-  const dots = document.querySelectorAll(".dot");
-  let current = 0;
-  function showSlide(idx) {
-    slides.forEach((img, i) => {
-      img.classList.toggle("active", i === idx);
-      dots[i].classList.toggle("active", i === idx);
+    openBtn.addEventListener("click", () => {
+      modal.style.display = "flex";
     });
-    current = idx;
-  }
-  dots.forEach((dot, i) => {
-    dot.addEventListener("click", () => showSlide(i));
-  });
-  setInterval(() => {
-    let next = (current + 1) % slides.length;
-    showSlide(next);
-  }, 5000);
 
-  // Countdown para servicio en vivo
-  function updateCountdown() {
-    const now = new Date();
-    const day = now.getDay(); // 0 = domingo
-    const serviceHour = 10;
-    const serviceEndHour = 11;
-    const serviceMinute = 0;
-    let serviceStart = new Date();
-    serviceStart.setHours(serviceHour, serviceMinute, 0, 0);
-    let serviceEnd = new Date();
-    serviceEnd.setHours(serviceEndHour, serviceMinute, 0, 0);
-    if (day !== 0) {
-      document.getElementById("countdown-section").style.display = "none";
-      return;
+    closeBtn.addEventListener("click", () => {
+      modal.style.display = "none";
+    });
+
+    // Handle form submission
+    const form = document.getElementById("petition-form");
+    const successMsg = document.getElementById("success-message");
+
+    form.addEventListener("submit", (e) => {
+      e.preventDefault();
+      fetch(form.action, {
+        method: form.method,
+        body: new FormData(form),
+        headers: {
+          Accept: "application/json"
+        }
+      }).then(response => {
+        if (response.ok) {
+          successMsg.style.display = "block";
+          form.reset();
+          setTimeout(() => {
+            successMsg.style.display = "none";
+            modal.style.display = "none";
+          }, 5000);
+        } else {
+          alert("Hubo un error, por favor intente más tarde.");
+        }
+      }).catch(() => {
+        alert("Hubo un error, por favor intente más tarde.");
+      });
+    });
+
+    // Countdown Timer
+    function updateCountdown() {
+      const now = new Date();
+      const nextService = new Date();
+      nextService.setHours(10, 0, 0, 0); // 10AM service
+      if (now.getDay() !== 0) { // Sunday = 0
+        document.getElementById("countdown-section").style.display = "none";
+        return;
+      }
+      const diff = nextService - now;
+      if (diff > 0) {
+        const h = Math.floor(diff / (1000 * 60 * 60));
+        const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((diff % (1000 * 60)) / 1000);
+        document.getElementById("countdown").innerText = `${h}h ${m}m ${s}s`;
+        document.getElementById("live-links").style.display = "none";
+      } else {
+        document.getElementById("countdown").innerText = "El servicio está en vivo.";
+        document.getElementById("live-links").style.display = "block";
+      }
     }
-    if (now < serviceStart) {
-      const diff = serviceStart - now;
-      const hours = Math.floor(diff / (1000 * 60 * 60));
-      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-      document.getElementById("countdown").innerHTML = hours + "h " + minutes + "m " + seconds + "s";
-      document.getElementById("live-links").style.display = "none";
-    } else if (now >= serviceStart && now < serviceEnd) {
-      document.getElementById("countdown").innerHTML = "¡El servicio está en vivo!";
-      document.getElementById("live-links").style.display = "block";
+
+    setInterval(updateCountdown, 1000);
+    updateCountdown();
+
+    // Zoom Reminder - show message at 4 PM to 6 PM Sunday
+    function zoomReminder() {
+      const now = new Date();
+      if (now.getDay() !== 0) return; // Sunday
+      const hours = now.getHours();
+      if (hours >= 16 && hours < 18) {
+        document.getElementById("zoomReminder").style.display = "block";
+      } else if (hours >= 18 && hours < 19) {
+        document.getElementById("zoomReminder").style.display = "block";
+        document.getElementById("zoomReminder").style.backgroundColor = "yellow";
+      } else {
+        document.getElementById("zoomReminder").style.display = "none";
+      }
+    }
+    setInterval(zoomReminder, 60000);
+    zoomReminder();
+
+    // Map link for iOS or others
+    const mapLink = document.getElementById("map-link");
+    if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+      mapLink.href = "http://maps.apple.com/?address=1273 Lamont Ave NW, Grand Rapids, MI";
     } else {
-      document.getElementById("countdown-section").style.display = "none";
+      mapLink.href = "https://maps.google.com/?q=1273 Lamont Ave NW, Grand Rapids, MI";
     }
-  }
-  setInterval(updateCountdown, 1000);
-  updateCountdown();
-
-  // Zoom aviso
-  function checkZoomReminder() {
-    const now = new Date();
-    const day = now.getDay();
-    const hours = now.getHours();
-    const minutes = now.getMinutes();
-    const totalMinutes = hours * 60 + minutes;
-    const reminder = document.getElementById("zoomReminder");
-    const text = document.getElementById("zoomText");
-    const link = document.getElementById("zoomLink");
-    if (day === 0 && totalMinutes >= 16 * 60 && totalMinutes < 18 * 60) {
-      reminder.style.display = "block";
-      reminder.style.backgroundColor = "#0077cc";
-      text.textContent = "El servicio por Zoom comenzará pronto.";
-      link.textContent = "Únete ahora";
-    } else if (day === 0 && totalMinutes >= 18 * 60 && totalMinutes < 19 * 60) {
-      reminder.style.display = "block";
-      reminder.style.backgroundColor = "#ffcc00";
-      text.textContent = "El servicio por Zoom ha comenzado.";
-      link.textContent = "Únete ahora";
-    } else {
-      reminder.style.display = "none";
-    }
-  }
-  setInterval(checkZoomReminder, 60000);
-  checkZoomReminder();
-
-  // Mapa según dispositivo
-  const mapLink = document.getElementById("mapLink");
-  const address = "1273+Lamont+Ave+NW,+Grand+Rapids,+MI+49504";
-  const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-  if (/iPad|iPhone|iPod/i.test(userAgent)) {
-    mapLink.href = "http://maps.apple.com/?q=" + address;
-  } else {
-    mapLink.href = "https://www.google.com/maps?q=" + address;
-  }
-</script>
-
+  </script>
 </body>
 </html>
