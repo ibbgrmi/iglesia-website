@@ -1,207 +1,356 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Iglesia Bautista Bíblica</title>
-  <link rel="stylesheet" href="styles.css">
-
-  <!-- SEO y PWA -->
-  <meta name="description" content="Conéctate con Iglesia Bautista Bíblica en Grand Rapids. Servicios en persona y en línea, Escuela Bíblica y consejería pastoral.">
-  <meta name="keywords" content="iglesia, bautista, Grand Rapids, Biblia, culto, adoración, escuela bíblica, consejería, cristiano">
-  <meta name="author" content="Iglesia Bautista Bíblica">
-
-  <meta property="og:title" content="Iglesia Bautista Bíblica - Grand Rapids" />
-  <meta property="og:description" content="Conéctate con nosotros. Servicios en persona y en línea." />
-  <meta property="og:image" content="https://iglesia-bautista-biblica.org/logo.png" />
-  <meta property="og:url" content="https://iglesia-bautista-biblica.org" />
-  <meta property="og:type" content="website" />
-
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Iglesia Bautista Bíblica - Grand Rapids">
-  <meta name="twitter:description" content="Conéctate con nosotros. Servicios en persona y en línea.">
-  <meta name="twitter:image" content="https://iglesia-bautista-biblica.org/logo.png">
-
-  <link rel="manifest" href="/manifest.json">
-  <meta name="theme-color" content="#0077cc">
-  <link rel="apple-touch-icon" href="/logo.png">
-  
-
-
-     <!-- ===== ESTILOS ===== -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background-image: url("IMG_1846.jpeg");
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      background-color: #003366;  /* Azul de respaldo */
+    /* Reset */
+    body, h1, h2, p, a, ul, li, button {
+      margin: 0; padding: 0; box-sizing: border-box; font-family: Arial, sans-serif;
     }
-
-    /* Fondo animado tipo onda */
+    body {
+      background: #003366;
+      color: #fff;
+      overflow-x: hidden;
+      background-image: url("IMG_1846.jpeg");
+      background-repeat: no-repeat;
+      background-position: center;
+      background-size: cover;
+    }
     body::before {
       content: "";
       position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
+      top:0; left:0; width: 100%; height: 100%;
       background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
       animation: onda 10s infinite linear;
       z-index: -1;
     }
-
     @keyframes onda {
-      0% { transform: scale(1) translate(0, 0); }
-      50% { transform: scale(1.1) translate(10px, 10px); }
-      100% { transform: scale(1) translate(0, 0); }
+      0% {transform: scale(1) translate(0,0);}
+      50% {transform: scale(1.1) translate(10px,10px);}
+      100% {transform: scale(1) translate(0,0);}
     }
 
-    /* Tamaño del logo */
-    nav img.logo {
-      height: 230px;   /* extra grande en pantallas normales */
-      width: auto;
-      margin-right: 20px;
-    }
-    @media (max-width: 768px) {
-      nav img.logo {
-        height: 190px;  /* extra grande en celulares */
-      }
-    }
-
-    /* Scroll suave */
-    html {
-      scroll-behavior: smooth;
-    }
-
-    /* ===== Menú Superior con Logo + Liquid Glass ===== */
+    /* Nav */
     nav {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      background-color: rgba(0, 119, 204, 0.4); /* Azul translúcido */
+      background: rgba(0,119,204,0.4);
       padding: 10px 20px;
       position: sticky;
       top: 0;
       z-index: 1000;
       backdrop-filter: blur(15px);
-      -webkit-backdrop-filter: blur(15px);
       border-radius: 0 12px 12px 0;
+      flex-wrap: wrap;
     }
-
-    /* Links estilo pill */
+    nav img {
+      height: 90px;
+      width: auto;
+      border-radius: 10px;
+      margin-right: 12px;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 15px;
+    }
     nav a {
-      display: inline-block;
       color: #fff;
-      margin: 0 12px;
+      background: rgba(70,130,180,0.6);
       padding: 10px 18px;
-      text-decoration: none;
-      font-weight: bold;
       border-radius: 25px;
-      background: rgba(70, 130, 180, 0.6);
-      transition: all 0.3s ease;
+      font-weight: bold;
+      text-decoration: none;
+      transition: background 0.3s ease;
     }
     nav a:hover {
-      background: rgba(70, 130, 180, 1);
-      color: #fff;
-      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+      background: rgba(70,130,180,1);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.4);
       transform: translateY(-3px);
     }
-
-    /* Responsive menú en móviles */
+    .menu-toggle {
+      font-size: 28px;
+      color: white;
+      cursor: pointer;
+      display:none;
+    }
     @media (max-width: 768px) {
-      nav { flex-wrap: wrap; }
       .menu-toggle {
         display: block;
-        cursor: pointer;
-        color: #fff;
-        font-size: 28px;
       }
-      nav a {
+      nav .nav-links {
         display: none;
+        flex-direction: column;
         width: 100%;
+        background: #0056a6;
+        margin-top: 10px;
+        border-radius: 12px;
+        padding: 10px 0;
+      }
+      nav.active .nav-links {
+        display: flex;
+      }
+      nav .nav-links a {
+        padding: 15px 0;
+        margin: 0;
+        border-radius: 0;
         text-align: center;
-        margin: 8px 0;
       }
-      nav.active a {
-        display: block;
+      nav img {
+        height: 60px;
+        margin-right: 6px;
       }
-    }
-    @media (min-width: 769px) {
-      .menu-toggle { display: none; }
     }
 
-    /* ===== Secciones ===== */
-    section {
-     
-      padding: 40px;
-      margin: 40px auto;
+    /* Hero slider */
+    .hero-slider {
+      margin: 20px auto 40px;
       max-width: 900px;
-      border-radius: 15px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
-      color: white;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      border-radius: 18px;
+      box-shadow: 0 8px 32px rgba(0,0,0,0.28);
+    }
+    .slider {
+      position: relative; width: 100%; height: 340px;
+    }
+    .slider-img {
+      position: absolute;
+      width: 100%;
+      height: 340px;
+      object-fit: cover;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+    .slider-img.active {
+      opacity: 1;
+      z-index: 1;
+    }
+    .slider-controls {
+      position: absolute;
+      bottom: 18px;
+      width: 100%;
+      text-align: center;
+      z-index: 2;
+    }
+    .dot {
+      display: inline-block;
+      height: 14px; width: 14px;
+      margin: 0 6px;
+      background: rgba(255,255,255,0.7);
+      cursor: pointer;
+      border-radius: 50%;
+      transition: background 0.4s ease;
+    }
+    .dot.active {
+      background: #0077cc;
+    }
+    .slider-caption {
+      position: absolute;
+      bottom: 40px;
+      left: 40px;
+      background: rgba(0,0,0,0.5);
+      padding: 20px 26px;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+    }
+    .slider-caption h2 {
+      font-weight: bold;
+      font-size: 2rem;
+      margin-bottom: 10px;
     }
     @media (max-width: 768px) {
-      section {
-        margin: 20px 10px;
-        padding: 20px;
+      .hero-slider {
         max-width: 100%;
-        border-radius: 10px;
+      }
+      .slider,
+      .slider-img {
+        height: 200px;
+      }
+      .slider-caption {
+        bottom: 20px;
+        left: 14px;
+        right: 14px;
+        padding: 12px 20px;
+        font-size: 1rem;
+      }
+      nav img {
+        height: 45px;
       }
     }
-    section:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
-    }
-    section h2 {
-      font-size: 26px;
-      margin-bottom: 15px;
-      color: #fff;
-      text-shadow: 1px 1px 4px rgba(0, 0, 0, 0.6);
-    }
-    section p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #f0f0f0;
-    }
 
-    /* ===== Footer ===== */
-    footer {
+    /* Cuenta regresiva */
+    #countdown-section {
       text-align: center;
       padding: 20px;
-      background: rgba(0, 0, 0, 0.7);
+      background: rgba(0,0,0,0.7);
+      color: #fff;
+      border-radius: 15px;
+      max-width: 600px;
+      margin: 20px auto;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.52);
+    }
+    #countdown {
+      font-size: 28px;
+      font-weight: bold;
+      margin-bottom: 15px;
+    }
+    #live-links > span {
+      font-size: 18px;
+      margin-right: 10px;
+    }
+    #live-links img {
+      height: 35px;
+      vertical-align: middle;
+    }
+
+    /* Secciones */
+    section {
+      max-width: 900px;
+      background: rgba(70,130,180,0.65);
+      border-radius: 16px;
+      margin: 36px auto;
+      padding: 36px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.18);
+      color: #fff;
+    }
+    section h2 {
+      font-size: 2rem;
+      margin-bottom: 20px;
+    }
+    section p {
+      font-size: 1.2rem;
+      line-height: 1.5;
+    }
+
+    /* Peticiones Modal */
+    #peticiones {
+      text-align: center;
+    }
+    #peticiones button {
+      background-color: #004080;
+      color: #fff;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+    #peticiones button:hover {
+      background-color: #0066cc;
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100%; height: 100%;
+      background: rgba(0,0,0,0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 5000;
+    }
+    .modal-content {
+      background: rgba(70,130,180,0.95);
+      padding: 20px;
+      border-radius: 12px;
+      max-width: 500px;
+      width: 90%;
       color: white;
+      position: relative;
+    }
+    .cerrar {
+      position: absolute;
+      top: 10px; right: 15px;
+      font-size: 24px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+    .form-peticion {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      margin-top: 15px;
+    }
+    .form-peticion input,
+    .form-peticion textarea {
+      padding: 10px;
+      border-radius: 6px;
+      border: none;
+      width: 100%;
+      font-size: 1rem;
+    }
+    .form-peticion button {
+      background-color: #004080;
+      color: #fff;
+      padding: 12px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      font-size: 1rem;
+    }
+    .form-peticion button:hover {
+      background-color: #0066cc;
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 25px 10px;
+      background: rgba(0,0,0,0.7);
+      color: #fff;
       margin-top: 40px;
     }
-    footer a {
-      color: #1E90FF;
-      text-decoration: none;
-      font-weight: bold;
-      margin: 0 10px;
+    .social-icons {
+      margin: 20px 0;
     }
-    footer a:hover {
-      text-decoration: underline;
+    .social-icons a {
+      font-size: 2.2rem;
+      width: 65px;
+      height: 65px;
+      display: inline-flex;
+      align-items: center;
+      justify-content:center;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.08);
+      margin: 0 15px;
+      transition: transform 0.4s, box-shadow 0.4s;
+    }
+    .social-icons a:hover {
+      transform: scale(1.25) rotate(8deg);
+      box-shadow: 0 0 25px rgba(255,255,255,0.7);
+    }
+    .facebook { color: #1877f2; }
+    .youtube { color: #ff0000; }
+    .whatsapp { color: #25d366; }
+    @media (max-width: 768px) {
+      .social-icons a {
+        font-size: 2.5rem;
+        width: 70px;
+        height: 70px;
+        margin: 0 20px;
+      }
+    }
+    @media (max-width: 480px) {
+      .social-icons a {
+        font-size: 2rem;
+        width: 55px;
+        height: 55px;
+        margin: 0 12px;
+      }
     }
   </style>
 </head>
 <body>
-<header>
-<!-- Header con logo, nombre y menú -->
-<header>
-  <!-- Logo + Nombre -->
-  <a href="index.html" class="logo-nombre">
-    <img src="logo.png" alt="Logo Iglesia" class="logo-iglesia">
-    <span class="nombre-iglesia">Iglesia Bautista Bíblica</span>
-  </a>
 
-  <!-- Botón hamburguesa -->
+<!-- Menú -->
+<nav>
+  <a href="index.html"><img src="Logo para la pagina.PNG" alt="Logo Iglesia" /></a>
   <span class="menu-toggle" id="navToggle">☰</span>
-
-  <!-- Menú -->
-  <nav id="menu">
+  <div class="nav-links" id="menu">
     <a href="index.html">Inicio</a>
     <a href="proposito.html">Propósito</a>
     <a href="mision.html">Misión</a>
@@ -209,97 +358,147 @@
     <a href="calendario.html">Calendario</a>
     <a href="#" onclick="return accesoSteven()">Preguntas y Respuestas</a>
     <a href="index.html#contacto">Contacto</a>
-  </nav>
-</header>
+  </div>
+</nav>
 
-<style>
-  header {
-    
-    color: white;
-    padding: 10px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;        /* 👉 evita que se vaya a lo ancho */
-    overflow-x: hidden;     /* 👉 elimina scroll lateral */
-  }
+<!-- Slider -->
+<div class="hero-slider">
+  <div class="slider">
+    <img src="IMG_1846.jpeg" alt="Foto Iglesia" class="slider-img active" />
+    <img src="Logo para la pagina.PNG" alt="Logo Iglesia" class="slider-img" />
+  </div>
+  <div class="slider-controls">
+    <span class="dot active"></span>
+    <span class="dot"></span>
+  </div>
+  <div class="slider-caption">
+    <h2>Bienvenidos a la Iglesia Bautista Bíblica</h2>
+    <p>Conéctate. Somos una familia en Grand Rapids.</p>
+  </div>
+</div>
 
-  /* Logo + Nombre */
-  .logo-nombre {
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    color: white;
-  }
+<!-- Cuenta Regresiva -->
+<section id="countdown-section">
+  <h2>⏰ Falta para el próximo servicio:</h2>
+  <div id="countdown"></div>
+  <p id="live-links" style="display:none;">
+    <span>🔴 ¡El servicio está en vivo!</span>
+    <a href="https://www.youtube.com/channel/UC_Q9TmY06fERJJ8WYT-blKQ/live" target="_blank">
+      <img src="https://upload.wikimedia.org/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube Live" />
+    </a>
+  </p>
+</section>
 
- /* Logo y nombre en PC (pantallas grandes) */
-.logo-iglesia {
-  max-height: 150px; /* más grande en PC */
-  height: auto;
-  margin-right: 15px;
-}
+<!-- Propósito -->
+<section id="proposito">
+  <h2>Propósito</h2>
+  <p>
+    La Iglesia Bautista Bíblica existe para glorificar a Dios por medio de la
+    implementación del Gran Mandamiento y la Gran Comisión de nuestro Señor y
+    Salvador Jesucristo. Mateo 22:37-40; 28:18-20.
+  </p>
+</section>
 
-.nombre-iglesia {
-  font-size: 22px;
-  font-weight: bold;
-}
+<!-- Misión -->
+<section id="mision">
+  <h2>Misión</h2>
+  <p>
+    La misión de la Iglesia Bautista Bíblica, como se prescribe por el Gran Mandamiento y la Gran Comisión,
+    es amar a Dios con todo nuestro corazón, guiar a los perdidos a una relación personal con Jesucristo,
+    incorporarlos a la confraternidad de la iglesia local, enseñarles a vivir en obediencia a la Palabra de Dios
+    y prepararles para usar sus dones espirituales en servicio a otros.
+  </p>
+</section>
 
-/* Menú en pantallas grandes */
-#menu {
-  display: flex;
-  gap: 15px;
-}
+<!-- Servicios -->
+<section id="servicios">
+  <h2>Servicios</h2>
+  <p>Domingo 9:30 AM – 11:00 AM – Culto de Adoración</p>
+  <p>Domingo 11:15 AM – 12:00 PM – Escuela Bíblica</p>
+  <p>
+    Domingo 6:00 PM – 7:00 PM – Servicio por Zoom
+    <a href="https://us02web.zoom.us/j/8121830152?pwd=OF1qNDVBY25iNUxGQX1LzpTXpLTQ9" target="_blank"
+      >Conectarse al Zoom</a
+    >
+  </p>
+  <div id="zoomReminder" style="display:none; background-color:#0077cc; color:white; text-align:center; padding:15px; font-size:18px; font-weight:bold; border-radius:8px;">
+    📢 <span id="zoomText">El servicio por Zoom comenzará pronto.</span>
+    <a id="zoomLink" href="https://us02web.zoom.us/j/8121830152?pwd=OFlqNDVBY25iNUxGQXl1ZlpzTXpLQT09" target="_blank" style="color:yellow; font-weight:bold; text-decoration:underline;">Únete ahora</a>
+  </div>
+  <p>Miércoles 7:00 PM – 8:15 PM – Estudio Bíblico y Oración</p>
+</section>
 
-#menu a {
-  color: white;
-  text-decoration: none;
-  font-weight: bold;
-}
+<!-- Ubicación -->
+<section id="ubicacion">
+  <h2>Ubicación</h2>
+  <p>1273 Lamont Ave. NW, Grand Rapids, MI 49504</p>
+  <a id="mapLink" target="_blank">📍 Ver Ubicación</a>
+</section>
 
-.menu-toggle {
-  display: none;
-  font-size: 28px;
-  cursor: pointer;
-}
+<!-- Peticiones -->
+<section id="peticiones">
+  <h2>Peticiones de Oración</h2>
+  <button onclick="abrirModal()">✉️ Enviar Petición</button>
+</section>
 
-/* Ajuste solo para celulares pequeños */
-@media (max-width: 480px) {
-  .logo-iglesia {
-    max-height: 60px; /* más chico en celular */
-  }
+<!-- Modal peticiones -->
+<div id="modalPeticiones" class="modal">
+  <div class="modal-content">
+    <span class="cerrar" onclick="cerrarModal()">&times;</span>
+    <h2>Peticiones de Oración</h2>
+    <form id="form-peticion" action="https://formspree.io/f/mqadoabv" method="POST" class="form-peticion">
+      <label for="nombre">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required />
+      <label for="peticion">Petición:</label>
+      <textarea id="peticion" name="peticion" rows="4" required></textarea>
+      <label for="correo">Correo (opcional):</label>
+      <input type="email" id="correo" name="correo" />
+      <label for="telefono">Teléfono (opcional):</label>
+      <input type="tel" id="telefono" name="telefono" />
+      <button type="submit">✉️ Enviar Petición</button>
+    </form>
+    <p id="mensaje-exito" style="display:none; color:#fff; background:#28a745; padding:10px; margin-top:15px; border-radius:6px; text-align:center;">
+      ✅ Tu petición fue enviada correctamente.
+    </p>
+  </div>
+</div>
 
-  .nombre-iglesia {
-    font-size: 18px;
-  }
+<!-- Consejería -->
+<section id="consejeria">
+  <h2>Consejería Pastoral</h2>
+  <p>
+    Si necesitas consejería o deseas hablar directamente con el pastor, puedes enviar un mensaje de texto al número de la iglesia.
+  </p>
+  <a href="sms:16166353574" class="btn">Enviar mensaje al Pastor</a>
+</section>
 
-  #menu {
-    display: none;
-    flex-direction: column;
-    background: #0056a6;
-    position: absolute;
-    top: 70px;
-    left: 0;
-    width: 100%;
-    padding: 15px 0;
-  }
+<!-- Contacto -->
+<section id="contacto">
+  <h2>📧 Contacto</h2>
+  <p>Email:
+    <a href="mailto:ibb@iglesia-bautista-biblica.org?subject=Contacto&body=Escriba%20su%20mensaje%20aquí" style="color:#1E90FF;">
+      ibb@iglesia-bautista-biblica.org
+    </a>
+  </p>
+</section>
 
-  #menu.active {
-    display: flex;
-  }
+<!-- Footer -->
+<footer>
+  <p>Síguenos en redes sociales</p>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/profile.php?id=100064413082714" target="_blank" aria-label="Facebook" class="facebook"><i class="fab fa-facebook-f"></i></a>
+    <a href="https://youtube.com/@iglesiabautistabiblicagran187" target="_blank" aria-label="YouTube" class="youtube"><i class="fab fa-youtube"></i></a>
+    <a href="https://chat.whatsapp.com/DJL5Yx1rJEiJ3fZFclha3h" target="_blank" aria-label="WhatsApp" class="whatsapp"><i class="fab fa-whatsapp"></i></a>
+  </div>
+  <p>© 2025 Iglesia Bautista Bíblica - Todos los derechos reservados</p>
+</footer>
 
-  .menu-toggle {
-    display: block;
-  }
-}
-</style>
-
-<!-- Script -->
 <script>
   // Menú hamburguesa
-  document.getElementById("navToggle").addEventListener("click", function() {
+  document.getElementById("navToggle").addEventListener("click", function () {
     document.getElementById("menu").classList.toggle("active");
+    document.querySelector("nav").classList.toggle("active");
   });
-
   // Preguntas y Respuestas con clave
   function accesoSteven() {
     const clave = prompt("Ingrese la clave para acceder:");
@@ -311,458 +510,123 @@
       return false;
     }
   }
-</script>
- 
-
-  
-<!-- 🔴 Bloque de cuenta regresiva y transmisión -->
-<section id="countdown-section" 
-    style="text-align:center; padding:20px; 
-           background:rgba(0,0,0,0.7); 
-           color:#fff; 
-           border-radius:15px; 
-           max-width:600px; 
-           margin:20px auto; 
-           box-shadow:0 4px 15px rgba(0,0,0,0.5);">
-
-  <h2 style="font-size:22px; margin-bottom:10px;">⏰ Falta para el próximo servicio:</h2>
-  <div id="countdown" style="font-size:28px; font-weight:bold; margin-bottom:15px;"></div>
-  
-  <p id="live-links" style="display:none; margin-top:15px;">
-    <span style="font-size:18px; margin-right:10px;">🔴 ¡El servicio está en vivo!</span>
-    <a href="https://www.youtube.com/channel/UC_Q9TmY06fERJJ8WYT-blKQ/live" target="_blank">
-      <img src="https://upload.wikimedia.org/commons/b/b8/YouTube_Logo_2017.svg" 
-           alt="YouTube Live" 
-           style="height:35px; vertical-align:middle;">
-    </a>
-  </p>
-</section>
-<script>
-  function toggleMenu() {
-    document.getElementById('menu').classList.toggle('active');
+  // Modal peticiones
+  function abrirModal() {
+    document.getElementById("modalPeticiones").style.display = "flex";
   }
-</script>
-</body>
-</html>
-<script>
-function updateCountdown() {
-  const now = new Date();
-  const day = now.getDay(); // 0 = domingo
-  const serviceHour = 10;   // inicio del servicio
-  const serviceEndHour = 11; // fin del servicio
-  const serviceMinute = 0;
-
-  let serviceStart = new Date();
-  serviceStart.setHours(serviceHour, serviceMinute, 0, 0);
-
-  let serviceEnd = new Date();
-  serviceEnd.setHours(serviceEndHour, serviceMinute, 0, 0);
-
-  // Si no es domingo, ocultar
-  if (day !== 0) {
-    document.getElementById("countdown-section").style.display = "none";
-    return;
+  function cerrarModal() {
+    document.getElementById("modalPeticiones").style.display = "none";
   }
+  document.getElementById("form-peticion").addEventListener("submit", function (event) {
+    event.preventDefault();
+    fetch(this.action, {
+      method: this.method,
+      body: new FormData(this),
+      headers: { Accept: "application/json" },
+    })
+      .then((response) => {
+        if (response.ok) {
+          document.getElementById("mensaje-exito").style.display = "block";
+          this.reset();
+          setTimeout(() => {
+            document.getElementById("mensaje-exito").style.display = "none";
+            cerrarModal();
+          }, 5000);
+        }
+      })
+      .catch(() => {
+        alert("Hubo un error al enviar la petición. Intenta de nuevo.");
+      });
+  });
 
-  if (now < serviceStart) {
-    // Mostrar cuenta regresiva antes de las 10:00
-    const diff = serviceStart - now;
-    const hours = Math.floor(diff / (1000 * 60 * 60));
-    const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-    const seconds = Math.floor((diff % (1000 * 60)) / 1000);
-
-    document.getElementById("countdown").innerHTML =
-      hours + "h " + minutes + "m " + seconds + "s";
-    document.getElementById("live-links").style.display = "none";
-
-  } else if (now >= serviceStart && now < serviceEnd) {
-    // Entre 10:00 y 11:00
-    document.getElementById("countdown").innerHTML = "¡El servicio está en vivo!";
-    document.getElementById("live-links").style.display = "block";
-
-  } else {
-    // Después de las 11:00, ocultar
-    document.getElementById("countdown-section").style.display = "none";
+  // Slider imagenes
+  const slides = document.querySelectorAll(".slider-img");
+  const dots = document.querySelectorAll(".dot");
+  let current = 0;
+  function showSlide(idx) {
+    slides.forEach((img, i) => {
+      img.classList.toggle("active", i === idx);
+      dots[i].classList.toggle("active", i === idx);
+    });
+    current = idx;
   }
-}
+  dots.forEach((dot, i) => {
+    dot.addEventListener("click", () => showSlide(i));
+  });
+  setInterval(() => {
+    let next = (current + 1) % slides.length;
+    showSlide(next);
+  }, 5000);
 
-setInterval(updateCountdown, 1000);
-updateCountdown();
-</script>
-  <!-- ===== Sección Inicio ===== -->
-  <section id="inicio">
-    <h2>Bienvenidos a la Iglesia Bautista Bíblica</h2>
-    <p>Esta es la página oficial de nuestra iglesia.</p>
-  </section>
-<!-- ===== Sección Propósito ===== -->
-<section id="proposito">
-  <h2>Propósito</h2>
-  <p>
-    La Iglesia Bautista Bíblica existe para glorificar a Dios por medio de la 
-    implementación del Gran Mandamiento y la Gran Comisión de nuestro Señor y 
-    Salvador Jesucristo. Mateo 22:37-40; 28:18-20.
-  </p>
-</section>
-  <!-- ===== Sección Misión ===== -->
-  <section id="mision">
-    <h2>Misión</h2>
-    <p>
-      La misión de la Iglesia Bautista Bíblica, como se prescribe por el Gran Mandamiento y la Gran Comisión,
-      es amar a Dios con todo nuestro corazón, guiar a los perdidos a una relación personal con Jesucristo,
-      incorporarlos a la confraternidad de la iglesia local, enseñarles a vivir en obediencia a la Palabra de Dios
-      y prepararles para usar sus dones espirituales en servicio a otros.
-    </p>
-  </section>
-
-  <!-- ===== Sección Servicios ===== -->
-<section id="servicios">
-  <h2>Servicios</h2>
-  <p>Domingo 9:30 AM – 11:00 AM – Culto de Adoración</p>
-  <p>Domingo 11:15 AM – 12:00 PM – Escuela Bíblica</p>
-  <p>
-    Domingo 6:00 PM – 7:00 PM – Servicio por Zoom
-    <a href="https://us02web.zoom.us/j/8121830152?pwd=OF1qNDVBY25iNUxGQX1LzpTXpLTQ9" target="_blank">
-      Conectarse al Zoom
-    </a>
-  </p>
-  <!-- Banner dinámico Zoom -->
-<div id="zoomReminder" style="
-    display: none;
-    background-color: #0077cc;
-    color: white;
-    text-align: center;
-    padding: 15px;
-    font-size: 18px;
-    font-weight: bold;
-    border-radius: 8px;
-">
-    📢 <span id="zoomText">El servicio por Zoom comenzará pronto.</span>
-    <a id="zoomLink" href="https://us02web.zoom.us/j/8121830152?pwd=OFlqNDVBY25iNUxGQXl1ZlpzTXpLQT09" 
-       target="_blank"
-       style="color: yellow; font-weight: bold; text-decoration: underline;">
-       Únete ahora
-    </a>
-</div>
-
-<script>
-function checkZoomReminder() {
+  // Countdown para servicio en vivo
+  function updateCountdown() {
     const now = new Date();
-    const day = now.getDay(); // 0 = Domingo
+    const day = now.getDay(); // 0 = domingo
+    const serviceHour = 10;
+    const serviceEndHour = 11;
+    const serviceMinute = 0;
+    let serviceStart = new Date();
+    serviceStart.setHours(serviceHour, serviceMinute, 0, 0);
+    let serviceEnd = new Date();
+    serviceEnd.setHours(serviceEndHour, serviceMinute, 0, 0);
+    if (day !== 0) {
+      document.getElementById("countdown-section").style.display = "none";
+      return;
+    }
+    if (now < serviceStart) {
+      const diff = serviceStart - now;
+      const hours = Math.floor(diff / (1000 * 60 * 60));
+      const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+      document.getElementById("countdown").innerHTML = hours + "h " + minutes + "m " + seconds + "s";
+      document.getElementById("live-links").style.display = "none";
+    } else if (now >= serviceStart && now < serviceEnd) {
+      document.getElementById("countdown").innerHTML = "¡El servicio está en vivo!";
+      document.getElementById("live-links").style.display = "block";
+    } else {
+      document.getElementById("countdown-section").style.display = "none";
+    }
+  }
+  setInterval(updateCountdown, 1000);
+  updateCountdown();
+
+  // Zoom aviso
+  function checkZoomReminder() {
+    const now = new Date();
+    const day = now.getDay();
     const hours = now.getHours();
     const minutes = now.getMinutes();
     const totalMinutes = hours * 60 + minutes;
-
     const reminder = document.getElementById("zoomReminder");
     const text = document.getElementById("zoomText");
     const link = document.getElementById("zoomLink");
-
     if (day === 0 && totalMinutes >= 16 * 60 && totalMinutes < 18 * 60) {
-        // Domingo 4:00-5:59 PM → aviso previo
-        reminder.style.display = "block";
-        reminder.style.backgroundColor = "#0077cc";
-        text.textContent = "El servicio por Zoom comenzará pronto.";
-        link.textContent = "Únete ahora";
+      reminder.style.display = "block";
+      reminder.style.backgroundColor = "#0077cc";
+      text.textContent = "El servicio por Zoom comenzará pronto.";
+      link.textContent = "Únete ahora";
     } else if (day === 0 && totalMinutes >= 18 * 60 && totalMinutes < 19 * 60) {
-        // Domingo 6:00-6:59 PM → servicio en vivo
-        reminder.style.display = "block";
-        reminder.style.backgroundColor = "#ffcc00"; // color más llamativo
-        text.textContent = "El servicio por Zoom ha comenzado.";
-        link.textContent = "Únete ahora";
+      reminder.style.display = "block";
+      reminder.style.backgroundColor = "#ffcc00";
+      text.textContent = "El servicio por Zoom ha comenzado.";
+      link.textContent = "Únete ahora";
     } else {
-        // fuera del horario → ocultar
-        reminder.style.display = "none";
+      reminder.style.display = "none";
     }
-}
+  }
+  setInterval(checkZoomReminder, 60000);
+  checkZoomReminder();
 
-// Revisar cada minuto
-setInterval(checkZoomReminder, 60000);
-checkZoomReminder();
-</script>
-  <p>Miércoles 7:00 PM – 8:15 PM – Estudio Bíblico y Oración</p>
-</section>
-
-  <!-- ===== Sección Ubicación ===== -->
-<section id="ubicacion">
-  <h2>Ubicación</h2>
-  <p>1273 Lamont Ave. NW, Grand Rapids, MI 49504</p>
-  <a id="mapLink" target="_blank">📍 Ver Ubicación</a>
-</section>
-
-<script>
+  // Mapa según dispositivo
   const mapLink = document.getElementById("mapLink");
   const address = "1273+Lamont+Ave+NW,+Grand+Rapids,+MI+49504";
   const userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
   if (/iPad|iPhone|iPod/i.test(userAgent)) {
-    // En iPhone/iPad abre Apple Maps
     mapLink.href = "http://maps.apple.com/?q=" + address;
   } else {
-    // En Android, Windows o cualquier otro abre Google Maps
     mapLink.href = "https://www.google.com/maps?q=" + address;
   }
 </script>
 
-  <!-- ===== Sección Peticiones ===== -->
-<section id="peticiones">
-  <h2>Peticiones de Oración</h2>
-  <button onclick="abrirModal()">✉️ Enviar Petición</button>
-</section>
-
-<!-- Modal (ventana emergente) -->
-<div id="modalPeticiones" class="modal">
-  <div class="modal-content">
-    <span class="cerrar" onclick="cerrarModal()">&times;</span>
-    <h2>Peticiones de Oración</h2>
-    <form id="form-peticion" action="https://formspree.io/f/mqadoabv" method="POST" class="form-peticion">
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
-
-      <label for="peticion">Petición:</label>
-      <textarea id="peticion" name="peticion" rows="4" required></textarea>
-
-      <label for="correo">Correo (opcional):</label>
-      <input type="email" id="correo" name="correo">
-
-      <label for="telefono">Teléfono (opcional):</label>
-      <input type="tel" id="telefono" name="telefono">
-
-      <button type="submit">✉️ Enviar Petición</button>
-    </form>
-
-    <!-- Mensaje oculto -->
-    <p id="mensaje-exito" style="display:none; color:#fff; background:#28a745; padding:10px; margin-top:15px; border-radius:6px; text-align:center;">
-      ✅ Tu petición fue enviada correctamente.
-    </p>
-  </div>
-</div>
-
-<style>
-  /* Bloque principal */
-  #peticiones {
-    max-width: 800px;
-    width: 90%;
-    margin: 40px auto;
-    
-    padding: 20px;
-    border-radius: 12px;
-    text-align: center;
-    box-shadow: 0px 4px 12px rgba(0,0,0,0.2);
-  }
-
-  #peticiones h2 {
-    color: #fff;
-    margin-bottom: 15px;
-  }
-
-  #peticiones button {
-    background-color: #004080;
-    color: #fff;
-    padding: 12px 20px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-    transition: background 0.3s;
-  }
-
-  @media (hover: hover) {
-    #peticiones button:hover {
-      background-color: #0066cc;
-    }
-  }
-
-  /* Modal */
-  .modal {
-    display: none;
-    position: fixed;
-    z-index: 1000;
-    left: 0; top: 0;
-    width: 100%; height: 100%;
-    background: rgba(0,0,0,0.6);
-    justify-content: center;
-    align-items: center;
-  }
-
-  .modal-content {
-    background: rgba(70,130,180,0.95);
-    padding: 20px;
-    border-radius: 12px;
-    max-width: 500px;
-    width: 90%;
-    color: #fff;
-    position: relative;
-  }
-
-  .cerrar {
-    position: absolute;
-    top: 10px; right: 15px;
-    font-size: 24px;
-    font-weight: bold;
-    cursor: pointer;
-  }
-
-  .form-peticion {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 15px;
-  }
-
-  .form-peticion input, .form-peticion textarea {
-    padding: 10px;
-    border-radius: 6px;
-    border: none;
-    width: 100%;
-  }
-
-  .form-peticion button {
-    background-color: #004080;
-    color: #fff;
-    padding: 12px;
-    border: none;
-    border-radius: 6px;
-    font-size: 16px;
-    cursor: pointer;
-  }
-
-  @media (hover: hover) {
-    .form-peticion button:hover {
-      background-color: #0066cc;
-    }
-  }
-</style>
-
-<script>
-  function abrirModal() {
-    document.getElementById("modalPeticiones").style.display = "flex";
-  }
-
-  function cerrarModal() {
-    document.getElementById("modalPeticiones").style.display = "none";
-  }
-
-  document.getElementById("form-peticion").addEventListener("submit", function(event){
-    event.preventDefault();
-
-    fetch(this.action, {
-      method: this.method,
-      body: new FormData(this),
-      headers: { 'Accept': 'application/json' }
-    }).then(response => {
-      if(response.ok) {
-        document.getElementById("mensaje-exito").style.display = "block";
-        this.reset();
-        setTimeout(() => {
-          document.getElementById("mensaje-exito").style.display = "none";
-          cerrarModal();
-        }, 5000);
-      }
-    }).catch(error => {
-      alert("Hubo un error al enviar la petición. Intenta de nuevo.");
-    });
-  });
-</script>
-
-<!-- ===== Sección Consejería Pastoral ===== -->
-<section id="consejeria">
-  <h2>Consejería Pastoral</h2>
-  <p>Si necesitas consejería o deseas hablar directamente con el pastor, puedes enviar un mensaje de texto al número de la iglesia.</p>
-  <a href="sms:16166353574" class="btn">Enviar mensaje al Pastor</a>
-</section>
-  <!-- ===== Sección Contacto ===== -->
-<section id="contacto">
-  <h2>📧 Contacto</h2>
-  <p>Email:  
-  <a href="mailto:ibb@iglesia-bautista-biblica.org?subject=Contacto&body=Escriba%20su%20mensaje%20aquí">  
-    ibb@iglesia-bautista-biblica.org  
-  </a>  
-</p>
-</section>
-
-  <!-- ===== Footer ===== -->
-  <footer>
-    <footer>
-  <p>Síguenos en redes sociales</p>
-  <div class="social-icons">
-    <a href="https://www.facebook.com/profile.php?id=100064413082714" target="_blank" aria-label="Facebook" class="facebook">
-      <i class="fab fa-facebook-f"></i>
-    </a>
-    <a href="https://youtube.com/@iglesiabautistabiblicagran187" target="_blank" aria-label="YouTube" class="youtube">
-      <i class="fab fa-youtube"></i>
-    </a>
-    <a href="https://chat.whatsapp.com/DJL5Yx1rJEiJ3fZFclha3h" target="_blank" aria-label="WhatsApp" class="whatsapp">
-      <i class="fab fa-whatsapp"></i>
-    </a>
-  </div>
-  <p>&copy; 2025 Iglesia Bautista Bíblica - Todos los derechos reservados</p>
-</footer>
-
-<!-- FontAwesome para iconos -->
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-
-<style>
-  footer {
-    text-align: center;
-    padding: 25px;
-    
-    color: white;
-    font-family: Arial, sans-serif;
-  }
-
-  footer p {
-    margin: 10px 0;
-    font-size: 1rem;
-  }
-
-  .social-icons {
-    margin: 20px 0;
-  }
-
-  .social-icons a {
-    margin: 0 15px;
-    font-size: 2.2rem;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 65px;
-    height: 65px;
-    border-radius: 50%;
-    background: rgba(255,255,255,0.08);
-    animation: bounceIn 1.2s ease;
-    transition: transform 0.4s ease, box-shadow 0.4s ease;
-  }
-
-  @keyframes bounceIn {
-    0% { transform: scale(0.3); opacity: 0; }
-    50% { transform: scale(1.3); opacity: 1; }
-    70% { transform: scale(0.9); }
-    100% { transform: scale(1); }
-  }
-
-  .social-icons a:hover {
-    transform: scale(1.25) rotate(8deg);
-    box-shadow: 0 0 25px rgba(255,255,255,0.7);
-  }
-
-  .facebook { color: #1877f2; }
-  .youtube { color: #ff0000; }
-  .whatsapp { color: #25d366; }
-
-  @media (max-width: 768px) {
-    .social-icons a {
-      font-size: 2.5rem;
-      width: 70px;
-      height: 70px;
-      margin: 0 20px;
-    }
-  }
-
-  @media (max-width: 480px) {
-    .social-icons a {
-      font-size: 2rem;
-      width: 55px;
-      height: 55px;
-      margin: 0 12px;
-    }
-  }
-</style>
+</body>
+</html>
