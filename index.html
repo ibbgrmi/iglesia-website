@@ -119,6 +119,7 @@
       display: none;
       user-select: none;
     }
+
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
@@ -219,16 +220,16 @@
       user-select: none;
     }
     @media (max-width: 768px) {
-  .slider-controls {
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 18px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 100%;
-    z-index: 5;
+      .slider-controls {
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: 18px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        z-index: 5;
       }
       .slider {
         height: 200px;
@@ -371,6 +372,23 @@
         height: 180px !important;
       }
     }
+
+    /* Menú hamburguesa - media query móvil */
+    @media (max-width: 768px) {
+      nav .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0,119,204,0.95);
+        border-radius: 12px;
+        margin-top: 10px;
+        padding: 12px 0;
+        justify-content: center;
+      }
+      nav .nav-links.active {
+        display: flex;
+      }
+    }
   </style>
 </head>
 <body>
@@ -437,7 +455,7 @@
     <ul>
       <li>Domingo 9:30–11:00 AM : Culto de Adoración</li>
       <li>Domingo 11:15 AM – 12:00 PM : Escuela Bíblica</li>
-      <li>Domingo 6:00-7:00 PM : Servicio por Zoom <a href="https://us02web.zoom.us/j/8121830152?pwd=OFlqNDVBY25iNUxGQXl1ZlpzTXpLQT09" target="_blank">Conectarse</a>
+      <li>Domingo 6:00-7:00 PM : Servicio por Zoom <a href="https://us02web.zoom.us/j/8121830152?pwd=OFlqNDVBY25iNUxGQXl1ZlpzTXpLQT09" target="_blank">Conectarse</a></li>
       <li>Miércoles 7:00–8:15 PM : Estudio Bíblico y Oración</li>
     </ul>
   </section>
@@ -448,145 +466,132 @@
     <a href="#" id="map-link" target="_blank">Ver mapa</a>
   </section>
 
-<!-- Peticiones de Oración -->
-<section id="peticiones" style="text-align:center; margin-bottom: 40px;">
-  <h2 style="margin-bottom: 10px;">Envía tus peticiones de oración</h2>
-  <p style="margin-bottom: 18px;">Comparte tus necesidades de oración con nuestra comunidad.</p>
-  <button id="btnOpenModal" style="
-    background: linear-gradient(90deg,#0099ff,#0077cc 80%);
-    color: #fff;
-    padding: 14px 32px;
-    border: none;
-    border-radius: 35px;
-    font-size: 1.2rem;
-    font-weight: 700;
-    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
-    cursor: pointer;
-    transition: background 0.2s, transform 0.2s;
-    letter-spacing: 1px;
-  " onmouseover="this.style.background='#005fa3'" onmouseout="this.style.background='linear-gradient(90deg,#0099ff,#0077cc 80%)'">📝 Enviar petición</button>
-</section>
-
-<!-- Modal para peticiones -->
-<div id="modalPeticiones" style="
-  display: none;
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100vw;
-  height: 100vh;
-  background: rgba(0,0,0,0.75);
-  z-index: 1000;
-  justify-content: center;
-  align-items: center;
-">
-  <div style="
-    background: #225082;
-    padding: 32px 20px 26px 20px;
-    border-radius: 16px;
-    max-width: 440px;
-    min-width: 270px;
-    width: 92vw;
-    color: white;
-    position: relative;
-    box-shadow: 0 8px 32px 0 #0000005c;
-  ">
-    <span onclick="cerrarModal()" style="
-      position: absolute;
-      top: 14px;
-      right: 22px;
-      font-size: 32px;
-      font-weight: bold;
-      cursor: pointer;
+  <!-- Peticiones de Oración -->
+  <section id="peticiones" style="text-align:center; margin-bottom: 40px;">
+    <h2 style="margin-bottom: 10px;">Envía tus peticiones de oración</h2>
+    <p style="margin-bottom: 18px;">Comparte tus necesidades de oración con nuestra comunidad.</p>
+    <button id="btnOpenModal" style="
+      background: linear-gradient(90deg,#0099ff,#0077cc 80%);
       color: #fff;
-      user-select: none;
-    ">&times;</span>
-    
-    <h2 style="margin-bottom: 18px; text-align: center;">Peticiones de Oración</h2>
-    
-    <form action="https://formspree.io/f/mqadoabv" method="POST" autocomplete="on">
-      <label for="nombre" style="font-weight: 600;">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
+      padding: 14px 32px;
+      border: none;
+      border-radius: 35px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      letter-spacing: 1px;
+    " onmouseover="this.style.background='#005fa3'" onmouseout="this.style.background='linear-gradient(90deg,#0099ff,#0077cc 80%)'">📝 Enviar petición</button>
+  </section>
 
-      <label for="peticion" style="font-weight: 600;">Petición:</label>
-      <textarea id="peticion" name="peticion" rows="4" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;"></textarea>
-
-      <label for="correo" style="font-weight: 600;">Correo (opcional):</label>
-      <input type="email" id="correo" name="correo" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
-
-      <label for="telefono" style="font-weight: 600;">Teléfono (opcional):</label>
-      <input type="tel" id="telefono" name="telefono" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:14px;font-size:1rem;">
-
-      <button type="submit" style="
-        background: linear-gradient(90deg,#28a745,#19c542 80%);
-        color: #fff;
-        padding: 13px 0;
-        width: 100%;
-        border: none;
-        border-radius: 8px;
-        font-size: 1.08rem;
+  <!-- Modal para peticiones -->
+  <div id="modalPeticiones" style="
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.75);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  ">
+    <div style="
+      background: #225082;
+      padding: 32px 20px 26px 20px;
+      border-radius: 16px;
+      max-width: 440px;
+      min-width: 270px;
+      width: 92vw;
+      color: white;
+      position: relative;
+      box-shadow: 0 8px 32px 0 #0000005c;
+    ">
+      <span onclick="cerrarModal()" style="
+        position: absolute;
+        top: 14px;
+        right: 22px;
+        font-size: 32px;
         font-weight: bold;
         cursor: pointer;
-        margin-top: 4px;
-        letter-spacing: 1px;
-        box-shadow: 0 2px 10px #0e462a38;
-      ">✉️ Enviar Petición</button>
-    </form>
-  </div>
-</div>
-<script>
-const btnOpenModal = document.getElementById('btnOpenModal');
-const modalPeticiones = document.getElementById('modalPeticiones');
-function abrirModal() {
-  modalPeticiones.style.display = 'flex';
-}
-function cerrarModal() {
-  modalPeticiones.style.display = 'none';
-}
-btnOpenModal.addEventListener('click', abrirModal);
-// Permitir cerrar el modal haciendo clic fuera del contenido
-modalPeticiones.addEventListener('click', function(e) {
-  if(e.target === modalPeticiones) cerrarModal();
-});
-</script>
+        color: #fff;
+        user-select: none;
+      ">&times;</span>
+      
+      <h2 style="margin-bottom: 18px; text-align: center;">Peticiones de Oración</h2>
+      
+      <form action="https://formspree.io/f/mqadoabv" method="POST" autocomplete="on">
+        <label for="nombre" style="font-weight: 600;">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
 
+        <label for="peticion" style="font-weight: 600;">Petición:</label>
+        <textarea id="peticion" name="peticion" rows="4" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;"></textarea>
 
-  <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
-    <div style="background:#265c86; padding:20px; border-radius:12px; max-width:400px; color:#fff; position:relative;">
-      <button onclick="cerrarModal()" style="position:absolute; top:10px; right:10px; font-size:18px; background:none; border:none; cursor:pointer; color:#fff;">×</button>
-      <form id="petition-form" action="https://formspree.io/f/mqxxzqnv" method="POST">
-        <label for="name">Nombre:</label><br />
-        <input type="text" id="name" name="name" required style="width:100%; padding:8px; margin-bottom:10px;" />
-        <label for="prayer">Petición:</label><br />
-        <textarea id="prayer" name="prayer" rows="4" required style="width:100%; padding:8px; margin-bottom:10px;"></textarea>
-        <button type="submit" style="background:#1e87f0; color:#fff; border:none; padding:10px 16px; border-radius:8px; cursor:pointer;">Enviar</button>
+        <label for="correo" style="font-weight: 600;">Correo (opcional):</label>
+        <input type="email" id="correo" name="correo" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
+
+        <label for="telefono" style="font-weight: 600;">Teléfono (opcional):</label>
+        <input type="tel" id="telefono" name="telefono" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:14px;font-size:1rem;">
+
+        <button type="submit" style="
+          background: linear-gradient(90deg,#28a745,#19c542 80%);
+          color: #fff;
+          padding: 13px 0;
+          width: 100%;
+          border: none;
+          border-radius: 8px;
+          font-size: 1.08rem;
+          font-weight: bold;
+          cursor: pointer;
+          margin-top: 4px;
+          letter-spacing: 1px;
+          box-shadow: 0 2px 10px #0e462a38;
+        ">✉️ Enviar Petición</button>
       </form>
-      <div id="success-message" style="display:none; margin-top:10px; color:#4caf50; font-weight:bold;">Gracias por enviar tu petición.</div>
     </div>
   </div>
-
-  <section id="consejeria">
-    <h2>Consejería Pastoral</h2>
-    <p>Si necesitas consejería o hablar con el pastor, envía un mensaje de texto a la iglesia.</p>
-    <a href="sms:16166353574">Enviar mensaje</a>
-  </section>
-
-  <section id="contacto">
-    <h2>Contacto</h2>
-    <p>Email: <a href="mailto:ibb@iglesia-bautista.org" style="color:#1e90ff;">ibb@iglesia-bautista.org</a></p>
-  </section>
-
-  <footer>
-    <p>Síguenos en redes sociales</p>
-    <div class="social-icons">
-      <a href="https://www.facebook.com/profile.php?id=100064413082714" target="_blank"><i class="fa-brands fa-facebook"></i></a>
-      <a href="https://youtube.com/@iglesiabautistabiblicagran187?si=1OWWcPKQl0ayW5oL" target="_blank"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://whatsapp.com/channel/0029Vb6qU6c3mFY3MNRZAm1H" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
-    </div>
-    <p>© 2025 Iglesia Bautista Bíblica - Todos los derechos reservados</p>
-  </footer>
-
   <script>
+    // Slider automático
+    const slides = document.querySelectorAll('.slider-img');
+    const dots = document.querySelectorAll('.slider-controls .dot');
+    let currentIndex = 0;
+    let slideInterval;
+
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
+
+    function nextSlide() {
+      let nextIndex = (currentIndex + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
+        resetSlideInterval();
+      });
+    });
+
+    function startSlideInterval() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+
+    function resetSlideInterval() {
+      clearInterval(slideInterval);
+      startSlideInterval();
+    }
+
+    // Inicializar slider automático
+    startSlideInterval();
+
+    // Menú hamburguesa
     const navToggle = document.getElementById("navToggle");
     const menu = document.getElementById("menu");
 
@@ -604,25 +609,6 @@ modalPeticiones.addEventListener('click', function(e) {
         return false;
       }
     }
-
- 
-
-<script>
-function abrirModal() {
-  document.getElementById("modalPeticiones").style.display = "flex";
-}
-
-function cerrarModal() {
-  document.getElementById("modalPeticiones").style.display = "none";
-}
-
-// Cerrar modal al hacer clic fuera de él
-document.getElementById("modalPeticiones").addEventListener("click", function(e) {
-  if (e.target === this) {
-    cerrarModal();
-  }
-});
-</script>
-
-
-  
+  </script>
+</body>
+</html>
