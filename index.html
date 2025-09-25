@@ -499,10 +499,21 @@
       }
     }
 
-    // Petición Modal Controls
-    const modal = document.getElementById("modal");
-    const openBtn = document.querySelector("section#peticiones button");
-    const closeBtn = modal.querySelector("button");
+    <form action="https://formspree.io/f/mqadoabv" method="POST">
+  <label for="nombre">Nombre:</label>
+  <input type="text" id="nombre" name="nombre" required>
+
+  <label for="peticion">Petición:</label>
+  <textarea id="peticion" name="peticion" rows="4" required></textarea>
+
+  <label for="correo">Correo (opcional):</label>
+  <input type="email" id="correo" name="correo">
+
+  <label for="telefono">Teléfono (opcional):</label>
+  <input type="tel" id="telefono" name="telefono">
+
+  <button type="submit">✉️ Enviar Petición</button>
+</form>
 
     openBtn.addEventListener("click", () => {
       modal.style.display = "flex";
