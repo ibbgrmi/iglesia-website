@@ -219,8 +219,16 @@
       user-select: none;
     }
     @media (max-width: 768px) {
-      .hero-slider {
-        max-width: 100%;
+  .slider-controls {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 18px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    z-index: 5;
       }
       .slider {
         height: 200px;
