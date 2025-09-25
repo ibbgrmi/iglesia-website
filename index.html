@@ -6,106 +6,147 @@
   <title>Iglesia Bautista Bíblica</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* DEJA TODO TU CSS Y ANIMACIÓN AQUÍ: NO LO MUEVAS NI LO BORRES */
-    body, h1, h2, h3, p, a, ul, li, button, span {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-    body {
-      background: #003366;
-      color: #fff;
-      overflow-x: hidden;
-      background-image: url("IMG_1846.jpeg");
-      background-size: cover;
-      background-repeat: no-repeat;
-      background-position: center;
-      animation: fondoChange 10s ease infinite alternate;
-      transition: background-image 1s ease-in-out;
-    }
-    @keyframes fondoChange {
-      0% { background-image: url("IMG_1846.jpeg"); }
-      100% { background-image: url("IMG_2373.jpeg"); }
-    }
-    body:before {
-      content: "";
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
-      z-index: -1;
-      pointer-events: none;
-    }
-  </style>
-</head>
-<body>
-  <!-- Aquí va todo el contenido principal de tu página -->
+    <!-- Botón flotante -->
+<style>
+  #chatbot-button {
+    position: fixed;
+    bottom: 20px; right: 20px;
+    background: #4a90e2;
+    color: white;
+    width: 50px; height: 50px;
+    border-radius: 50%;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 10001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.3);
+  }
+  #chatbot {
+    position: fixed;
+    bottom: 80px; right: 20px;
+    width: 320px; max-width: 90vw;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+    display: none;
+    flex-direction: column;
+    overflow: hidden;
+    font-family: Arial, sans-serif;
+    z-index: 10002;
+  }
+  #chatbot-header {
+    background: #4a90e2;
+    color: white;
+    padding: 12px;
+    font-weight: bold;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  #chatbot-close {
+    cursor: pointer;
+    font-size: 18px;
+  }
+  #chatbot-messages {
+    height: 250px;
+    overflow-y: auto;
+    padding: 10px;
+    background: #f9f9f9;
+    color: #333;
+  }
+  #chatbot-input {
+    border: none;
+    border-top: 1px solid #ddd;
+    padding: 10px;
+    font-size: 14px;
+    outline: none;
+    width: 100%;
+    box-sizing: border-box;
+  }
+</style>
 
-  <!-- Al FINAL del archivo, antes de </body>, pega el CHATBOT -->
-  <div id="chatbot-container" style="position: fixed; bottom: 20px; right: 20px; border: 2px solid #4a90e2; background: #f0f8ff; border-radius: 10px; width: 300px; max-width: 90vw; font-family: Arial, sans-serif; z-index: 1000;">
-    <div id="chatbot-header" style="padding: 10px; background: #4a90e2; color: white; font-weight: bold; border-radius: 8px 8px 0 0;">
-      Hermano Digital
-    </div>
-    <div id="chatbot-messages" style="height: 250px; overflow-y: auto; padding: 10px; background: white; color: #333; font-size: 14px;"></div>
-    <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta..." style="width: calc(100% - 20px); padding: 8px 10px; border:none; border-top: 1px solid #ddd; border-radius: 0 0 8px 8px;" />
+<div id="chatbot-button" title="Abrir chat">
+  <i class="fas fa-comment-alt"></i>
+</div>
+
+<div id="chatbot" role="region" aria-label="Chat con Hermano Digital">
+  <div id="chatbot-header">
+    Hermano Digital
+    <span id="chatbot-close" aria-label="Cerrar chat">&times;</span>
   </div>
-  <script>
-    const chatbotMessages = document.getElementById('chatbot-messages');
-    const chatbotInput = document.getElementById('chatbot-input');
-    function addMessage(text, fromUser = false) {
-      const div = document.createElement('div');
-      div.style.marginBottom = '10px';
-      div.style.padding = '8px';
-      div.style.borderRadius = '8px';
-      div.style.maxWidth = '85%';
-      div.style.wordWrap = 'break-word';
-      if(fromUser){
-        div.style.backgroundColor = '#d0e7ff';
-        div.style.alignSelf = 'flex-end';
-        div.style.marginLeft = 'auto';
-        div.textContent = text;
-      } else {
-        div.style.backgroundColor = '#f0f0f0';
-        div.textContent = "Hermano Digital: " + text;
-      }
-      chatbotMessages.appendChild(div);
-      chatbotMessages.scrollTop = chatbotMessages.scrollHeight;
+  <div id="chatbot-messages" aria-live="polite"></div>
+  <input type="text" id="chatbot-input" placeholder="Escribe tu pregunta..." aria-label="Escribir pregunta" />
+</div>
+
+<script>
+  const btn = document.getElementById('chatbot-button');
+  const chatbot = document.getElementById('chatbot');
+  const closeBtn = document.getElementById('chatbot-close');
+  const messages = document.getElementById('chatbot-messages');
+  const input = document.getElementById('chatbot-input');
+
+  btn.onclick = () => {
+    chatbot.style.display = 'flex';
+    btn.style.display = 'none';
+    input.focus();
+  };
+  closeBtn.onclick = () => {
+    chatbot.style.display = 'none';
+    btn.style.display = 'flex';
+  };
+
+  function addMessage(text, fromUser = false) {
+    const div = document.createElement('div');
+    div.style.marginBottom = '10px';
+    div.style.padding = '8px';
+    div.style.borderRadius = '8px';
+    div.style.maxWidth = '85%';
+    div.style.wordWrap = 'break-word';
+    if(fromUser){
+      div.style.backgroundColor = '#d0eaff';
+      div.style.alignSelf = 'flex-end';
+      div.style.marginLeft = 'auto';
+      div.textContent = text;
+    } else {
+      div.style.backgroundColor = '#e5e5e5';
+      div.textContent = "Hermano Digital: " + text;
     }
-    addMessage("Dios te bendiga, hermano/a. Soy Hermano Digital, tu ayuda en esta página. ¿En qué puedo servirte hoy?");
-    const respuestas = [
-      {keywords: ["enviar", "petición", "peticiones", "oración", "pedir", "orar"], response: "Para enviar una petición de oración, por favor visita la sección de 'Peticiones de oración' en nuestra página. Allí podrás dejar tu solicitud y con gusto oraremos por ti."},
-      {keywords: ["seguir", "redes sociales", "facebook", "instagram", "youtube"], response: "Nos puedes seguir en Facebook, Instagram y YouTube buscando 'Iglesia Bautista Bíblica Grand Rapids'. Así estarás conectado con nuestras actividades y transmisiones en vivo."},
-      {keywords: ["servicios", "horarios", "cuando", "domingo", "miércoles"], response: "Los servicios de adoración son los domingos por la mañana y los miércoles por la noche. Puedes unirte en vivo por Zoom aquí: https://us02web.zoom.us/j/8121830152?pwd=OFlqNDVBY25iNUxGQXl1ZlpzTXpLQT09"},
-      {keywords: ["calendario", "eventos", "agenda"], response: "Puedes consultar el calendario de eventos en la sección 'Calendario' de nuestra página para estar al tanto de todas las actividades programadas."},
-      {keywords: ["propósito", "proposito"], response: "Nuestro propósito es glorificar a Dios implementando el Gran Mandamiento y la Gran Comisión. Mateo 22:37-40; 28:18-20."},
-      {keywords: ["misión", "mision", "objetivo"], response: "La misión de la Iglesia Bautista Bíblica es guiar a nuevos creyentes a una relación segura con Jesucristo, capacitarlos para hacer discípulos y dar fruto para Su gloria."},
-      {keywords: ["email", "contactar pastor", "hablar con pastor", "consejería"], response: "Para consejería o hablar con el pastor, puedes enviar un mensaje de texto a la iglesia o escribir al email: ibb@iglesia-bautista.org."},
-      {keywords: ["whatsapp", "canal whatsapp"], response: "Síguenos en nuestro canal de WhatsApp para estar conectado: https://whatsapp.com/channel/0029Vb6qU6c3mFY3MNRZAm1H"}
-    ];
-    function getResponse(text){
-      text = text.toLowerCase();
-      for(let item of respuestas){
-        for(let kw of item.keywords){
-          if(text.includes(kw)){
-            return item.response;
-          }
-        }
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  addMessage("Dios te bendiga, hermano/a. Soy Hermano Digital, para ayudarte con preguntas sobre nuestra iglesia. ¿Cómo puedo ayudarte hoy?");
+
+  const respuestas = [
+    {keywords: ["petición", "oración", "peticiones", "enviar"], response: "Para enviar una petición, visita la sección 'Peticiones de oración' en nuestra página."},
+    {keywords: ["seguir", "redes sociales", "facebook", "instagram", "youtube"], response: "Síguenos en Facebook, Instagram, y YouTube como 'Iglesia Bautista Bíblica'."},
+    {keywords: ["servicio", "horario", "domingo", "miércoles"], response: "Los servicios son domingos por la mañana y miércoles en la noche. Entra también por Zoom: https://us02web.zoom.us/j/8121830152?pwd=..."},
+    {keywords: ["calendario", "eventos"], response: "Consulta el calendario en nuestra web para próximos eventos."},
+    {keywords: ["propósito", "misión"], response: "Nuestra misión es guiar y capacitar para hacer discípulos, siguiendo a Cristo."},
+    {keywords: ["email", "contactar pastor", "hablar con pastor"], response: "Puedes contactar al pastor por email: ibb@bautista.org"},
+    {keywords: ["whatsapp"], response: "Únete a nuestro canal en WhatsApp: https://chat.whatsapp.com/xxxxxxxxxxxx"},
+  ];
+
+  function getResponse(text) {
+    text = text.toLowerCase();
+    for (const item of respuestas) {
+      for (const kw of item.keywords) {
+        if (text.includes(kw)) return item.response;
       }
-      return "Disculpa, solo puedo ayudarte con temas de esta página. Por favor pregunta algo relacionado.";
     }
-    chatbotInput.addEventListener('keydown', function(e){
-      if(e.key === 'Enter'){
-        const text = chatbotInput.value.trim();
-        if(text.length === 0) return;
-        addMessage(text, true);
-        const reply = getResponse(text);
-        setTimeout(() => addMessage(reply), 600);
-        chatbotInput.value = '';
-      }
-    });
+    return "No entendí muy bien, ¿puedes formularlo distinto?";
+  }
+
+  input.addEventListener('keydown', e => {
+    if (e.key === 'Enter' && input.value.trim() !== '') {
+      addMessage(input.value, true);
+      setTimeout(() => addMessage(getResponse(input.value)), 600);
+      input.value = '';
+    }
+  });
+</script>
   </script>
 </body>
 </html>
