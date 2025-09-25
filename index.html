@@ -440,10 +440,108 @@
     <a href="#" id="map-link" target="_blank">Ver mapa</a>
   </section>
 
-  <section id="peticiones">
-    <h2>Envía tus peticiones de oración</h2>
-    <button onclick="abrirModal()">Enviar petición</button>
-  </section>
+<!-- Peticiones de Oración -->
+<section id="peticiones" style="text-align:center; margin-bottom: 40px;">
+  <h2 style="margin-bottom: 10px;">Envía tus peticiones de oración</h2>
+  <p style="margin-bottom: 18px;">Comparte tus necesidades de oración con nuestra comunidad.</p>
+  <button id="btnOpenModal" style="
+    background: linear-gradient(90deg,#0099ff,#0077cc 80%);
+    color: #fff;
+    padding: 14px 32px;
+    border: none;
+    border-radius: 35px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    letter-spacing: 1px;
+  " onmouseover="this.style.background='#005fa3'" onmouseout="this.style.background='linear-gradient(90deg,#0099ff,#0077cc 80%)'">📝 Enviar petición</button>
+</section>
+
+<!-- Modal para peticiones -->
+<div id="modalPeticiones" style="
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0,0,0,0.75);
+  z-index: 1000;
+  justify-content: center;
+  align-items: center;
+">
+  <div style="
+    background: #225082;
+    padding: 32px 20px 26px 20px;
+    border-radius: 16px;
+    max-width: 440px;
+    min-width: 270px;
+    width: 92vw;
+    color: white;
+    position: relative;
+    box-shadow: 0 8px 32px 0 #0000005c;
+  ">
+    <span onclick="cerrarModal()" style="
+      position: absolute;
+      top: 14px;
+      right: 22px;
+      font-size: 32px;
+      font-weight: bold;
+      cursor: pointer;
+      color: #fff;
+      user-select: none;
+    ">&times;</span>
+    
+    <h2 style="margin-bottom: 18px; text-align: center;">Peticiones de Oración</h2>
+    
+    <form action="https://formspree.io/f/mqadoabv" method="POST" autocomplete="on">
+      <label for="nombre" style="font-weight: 600;">Nombre:</label>
+      <input type="text" id="nombre" name="nombre" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
+
+      <label for="peticion" style="font-weight: 600;">Petición:</label>
+      <textarea id="peticion" name="peticion" rows="4" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;"></textarea>
+
+      <label for="correo" style="font-weight: 600;">Correo (opcional):</label>
+      <input type="email" id="correo" name="correo" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
+
+      <label for="telefono" style="font-weight: 600;">Teléfono (opcional):</label>
+      <input type="tel" id="telefono" name="telefono" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:14px;font-size:1rem;">
+
+      <button type="submit" style="
+        background: linear-gradient(90deg,#28a745,#19c542 80%);
+        color: #fff;
+        padding: 13px 0;
+        width: 100%;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.08rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin-top: 4px;
+        letter-spacing: 1px;
+        box-shadow: 0 2px 10px #0e462a38;
+      ">✉️ Enviar Petición</button>
+    </form>
+  </div>
+</div>
+<script>
+const btnOpenModal = document.getElementById('btnOpenModal');
+const modalPeticiones = document.getElementById('modalPeticiones');
+function abrirModal() {
+  modalPeticiones.style.display = 'flex';
+}
+function cerrarModal() {
+  modalPeticiones.style.display = 'none';
+}
+btnOpenModal.addEventListener('click', abrirModal);
+// Permitir cerrar el modal haciendo clic fuera del contenido
+modalPeticiones.addEventListener('click', function(e) {
+  if(e.target === modalPeticiones) cerrarModal();
+});
+</script>
+
 
   <div id="modal" style="display:none; position:fixed; top:0; left:0; width:100%; height:100%; background: rgba(0,0,0,0.7); z-index:1000; justify-content:center; align-items:center;">
     <div style="background:#265c86; padding:20px; border-radius:12px; max-width:400px; color:#fff; position:relative;">
