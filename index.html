@@ -6,7 +6,6 @@
   <title>Iglesia Bautista Bíblica</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* Reset */
     body, h1, h2, h3, p, a, ul, li, button, span {
       margin: 0;
       padding: 0;
@@ -40,7 +39,6 @@
       pointer-events: none;
     }
 
-    /* Nav Bar */
     nav {
       display: flex;
       justify-content: space-between;
@@ -119,7 +117,6 @@
       display: none;
       user-select: none;
     }
-
     @media (max-width: 768px) {
       .menu-toggle {
         display: block;
@@ -158,7 +155,6 @@
       }
     }
 
-    /* Hero Slider */
     .hero-slider {
       margin: 20px auto 40px;
       max-width: 900px;
@@ -192,19 +188,23 @@
       width: 100%;
       text-align: center;
       z-index: 3;
+      display: flex;
+      justify-content: center;
     }
     .slider-controls .dot {
       display: inline-block;
       width: 14px;
       height: 14px;
-      margin: 0 5px;
+      margin: 0 8px;
       background: rgba(255,255,255,0.7);
       border-radius: 50%;
       cursor: pointer;
       transition: background 0.4s ease;
+      border: 2px solid #007acc33;
     }
     .slider-controls .dot.active {
       background: #007acc;
+      border: 2px solid #fff;
     }
     .slider-caption {
       position: absolute;
@@ -247,7 +247,6 @@
       }
     }
 
-    /* CountDown Section */
     #countdown-section {
       max-width: 640px;
       margin: 0 auto 60px;
@@ -267,8 +266,6 @@
       font-weight: 700;
       padding: 10px 0;
     }
-
-    /* Additional sections styling */
     section {
       max-width: 900px;
       margin: 40px auto 60px;
@@ -278,32 +275,26 @@
       box-shadow: 0 0 24px rgb(0 0 0 / 0.7);
       color: #fff;
     }
-
     section h2 {
       font-size: 2.2rem;
       margin-bottom: 15px;
       font-weight: 700;
     }
-
     section p {
       font-size: 1.15rem;
       line-height: 1.7;
     }
-
-    /* Footer styling */
     footer {
       text-align: center;
-      padding: 35px 20px;
+      padding: 35px 20px 11px 20px;
       background: rgba(0,0,0,0.7);
       color: #fff;
       margin-top: 40px;
       user-select: none;
     }
-
     .footer-links {
       margin-bottom: 20px;
     }
-
     .footer-links a {
       color: #ddd;
       margin: 0 12px;
@@ -311,39 +302,54 @@
       font-size: 1.2rem;
       font-weight: 600;
     }
-
     .footer-links a:hover {
       color: #fdeb72;
       text-decoration: underline;
     }
-
     .social-icons {
       display: flex;
       justify-content: center;
-      gap: 30px;
+      gap: 28px;
       margin-top: 16px;
+      margin-bottom: 14px;
     }
-
     .social-icons a {
       display: flex;
       justify-content: center;
       align-items: center;
-      background: rgba(255,255,255,0.1);
-      color: #ddd;
-      width: 60px;
-      height: 60px;
-      font-size: 2.2rem;
+      background: #007acc;
+      color: #fff;
+      width: 56px;
+      height: 56px;
+      font-size: 2.1rem;
       border-radius: 50%;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 0 13px 2px #007acc69;
+      transition: transform 0.3s, box-shadow 0.3s, background 0.3s;
     }
-
     .social-icons a:hover {
       color: #fdeb72;
-      background: rgba(255,255,255,0.2);
-      box-shadow: 0 0 12px #fdeb72;
-      transform: scale(1.2);
+      background: #005fa3;
+      box-shadow: 0 0 16px #fdeb72;
+      transform: scale(1.13);
     }
-
+    .social-icons i {
+      margin: 0;
+      padding: 0;
+      vertical-align: middle;
+    }
+    @media (max-width: 600px) {
+      .social-icons {
+        gap: 16px;
+        margin-top: 11px;
+        margin-bottom: 11px;
+      }
+      .social-icons a {
+        width: 44px;
+        height: 44px;
+        font-size: 1.55rem;
+      }
+      footer { padding: 15px 6px 5px 6px; }
+    }
     @media (max-width: 768px) {
       .logo-container img {
         height: 80px !important;
@@ -372,22 +378,16 @@
         height: 180px !important;
       }
     }
-
-    /* Menú hamburguesa - media query móvil */
-    @media (max-width: 768px) {
-      nav .nav-links {
-        display: none;
-        flex-direction: column;
-        width: 100%;
-        background: rgba(0,119,204,0.95);
-        border-radius: 12px;
-        margin-top: 10px;
-        padding: 12px 0;
-        justify-content: center;
+    @media (max-width: 425px) {
+      .logo-container img {
+        height: 60px !important;
       }
-      nav .nav-links.active {
-        display: flex;
+      .social-icons a {
+        width: 38px;
+        height: 38px;
+        font-size: 1.17rem;
       }
+      .footer-links a { font-size: .9rem; }
     }
   </style>
 </head>
@@ -463,10 +463,9 @@
   <section id="ubicacion">
     <h2>Ubicación</h2>
     <p>1273 Lamont Ave NW, Grand Rapids, MI</p>
-    <a href="#" id="map-link" target="_blank">Ver mapa</a>
+    <a href="#" id="map-link" target="_blank" style="color:#db4bb3;">Ver mapa</a>
   </section>
 
-  <!-- Peticiones de Oración -->
   <section id="peticiones" style="text-align:center; margin-bottom: 40px;">
     <h2 style="margin-bottom: 10px;">Envía tus peticiones de oración</h2>
     <p style="margin-bottom: 18px;">Comparte tus necesidades de oración con nuestra comunidad.</p>
@@ -485,7 +484,6 @@
     " onmouseover="this.style.background='#005fa3'" onmouseout="this.style.background='linear-gradient(90deg,#0099ff,#0077cc 80%)'">📝 Enviar petición</button>
   </section>
 
-  <!-- Modal para peticiones -->
   <div id="modalPeticiones" style="
     display: none;
     position: fixed;
@@ -519,22 +517,16 @@
         color: #fff;
         user-select: none;
       ">&times;</span>
-      
       <h2 style="margin-bottom: 18px; text-align: center;">Peticiones de Oración</h2>
-      
       <form action="https://formspree.io/f/mqadoabv" method="POST" autocomplete="on">
         <label for="nombre" style="font-weight: 600;">Nombre:</label>
         <input type="text" id="nombre" name="nombre" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
-
         <label for="peticion" style="font-weight: 600;">Petición:</label>
         <textarea id="peticion" name="peticion" rows="4" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;"></textarea>
-
         <label for="correo" style="font-weight: 600;">Correo (opcional):</label>
         <input type="email" id="correo" name="correo" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
-
         <label for="telefono" style="font-weight: 600;">Teléfono (opcional):</label>
         <input type="tel" id="telefono" name="telefono" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:14px;font-size:1rem;">
-
         <button type="submit" style="
           background: linear-gradient(90deg,#28a745,#19c542 80%);
           color: #fff;
@@ -552,13 +544,34 @@
       </form>
     </div>
   </div>
+
+  <section id="consejeria">
+    <h2>Consejería Pastoral</h2>
+    <p>Si necesitas consejería o hablar con el pastor, envía un mensaje de texto a la iglesia.</p>
+    <a href="sms:16166353574">Enviar mensaje</a>
+  </section>
+
+  <section id="contacto">
+    <h2>Contacto</h2>
+    <p>Email: <a href="mailto:ibb@iglesia-bautista.org" style="color:#1e90ff;">ibb@iglesia-bautista.org</a></p>
+  </section>
+
+  <footer>
+    <p>Síguenos en redes sociales</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=100064413082714" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@iglesiabautistabiblicagran187?si=1OWWcPKQl0ayW5oL" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://whatsapp.com/channel/0029Vb6qU6c3mFY3MNRZAm1H" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <p>© 2025 Iglesia Bautista Bíblica - Todos los derechos reservados</p>
+  </footer>
+
   <script>
     // Slider automático
     const slides = document.querySelectorAll('.slider-img');
     const dots = document.querySelectorAll('.slider-controls .dot');
     let currentIndex = 0;
     let slideInterval;
-
     function showSlide(index) {
       slides.forEach((slide, i) => {
         slide.classList.toggle('active', i === index);
@@ -566,35 +579,38 @@
       });
       currentIndex = index;
     }
-
     function nextSlide() {
       let nextIndex = (currentIndex + 1) % slides.length;
       showSlide(nextIndex);
     }
-
     dots.forEach((dot, i) => {
       dot.addEventListener('click', () => {
         showSlide(i);
         resetSlideInterval();
       });
     });
-
     function startSlideInterval() {
       slideInterval = setInterval(nextSlide, 5000);
     }
-
     function resetSlideInterval() {
       clearInterval(slideInterval);
       startSlideInterval();
     }
-
-    // Inicializar slider automático
     startSlideInterval();
+
+    // Modal Peticiones
+    const btnOpenModal = document.getElementById("btnOpenModal");
+    const modalPeticiones = document.getElementById("modalPeticiones");
+    function abrirModal() { modalPeticiones.style.display = "flex"; }
+    function cerrarModal() { modalPeticiones.style.display = "none"; }
+    btnOpenModal.addEventListener("click", abrirModal);
+    modalPeticiones.addEventListener("click", function (e) {
+      if (e.target === modalPeticiones) cerrarModal();
+    });
 
     // Menú hamburguesa
     const navToggle = document.getElementById("navToggle");
     const menu = document.getElementById("menu");
-
     navToggle.addEventListener("click", () => {
       menu.classList.toggle("active");
     });
