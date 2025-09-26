@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Mission - Biblical Baptist Church</title>
+  <style>
+    /* === Keep the same CSS as in mision.html === */
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="logo background removed.png" alt="Church Logo" />
+    <a href="index-en.html">Home</a>
+    <a href="proposito-en.html">Purpose</a>
+    <a href="mision-en.html">Mission</a>
+    <a href="servicios-en.html">Services</a>
+    <a href="calendario.html">Calendar</a>
+    <a href="#" onclick="accesoSteven()">Q&A</a>
+    <a href="index-en.html#contact">Contact</a>
+    <a href="mision.html" style="background:#fdeb72;color:#003366;">Español</a>
+  </nav>
+
+  <div class="contenido">
+    <h1>Our Mission</h1>
+    <p>
+      The mission of Biblical Baptist Church is to proclaim the gospel of Jesus Christ,
+      make disciples of all nations, faithfully teach the Word of God,
+      and serve our community with love.
+    </p>
+    <div class="cita-biblia">
+      <div>
+        <span class="versiculo-ref">Mark 16:15</span>
+        <span class="versiculo-texto">Go into all the world and preach the gospel to every creature.</span>
+      </div>
+      <div>
+        <span class="versiculo-ref">Acts 1:8</span>
+        <span class="versiculo-texto">You will receive power when the Holy Spirit has come upon you; and you will be my witnesses in Jerusalem, in all Judea and Samaria, and to the ends of the earth.</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-arrows" aria-label="Section navigation">
+    <a href="proposito-en.html" class="arrow-link" aria-label="Go to Purpose page">&#8592;</a>
+    <a href="servicios-en.html" class="arrow-link" aria-label="Go to Services page">&#8594;</a>
+  </div>
+
+  <script>
+    function accesoSteven() {
+      var clave = prompt("Enter the access code:");
+      if (clave === "Usuario123") {
+        window.location.href = "steven.html";
+      } else {
+        alert("Incorrect code. Access denied.");
+      }
+    }
+  </script>
+</body>
+</html>
