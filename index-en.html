@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Biblical Baptist Church</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
+  <style>
+    /* === Your same CSS here (no changes, keep exactly as in index.html) === */
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="logo-container">
+      <a href="index-en.html">
+        <img src="logo background removed.png" alt="Church Logo" />
+      </a>
+      <span class="logo-text">Biblical Baptist Church</span>
+    </div>
+    <span class="menu-toggle" id="navToggle">☰</span>
+    <div class="nav-links" id="menu">
+      <a href="index-en.html">Home</a>
+      <a href="proposito-en.html">Purpose</a>
+      <a href="mision-en.html">Mission</a>
+      <a href="servicios-en.html">Services</a>
+      <a href="calendario-en.html">Calendar</a>
+      <a href="#" onclick="return accesoSteven()">Q&A</a>
+      <a href="index-en.html#contact">Contact</a>
+      <a href="index.html" style="background:#fdeb72;color:#003366;">Español</a>
+    </div>
+  </nav>
+
+  <div class="hero-slider">
+    <div class="slider">
+      <img src="IMG_1846.jpeg" alt="Church Photo" class="slider-img active" />
+      <img src="Logo para la pagina.PNG" alt="Church Logo" class="slider-img" />
+    </div>
+    <div class="slider-controls">
+      <span class="dot active"></span>
+      <span class="dot"></span>
+    </div>
+    <div class="slider-caption">
+      <h2>Welcome to Biblical Baptist Church</h2>
+      <p>Connect with us. We are a family in Grand Rapids.</p>
+    </div>
+  </div>
+
+  <section id="countdown-section">
+    <h2>Time left for the next service:</h2>
+    <div id="countdown"></div>
+    <div id="live-links" style="display:none;">
+      <span>🔴 The service is live</span>
+      <a href="https://www.youtube.com/watch?v=YhapHY2hihY" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+    </div>
+  </section>
+
+  <section id="proposito">
+    <h2>Purpose</h2>
+    <p>
+      Biblical Baptist Church exists to glorify God through the implementation of the Great Commandment and the Great Commission. Matthew 22:37-40; 28:18-20.
+    </p>
+  </section>
+
+  <section id="mision">
+    <h2>Mission</h2>
+    <p>
+      The mission of Biblical Baptist Church is to guide new believers to a secure relationship with Jesus Christ, train them to make disciples, and bear fruit for His glory.
+    </p>
+  </section>
+
+  <section id="servicios">
+    <h2>Services</h2>
+    <ul>
+      <li>Sunday 9:30–11:00 AM : Worship Service</li>
+      <li>Sunday 11:15 AM – 12:00 PM : Bible School</li>
+      <li>Sunday 6:00–7:00 PM : Zoom Service <a href="https://us02web.zoom.us/j/8121830152?pwd=OFlqNDVBY25iNUxGQXl1ZlpzTXpLQT09" target="_blank">Join</a></li>
+      <li>Wednesday 7:00–8:15 PM : Bible Study and Prayer</li>
+    </ul>
+  </section>
+
+  <section id="ubicacion">
+    <h2>Location</h2>
+    <p>1273 Lamont Ave NW, Grand Rapids, MI</p>
+    <a href="https://www.google.com/maps/place/1273+Lamont+Ave+NW,+Grand+Rapids,+MI" id="map-link" target="_blank" rel="noopener noreferrer" style="color:#db4bb3;">View map</a>
+  </section>
+
+  <section id="peticiones" style="text-align:center; margin-bottom: 40px;">
+    <h2 style="margin-bottom: 10px;">Send your prayer requests</h2>
+    <p style="margin-bottom: 18px;">Share your prayer needs with our community.</p>
+    <button id="btnOpenModal" style="
+      background: linear-gradient(90deg,#0099ff,#0077cc 80%);
+      color: #fff;
+      padding: 14px 32px;
+      border: none;
+      border-radius: 35px;
+      font-size: 1.2rem;
+      font-weight: 700;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.13);
+      cursor: pointer;
+      transition: background 0.2s, transform 0.2s;
+      letter-spacing: 1px;
+    ">📝 Submit Request</button>
+  </section>
+
+  <div id="modalPeticiones" style="display:none; ...">
+    <!-- same form here, only text translated -->
+    <h2>Prayer Requests</h2>
+    <form action="https://formspree.io/f/mqadoabv" method="POST" autocomplete="on">
+      <label for="nombre">Name:</label>
+      <input type="text" id="nombre" name="nombre" required>
+      <label for="peticion">Request:</label>
+      <textarea id="peticion" name="peticion" rows="4" required></textarea>
+      <label for="correo">Email (optional):</label>
+      <input type="email" id="correo" name="correo">
+      <label for="telefono">Phone (optional):</label>
+      <input type="tel" id="telefono" name="telefono">
+      <button type="submit">✉️ Submit Request</button>
+    </form>
+  </div>
+
+  <section id="consejeria">
+    <h2>Pastoral Counseling</h2>
+    <p>If you need counseling or want to talk to the pastor, send a text message to the church.</p>
+    <a href="sms:16166353574">Send message</a>
+  </section>
+
+  <section id="contacto">
+    <h2>Contact</h2>
+    <p>Email: <a href="mailto:ibb@iglesia-bautista.org" style="color:#1e90ff;">ibb@iglesia-bautista.org</a></p>
+  </section>
+
+  <footer>
+    <p>Follow us on social media</p>
+    <div class="social-icons">
+      <a href="https://www.facebook.com/profile.php?id=100064413082714" target="_blank"><i class="fa-brands fa-facebook"></i></a>
+      <a href="https://youtube.com/@iglesiabautistabiblicagran187?si=1OWWcPKQl0ayW5oL" target="_blank"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://whatsapp.com/channel/0029Vb6qU6c3mFY3MNRZAm1H" target="_blank"><i class="fa-brands fa-whatsapp"></i></a>
+    </div>
+    <p>© 2025 Biblical Baptist Church - All rights reserved</p>
+  </footer>
+
+  <!-- Keep same JS (slider, countdown, modal, nav) -->
+  <script>
+    // ... same script from index.html, no changes
+  </script>
+</body>
+</html>
