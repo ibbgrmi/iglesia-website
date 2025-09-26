@@ -6,7 +6,171 @@
   <title>Biblical Baptist Church</title>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" />
   <style>
-    /* === Your same CSS here (no changes, keep exactly as in index.html) === */
+    /* TODO: copia aquí todo tu CSS actual del archivo español tal cual, incluyendo el bloque nav .btn-language */
+    body, h1, h2, h3, p, a, ul, li, button, span {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: Arial, sans-serif;
+    }
+    body {
+      background: #003366;
+      color: #fff;
+      overflow-x: hidden;
+      background-image: url("IMG_1846.jpeg");
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: center;
+      animation: fondoChange 10s ease infinite alternate;
+      transition: background-image 1s ease-in-out;
+    }
+    @keyframes fondoChange {
+      0% { background-image: url("IMG_1846.jpeg"); }
+      100% { background-image: url("IMG_2373.jpeg"); }
+    }
+    body::before {
+      content: "";
+      position: fixed;
+      top:0;
+      left:0;
+      width:100%;
+      height:100%;
+      background: radial-gradient(circle at 50% 50%, rgba(255,255,255,0.05), transparent 70%);
+      z-index: -1;
+      pointer-events: none;
+    }
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(0,119,204,0.4);
+      padding: 10px 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      backdrop-filter: blur(15px);
+      border-radius: 0 12px 12px 0;
+      flex-wrap: wrap;
+    }
+    .logo-container {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .logo-container img {
+      height: 112px;
+      width: auto;
+      border-radius: 10px;
+    }
+    .logo-text {
+      color: #fdeb72;
+      font-weight: 900;
+      font-size: 1.7rem;
+      user-select: none;
+      white-space: nowrap;
+      display: none;
+    }
+    nav .nav-links {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      flex-grow: 1;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+    }
+    nav .nav-links a {
+      color: #fff;
+      background: rgba(70, 130, 180, 0.7);
+      padding: 10px 18px;
+      border-radius: 30px;
+      font-weight: 900;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    nav .nav-links a:hover {
+      background: rgba(70,130,180,1);
+      box-shadow: 0 0 17px rgba(0, 124, 255, 0.9);
+      transform: translateY(-3px);
+      transition: all 0.3s ease;
+    }
+    .nav-arrow-right {
+      font-size: 26px;
+      color: #fdeb72;
+      font-weight: 900;
+      user-select: none;
+      padding: 6px 14px;
+      border-radius: 30px;
+      background: rgba(0, 119, 204, 0.88);
+      margin-left: 12px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+    .nav-arrow-right:hover {
+      background: rgba(0,102,179,1);
+      box-shadow: 0 0 20px #0a53a0c9;
+      cursor: pointer;
+    }
+    .menu-toggle {
+      font-size: 28px;
+      color: #fdeb72;
+      cursor: pointer;
+      display: none;
+      user-select: none;
+    }
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+      .logo-text {
+        display: inline-block;
+        font-size: 1.5rem;
+        margin-left: 8px;
+      }
+      .logo-container img {
+        height: 85px;
+      }
+      nav .nav-links {
+        display: none;
+        flex-direction: column;
+        width: 100%;
+        background: rgba(0,119,204,0.95);
+        border-radius: 12px;
+        margin-top: 10px;
+        padding: 12px 0;
+        justify-content: center;
+      }
+      nav .nav-links.active {
+        display: flex;
+      }
+      nav .nav-links a {
+        padding: 15px 0;
+        margin: 0;
+        border-radius: 0;
+        text-align: center;
+        font-size: 1.3rem;
+        font-weight: 900;
+      }
+      .nav-arrow-right {
+        display: none;
+      }
+    }
+    nav .btn-language {
+      display: inline-flex;
+      align-items: center;
+      padding: 8px 16px;
+      background-color: #fdeb72;
+      color: #003366;
+      font-weight: 900;
+      border-radius: 30px;
+      text-decoration: none;
+      margin-left: 12px;
+      transition: background-color 0.3s ease, color 0.3s ease;
+    }
+    nav .btn-language:hover {
+      background-color: #e6d24b;
+      color: #001f3f;
+      cursor: pointer;
+    }
   </style>
 </head>
 <body>
@@ -24,9 +188,14 @@
       <a href="mision-en.html">Mission</a>
       <a href="servicios-en.html">Services</a>
       <a href="calendario-en.html">Calendar</a>
-      <a href="#" onclick="return accesoSteven()">Q&A</a>
       <a href="index-en.html#contact">Contact</a>
-      <a href="index.html" style="background:#fdeb72;color:#003366;">Español</a>
+      <a class="nav-arrow-right" href="proposito-en.html" aria-label="Go to Purpose">&#8594;</a>
+
+      <!-- Botón cambio idioma español -->
+      <a href="index.html" class="btn-language" aria-label="Switch to Spanish">
+        <img src="usa-flag-icon.png" alt="Español" style="width: 20px; vertical-align: middle; margin-right: 6px;" />
+        Español
+      </a>
     </div>
   </nav>
 
@@ -85,8 +254,8 @@
   </section>
 
   <section id="peticiones" style="text-align:center; margin-bottom: 40px;">
-    <h2 style="margin-bottom: 10px;">Send your prayer requests</h2>
-    <p style="margin-bottom: 18px;">Share your prayer needs with our community.</p>
+    <h2>Send your prayer requests</h2>
+    <p>Share your prayer needs with our community.</p>
     <button id="btnOpenModal" style="
       background: linear-gradient(90deg,#0099ff,#0077cc 80%);
       color: #fff;
@@ -99,23 +268,68 @@
       cursor: pointer;
       transition: background 0.2s, transform 0.2s;
       letter-spacing: 1px;
-    ">📝 Submit Request</button>
+    " onmouseover="this.style.background='#005fa3'" onmouseout="this.style.background='linear-gradient(90deg,#0099ff,#0077cc 80%)'">📝 Submit Request</button>
   </section>
 
-  <div id="modalPeticiones" style="display:none; ...">
-    <!-- same form here, only text translated -->
-    <h2>Prayer Requests</h2>
-    <form action="https://formspree.io/f/mqadoabv" method="POST" autocomplete="on">
-      <label for="nombre">Name:</label>
-      <input type="text" id="nombre" name="nombre" required>
-      <label for="peticion">Request:</label>
-      <textarea id="peticion" name="peticion" rows="4" required></textarea>
-      <label for="correo">Email (optional):</label>
-      <input type="email" id="correo" name="correo">
-      <label for="telefono">Phone (optional):</label>
-      <input type="tel" id="telefono" name="telefono">
-      <button type="submit">✉️ Submit Request</button>
-    </form>
+  <div id="modalPeticiones" style="
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.75);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+  ">
+    <div style="
+      background: #225082;
+      padding: 32px 20px 26px 20px;
+      border-radius: 16px;
+      max-width: 440px;
+      min-width: 270px;
+      width: 92vw;
+      color: white;
+      position: relative;
+      box-shadow: 0 8px 32px 0 #0000005c;
+    ">
+      <span onclick="cerrarModal()" style="
+        position: absolute;
+        top: 14px;
+        right: 22px;
+        font-size: 32px;
+        font-weight: bold;
+        cursor: pointer;
+        color: #fff;
+        user-select: none;
+      ">&times;</span>
+      <h2 style="margin-bottom: 18px; text-align: center;">Prayer Requests</h2>
+      <form action="https://formspree.io/f/mqadoabv" method="POST" autocomplete="on">
+        <label for="nombre" style="font-weight: 600;">Name:</label>
+        <input type="text" id="nombre" name="nombre" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
+        <label for="peticion" style="font-weight: 600;">Request:</label>
+        <textarea id="peticion" name="peticion" rows="4" required style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;"></textarea>
+        <label for="correo" style="font-weight: 600;">Email (optional):</label>
+        <input type="email" id="correo" name="correo" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:9px;font-size:1rem;">
+        <label for="telefono" style="font-weight: 600;">Phone (optional):</label>
+        <input type="tel" id="telefono" name="telefono" style="width:100%;padding:10px;border-radius:7px;border:none;margin-bottom:14px;font-size:1rem;">
+        <button type="submit" style="
+          background: linear-gradient(90deg,#28a745,#19c542 80%);
+          color: #fff;
+          padding: 13px 0;
+          width: 100%;
+          border: none;
+          border-radius: 8px;
+          font-size: 1.08rem;
+          font-weight: bold;
+          cursor: pointer;
+          margin-top: 4px;
+          letter-spacing: 1px;
+          box-shadow: 0 2px 10px #0e462a38;
+        ">✉️ Submit Request</button>
+      </form>
+    </div>
   </div>
 
   <section id="consejeria">
@@ -139,9 +353,65 @@
     <p>© 2025 Biblical Baptist Church - All rights reserved</p>
   </footer>
 
-  <!-- Keep same JS (slider, countdown, modal, nav) -->
   <script>
-    // ... same script from index.html, no changes
+    // Slider automático
+    const slides = document.querySelectorAll('.slider-img');
+    const dots = document.querySelectorAll('.slider-controls .dot');
+    let currentIndex = 0;
+    let slideInterval;
+    function showSlide(index) {
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === index);
+        dots[i].classList.toggle('active', i === index);
+      });
+      currentIndex = index;
+    }
+    function nextSlide() {
+      let nextIndex = (currentIndex + 1) % slides.length;
+      showSlide(nextIndex);
+    }
+    dots.forEach((dot, i) => {
+      dot.addEventListener('click', () => {
+        showSlide(i);
+        resetSlideInterval();
+      });
+    });
+    function startSlideInterval() {
+      slideInterval = setInterval(nextSlide, 5000);
+    }
+    function resetSlideInterval() {
+      clearInterval(slideInterval);
+      startSlideInterval();
+    }
+    startSlideInterval();
+
+    // Modal Peticiones
+    const btnOpenModal = document.getElementById("btnOpenModal");
+    const modalPeticiones = document.getElementById("modalPeticiones");
+    function abrirModal() { modalPeticiones.style.display = "flex"; }
+    function cerrarModal() { modalPeticiones.style.display = "none"; }
+    btnOpenModal.addEventListener("click", abrirModal);
+    modalPeticiones.addEventListener("click", function (e) {
+      if (e.target === modalPeticiones) cerrarModal();
+    });
+
+    // Menú hamburguesa
+    const navToggle = document.getElementById("navToggle");
+    const menu = document.getElementById("menu");
+    navToggle.addEventListener("click", () => {
+      menu.classList.toggle("active");
+    });
+
+    function accesoSteven() {
+      const clave = prompt("Ingrese el código de acceso:");
+      if (clave === "Usuario123") {
+        window.location.href = "steven.html";
+        return true;
+      } else {
+        alert("Código incorrecto");
+        return false;
+      }
+    }
   </script>
 </body>
 </html>
