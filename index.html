@@ -627,7 +627,7 @@
     }
   </script>
   <body>
-  <style>
+<style>
   /* Base y Fuentes */
   #chatbot-button, #chatbot {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -660,7 +660,6 @@
   
   /* --- Ventana del Chat --- */
   #chatbot {
-    /* La posición inicial del CSS es para que aparezca al principio */
     position: fixed;
     bottom: 100px; 
     right: 30px;
@@ -688,7 +687,6 @@
     border-top-left-radius: 12px;
     border-top-right-radius: 12px;
     
-    /* FUNCIÓN DE MOVER: ESTO HACE QUE SE VEA ARRASTRABLE */
     cursor: grab; 
     user-select: none;
   }
@@ -741,7 +739,6 @@
     border-bottom-left-radius: 2px !important;
   }
 
-
   /* Campo de Input */
   #chatbot-input {
     border: none;
@@ -780,7 +777,7 @@
   const input = document.getElementById('chatbot-input');
   const header = document.getElementById('chatbot-header'); 
 
-  // Lógica para abrir/cerrar (INICIALIZA POSICIÓN PARA ARRASTRE)
+  // --- Lógica para abrir/cerrar (INICIALIZA POSICIÓN PARA ARRASTRE) ---
   btn.onclick = () => {
     chatbot.style.display = 'flex';
     btn.style.display = 'none';
@@ -815,7 +812,7 @@
 
   addMessage("Dios te bendiga, hermano/a. Soy Hermano Digital, para ayudarte con preguntas sobre nuestra iglesia. ¿Cómo puedo ayudarte hoy?");
 
-  // BLOQUE DE RESPUESTAS FINALES Y PROFESIONALES (AMPLIADO)
+  // --- BLOQUE DE RESPUESTAS FINALES Y PROFESIONALES (AMPLIADO) ---
   const respuestas = [
     // BAUTISMO Y MEMBRESÍA
     {keywords: ["bautismo", "bautizar", "bautizarse", "ser bautizado", "membresia", "miembro"], response: "Para iniciar el proceso de bautismo, es necesario **ser miembro activo de la congregación**. Le invitamos a contactar al pastor después de cualquier servicio para recibir orientación sobre los requisitos de membresía y el próximo ciclo de bautismos."},
@@ -827,30 +824,31 @@
     {keywords: ["clave", "acceso", "menú", "privado", "preguntas y respuestas", "secreto", "login", "ingreso"], response: "La sección de Preguntas y Respuestas es un recurso **exclusivo para los miembros activos de la congregación**. Si usted es miembro, por favor ingrese con su clave personal. Si desea más información sobre cómo ser miembro, contáctenos por email."},
     
     // OFRENDA/DIEZMO (CORREGIDA Y AMPLIADA)
-    {keywords: ["ofrenda", "diezmo", "ofrendar", "diezmar", "donacion", "ofrendo", "donar"], response: "Apreciamos su generosidad. Por el momento, la recepción de ofrendas y diezmos se realiza de forma presencial durante el servicio de adoración. No estamos procesando donaciones en línea. ¡Dios le bendiga!"},
+    {keywords: ["ofrenda", "diezmo", "diezmar", "donacion", "ofrendo", "donar"], response: "Apreciamos su generosidad. Por el momento, la **recepción de ofrendas y diezmos** se realiza de forma presencial durante el servicio de adoración. No estamos procesando donaciones en línea. ¡Dios le bendiga!"},
     
     // PETICIONES
     {keywords: ["petición", "oración", "peticiones", "enviar", "orar"], response: "Para enviar una petición, visite la sección 'Peticiones de oración' en nuestra página."},
     
     // REDES SOCIALES
-    {keywords: ["seguir", "redes sociales", "facebook", "instagram", "youtube"], response: "Síguenos en Facebook, Instagram, y YouTube como 'Iglesia Bautista Bíblica'."},
+    {keywords: ["seguir", "redes sociales", "facebook", "instagram", "youtube", "social"], response: "Síguenos en **redes sociales** (Facebook, Instagram, y YouTube) como 'Iglesia Bautista Bíblica'."},
     
     // SERVICIOS/HORARIOS Y ZOOM (CORREGIDA Y AMPLIADA)
     {keywords: ["servicio", "horario", "domingo", "miércoles", "zoom", "link", "enlace", "reunion", "conectarse", "culto", "hora"], response: "Los servicios de adoración son domingos por la mañana y miércoles en la noche. Puede unirse por **Zoom** usando este enlace: https://us02web.zoom.us/j/8121830152?pwd=..."},
     
     // MISIÓN/PROPÓSITO
-    {keywords: ["propósito", "misión"], response: "Nuestra misión es guiar y capacitar para hacer discípulos, siguiendo a Cristo."},
+    {keywords: ["propósito", "misión", "vision"], response: "Nuestra misión es guiar y capacitar para hacer discípulos, siguiendo a Cristo."},
     
     // CONTACTO PASTOR
     {keywords: ["email", "contactar pastor", "hablar con pastor", "correo"], response: "Puede contactar al pastor por email: ibb@bautista.org"},
     
     // WHATSAPP
     {keywords: ["whatsapp", "canal", "grupo"], response: "Únase a nuestro canal en WhatsApp: https://chat.whatsapp.com/xxxxxxxxxxxx"},
-    
-    // RESPUESTA DE REFUERZO (SI NO SE ENTIENDE)
-    {keywords: ["dios", "jesus", "cristo", "biblia"], response: "¡Dios le bendiga! Nuestro principal objetivo es guiar a las personas a seguir a Cristo. ¿Tiene alguna pregunta sobre nuestros servicios o actividades?"},
-  ];
 
+    // DIRECCIÓN
+    {keywords: ["direccion", "donde esta", "ubicacion", "lugar", "como llegar"], response: "Nuestra dirección es 1273 Lamon Ave NW, Grand Rapids, MI. ¡Esperamos su visita!"},
+  ];
+  
+  // --- FUNCIÓN PRINCIPAL DE BÚSQUEDA ---
   function getResponse(text) {
     text = text.toLowerCase();
     for (const item of respuestas) {
@@ -863,36 +861,26 @@
 
   input.addEventListener('keydown', e => {
     if (e.key === 'Enter' && input.value.trim() !== '') {
-      // 1. Muestra el mensaje del usuario
       addMessage(input.value, true);
-      
-      // 2. Muestra la respuesta del bot después de un breve retraso
       setTimeout(() => addMessage(getResponse(input.value)), 600);
-      
-      // 3. Limpia el campo
       input.value = '';
     }
   });
 
-  // ------------------------------------
-  // --- FUNCIÓN PARA HACERLO MOVIBLE ---
-  // ------------------------------------
+  // --- FUNCIÓN PARA HACERLO MOVIBLE (DRAG) ---
   let isDragging = false;
   let offsetX, offsetY;
 
-  // Usa la cabecera como el "handle" para arrastrar
   header.addEventListener("mousedown", dragStart); 
   document.addEventListener("mouseup", dragEnd);
   document.addEventListener("mousemove", drag);
 
   function dragStart(e) {
-    // Si el clic es sobre la 'X' de cerrar, NO arrastrar
     if (e.target.id === 'chatbot-close') return;
 
     isDragging = true;
     header.style.cursor = 'grabbing';
     
-    // Calcula la posición inicial del ratón relativa a la ventana
     offsetX = e.clientX - chatbot.getBoundingClientRect().left;
     offsetY = e.clientY - chatbot.getBoundingClientRect().top;
     
@@ -907,15 +895,12 @@
   function drag(e) {
     if (!isDragging) return;
     
-    // Calcula la nueva posición de la ventana de chat
     let newX = e.clientX - offsetX;
     let newY = e.clientY - offsetY;
 
-    // Aplica la nueva posición usando top/left (solo funciona con position:fixed)
     chatbot.style.left = newX + 'px';
     chatbot.style.top = newY + 'px';
     
-    // Limpia bottom/right para evitar conflictos
     chatbot.style.right = ''; 
     chatbot.style.bottom = '';
   }
