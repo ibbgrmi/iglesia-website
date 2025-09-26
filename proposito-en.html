@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Purpose - Biblical Baptist Church</title>
+  <style>
+    /* === Keep the same CSS as in proposito.html === */
+  </style>
+</head>
+<body>
+
+  <header>
+    <a href="index-en.html" class="logo-link">
+      <img src="logo background removed.png" alt="Church Logo" />
+      Biblical Baptist Church
+    </a>
+    <span class="menu-toggle" id="navToggle">☰</span>
+    <nav id="menu">
+      <a href="index-en.html">Home</a>
+      <a href="proposito-en.html">Purpose</a>
+      <a href="mision-en.html">Mission</a>
+      <a href="servicios-en.html">Services</a>
+      <a href="calendario.html">Calendar</a>
+      <a href="#" onclick="return accesoSteven()">Q&A</a>
+      <a href="index-en.html#contact">Contact</a>
+      <a href="proposito.html" style="background:#fdeb72;color:#003366;">Español</a>
+    </nav>
+  </header>
+
+  <div class="contenido">
+    <h1>Purpose</h1>
+    <p>
+      Biblical Baptist Church exists to glorify God through the
+      implementation of the Great Commandment and the Great Commission of our Lord
+      and Savior Jesus Christ.
+    </p>
+    <div class="cita-biblia">
+      <div>
+        <span class="versiculo-ref">Matthew 22:37-40</span>
+        <span class="versiculo-texto">Jesus said to him: "You shall love the Lord your God with all your heart, with all your soul, and with all your mind..."</span>
+      </div>
+      <div>
+        <span class="versiculo-ref">Matthew 28:18-20</span>
+        <span class="versiculo-texto">"Go therefore and make disciples of all nations, baptizing them in the name of the Father and of the Son and of the Holy Spirit..."</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="nav-arrows" aria-label="Section navigation">
+    <a href="index-en.html" class="arrow-link" aria-label="Go to Home page">&#8592;</a>
+    <a href="mision-en.html" class="arrow-link" aria-label="Go to Mission page">&#8594;</a>
+  </div>
+
+  <script>
+    // Hamburger menu
+    const navToggle = document.getElementById('navToggle');
+    const menu = document.getElementById('menu');
+    navToggle.addEventListener('click', () => {
+      menu.classList.toggle('active');
+    });
+
+    // Q&A access with code
+    function accesoSteven() {
+      const clave = prompt("Enter the access code:");
+      if(clave === "Usuario123") {
+        window.location.href = "steven.html";
+        return true;
+      } else {
+        alert("Incorrect code. Access denied.");
+        return false;
+      }
+    }
+  </script>
+</body>
+</html>
