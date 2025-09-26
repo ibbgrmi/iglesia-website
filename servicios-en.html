@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Services - Biblical Baptist Church</title>
+  <style>
+    /* === Keep the same CSS as in servicios.html === */
+  </style>
+</head>
+<body>
+  <nav>
+    <img src="logo background removed.png" alt="Church Logo" />
+    <a href="index-en.html">Home</a>
+    <a href="proposito-en.html">Purpose</a>
+    <a href="mision-en.html">Mission</a>
+    <a href="servicios-en.html">Services</a>
+    <a href="calendario.html">Calendar</a>
+    <a href="#" onclick="accesoSteven()">Q&A</a>
+    <a href="index-en.html#contact">Contact</a>
+    <a href="servicios.html" style="background:#fdeb72;color:#003366;">Español</a>
+  </nav>
+
+  <div class="contenido">
+    <span class="fecha">Last updated: September 24, 2025</span>
+    <h1>Services</h1>
+    <ul>
+      <li><strong>Sunday 9:30 AM – 11:00 AM</strong> — Worship Service</li>
+      <li><strong>Sunday 11:15 AM – 12:00 PM</strong> — Bible School</li>
+      <li><strong>Sunday 6:00 PM – 7:00 PM</strong> — Zoom Service
+        <a href="https://us02web.zoom.us/j/8121830152?pwd=OFlqNDVBY25iNUxGQXl1ZlpzTXpLQT09" target="_blank">
+          Join Zoom
+        </a>
+      </li>
+      <li><strong>Wednesday 7:00 PM – 8:15 PM</strong> — Bible Study & Prayer</li>
+    </ul>
+
+    <div class="cita-biblia">
+      <span class="versiculo-ref">Hebrews 10:25</span>
+      <span class="versiculo-texto">
+        Not forsaking the assembling of ourselves together, as is the manner of some, 
+        but exhorting one another, and so much the more as you see the Day approaching.
+      </span>
+    </div>
+  </div>
+
+  <div class="nav-arrows" aria-label="Section navigation">
+    <a href="mision-en.html" class="arrow-link" aria-label="Go to Mission page">&#8592;</a>
+    <a href="calendario.html" class="arrow-link" aria-label="Go to Calendar page">&#8594;</a>
+  </div>
+
+  <script>
+    function accesoSteven() {
+      var clave = prompt("Enter the access code:");
+      if (clave === "Usuario123") {
+        window.location.href = "steven.html";
+      } else {
+        alert("Incorrect code. Access denied.");
+      }
+    }
+  </script>
+</body>
+</html>
