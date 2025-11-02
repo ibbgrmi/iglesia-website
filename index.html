@@ -645,50 +645,9 @@ nav .btn-language:hover {
   </script>
   <script src="https://cdn.commoninja.com/sdk/latest/commonninja.js" defer></script>
 <div class="commonninja_component pid-7cc6992d-d72e-4055-854e-8e0da57714a3"></div>
-<!-- 🌤️ Clima Grand Rapids (auto-recuperación) -->
-<div id="ibb-weather"></div>
-<script>
-(function () {
-  function mount() {
-    var host = document.getElementById('ibb-weather');
-    if (!host) {
-      host = document.createElement('div');
-      host.id = 'ibb-weather';
-      document.body.appendChild(host);
-    }
-    host.style.cssText = 'position:fixed;bottom:10px;right:10px;width:250px;z-index:2147483647;';
-
-    if (!host.querySelector('a.weatherwidget-io')) {
-      host.innerHTML =
-        '<a class="weatherwidget-io" ' +
-        'href="https://forecast7.com/es/42d96n85d67/grand-rapids/?unit=us" ' +
-        'data-label_1="GRAND RAPIDS" data-label_2="CLIMA" ' +
-        'data-mode="Current" data-icons="Climacons" data-theme="marine">' +
-        'GRAND RAPIDS CLIMA</a>';
-    }
-
-    if (!document.getElementById('weatherwidget-io-js')) {
-      var js = document.createElement('script');
-      js.id = 'weatherwidget-io-js';
-      js.src = 'https://weatherwidget.io/js/widget.min.js';
-      js.onload = function(){ if (window.__weatherwidget_init) window.__weatherwidget_init(); };
-      (document.head || document.body).appendChild(js);
-    } else {
-      if (window.__weatherwidget_init) window.__weatherwidget_init();
-    }
-  }
-
-  function keepAlive() {
-    var host = document.getElementById('ibb-weather');
-    if (!host || (!host.querySelector('iframe') && !host.querySelector('a.weatherwidget-io'))) {
-      mount();
-    }
-  }
-
-  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', mount); else mount();
-  setInterval(keepAlive, 3000);
-})();
-</script>
+<!-- 🌦️ Clima Grand Rapids (Elfsight) -->
+<script src="https://elfsightcdn.com/platform.js" async></script>
+<div class="elfsight-app-b3d124ec-7003-49df-bce8-67ae0e1abd86" data-elfsight-app-lazy></div>
   <script>
 (function(){if(!window.chatbase||window.chatbase("getState")!=="initialized"){window.chatbase=(...arguments)=>{if(!window.chatbase.q){window.chatbase.q=[]}window.chatbase.q.push(arguments)};window.chatbase=new Proxy(window.chatbase,{get(target,prop){if(prop==="q"){return target.q}return(...args)=>target(prop,...args)}})}const onLoad=function(){const script=document.createElement("script");script.src="https://www.chatbase.co/embed.min.js";script.id="TO5mIHw87eNpyX2b2K18k";script.domain="www.chatbase.co";document.body.appendChild(script)};if(document.readyState==="complete"){onLoad()}else{window.addEventListener("load",onLoad)}})();
 </script>
