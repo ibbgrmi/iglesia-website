@@ -2,37 +2,104 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Petición de Oración</title>
+  <title>Petición de Oración | Iglesia Bautista Bíblica</title>
 
-  <!-- Redirección automática a Mensajes (SMS) -->
+  <!-- Redirección automática a SMS -->
   <meta http-equiv="refresh" content="0; url=sms:+16162874503&body=PETICIÓN DE ORACIÓN%0A%0ANombre:%0A%0APetición:">
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0f4c75, #1e7cff);
+      color: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      text-align: center;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(10px);
+      border-radius: 18px;
+      padding: 35px 25px;
+      max-width: 420px;
+      box-shadow: 0 12px 35px rgba(0,0,0,0.35);
+    }
+
+    img {
+      max-width: 140px;
+      margin-bottom: 15px;
+    }
+
+    h2 {
+      margin-bottom: 10px;
+    }
+
+    p {
+      opacity: 0.95;
+    }
+
+    a.button {
+      display: inline-block;
+      margin-top: 25px;
+      padding: 14px 24px;
+      background: #28a745;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 12px;
+      font-weight: bold;
+      font-size: 1.05rem;
+    }
+
+    a.button.secondary {
+      background: transparent;
+      border: 1px solid #fff;
+      margin-top: 18px;
+    }
+
+    .footer {
+      margin-top: 30px;
+      font-size: 0.9rem;
+      opacity: 0.85;
+    }
+  </style>
 </head>
 
-<body style="font-family: Arial, sans-serif; text-align:center; padding:40px;">
+<body>
 
-  <h2>Petición de Oración</h2>
-  <p>Abriendo la mensajería para enviar tu petición…</p>
+  <div class="card">
+    <img src="logo%20background%20removed.png" alt="Logo Iglesia Bautista Bíblica">
 
-  <p style="margin-top:30px;">
-    Si no se abre automáticamente, toca aquí:
-  </p>
+    <h2>Petición de Oración</h2>
+    <p>
+      Estamos abriendo tu aplicación de mensajes para que envíes tu petición
+      directamente a la iglesia.
+    </p>
 
-  <a
-    href="sms:+16162874503&body=PETICIÓN DE ORACIÓN%0A%0ANombre:%0A%0APetición:"
-    style="
-      display:inline-block;
-      padding:14px 22px;
-      background:#1e7cff;
-      color:#fff;
-      text-decoration:none;
-      border-radius:10px;
-      font-weight:bold;
-    "
-  >
-    📩 Enviar petición por mensaje
-  </a>
+    <a
+      href="sms:+16162874503&body=PETICIÓN DE ORACIÓN%0A%0ANombre:%0A%0APetición:"
+      class="button"
+    >
+      📩 Enviar petición por mensaje
+    </a>
+
+    <a
+      href="https://iglesia-bautista-biblica.org"
+      class="button secondary"
+    >
+      🌐 Visitar la página de la iglesia
+    </a>
+
+    <div class="footer">
+      Iglesia Bautista Bíblica<br>
+      “Orando unos por otros” 🙏
+    </div>
+  </div>
 
 </body>
 </html>
