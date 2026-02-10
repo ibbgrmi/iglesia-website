@@ -490,8 +490,12 @@ nav .btn-language:hover {
   </section>
 
   <section id="peticiones" style="text-align:center; margin-bottom: 40px;">
-    <h2 style="margin-bottom: 10px;">Envía tus peticiones de oración</h2>
-    <p style="margin-bottom: 18px;">Comparte tus necesidades de oración con nuestra comunidad.</p>
+  <h2 style="margin-bottom: 10px;">Envía tus peticiones de oración</h2>
+  <p style="margin-bottom: 18px;">Comparte tus necesidades de oración con nuestra comunidad.</p>
+
+  <div style="display:flex; gap:14px; justify-content:center; flex-wrap:wrap;">
+
+    <!-- 📝 Botón que abre el formulario -->
     <button id="btnOpenModal" style="
       background: linear-gradient(90deg,#0099ff,#0077cc 80%);
       color: #fff;
@@ -504,8 +508,34 @@ nav .btn-language:hover {
       cursor: pointer;
       transition: background 0.2s, transform 0.2s;
       letter-spacing: 1px;
-    " onmouseover="this.style.background='#005fa3'" onmouseout="this.style.background='linear-gradient(90deg,#0099ff,#0077cc 80%)'">📝 Enviar petición</button>
-  </section>
+    " onmouseover="this.style.background='#005fa3'"
+       onmouseout="this.style.background='linear-gradient(90deg,#0099ff,#0077cc 80%)'">
+      📝 Enviar petición
+    </button>
+
+    <!-- 💬 Botón SMS bonito -->
+    <button
+      class="btn-sms-pretty"
+      type="button"
+      onclick="smsPrettyClick(event)"
+      data-numero="+16162874503"
+      data-mensaje="PETICIÓN%20DE%20ORACIÓN:%0A%0ANombre:%0APetición:%0A"
+      aria-label="Enviar petición por mensaje de texto (SMS)"
+    >
+      <span class="icon-bubble">
+        <span class="typing"><span></span><span></span><span></span></span>
+        ✏️
+      </span>
+      <span class="label">Enviar por mensaje</span>
+      <span class="burst"></span>
+    </button>
+
+  </div>
+
+  <div style="margin-top:6px; font-size:12px; opacity:.8;">
+    Recomendado desde celular
+  </div>
+</section>
 
   <div id="modalPeticiones" style="
     display: none;
