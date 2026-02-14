@@ -1,0 +1,249 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Iglesia Bautista Bíblica – Grand Rapids | App</title>
+
+  <meta name="theme-color" content="#0b2a3a" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="IBB GR" />
+
+  <link rel="manifest" href="/app/manifest.webmanifest" />
+  <link rel="apple-touch-icon" href="/app/icon-192.png" />
+  <link rel="icon" href="/app/icon-192.png" />
+
+  <style>
+    :root{
+      --bg:#07141c;
+      --card:#0c2230;
+      --muted:#9fb3c3;
+      --text:#eaf2f7;
+      --accent:#2fb3ff;
+      --border:rgba(255,255,255,.08);
+      --ok:#35d07f;
+      --warn:#ffc14a;
+    }
+    *{box-sizing:border-box}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      background: radial-gradient(900px 600px at 20% 0%, rgba(47,179,255,.18), transparent 60%),
+                  radial-gradient(900px 600px at 80% 10%, rgba(255,195,47,.10), transparent 55%),
+                  var(--bg);
+      color:var(--text);
+    }
+    header{
+      padding:20px 16px 10px;
+      display:flex;
+      gap:12px;
+      align-items:center;
+      justify-content:space-between;
+      max-width:980px;
+      margin:0 auto;
+    }
+    .brand{display:flex; gap:12px; align-items:center;}
+    .logo{
+      width:44px;height:44px;border-radius:12px;
+      background: rgba(255,255,255,.06);
+      border:1px solid var(--border);
+      display:flex;align-items:center;justify-content:center;
+      overflow:hidden;
+    }
+    .logo img{width:100%;height:100%;object-fit:contain}
+    h1{font-size:18px;margin:0}
+    .sub{color:var(--muted);font-size:13px;margin-top:2px}
+    .pill{
+      font-size:12px;color:var(--muted);
+      border:1px solid var(--border);
+      padding:8px 10px;border-radius:999px;
+      background: rgba(0,0,0,.18);
+      white-space:nowrap;
+    }
+    main{max-width:980px;margin:0 auto;padding:10px 16px 28px;}
+    .grid{display:grid;grid-template-columns: repeat(12, 1fr);gap:12px;}
+    .card{
+      grid-column: span 12;
+      background: rgba(12,34,48,.88);
+      border:1px solid var(--border);
+      border-radius:16px;
+      padding:14px;
+      box-shadow: 0 8px 30px rgba(0,0,0,.25);
+    }
+    @media (min-width:720px){
+      .half{grid-column: span 6;}
+      .third{grid-column: span 4;}
+    }
+    .titleRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
+    .card h2{font-size:15px;margin:0}
+    .card p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.35}
+    .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
+    a.btn{
+      display:inline-flex;align-items:center;justify-content:center;
+      gap:8px;
+      text-decoration:none;
+      color: var(--text);
+      border:1px solid var(--border);
+      background: rgba(0,0,0,.18);
+      padding:10px 12px;
+      border-radius:12px;
+      font-size:13px;
+    }
+    a.btn.primary{
+      background: linear-gradient(135deg, rgba(47,179,255,.35), rgba(47,179,255,.12));
+      border-color: rgba(47,179,255,.35);
+    }
+    a.btn.ok{
+      background: linear-gradient(135deg, rgba(53,208,127,.28), rgba(53,208,127,.10));
+      border-color: rgba(53,208,127,.35);
+    }
+    a.btn.warn{
+      background: linear-gradient(135deg, rgba(255,193,74,.22), rgba(255,193,74,.08));
+      border-color: rgba(255,193,74,.28);
+    }
+    .list{
+      margin-top:10px;
+      padding:10px 12px;
+      border:1px solid var(--border);
+      border-radius:14px;
+      background: rgba(0,0,0,.16);
+      color: var(--text);
+      font-size:13px;
+      line-height:1.45;
+    }
+    .list .muted{color:var(--muted)}
+    .divider{height:1px;background:var(--border);margin:10px 0}
+    .small{font-size:12px;color:var(--muted);margin-top:14px}
+    code{
+      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      font-size: 12px;
+      color: #d6e6f1;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <div class="brand">
+      <div class="logo">
+        <img src="/app/icon-192.png" alt="Logo IBB">
+      </div>
+      <div>
+        <h1>Iglesia Bautista Bíblica – Grand Rapids</h1>
+        <div class="sub">Acceso rápido para los hermanos</div>
+      </div>
+    </div>
+    <div class="pill">App temporal • Gratis</div>
+  </header>
+
+  <main>
+    <div class="grid">
+
+      <section class="card half">
+        <div class="titleRow">
+          <h2>📍 Información</h2>
+        </div>
+        <div class="list">
+          <div><b>Dirección:</b> 1273 Lamont Ave. NW, Grand Rapids, MI 49504</div>
+          <div class="divider"></div>
+          <div><b>Tel:</b> <a class="btn" style="padding:6px 10px; border-radius:10px;" href="tel:+16162874503">📞 Llamar</a>
+              <a class="btn" style="padding:6px 10px; border-radius:10px;" href="sms:+16162874503">📲 SMS</a>
+              <span class="muted">616-287-4503</span>
+          </div>
+        </div>
+        <div class="btns">
+          <a class="btn primary" href="https://www.google.com/maps?q=1273+Lamont+Ave+NW,+Grand+Rapids,+MI+49504" target="_blank" rel="noopener">🗺️ Abrir en Maps</a>
+          <a class="btn" href="https://iglesia-bautista-biblica.org" target="_blank" rel="noopener">🌐 Website</a>
+        </div>
+      </section>
+
+      <section class="card half">
+        <div class="titleRow">
+          <h2>⏰ Horarios de Servicios</h2>
+        </div>
+
+        <div class="list">
+          <div><b>🙏 Miércoles – Servicio de Oración</b><br><span class="muted">🕖 7:00 pm – 8:15 pm</span></div>
+          <div class="divider"></div>
+          <div><b>⛪ Domingo – Servicio Dominical</b><br><span class="muted">🕤 9:30 am – 11:00 am</span></div>
+          <div class="divider"></div>
+          <div><b>📖 Domingo – Escuela Dominical</b><br><span class="muted">🕚 11:15 am – 12:15 pm</span></div>
+          <div class="divider"></div>
+          <div><b>💻 Domingo – Servicio vía Zoom</b><br><span class="muted">🕕 6:00 pm</span></div>
+        </div>
+      </section>
+
+      <section class="card third">
+        <div class="titleRow">
+          <h2>🟦 Zoom (Domingo 6:00 pm)</h2>
+        </div>
+        <p>Entra directo al servicio por Zoom.</p>
+
+        <div class="btns">
+          <a class="btn primary" href="https://us02web.zoom.us/j/8121830152" target="_blank" rel="noopener">🔗 Entrar a Zoom</a>
+          <a class="btn warn" href="https://us02web.zoom.us/j/8121830152?pwd=MTIz" target="_blank" rel="noopener">🔐 Entrar con Pass</a>
+        </div>
+
+        <div class="small">
+          ID: <code>812 183 0152</code><br>
+          Pass: <code>123</code>
+        </div>
+      </section>
+
+      <section class="card third">
+        <div class="titleRow">
+          <h2>🙏 Peticiones de Oración</h2>
+        </div>
+        <p>Envía tu petición por la web o por SMS.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://ibbgrmi.github.io/peticion" target="_blank" rel="noopener">📝 Formulario</a>
+          <a class="btn" href="https://iglesia-bautista-biblica.org/peticion-sms.html" target="_blank" rel="noopener">📲 Petición por SMS</a>
+        </div>
+      </section>
+
+      <section class="card third">
+        <div class="titleRow">
+          <h2>🟢 WhatsApp</h2>
+        </div>
+        <p>Canal oficial de WhatsApp.</p>
+        <div class="btns">
+          <a class="btn ok" href="https://whatsapp.com/channel/0029Vb6qU6c3mFY3MNRZAm1H" target="_blank" rel="noopener">📣 Abrir Canal</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="titleRow">
+          <h2>🎧 Predicaciones (Podcast)</h2>
+        </div>
+        <p>Escucha las predicaciones en tu plataforma favorita.</p>
+        <div class="btns">
+          <a class="btn primary" href="https://podcasts.apple.com/us/podcast/iglesia-bautista-b%C3%ADblica/id1846167510" target="_blank" rel="noopener">🍎 Apple Podcasts</a>
+          <a class="btn ok" href="https://open.spotify.com/show/2IHbPZmfKz1cW5wVNZ1R10" target="_blank" rel="noopener">🟢 Spotify</a>
+          <a class="btn" href="https://music.amazon.com/podcasts/2dd0cceb-d057-4cf5-b690-7634ca1edf4d/iglesia-bautista-b%C3%ADblica" target="_blank" rel="noopener">🟣 Amazon Music</a>
+        </div>
+      </section>
+
+      <section class="card">
+        <div class="titleRow">
+          <h2>📲 Instalar como App</h2>
+        </div>
+        <p>
+          <b>iPhone/iPad:</b> abre este link en Safari → botón compartir → <b>Add to Home Screen</b>.<br>
+          <b>Android/Chrome:</b> menú ⋮ → <b>Install app</b>.
+        </p>
+        <div class="small">Ruta: <code>https://iglesia-bautista-biblica.org/app/</code></div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    if ("serviceWorker" in navigator) {
+      window.addEventListener("load", () => {
+        navigator.serviceWorker.register("/app/sw.js").catch(() => {});
+      });
+    }
+  </script>
+</body>
+</html>
