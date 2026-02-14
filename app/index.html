@@ -247,5 +247,26 @@
       });
     }
   </script>
+  
+  <script>
+function openMaps(e) {
+  if (e) e.preventDefault();
+
+  const lat = "42.987713";
+  const lng = "-85.743015";
+  const label = "Iglesia Bautista Bíblica";
+
+  const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
+
+  if (isiOS) {
+    window.location.href = `maps://?ll=${lat},${lng}&q=${encodeURIComponent(label)}`;
+    setTimeout(() => {
+      window.location.href = `https://maps.apple.com/?ll=${lat},${lng}&q=${encodeURIComponent(label)}`;
+    }, 300);
+  } else {
+    window.location.href = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+  }
+}
+</script>
 </body>
 </html>
