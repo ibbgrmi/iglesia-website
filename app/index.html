@@ -150,54 +150,70 @@
          style="width:100%;height:auto;border-radius:14px;border:1px solid var(--border);display:block;">
   </div>
 </section>
-<section class="card">
+  <section class="card">
   <div class="titleRow">
     <h2>📘 Sección de la Escuela Dominical</h2>
   </div>
 
   <div style="margin-top:12px;">
-    <a href="/app/escuela-dominical/Alumno.pdf" 
-       style="display:block;padding:12px;border-radius:12px;border:1px solid var(--border);text-decoration:none;margin-bottom:8px;">
-       📖 Material Completo del Alumno
-    </a>
-
-    <a href="/app/escuela-dominical/leccion-01.pdf.pdf" 
-       target="_blank"
-       style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;margin-bottom:6px;">
-       📄 Lección 1
-    </a>
-
-    <a href="/app/escuela-dominical/leccion-02.pdf.pdf" 
-       target="_blank"
-       style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;margin-bottom:6px;">
-       📄 Lección 2
-    </a>
-
-    <a href="/app/escuela-dominical/leccion-03.pdf.pdf" 
-       target="_blank"
-       style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;margin-bottom:6px;">
-       📄 Lección 3
-    </a>
-
-    <a href="/app/escuela-dominical/leccion-04.pdf.pdf" 
-       target="_blank"
-       style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;margin-bottom:6px;">
-       📄 Lección 4
-    </a>
-
-    <a href="/app/escuela-dominical/leccion-05.pdf.pdf" 
-       target="_blank"
-       style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;margin-bottom:6px;">
-       📄 Lección 5
-    </a>
-
-    <a href="/app/escuela-dominical/leccion-06.pdf.pdf" 
-       target="_blank"
-       style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;">
-       📄 Lección 6
+    <a href="javascript:void(0)"
+       onclick="document.getElementById('sdBox').style.display='block';"
+       style="display:inline-block;padding:12px 14px;border-radius:12px;border:1px solid var(--border);text-decoration:none;">
+      Ver Material 📄
     </a>
   </div>
-</section>      
+</section>
+
+<!-- Caja (popup) con los PDFs -->
+<div id="sdBox"
+     style="display:none; position:fixed; inset:0; background:rgba(0,0,0,.55); z-index:9999; padding:18px;">
+  <div style="max-width:720px;margin:0 auto;background:var(--card);border:1px solid var(--border);border-radius:14px;padding:14px;">
+    <div style="display:flex;align-items:center;justify-content:space-between;gap:10px;">
+      <div style="font-weight:700;">📘 Material de Escuela Dominical</div>
+      <button onclick="document.getElementById('sdBox').style.display='none';"
+              style="padding:8px 10px;border-radius:10px;border:1px solid var(--border);background:transparent;">
+        ✖ Cerrar
+      </button>
+    </div>
+
+    <div style="margin-top:12px; display:grid; gap:8px;">
+      <a href="/app/escuela-dominical/Alumno.pdf" target="_blank" rel="noopener"
+         style="display:block;padding:12px;border-radius:12px;border:1px solid var(--border);text-decoration:none;">
+        📖 Material Completo del Alumno
+      </a>
+
+      <a href="/app/escuela-dominical/leccion-01.pdf.pdf" target="_blank" rel="noopener"
+         style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;">
+        📄 Lección 1
+      </a>
+
+      <a href="/app/escuela-dominical/leccion-02.pdf.pdf" target="_blank" rel="noopener"
+         style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;">
+        📄 Lección 2
+      </a>
+
+      <a href="/app/escuela-dominical/leccion-03.pdf.pdf" target="_blank" rel="noopener"
+         style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;">
+        📄 Lección 3
+      </a>
+
+      <a href="/app/escuela-dominical/leccion-04.pdf.pdf" target="_blank" rel="noopener"
+         style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;">
+        📄 Lección 4
+      </a>
+
+      <a href="/app/escuela-dominical/leccion-05.pdf.pdf" target="_blank" rel="noopener"
+         style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;">
+        📄 Lección 5
+      </a>
+
+      <a href="/app/escuela-dominical/leccion-06.pdf.pdf" target="_blank" rel="noopener"
+         style="display:block;padding:10px;border-radius:10px;border:1px solid var(--border);text-decoration:none;">
+        📄 Lección 6
+      </a>
+    </div>
+  </div>
+</div>   
 </div>
       <section class="card half">
         <div class="titleRow">
