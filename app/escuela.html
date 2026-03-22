@@ -190,7 +190,6 @@
   <script>
     // Tus archivos EXACTOS (como están en GitHub)
     const files = [
-      const files = [
   { name: "📖 Material Completo del Alumno", file: "Alumno.pdf" },
   { name: "📄 Lectura correspondiente al domingo", file: "lectura-domingo.pdf.pdf" },
   { name: "📄 Lectura correspondiente al lunes", file: "lectura-lunes.pdf.pdf" },
@@ -202,8 +201,7 @@
 ];
 
 const basePath = "./escuela-dominical/";
-    const list = document.getElementById("list");
-
+const list = document.getElementById("list");
     function renderList(){
       list.innerHTML = "";
       files.forEach((it) => {
