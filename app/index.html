@@ -1,298 +1,989 @@
 <!doctype html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Iglesia Bautista Bíblica – Grand Rapids | App</title>
-
-  <meta name="theme-color" content="#0b2a3a" />
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="apple-mobile-web-app-title" content="IBB GR" />
-
-  <link rel="manifest" href="/app/manifest.webmanifest" />
-  <link rel="apple-touch-icon" href="/app/icon-192.png" />
-  <link rel="icon" href="/app/icon-192.png" />
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <title>Iglesia Bautista Bíblica – Grand Rapids</title>
+  <meta name="theme-color" content="#0d1a2e"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <meta name="apple-mobile-web-app-title" content="IBB GR"/>
+  <link rel="manifest" href="/app/manifest.webmanifest"/>
+  <link rel="apple-touch-icon" href="/app/icon-192.png"/>
+  <link rel="icon" href="/app/icon-192.png"/>
+  <link rel="preconnect" href="https://fonts.googleapis.com"/>
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,500;0,600;1,300&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 
   <style>
-    :root{
-      --bg:#07141c;
-      --card:#0c2230;
-      --muted:#9fb3c3;
-      --text:#eaf2f7;
-      --accent:#2fb3ff;
-      --border:rgba(255,255,255,.08);
-      --ok:#35d07f;
-      --warn:#ffc14a;
+    /* ══ TOKENS ══ */
+    :root {
+      --bg:        #0a1628;
+      --navy:      #0d1f38;
+      --navy2:     #112240;
+      --navy3:     #162a50;
+      --glass:     rgba(15,30,60,0.82);
+      --glass2:    rgba(18,36,68,0.90);
+      --shine:     rgba(120,180,255,0.12);
+      --border:    rgba(80,140,220,0.22);
+      --border2:   rgba(80,140,220,0.14);
+      --text:      #e8f0ff;
+      --muted:     #7a9ac0;
+      --accent:    #4fa8e8;
+      --accent2:   #7ec8ff;
+      --gold:      #d4a84b;
+      --gold2:     #f0c96a;
+      --ok:        #3ec97a;
+      --warn:      #e8a840;
+      --danger:    #e85050;
+      --r:         18px;
+      --blur:      24px;
+      --safe-top:  env(safe-area-inset-top, 0px);
+      --safe-bot:  env(safe-area-inset-bottom, 0px);
+      --font-ui:   "Inter", -apple-system, "Helvetica Neue", sans-serif;
+      --font-hdr:  "Cormorant Garamond", Georgia, serif;
     }
-    *{box-sizing:border-box}
-    body{
-      margin:0;
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
-      background: 
-        linear-gradient(rgba(7,20,28,.85), rgba(7,20,28,.85)),
-  url("/IMG_1846.jpeg") center center / cover no-repeat fixed;
-      color:var(--text);
-    }
-    header{
-      padding:20px 16px 10px;
-      display:flex;
-      gap:12px;
-      align-items:center;
-      justify-content:space-between;
-      max-width:980px;
-      margin:0 auto;
-    }
-    .brand{display:flex; gap:12px; align-items:center;}
-    .logo{
-      width:44px;height:44px;border-radius:12px;
-      background: rgba(255,255,255,.06);
-      border:1px solid var(--border);
-      display:flex;align-items:center;justify-content:center;
-      overflow:hidden;
-    }
-    .logo img{width:100%;height:100%;object-fit:contain}
-    h1{font-size:18px;margin:0}
-    .sub{color:var(--muted);font-size:13px;margin-top:2px}
-    .pill{
-      font-size:12px;color:var(--muted);
-      border:1px solid var(--border);
-      padding:8px 10px;border-radius:999px;
-      background: rgba(0,0,0,.18);
-      white-space:nowrap;
-    }
-    main{max-width:980px;margin:0 auto;padding:10px 16px 28px;}
-    .grid{display:grid;grid-template-columns: repeat(12, 1fr);gap:12px;}
-    .card{
-      grid-column: span 12;
-      background: rgba(12,34,48,.88);
-      border:1px solid var(--border);
-      border-radius:16px;
-      padding:14px;
-      box-shadow: 0 8px 30px rgba(0,0,0,.25);
-    }
-    @media (min-width:720px){
-      .half{grid-column: span 6;}
-      .third{grid-column: span 4;}
-    }
-    .titleRow{display:flex;align-items:center;justify-content:space-between;gap:10px}
-    .card h2{font-size:15px;margin:0}
-    .card p{margin:8px 0 0;color:var(--muted);font-size:13px;line-height:1.35}
-    .btns{display:flex;flex-wrap:wrap;gap:10px;margin-top:12px}
-    a.btn{
-      display:inline-flex;align-items:center;justify-content:center;
-      gap:8px;
-      text-decoration:none;
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; -webkit-text-size-adjust: 100%; }
+
+    body {
+      font-family: var(--font-ui);
+      background: var(--bg);
       color: var(--text);
-      border:1px solid var(--border);
-      background: rgba(0,0,0,.18);
-      padding:10px 12px;
-      border-radius:12px;
-      font-size:13px;
+      min-height: 100dvh;
+      overflow-x: hidden;
     }
-    a.btn.primary{
-      background: linear-gradient(135deg, rgba(47,179,255,.35), rgba(47,179,255,.12));
-      border-color: rgba(47,179,255,.35);
+
+    /* ── BACKGROUND ── */
+    .bg-canvas {
+      position: fixed; inset: 0; z-index: 0; overflow: hidden;
     }
-    a.btn.ok{
-      background: linear-gradient(135deg, rgba(53,208,127,.28), rgba(53,208,127,.10));
-      border-color: rgba(53,208,127,.35);
+    .bg-photo {
+      position: absolute; inset: 0;
+      background: url("/IMG_1846.jpeg") center/cover no-repeat;
+      opacity: 0.07;
+      filter: blur(2px) saturate(0.6);
     }
-    a.btn.warn{
-      background: linear-gradient(135deg, rgba(255,193,74,.22), rgba(255,193,74,.08));
-      border-color: rgba(255,193,74,.28);
+    .bg-gradient {
+      position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 80% 50% at 20% 0%, rgba(30,70,140,0.55) 0%, transparent 60%),
+        radial-gradient(ellipse 60% 40% at 80% 100%, rgba(20,50,110,0.4) 0%, transparent 55%),
+        radial-gradient(ellipse 50% 60% at 50% 50%, rgba(10,20,50,0.3) 0%, transparent 70%),
+        linear-gradient(175deg, #0d1f38 0%, #08142a 50%, #0a1c3a 100%);
     }
-    .list{
-      margin-top:10px;
-      padding:10px 12px;
-      border:1px solid var(--border);
-      border-radius:14px;
-      background: rgba(0,0,0,.16);
-      color: var(--text);
-      font-size:13px;
-      line-height:1.45;
+
+    /* ── LAYOUT ── */
+    #app {
+      position: relative; z-index: 1;
+      max-width: 620px; margin: 0 auto;
+      padding: 0 14px calc(var(--safe-bot) + 80px);
     }
-    .list .muted{color:var(--muted)}
-    .divider{height:1px;background:var(--border);margin:10px 0}
-    .small{font-size:12px;color:var(--muted);margin-top:14px}
-    code{
-      font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
-      font-size: 12px;
-      color: #d6e6f1;
+
+    /* ── HEADER ── */
+    header {
+      position: sticky; top: 0; z-index: 100;
+      margin: 0 -14px;
+      padding: calc(var(--safe-top) + 14px) 20px 14px;
+      background: rgba(10,22,44,0.95);
+      backdrop-filter: blur(40px) saturate(1.3);
+      -webkit-backdrop-filter: blur(40px) saturate(1.3);
+      border-bottom: 1px solid var(--border);
     }
+    .hdr-inner { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .brand { display: flex; align-items: center; gap: 11px; }
+    .logo-box {
+      width: 42px; height: 42px; border-radius: 12px; flex-shrink: 0;
+      background: linear-gradient(135deg, var(--navy2), var(--navy3));
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; overflow: hidden;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.4), 0 0 0 1px var(--shine) inset;
+    }
+    .logo-box img { width: 100%; height: 100%; object-fit: contain; }
+    .brand-text h1 { font-size: 15px; font-weight: 600; letter-spacing: -0.2px; line-height: 1.2; }
+    .brand-text span { font-size: 11px; color: var(--muted); display: block; margin-top: 2px; }
+    .hdr-badge {
+      font-size: 11px; color: var(--accent2);
+      border: 1px solid rgba(80,160,240,0.3);
+      padding: 5px 10px; border-radius: 999px;
+      background: rgba(20,60,120,0.5);
+      white-space: nowrap; flex-shrink: 0;
+    }
+
+    /* ══ GLASS CARD ══
+       Liquid glass: sólido pero con acabado vidrioso */
+    .card {
+      background: var(--glass2);
+      backdrop-filter: blur(var(--blur)) saturate(1.4);
+      -webkit-backdrop-filter: blur(var(--blur)) saturate(1.4);
+      border: 1px solid var(--border);
+      border-radius: var(--r);
+      padding: 16px;
+      margin-bottom: 10px;
+      position: relative; overflow: hidden;
+      box-shadow:
+        0 0 0 1px rgba(255,255,255,0.05) inset,
+        0 1px 0 rgba(120,180,255,0.12) inset,
+        0 16px 48px rgba(0,0,10,0.5),
+        0 4px 12px rgba(0,0,0,0.3);
+    }
+    /* shine top edge */
+    .card::before {
+      content: "";
+      position: absolute; top: 0; left: 0; right: 0; height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(140,200,255,0.35) 40%, rgba(200,230,255,0.45) 50%, rgba(140,200,255,0.35) 60%, transparent 100%);
+    }
+    .card.gold-accent { border-color: rgba(212,168,75,0.3); }
+    .card.gold-accent::before { background: linear-gradient(90deg, transparent, rgba(240,200,100,0.5), transparent); }
+
+    /* ── SECTION LABELS ── */
+    .s-label {
+      font-family: var(--font-hdr);
+      font-size: 11px; letter-spacing: 3px; text-transform: uppercase;
+      color: var(--muted); padding: 20px 2px 8px;
+    }
+
+    /* ── CARD TITLE ── */
+    .ctitle {
+      display: flex; align-items: center; gap: 8px;
+      font-size: 13px; font-weight: 600;
+      color: var(--muted); text-transform: uppercase;
+      letter-spacing: 0.5px; margin-bottom: 12px;
+    }
+    .ctitle .ci { font-size: 16px; }
+
+    /* ── ANNOUNCE ── */
+    .announce-wrap { border-radius: 14px; overflow: hidden; }
+    .announce-wrap img { width: 100%; height: auto; display: block; }
+    .announce-empty {
+      text-align: center; padding: 28px 16px;
+      color: var(--muted); font-size: 13px;
+    }
+    .announce-empty .ae-icon { font-size: 40px; display: block; margin-bottom: 8px; }
+
+    /* ── INFO ROWS ── */
+    .irow {
+      display: flex; align-items: flex-start; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid var(--border2);
+      font-size: 13.5px;
+    }
+    .irow:last-child { border-bottom: none; padding-bottom: 0; }
+    .irow:first-child { padding-top: 0; }
+    .irow-icon { font-size: 15px; width: 22px; text-align: center; flex-shrink: 0; padding-top: 1px; }
+    .irow-body { flex: 1; }
+    .irow-body b { display: block; font-size: 11px; color: var(--muted); font-weight: 500; margin-bottom: 2px; letter-spacing: 0.3px; }
+
+    /* ── SCHEDULE ── */
+    .srow {
+      display: flex; align-items: center; gap: 10px;
+      padding: 10px 0; border-bottom: 1px solid var(--border2);
+    }
+    .srow:last-child { border-bottom: none; padding-bottom: 0; }
+    .srow:first-child { padding-top: 0; }
+    .sdot {
+      width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0;
+      background: var(--accent); box-shadow: 0 0 8px var(--accent);
+    }
+    .sdot.g { background: var(--gold); box-shadow: 0 0 8px var(--gold); }
+    .sdot.ok { background: var(--ok); box-shadow: 0 0 8px var(--ok); }
+    .sdot.p { background: #a78bfa; box-shadow: 0 0 8px #a78bfa; }
+    .sname { flex: 1; font-size: 13.5px; font-weight: 500; }
+    .sday  { font-size: 12px; color: var(--muted); }
+
+    /* ── BUTTONS ── */
+    .brow { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+    .btn {
+      display: inline-flex; align-items: center; gap: 6px;
+      padding: 10px 15px; border-radius: 12px;
+      font-size: 13px; font-weight: 500;
+      text-decoration: none; color: var(--text);
+      background: rgba(20,40,80,0.7);
+      border: 1px solid var(--border);
+      cursor: pointer; font-family: var(--font-ui);
+      transition: opacity .15s, transform .12s;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.3), 0 1px 0 rgba(255,255,255,0.06) inset;
+    }
+    .btn:active { opacity: .72; transform: scale(.97); }
+    .btn.blue {
+      background: linear-gradient(135deg, rgba(30,90,180,0.75), rgba(20,65,140,0.65));
+      border-color: rgba(80,160,240,0.45); color: #c8e4ff;
+    }
+    .btn.green {
+      background: linear-gradient(135deg, rgba(30,150,80,0.65), rgba(20,110,60,0.55));
+      border-color: rgba(60,200,120,0.4); color: #bbf7d0;
+    }
+    .btn.gold {
+      background: linear-gradient(135deg, rgba(180,130,40,0.65), rgba(140,100,30,0.55));
+      border-color: rgba(220,170,70,0.45); color: #fef3c7;
+    }
+    .btn.warn {
+      background: linear-gradient(135deg, rgba(180,120,30,0.65), rgba(140,90,20,0.55));
+      border-color: rgba(230,170,60,0.4); color: #fde68a;
+    }
+    .btn.danger {
+      background: linear-gradient(135deg, rgba(160,40,40,0.65), rgba(120,30,30,0.5));
+      border-color: rgba(240,90,90,0.4); color: #fecaca;
+    }
+    .btn.full { width: 100%; justify-content: center; }
+
+    /* ── CODE ── */
+    code {
+      font-family: ui-monospace, "SF Mono", Menlo, monospace;
+      font-size: 12px; color: var(--accent2);
+      background: rgba(30,70,140,0.4);
+      padding: 2px 7px; border-radius: 6px;
+      border: 1px solid rgba(80,140,220,0.2);
+    }
+
+    /* ── ZOOM ── */
+    .zoom-num {
+      font-family: ui-monospace, "SF Mono", monospace;
+      font-size: 26px; font-weight: 300; letter-spacing: 5px;
+      color: var(--accent2); text-align: center; padding: 12px 0 4px;
+    }
+    .zoom-pass { text-align: center; color: var(--muted); font-size: 13px; margin-bottom: 14px; }
+
+    /* ── PODCAST ── */
+    .pod-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 4px; }
+    .pod-btn {
+      display: flex; flex-direction: column; align-items: center; gap: 6px;
+      padding: 14px 8px; border-radius: 14px;
+      text-decoration: none; color: var(--text); font-size: 13px; font-weight: 500;
+      transition: opacity .15s, transform .12s;
+      border: 1px solid var(--border2);
+      background: rgba(15,30,65,0.75);
+      box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    }
+    .pod-btn:active { opacity: .72; transform: scale(.97); }
+    .pod-btn .pbi { font-size: 26px; }
+    .pod-btn.apple { border-color: rgba(200,100,220,0.3); background: rgba(80,20,100,0.35); }
+    .pod-btn.spotify { border-color: rgba(30,185,84,0.3); background: rgba(20,80,40,0.35); }
+    .pod-btn.amazon { border-color: rgba(255,153,0,0.28); background: rgba(80,50,10,0.35); }
+
+    /* ── ESCUELA ITEMS ── */
+    .ed-list { display: flex; flex-direction: column; gap: 8px; }
+    .ed-item {
+      display: flex; align-items: center; gap: 12px;
+      padding: 12px; border-radius: 14px;
+      background: rgba(15,35,75,0.7);
+      border: 1px solid var(--border2);
+      text-decoration: none; color: var(--text);
+      transition: opacity .15s;
+    }
+    .ed-item:active { opacity: .7; }
+    .ed-thumb {
+      width: 52px; height: 52px; border-radius: 10px; flex-shrink: 0;
+      background: rgba(20,50,100,0.8); border: 1px solid var(--border2);
+      display: flex; align-items: center; justify-content: center; font-size: 22px; overflow: hidden;
+    }
+    .ed-thumb img { width: 100%; height: 100%; object-fit: cover; }
+    .ed-info { flex: 1; min-width: 0; }
+    .ed-t { font-size: 13.5px; font-weight: 500; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .ed-s { font-size: 12px; color: var(--muted); margin-top: 2px; }
+    .ed-tag {
+      font-size: 10px; padding: 3px 7px; border-radius: 6px; margin-left: 4px;
+      background: rgba(30,90,180,0.5); border: 1px solid rgba(80,140,220,0.3); color: var(--accent2);
+      vertical-align: middle;
+    }
+    .ed-tag.pdf { background: rgba(180,40,40,0.45); border-color: rgba(240,90,90,0.3); color: #fca5a5; }
+    .ed-arrow { color: var(--muted); font-size: 16px; flex-shrink: 0; }
+    .ed-empty { color: var(--muted); font-size: 13px; padding: 6px 0; }
+
+    /* ── INSTALL TABS ── */
+    .tabs { display: flex; gap: 6px; margin-bottom: 14px; }
+    .tab {
+      flex: 1; padding: 9px; border-radius: 11px; text-align: center;
+      font-size: 13px; font-weight: 500; cursor: pointer;
+      border: 1px solid var(--border2); background: rgba(15,35,75,0.5);
+      color: var(--muted); transition: all .18s;
+    }
+    .tab.on {
+      background: rgba(30,80,160,0.6); border-color: rgba(80,160,240,0.4); color: #c8e4ff;
+    }
+    [data-tab] { display: none; }
+    [data-tab].show { display: block; }
+
+    .step {
+      display: flex; gap: 12px; align-items: flex-start;
+      padding: 11px; border-radius: 12px; margin-bottom: 8px;
+      background: rgba(15,35,75,0.5); border: 1px solid var(--border2);
+    }
+    .step-n {
+      width: 26px; height: 26px; border-radius: 50%; flex-shrink: 0;
+      background: linear-gradient(135deg, rgba(60,120,220,0.7), rgba(40,90,180,0.5));
+      border: 1px solid rgba(80,160,240,0.4);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 700; color: #c8e4ff;
+    }
+    .step-t { font-size: 13px; line-height: 1.5; padding-top: 4px; }
+    .step-t b { color: #c8e4ff; }
+
+    /* ══ ADMIN ══ */
+    #fab {
+      position: fixed; bottom: calc(var(--safe-bot) + 20px); right: 18px; z-index: 200;
+      width: 50px; height: 50px; border-radius: 50%; cursor: pointer;
+      background: rgba(12,28,60,0.92);
+      backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      display: flex; align-items: center; justify-content: center; font-size: 20px;
+      box-shadow: 0 6px 24px rgba(0,0,0,0.6), 0 1px 0 var(--shine) inset;
+      transition: transform .2s;
+    }
+    #fab:active { transform: scale(.9); }
+
+    #overlay {
+      display: none; position: fixed; inset: 0; z-index: 300;
+      background: rgba(4,10,24,0.75);
+      backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+      align-items: flex-end; justify-content: center;
+    }
+    #overlay.on { display: flex; }
+
+    #sheet {
+      width: 100%; max-width: 620px;
+      max-height: 92dvh; overflow-y: auto;
+      border-radius: 24px 24px 0 0;
+      padding: 18px 18px calc(var(--safe-bot) + 28px);
+      background: rgba(8,18,40,0.97);
+      backdrop-filter: blur(50px); -webkit-backdrop-filter: blur(50px);
+      border: 1px solid var(--border); border-bottom: none;
+      box-shadow: 0 -4px 60px rgba(0,0,10,0.7);
+      animation: up .3s cubic-bezier(.34,1.4,.64,1);
+    }
+    @keyframes up { from { transform: translateY(100%); opacity: 0; } to { transform: none; opacity: 1; } }
+
+    .sh-handle { width: 36px; height: 4px; border-radius: 2px; background: rgba(255,255,255,0.18); margin: 0 auto 18px; }
+    .sh-title { font-size: 17px; font-weight: 600; margin-bottom: 3px; }
+    .sh-sub { font-size: 13px; color: var(--muted); margin-bottom: 18px; }
+
+    /* login */
+    #login-box { display: flex; flex-direction: column; gap: 10px; }
+    .field { display: flex; flex-direction: column; gap: 5px; }
+    .field label { font-size: 11px; color: var(--muted); font-weight: 600; letter-spacing: .5px; text-transform: uppercase; }
+    .field input, .field select {
+      padding: 12px 14px; border-radius: 12px;
+      background: rgba(20,40,80,0.7); border: 1px solid var(--border);
+      color: var(--text); font-size: 15px; font-family: var(--font-ui);
+      outline: none; transition: border-color .2s;
+    }
+    .field input:focus { border-color: rgba(80,160,240,0.6); }
+    #login-err { color: #f87171; font-size: 13px; margin-top: 6px; display: none; }
+
+    /* admin panel */
+    #panel { display: none; }
+    #panel.on { display: block; }
+
+    .asec { margin-bottom: 24px; }
+    .asec-t {
+      font-size: 11px; font-weight: 700; color: var(--muted);
+      text-transform: uppercase; letter-spacing: .8px; margin-bottom: 10px;
+    }
+
+    .drop {
+      border: 2px dashed rgba(80,140,220,0.25); border-radius: 14px;
+      padding: 20px 14px; text-align: center; cursor: pointer;
+      background: rgba(15,35,80,0.35); transition: all .2s;
+    }
+    .drop:hover, .drop.drag { border-color: rgba(80,160,240,0.55); background: rgba(30,70,160,0.2); }
+    .drop .di { font-size: 28px; display: block; margin-bottom: 7px; }
+    .drop .dt { font-size: 13px; color: var(--muted); }
+    .drop input[type=file] { display: none; }
+
+    .prev { margin-top: 10px; display: none; position: relative; }
+    .prev img { width: 100%; border-radius: 12px; display: block; }
+    .prev .xbtn {
+      position: absolute; top: 8px; right: 8px;
+      background: rgba(0,0,0,.75); border: none; color: #fff;
+      width: 28px; height: 28px; border-radius: 50%; font-size: 14px;
+      cursor: pointer; display: flex; align-items: center; justify-content: center;
+    }
+    .prev .pdf-badge {
+      background: rgba(180,40,40,0.8); color: #fff;
+      font-size: 12px; padding: 8px 12px; border-radius: 12px;
+      display: flex; align-items: center; gap: 8px;
+    }
+
+    /* saved list in admin */
+    .alist { display: flex; flex-direction: column; gap: 6px; margin-top: 10px; }
+    .aitem {
+      display: flex; align-items: center; gap: 10px; padding: 9px 10px;
+      border-radius: 11px; background: rgba(15,35,75,0.6);
+      border: 1px solid var(--border2); font-size: 13px;
+    }
+    .aitem .ai-name { flex: 1; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .sep { height: 1px; background: var(--border2); margin: 4px 0; }
+
+    /* toast */
+    .toast {
+      position: fixed; bottom: calc(var(--safe-bot) + 90px); left: 50%;
+      transform: translateX(-50%) translateY(16px);
+      background: rgba(10,25,60,0.96); border: 1px solid var(--border);
+      padding: 11px 18px; border-radius: 14px; font-size: 14px;
+      z-index: 500; opacity: 0; pointer-events: none; white-space: nowrap;
+      transition: all .25s cubic-bezier(.34,1.2,.64,1);
+      box-shadow: 0 8px 32px rgba(0,0,0,.5);
+    }
+    .toast.on { opacity: 1; transform: translateX(-50%) translateY(0); }
+
+    ::-webkit-scrollbar { width: 4px; }
+    ::-webkit-scrollbar-track { background: transparent; }
+    ::-webkit-scrollbar-thumb { background: rgba(80,140,220,0.2); border-radius: 2px; }
   </style>
 </head>
-
 <body>
-  <header>
+
+<!-- BG -->
+<div class="bg-canvas">
+  <div class="bg-photo"></div>
+  <div class="bg-gradient"></div>
+</div>
+
+<!-- HEADER -->
+<header>
+  <div class="hdr-inner">
     <div class="brand">
-      <div class="logo">
-        <img src="/logo background removed.png" alt="Logo IBB">
+      <div class="logo-box">
+        <img src="/logo background removed.png" alt="IBB" onerror="this.style.display='none';this.parentNode.innerHTML='⛪'">
       </div>
-      <div>
-        <h1>Iglesia Bautista Bíblica – Grand Rapids</h1>
-        <div class="sub">Acceso rápido para los hermanos</div>
+      <div class="brand-text">
+        <h1>Iglesia Bautista Bíblica</h1>
+        <span>Grand Rapids, Michigan</span>
       </div>
     </div>
-    <div class="pill">App temporal</div>
-  </header>
-
-  <main>
-    <div class="grid">
-      <section class="card">
-  <div class="titleRow">
-    <h2>📣 Anuncio Semanal</h2>
+    <div class="hdr-badge">App</div>
   </div>
+</header>
 
-  <div style="margin-top:12px;">
-    <img src="/app/anuncio-semanal.jpg.PNG"
-         alt="Anuncio Semanal"
-         style="width:100%;height:auto;border-radius:14px;border:1px solid var(--border);display:block;">
-  </div>
-</section>
- <section class="card">
-  <div class="titleRow">
-    <h2>📘 Sección de la Escuela Dominical</h2>
+<div id="app">
+
+  <!-- ── ANUNCIO ── -->
+  <div class="s-label">Inicio</div>
+  <div class="card">
+    <div class="ctitle"><span class="ci">📣</span> Anuncio Semanal</div>
+    <div id="ann-display">
+      <div class="announce-empty">
+        <span class="ae-icon">📣</span>
+        No hay anuncio esta semana.<br>
+        <span style="font-size:12px;color:var(--muted);">El administrador puede publicarlo con el botón ⚙️</span>
+      </div>
+    </div>
   </div>
 
-  <div style="margin-top:12px;">
-    <a class="btn primary" href="/app/escuela.html" style="display:inline-block;">
-      📚 Abrir Material de Escuela Dominical
-    </a>
+  <!-- ── ESCUELA DOMINICAL ── -->
+  <div class="s-label">Recursos</div>
+  <div class="card gold-accent">
+    <div class="ctitle"><span class="ci">📖</span> Escuela Dominical</div>
+    <div class="ed-list" id="ed-grid">
+      <div class="ed-empty">El administrador puede agregar materiales desde el panel ⚙️</div>
+    </div>
   </div>
-</section>
 
+  <!-- ── INFO ── -->
+  <div class="s-label">Información</div>
+  <div class="card">
+    <div class="ctitle"><span class="ci">📍</span> Contacto</div>
+    <div class="irow">
+      <div class="irow-icon">🏠</div>
+      <div class="irow-body">
+        <b>Dirección</b>
+        1273 Lamont Ave. NW, Grand Rapids, MI 49504
+      </div>
+    </div>
+    <div class="irow">
+      <div class="irow-icon">📞</div>
+      <div class="irow-body"><b>Teléfono</b> 616-287-4503</div>
+    </div>
+    <div class="brow">
+      <a class="btn blue" href="javascript:void(0)" onclick="openMaps(event)">🗺️ Abrir en Maps</a>
+      <a class="btn" href="tel:+16162874503">📞 Llamar</a>
+      <a class="btn green" href="https://wa.me/16162874503" target="_blank" rel="noopener">💬 WhatsApp</a>
+      <a class="btn" href="https://iglesia-bautista-biblica.org" target="_blank" rel="noopener">🌐 Sitio Web</a>
+    </div>
   </div>
-</section>
-</div>
-      <section class="card half">
-        <div class="titleRow">
-          <h2>📍 Información</h2>
+
+  <!-- ── HORARIOS ── -->
+  <div class="card">
+    <div class="ctitle"><span class="ci">⏰</span> Horarios</div>
+    <div class="srow">
+      <div class="sdot g"></div>
+      <div class="sname">Servicio de Oración</div>
+      <div class="sday">Miér · 7:00–8:15 pm</div>
+    </div>
+    <div class="srow">
+      <div class="sdot"></div>
+      <div class="sname">Servicio Dominical</div>
+      <div class="sday">Dom · 9:30–11:00 am</div>
+    </div>
+    <div class="srow">
+      <div class="sdot ok"></div>
+      <div class="sname">Escuela Dominical</div>
+      <div class="sday">Dom · 11:15 am–12:15 pm</div>
+    </div>
+    <div class="srow">
+      <div class="sdot p"></div>
+      <div class="sname">Servicio por Zoom</div>
+      <div class="sday">Dom · 6:00 pm</div>
+    </div>
+  </div>
+
+  <!-- ── ZOOM ── -->
+  <div class="s-label">En Línea</div>
+  <div class="card">
+    <div class="ctitle"><span class="ci">🟦</span> Zoom — Domingos 6:00 pm</div>
+    <div class="zoom-num">812 183 0152</div>
+    <div class="zoom-pass">Contraseña: <code>123</code></div>
+    <div class="brow">
+      <a class="btn blue full" href="https://us02web.zoom.us/j/8121830152" target="_blank" rel="noopener">🔗 Entrar a Zoom</a>
+      <a class="btn warn full" href="https://us02web.zoom.us/j/8121830152?pwd=MTIz" target="_blank" rel="noopener">🔐 Entrar con contraseña</a>
+    </div>
+  </div>
+
+  <!-- ── ORACIÓN ── -->
+  <div class="card">
+    <div class="ctitle"><span class="ci">🙏</span> Peticiones de Oración</div>
+    <div class="brow">
+      <a class="btn blue" href="https://ibbgrmi.github.io/peticion" target="_blank" rel="noopener">📝 Formulario web</a>
+      <a class="btn green" href="https://iglesia-bautista-biblica.org/peticion-sms.html" target="_blank" rel="noopener">📲 Por WhatsApp</a>
+    </div>
+  </div>
+
+  <!-- ── WHATSAPP ── -->
+  <div class="card">
+    <div class="ctitle"><span class="ci">🟢</span> Canal de WhatsApp</div>
+    <div class="brow">
+      <a class="btn green full" href="https://whatsapp.com/channel/0029Vb6qU6c3mFY3MNRZAm1H" target="_blank" rel="noopener">📣 Abrir Canal Oficial</a>
+    </div>
+  </div>
+
+  <!-- ── PODCAST ── -->
+  <div class="s-label">Predicaciones</div>
+  <div class="card">
+    <div class="ctitle"><span class="ci">🎧</span> Podcast</div>
+    <div class="pod-grid">
+      <a class="pod-btn apple" href="https://podcasts.apple.com/us/podcast/iglesia-bautista-b%C3%ADblica/id1846167510" target="_blank" rel="noopener">
+        <span class="pbi">🍎</span>Apple Podcasts
+      </a>
+      <a class="pod-btn spotify" href="https://open.spotify.com/show/2lHbPZmfKz1cW5wVNZ1R1O" target="_blank" rel="noopener">
+        <span class="pbi">🟢</span>Spotify
+      </a>
+      <a class="pod-btn amazon" href="https://music.amazon.com/podcasts/2dd0cceb-d057-4cf5-b690-7634ca1edf4d/iglesia-bautista-b%C3%ADblica" target="_blank" rel="noopener">
+        <span class="pbi">🟣</span>Amazon Music
+      </a>
+    </div>
+  </div>
+
+  <!-- ── INSTALAR ── -->
+  <div class="s-label">Instalar la App</div>
+  <div class="card">
+    <div class="ctitle"><span class="ci">📲</span> Añadir a pantalla de inicio</div>
+    <div class="tabs">
+      <div class="tab on" onclick="showTab('ios',this)">🍎 iPhone / iPad</div>
+      <div class="tab"    onclick="showTab('and',this)">🤖 Android</div>
+    </div>
+
+    <div data-tab="ios" class="show">
+      <div class="step"><div class="step-n">1</div><div class="step-t">Abre esta página en <b>Safari</b> — tiene que ser Safari, no Chrome ni Firefox.</div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-t">Toca el botón <b>Compartir ⬆️</b> en la barra inferior de Safari.</div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-t">Desliza hacia abajo y toca <b>"Añadir a pantalla de inicio"</b>.</div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-t">Toca <b>"Añadir"</b> arriba a la derecha. El ícono de la iglesia aparecerá en tu pantalla.</div></div>
+    </div>
+    <div data-tab="and" class="">
+      <div class="step"><div class="step-n">1</div><div class="step-t">Abre esta página en <b>Chrome</b> en tu Android.</div></div>
+      <div class="step"><div class="step-n">2</div><div class="step-t">Toca el menú <b>⋮</b> (tres puntos) arriba a la derecha.</div></div>
+      <div class="step"><div class="step-n">3</div><div class="step-t">Selecciona <b>"Instalar aplicación"</b> o <b>"Añadir a pantalla principal"</b>.</div></div>
+      <div class="step"><div class="step-n">4</div><div class="step-t">Confirma tocando <b>"Instalar"</b>. El ícono aparece en tu pantalla principal.</div></div>
+    </div>
+
+    <div style="margin-top:12px;padding:10px 12px;border-radius:12px;background:rgba(20,50,120,0.35);border:1px solid rgba(80,140,220,0.25);font-size:12px;color:var(--muted);">
+      🔗 URL: <code>https://iglesia-bautista-biblica.org/app/</code>
+    </div>
+  </div>
+
+</div><!-- #app -->
+
+<!-- FAB -->
+<button id="fab" onclick="openSheet()" title="Administrador">⚙️</button>
+
+<!-- OVERLAY -->
+<div id="overlay" onclick="bgClose(event)">
+  <div id="sheet">
+    <div class="sh-handle"></div>
+
+    <!-- LOGIN -->
+    <div id="login-box-wrap">
+      <div class="sh-title">🔐 Administrador</div>
+      <div class="sh-sub">Solo el administrador de la iglesia tiene acceso.</div>
+      <div id="login-box">
+        <div class="field">
+          <label>Clave de acceso</label>
+          <input type="password" id="pwd" placeholder="Ingresa tu clave" autocomplete="current-password"/>
         </div>
-        <div class="list">
-          <div><b>Dirección:</b> 1273 Lamont Ave. NW, Grand Rapids, MI 49504</div>
-          <div class="divider"></div>
-          <div><b>Tel:</b> <a class="btn" style="padding:6px 10px; border-radius:10px;" href="tel:+16162874503">📞 Llamar</a>
-              <a class="btn" style="padding:6px 10px; border-radius:10px;" href="sms:+16162874503">📲 SMS</a>
-              <span class="muted">616-287-4503</span>
+        <button class="btn blue full" onclick="doLogin()">Entrar</button>
+        <button class="btn full" style="margin-top:6px" onclick="closeSheet()">Cancelar</button>
+      </div>
+      <div id="login-err">❌ Clave incorrecta.</div>
+    </div>
+
+    <!-- PANEL -->
+    <div id="panel">
+      <div class="sh-title">⚙️ Panel de Administrador</div>
+      <div class="sh-sub">Bienvenido. Actualiza el contenido de la app aquí.</div>
+
+      <!-- ANUNCIO -->
+      <div class="asec">
+        <div class="asec-t">📣 Anuncio Semanal</div>
+        <div class="drop" onclick="document.getElementById('ann-file').click()" id="ann-drop">
+          <span class="di">🖼️</span>
+          <div class="dt">Toca para seleccionar imagen<br><small>JPG, PNG, WEBP · máx 5 MB</small></div>
+          <input type="file" id="ann-file" accept="image/*" onchange="pickAnn(this)"/>
+        </div>
+        <div class="prev" id="ann-prev">
+          <img id="ann-prev-img" src="" alt=""/>
+          <button class="xbtn" onclick="clearAnnPick()">✕</button>
+        </div>
+        <div class="brow" style="margin-top:10px">
+          <button class="btn blue" onclick="saveAnn()">💾 Publicar anuncio</button>
+          <button class="btn danger" onclick="deleteAnn()">🗑️ Quitar anuncio</button>
+        </div>
+      </div>
+      <div class="sep"></div>
+
+      <!-- ESCUELA DOMINICAL -->
+      <div class="asec" style="margin-top:18px">
+        <div class="asec-t">📖 Escuela Dominical — Agregar material</div>
+
+        <div class="field" style="margin-bottom:8px">
+          <label>Título *</label>
+          <input type="text" id="ed-tit" placeholder="Ej: Lección 5 – La Iglesia"/>
+        </div>
+        <div class="field" style="margin-bottom:8px">
+          <label>Subtítulo (opcional)</label>
+          <input type="text" id="ed-sub" placeholder="Ej: Yo Amo a la Iglesia"/>
+        </div>
+
+        <div class="field" style="margin-bottom:8px">
+          <label>Tipo de archivo</label>
+          <select id="ed-tipo" onchange="toggleEdType()">
+            <option value="link">🔗 Enlace (URL externa)</option>
+            <option value="img">🖼️ Imagen (JPG/PNG)</option>
+            <option value="pdf">📄 PDF</option>
+          </select>
+        </div>
+
+        <!-- URL -->
+        <div id="ed-url-wrap" class="field" style="margin-bottom:8px">
+          <label>URL del material</label>
+          <input type="url" id="ed-url" placeholder="https://..."/>
+        </div>
+
+        <!-- Archivo (imagen o PDF) -->
+        <div id="ed-file-wrap" style="display:none">
+          <div class="drop" onclick="document.getElementById('ed-file').click()" id="ed-file-drop">
+            <span class="di" id="ed-drop-icon">📄</span>
+            <div class="dt" id="ed-drop-txt">Toca para seleccionar archivo<br><small>PDF · máx 10 MB</small></div>
+            <input type="file" id="ed-file" accept="image/*,application/pdf" onchange="pickEdFile(this)"/>
+          </div>
+          <div class="prev" id="ed-file-prev">
+            <div id="ed-file-badge"></div>
+            <button class="xbtn" onclick="clearEdFile()" style="position:static;margin-top:6px">✕ Quitar</button>
           </div>
         </div>
-        <div class="btns">
-        <a class="btn primary" href="javascript:void(0)" onclick="openMaps(event)">
-🗺️ Abrir en Maps
-</a>            
-   <a class="btn" href="https://iglesia-bautista-biblica.org" target="_blank" rel="noopener">🌐 Website</a>
-        </div>
-      </section>
 
-      <section class="card half">
-        <div class="titleRow">
-          <h2>⏰ Horarios de Servicios</h2>
+        <!-- Miniatura -->
+        <div class="drop" style="margin-top:8px" onclick="document.getElementById('ed-thumb-file').click()">
+          <span class="di">📸</span>
+          <div class="dt">Miniatura (opcional — JPG/PNG)</div>
+          <input type="file" id="ed-thumb-file" accept="image/*" onchange="pickEdThumb(this)"/>
         </div>
-
-        <div class="list">
-          <div><b>🙏 Miércoles – Servicio de Oración</b><br><span class="muted">🕖 7:00 pm – 8:15 pm</span></div>
-          <div class="divider"></div>
-          <div><b>⛪ Domingo – Servicio Dominical</b><br><span class="muted">🕤 9:30 am – 11:00 am</span></div>
-          <div class="divider"></div>
-          <div><b>📖 Domingo – Escuela Dominical</b><br><span class="muted">🕚 11:15 am – 12:15 pm</span></div>
-          <div class="divider"></div>
-          <div><b>💻 Domingo – Servicio vía Zoom</b><br><span class="muted">🕕 6:00 pm</span></div>
-        </div>
-      </section>
-
-      <section class="card third">
-        <div class="titleRow">
-          <h2>🟦 Zoom (Domingo 6:00 pm)</h2>
-        </div>
-        <p>Entra directo al servicio por Zoom.</p>
-
-        <div class="btns">
-          <a class="btn primary" href="https://us02web.zoom.us/j/8121830152" target="_blank" rel="noopener">🔗 Entrar a Zoom</a>
-          <a class="btn warn" href="https://us02web.zoom.us/j/8121830152?pwd=MTIz" target="_blank" rel="noopener">🔐 Entrar con Pass</a>
+        <div class="prev" id="ed-thumb-prev">
+          <img id="ed-thumb-img" src="" alt=""/>
+          <button class="xbtn" onclick="clearEdThumb()">✕</button>
         </div>
 
-        <div class="small">
-          ID: <code>812 183 0152</code><br>
-          Pass: <code>123</code>
+        <div class="brow" style="margin-top:10px">
+          <button class="btn blue" onclick="addEdItem()">➕ Agregar material</button>
         </div>
-      </section>
 
-      <section class="card third">
-        <div class="titleRow">
-          <h2>🙏 Peticiones de Oración</h2>
-</div>
-<p>Envía tu petición por la web o por WhatsApp.</p>
-<div class="btns">
-  <a class="btn primary" href="https://ibbgrmi.github.io/peticion" target="_blank" rel="noopener">📝 Formulario</a>
-  <a class="btn" href="https://iglesia-bautista-biblica.org/peticion-sms.html" target="_blank" rel="noopener">📲 Petición por WhatsApp</a>
-</div>
-</section>
-
-      <section class="card third">
-        <div class="titleRow">
-          <h2>🟢 WhatsApp</h2>
+        <!-- Lista guardada -->
+        <div style="margin-top:14px">
+          <div style="font-size:11px;color:var(--muted);font-weight:600;letter-spacing:.5px;text-transform:uppercase;margin-bottom:6px">Material guardado</div>
+          <div class="alist" id="ed-admin-list"><div style="color:var(--muted);font-size:13px;">— vacío —</div></div>
+          <button class="btn danger full" style="margin-top:8px" onclick="clearAllEd()">🗑️ Borrar todo el material</button>
         </div>
-        <p>Canal oficial de WhatsApp.</p>
-        <div class="btns">
-          <a class="btn ok" href="https://whatsapp.com/channel/0029Vb6qU6c3mFY3MNRZAm1H" target="_blank" rel="noopener">📣 Abrir Canal</a>
-        </div>
-      </section>
+      </div>
+      <div class="sep"></div>
 
-      <section class="card">
-        <div class="titleRow">
-          <h2>🎧 Predicaciones (Podcast)</h2>
-        </div>
-        <p>Escucha las predicaciones en tu plataforma favorita.</p>
-        <div class="btns">
-          <a class="btn primary" href="https://podcasts.apple.com/us/podcast/iglesia-bautista-b%C3%ADblica/id1846167510" target="_blank" rel="noopener">🍎 Apple Podcasts</a>
-          <a class="btn ok" href="https://open.spotify.com/show/2lHbPZmfKz1cW5wVNZ1R1O" target="_blank" rel="noopener noreferrer">
-🟢 Spotify
-</a>
-          <a class="btn" href="https://music.amazon.com/podcasts/2dd0cceb-d057-4cf5-b690-7634ca1edf4d/iglesia-bautista-b%C3%ADblica" target="_blank" rel="noopener">🟣 Amazon Music</a>
-        </div>
-      </section>
+      <button class="btn full" style="margin-top:16px" onclick="closeSheet()">Cerrar panel</button>
+    </div><!-- #panel -->
+  </div><!-- #sheet -->
+</div><!-- #overlay -->
 
-      <section class="card">
-  <div class="titleRow">
-    <h2>📲 Instalar en tu teléfono</h2>
-  </div>
-  <p>
-    <b>iPhone / iPad (Safari):</b> abre esta página → botón <b>Compartir</b> → <b>Añadir a pantalla de inicio</b>.<br>
-    <b>Android (Chrome):</b> menú <b>⋮</b> → <b>Instalar aplicación</b> o <b>Añadir a pantalla principal</b>.
-  </p>
-  <div class="small">Enlace: <code>https://iglesia-bautista-biblica.org/app/</code></div>
-</section>
+<div class="toast" id="toast"></div>
 
-    </div>
-  </main>
+<script>
+/* ══ CONFIG — cambia la clave aquí ══ */
+const PASS = "ibb2024";
 
-  <script>
-    if ("serviceWorker" in navigator) {
-      window.addEventListener("load", () => {
-        navigator.serviceWorker.register("/app/sw.js").catch(() => {});
-      });
-    }
-  </script>
-  
-  <script>
+/* ══ STORAGE KEYS ══ */
+const ANN_KEY = "ibb_ann";
+const ED_KEY  = "ibb_ed";
+
+/* ══ INIT ══ */
+window.addEventListener("DOMContentLoaded", () => {
+  loadAnn();
+  loadEd();
+  if ("serviceWorker" in navigator)
+    navigator.serviceWorker.register("/app/sw.js").catch(() => {});
+});
+
+/* ══ MAPS ══ */
 function openMaps(e) {
-  if (e) e.preventDefault();
-
-  const lat = "42.987713";
-  const lng = "-85.743015";
-  const label = "Iglesia Bautista Bíblica";
-
-  const isiOS = /iPad|iPhone|iPod/.test(navigator.userAgent);
-
-  if (isiOS) {
-    window.location.href = `maps://?ll=${lat},${lng}&q=${encodeURIComponent(label)}`;
-    setTimeout(() => {
-      window.location.href = `https://maps.apple.com/?ll=${lat},${lng}&q=${encodeURIComponent(label)}`;
-    }, 300);
+  e?.preventDefault();
+  const lat = "42.987713", lng = "-85.743015";
+  const q = "Iglesia Bautista Bíblica";
+  if (/iPad|iPhone|iPod/.test(navigator.userAgent)) {
+    location.href = `maps://?ll=${lat},${lng}&q=${encodeURIComponent(q)}`;
+    setTimeout(() => location.href = `https://maps.apple.com/?ll=${lat},${lng}&q=${encodeURIComponent(q)}`, 300);
   } else {
-    window.location.href = `https://www.google.com/maps/search/?api=1&query=${lat},${lng}`;
+    window.open(`https://www.google.com/maps/search/?api=1&query=${lat},${lng}`, "_blank");
   }
+}
+
+/* ══ TABS ══ */
+function showTab(id, el) {
+  document.querySelectorAll(".tabs .tab").forEach(t => t.classList.remove("on"));
+  document.querySelectorAll("[data-tab]").forEach(c => c.classList.remove("show"));
+  el.classList.add("on");
+  document.querySelector(`[data-tab="${id}"]`).classList.add("show");
+}
+
+/* ══ TOAST ══ */
+function toast(msg) {
+  const t = document.getElementById("toast");
+  t.textContent = msg;
+  t.classList.add("on");
+  setTimeout(() => t.classList.remove("on"), 2600);
+}
+
+/* ══ ADMIN ══ */
+function openSheet() {
+  document.getElementById("overlay").classList.add("on");
+  setTimeout(() => document.getElementById("pwd").focus(), 350);
+}
+function closeSheet() {
+  document.getElementById("overlay").classList.remove("on");
+}
+function bgClose(e) { if (e.target === document.getElementById("overlay")) closeSheet(); }
+
+function doLogin() {
+  if (document.getElementById("pwd").value === PASS) {
+    document.getElementById("login-box-wrap").style.display = "none";
+    document.getElementById("panel").classList.add("on");
+    document.getElementById("login-err").style.display = "none";
+    document.getElementById("pwd").value = "";
+    renderEdAdminList();
+  } else {
+    document.getElementById("login-err").style.display = "block";
+    document.getElementById("pwd").value = "";
+    document.getElementById("pwd").focus();
+  }
+}
+document.addEventListener("keydown", e => {
+  if (e.key === "Enter" && document.getElementById("overlay").classList.contains("on")
+      && !document.getElementById("panel").classList.contains("on")) doLogin();
+});
+
+/* ══ ANNOUNCE ══ */
+let annData = null;
+
+function pickAnn(inp) {
+  const f = inp.files[0];
+  if (!f) return;
+  if (f.size > 5e6) { toast("⚠️ Imagen muy grande (máx 5 MB)"); return; }
+  readFile(f, url => {
+    annData = url;
+    const p = document.getElementById("ann-prev");
+    document.getElementById("ann-prev-img").src = url;
+    p.style.display = "block";
+  });
+}
+function clearAnnPick() {
+  annData = null;
+  document.getElementById("ann-prev").style.display = "none";
+  document.getElementById("ann-file").value = "";
+}
+function saveAnn() {
+  if (!annData) { toast("Primero selecciona una imagen"); return; }
+  try { localStorage.setItem(ANN_KEY, annData); renderAnn(annData); toast("✅ Anuncio publicado"); }
+  catch(e) { toast("❌ Imagen demasiado grande para guardar"); }
+}
+function deleteAnn() {
+  localStorage.removeItem(ANN_KEY);
+  annData = null;
+  clearAnnPick();
+  renderAnn(null);
+  toast("🗑️ Anuncio eliminado");
+}
+function loadAnn() { renderAnn(localStorage.getItem(ANN_KEY)); }
+function renderAnn(url) {
+  const d = document.getElementById("ann-display");
+  d.innerHTML = url
+    ? `<div class="announce-wrap"><img src="${url}" alt="Anuncio"/></div>`
+    : `<div class="announce-empty"><span class="ae-icon">📣</span>No hay anuncio esta semana.</div>`;
+}
+
+/* ══ ESCUELA DOMINICAL ══ */
+let edItems = [];
+let edThumbData = null;
+let edFileData  = null;   // base64 data URL for img or PDF
+
+function loadEd() {
+  try { edItems = JSON.parse(localStorage.getItem(ED_KEY) || "[]"); } catch { edItems = []; }
+  renderEdGrid();
+}
+function saveEdLS() {
+  try { localStorage.setItem(ED_KEY, JSON.stringify(edItems)); } catch(e) { toast("⚠️ Almacenamiento lleno"); }
+}
+
+/* type toggle */
+function toggleEdType() {
+  const t = document.getElementById("ed-tipo").value;
+  document.getElementById("ed-url-wrap").style.display  = t === "link" ? "" : "none";
+  document.getElementById("ed-file-wrap").style.display = t !== "link" ? "" : "none";
+  if (t === "pdf") {
+    document.getElementById("ed-drop-icon").textContent = "📄";
+    document.getElementById("ed-drop-txt").innerHTML = "Toca para seleccionar PDF<br><small>PDF · máx 10 MB</small>";
+    document.getElementById("ed-file").accept = "application/pdf";
+  } else {
+    document.getElementById("ed-drop-icon").textContent = "🖼️";
+    document.getElementById("ed-drop-txt").innerHTML = "Toca para seleccionar imagen<br><small>JPG, PNG · máx 5 MB</small>";
+    document.getElementById("ed-file").accept = "image/*";
+  }
+  clearEdFile();
+}
+
+function pickEdFile(inp) {
+  const f = inp.files[0];
+  if (!f) return;
+  const limit = f.type === "application/pdf" ? 10e6 : 5e6;
+  if (f.size > limit) { toast(`⚠️ Archivo muy grande`); return; }
+  readFile(f, url => {
+    edFileData = { url, type: f.type, name: f.name };
+    const p = document.getElementById("ed-file-prev");
+    p.style.display = "block";
+    const b = document.getElementById("ed-file-badge");
+    if (f.type === "application/pdf") {
+      b.innerHTML = `<div class="pdf-badge">📄 ${esc(f.name)}</div>`;
+    } else {
+      b.innerHTML = `<img src="${url}" style="width:100%;border-radius:10px;"/>`;
+    }
+  });
+}
+function clearEdFile() {
+  edFileData = null;
+  document.getElementById("ed-file-prev").style.display = "none";
+  document.getElementById("ed-file").value = "";
+}
+
+function pickEdThumb(inp) {
+  const f = inp.files[0];
+  if (!f) return;
+  readFile(f, url => {
+    edThumbData = url;
+    document.getElementById("ed-thumb-img").src = url;
+    document.getElementById("ed-thumb-prev").style.display = "block";
+  });
+}
+function clearEdThumb() {
+  edThumbData = null;
+  document.getElementById("ed-thumb-prev").style.display = "none";
+  document.getElementById("ed-thumb-file").value = "";
+}
+
+function addEdItem() {
+  const title = document.getElementById("ed-tit").value.trim();
+  const sub   = document.getElementById("ed-sub").value.trim();
+  const tipo  = document.getElementById("ed-tipo").value;
+  if (!title) { toast("Escribe un título"); return; }
+
+  let href, fileType = null;
+  if (tipo === "link") {
+    href = document.getElementById("ed-url").value.trim();
+    if (!href) { toast("Escribe un enlace URL"); return; }
+  } else {
+    if (!edFileData) { toast("Selecciona un archivo"); return; }
+    href      = edFileData.url;
+    fileType  = edFileData.type === "application/pdf" ? "pdf" : "img";
+  }
+
+  edItems.push({ title, sub, href, fileType, thumb: edThumbData });
+  saveEdLS();
+  renderEdGrid();
+  renderEdAdminList();
+
+  // reset form
+  document.getElementById("ed-tit").value = "";
+  document.getElementById("ed-sub").value = "";
+  document.getElementById("ed-url").value = "";
+  clearEdFile(); clearEdThumb();
+  toast("✅ Material agregado");
+}
+
+function removeEdItem(i) {
+  edItems.splice(i, 1);
+  saveEdLS(); renderEdGrid(); renderEdAdminList();
+  toast("🗑️ Eliminado");
+}
+
+function clearAllEd() {
+  if (!confirm("¿Borrar todo el material de Escuela Dominical?")) return;
+  edItems = [];
+  saveEdLS(); renderEdGrid(); renderEdAdminList();
+  toast("🗑️ Todo eliminado");
+}
+
+function renderEdGrid() {
+  const g = document.getElementById("ed-grid");
+  if (!edItems.length) {
+    g.innerHTML = `<div class="ed-empty">El administrador puede agregar materiales desde el panel ⚙️</div>`;
+    return;
+  }
+  g.innerHTML = edItems.map((it, i) => {
+    const tag = it.fileType === "pdf" ? `<span class="ed-tag pdf">PDF</span>`
+              : it.fileType === "img" ? `<span class="ed-tag">IMG</span>` : "";
+    const thumb = it.thumb
+      ? `<img src="${it.thumb}" alt=""/>`
+      : (it.fileType === "pdf" ? "📄" : "📘");
+    return `<a class="ed-item" href="${it.href}" target="_blank" rel="noopener">
+      <div class="ed-thumb">${thumb}</div>
+      <div class="ed-info">
+        <div class="ed-t">${esc(it.title)}${tag}</div>
+        ${it.sub ? `<div class="ed-s">${esc(it.sub)}</div>` : ""}
+      </div>
+      <div class="ed-arrow">›</div>
+    </a>`;
+  }).join("");
+}
+
+function renderEdAdminList() {
+  const el = document.getElementById("ed-admin-list");
+  if (!edItems.length) { el.innerHTML = `<div style="color:var(--muted);font-size:13px;">— vacío —</div>`; return; }
+  el.innerHTML = edItems.map((it, i) => `
+    <div class="aitem">
+      <div class="ai-name">${esc(it.title)}</div>
+      <button class="btn danger" style="padding:6px 10px;font-size:12px" onclick="removeEdItem(${i})">✕</button>
+    </div>`).join("");
+}
+
+/* ══ HELPERS ══ */
+function readFile(f, cb) {
+  const r = new FileReader();
+  r.onload = e => cb(e.target.result);
+  r.readAsDataURL(f);
+}
+function esc(s) {
+  return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");
 }
 </script>
 </body>
